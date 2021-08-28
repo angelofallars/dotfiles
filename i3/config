@@ -253,7 +253,7 @@ exec xmodmap ~/.config/i3/swapkeys -display :0
 for_window [class=".*"] border pixel 3
 
 gaps inner 6
-gaps left 16
-gaps right 16
-gaps top -1
+gaps left 14
+gaps right 14
+gaps top -4
 gaps bottom 2
