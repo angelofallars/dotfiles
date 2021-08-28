@@ -29,16 +29,41 @@ alias pacdate="sudo pacman -Syu"
 
 # v for neovim
 v ()
-{ nvim -- "$1"
+{ 
+	nvim -- "$1"
 }
 
-# Head into code directory
-alias tocode="cd ~/code"
+# Head into code directory and list contents
+alias tocode="cd ~/code && ls"
 
-# Compile then run code on C
-clangdo ()
+# Compile then run code in C
+# Example: `crun hello.c`
+#         =`clang hello.c -o c-hello.o` && 
+#         =`./c-hello.o`
+ccomp ()
 {
-	clang "$1" -o "$1".o && ./"$1".o
+	filename=$(echo "$1" | cut -f 1 -d '.')
+	clang "$1" -o c-"$filename".o && ./c-"$filename".o
+}
+
+# Run already compiled code in C
+crun ()
+{
+	filename=$(echo "$1" | cut -f 1 -d '.')
+	./c-"$filename".o
+}
+
+# Shorthand for valgrind
+vgr ()
+{
+	filename=$(echo "$1" | cut -f 1 -d '.')
+	valgrind ./c-"$filename".o
+}
+
+# Shorthand name for running Python code
+py ()
+{
+	python "$1"
 }
 
 export PATH=/home/angelo_f/.local/bin:$PATH
