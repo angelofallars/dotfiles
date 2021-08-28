@@ -9,7 +9,7 @@
 ;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
 ;
 ;
-;   To learn more about how to configure Polybar
+;   To learn more about ho to configure Polybar
 ;   go to https://github.com/polybar/polybar
 ;▆
 ;   The README contains a lot of information
@@ -18,13 +18,16 @@
 
 [colors]
 ;background = ${xrdb:color0:#222}
-background = #111
+background = #00111111
+background2 = #1e1e1e
 background-alt = #444
 ;foreground = ${xrdb:color7:#222}
 foreground = #dfdfdf
 foreground-alt = #555
 primary = #2972A7 
 primary2 = #2595E7
+primary-dark = #205881
+#2972A7 
 pattern1 = #50AC24
 secondary = #e60053
 alert = #bd2c40
@@ -34,7 +37,7 @@ bar2 = #385971
 
 [bar/mybar]
 ;monitor = ${env:MONITOR:HDMI-1}
-width = 100%
+idth = 100%
 height = 20
 ;offset-x = 1%
 ;offset-y = 1%
@@ -47,7 +50,7 @@ foreground = ${colors.foreground}
 line-size = 3
 line-color = #f00
 
-border-size = 0
+border-size = 2
 border-color = #000a0a0a
 
 padding-left = 3
@@ -63,35 +66,45 @@ module-margin-right = 1
 font-0 = roboto mono medium:pixelsize=9;2
 font-1 = unifont:fontformat=truetype:size=6:antialias=false;0
 font-2 = siji:pixelsize=10;1
-;i3 workspace numbering
+;i3 orkspace numbering
 font-3 = fira sans extrabold:pixelsize=10;2
 font-4 = roboto condensed:pixelsize=11;2
 font-5 = Roboto Condensed Bold:pixelsize=11;2
 
-modules-left = bspwm i3 cpu memory 
+modules-left = osname bspm i3 
 modules-center = date 
-modules-right = xbacklight pulseaudio 
+modules-right = 
 
 tray-position = right 
-tray-padding = 2
-;tray-background = #0063ff
+tray-padding = 3
+tray-background = ${colors.background2} 
+tray-underline = ${colors.primary}
 
-;wm-restack = bspwm
-wm-restack = i3
+;m-restack = bspm
+m-restack = i3
 
 ;override-redirect = true
 
-;scroll-up = bspwm-desknext
-;scroll-down = bspwm-deskprev
+;scroll-up = bspm-desknext
+;scroll-don = bspm-deskprev
 
-;scroll-up = i3wm-wsnext
-;scroll-down = i3wm-wsprev
+;scroll-up = i3m-snext
+;scroll-don = i3m-sprev
 
 cursor-click = pointer
 cursor-scroll = ns-resize
 
-[module/xwindow]
-type = internal/xwindow
+[module/osname]
+type = custom/text
+content = "Arch Linux"
+content-font = 4
+content-padding = 2
+content-background = #2b2b2b
+content-foreground = ${colors.primary2}
+content-underline = ${colors.primary-dark}
+
+[module/xindo]
+type = internal/xindo
 label = %title:0:36:...%
 
 [module/xkeyboard]
@@ -120,8 +133,8 @@ label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground-alt}
 
-[module/bspwm]
-type = internal/bspwm
+[module/bspm]
+type = internal/bspm
 
 label-focused = %index%
 label-focused-background = ${colors.background-alt}
@@ -139,14 +152,14 @@ label-empty = %index%
 label-empty-foreground = ${colors.foreground-alt}
 label-empty-padding = 2
 
-; Separator in between workspaces
+; Separator in beteen orkspaces
 ; label-separator = |
 
 [module/i3]
 type = internal/i3
 format = <label-state> <label-mode>
 index-sort = true
-wrapping-scroll = false
+rapping-scroll = false
 
 ; Set font
 label-focused-font = 4
@@ -154,38 +167,39 @@ label-unfocused-font = 4
 label-visible-font = 4
 label-urgent-font = 4
 
-; Only show workspaces on the same output as the bar
-;pin-workspaces = true
+; Only sho orkspaces on the same output as the bar
+;pin-orkspaces = true
 
 label-mode-padding = 2
 label-mode-foreground = #dddddd
 label-mode-background = ${colors.primary}
 label-mode-font = 6
 
-; focused = Active workspace on focused monitor
+; focused = Active orkspace on focused monitor
 label-focused = %index%
 label-focused-background = ${colors.primary}
-;label-focused-underline= ${colors.background-alt}
+label-focused-underline= ${colors.primary-dark}
 label-focused-padding = 3
 
-; unfocused = Inactive workspace on any monitor
+; unfocused = Inactive orkspace on any monitor
 label-unfocused = %index%
 label-unfocused-padding = 3
 label-unfocused-background = #c7c7c7
-label-unfocused-foreground = ${colors.background}
+label-unfocused-foreground = ${colors.background2}
+label-unfocused-underline = #8B8B8B
 
-; visible = Active workspace on unfocused monitor
+; visible = Active orkspace on unfocused monitor
 label-visible = %index%
 label-visible-background = ${self.label-focused-background}
 label-visible-underline = ${self.label-focused-underline}
 label-visible-padding = ${self.label-focused-padding}
 
-; urgent = Workspace with urgency hint set
+; urgent = Workspace ith urgency hint set
 label-urgent = %index%
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
-; Separator in between workspaces
+; Separator in beteen orkspaces
 ; label-separator = |
 
 
@@ -208,7 +222,7 @@ type = internal/xbacklight
 format = <label> <bar>
 label = LIGHT %percentage%%
 
-bar-width = 20
+bar-idth = 20
 bar-indicator = || 
 bar-indicator-foreground = #fff
 bar-indicator-font = 2
@@ -236,7 +250,7 @@ label = CPU %percentage:2%%
 label-minlen = 8
 
 bar-load-indicator =
-bar-load-width = 10
+bar-load-idth = 10
 bar-load-font = 2
 bar-load-foreground-0 = ${colors.bar1} 
 bar-load-foreground-1 = ${colors.bar2}
@@ -257,7 +271,7 @@ label = MEM %percentage_used%%
 label-minlen = 8
 
 bar-used-indicator =
-bar-used-width = 10
+bar-used-idth = 10
 bar-used-font = 2
 bar-used-foreground-0 = ${colors.bar1}
 bar-used-foreground-1 = ${colors.bar2}
@@ -267,8 +281,8 @@ bar-used-fill = ▐
 bar-used-empty = ▐
 bar-used-empty-foreground = #444444
 
-[module/wlan]
-type = internal/network
+[module/lan]
+type = internal/netork
 interface = 
 interval = 3.0
 
@@ -290,7 +304,7 @@ ramp-signal-4 = 
 ramp-signal-foreground = ${colors.foreground-alt}
 
 [module/eth]
-type = internal/network
+type = internal/netork
 interface = 
 interval = 3.0
 
@@ -309,20 +323,27 @@ format-disconnected =
 type = internal/date
 interval = 5
 
+;format-background = ${colors.background2}
+;format-foreground = ${colors.primary2}
+format-background = #c7c7c7
+format-foreground = ${colors.background2}
+format-underline = ${colors.primary}
+label-font = 5
+format-padding = 2
+
 date =
 date-alt = " %Y-%m-%d"
 
 ;time = %H:%M
 time = %l:%M %p | %a %m/%e
 time-alt = %H:%M:%S
-weekday = %a
+eekday = %a
 
 my-time = %I:%P
 
 format-prefix = 
 format-prefix-foreground = ${colors.foreground-alt}
 ;format-underline = ${colors.pattern1}
-label-font = 5
 
 label = %time%
 
@@ -334,6 +355,9 @@ label-volume = VOL %percentage%%
 label-volume-foreground = ${root.foreground}
 label-volume-minlen = 8
 
+format-volume-background = ${colors.background2}
+format-volume-padding = 2
+
 label-muted = 🔇 muted
 label-muted-foreground = #666
 
@@ -342,7 +366,7 @@ label-muted-foreground = #666
 ;bar-volume-foreground-5 = #f5a70a
 ;▅
 
-bar-volume-width = 20
+bar-volume-idth = 20
 
 bar-volume-foreground-0 = ${colors.primary2}
 bar-volume-gradient = false
@@ -368,7 +392,7 @@ format-muted-prefix = " "
 format-muted-foreground = ${colors.foreground-alt}
 label-muted = sound muted
 
-bar-volume-width = 10
+bar-volume-idth = 10
 bar-volume-foreground = #{colors.primary2}
 bar-volume-gradient = false
 bar-volume-indicator = ||
@@ -415,23 +439,23 @@ animation-discharging-framerate = 750
 [module/temperature]
 type = internal/temperature
 thermal-zone = 0
-warn-temperature = 60
+arn-temperature = 60
 
 format = <ramp> <label>
 format-underline = #f50a4d
-format-warn = <ramp> <label-warn>
-format-warn-underline = ${self.format-underline}
+format-arn = <ramp> <label-arn>
+format-arn-underline = ${self.format-underline}
 
 label = %temperature-c%
-label-warn = %temperature-c%
-label-warn-foreground = ${colors.secondary}
+label-arn = %temperature-c%
+label-arn-foreground = ${colors.secondary}
 
 ramp-0 = 
 ramp-1 = 
 ramp-2 = 
 ramp-foreground = ${colors.foreground-alt}
 
-[module/powermenu]
+[module/poermenu]
 type = custom/menu
 
 expand-right = true
@@ -447,7 +471,7 @@ label-separator-foreground = ${colors.foreground-alt}
 
 menu-0-0 = reboot
 menu-0-0-exec = menu-open-1
-menu-0-1 = power off
+menu-0-1 = poer off
 menu-0-1-exec = menu-open-2
 
 menu-1-0 = cancel
@@ -455,8 +479,8 @@ menu-1-0-exec = menu-open-0
 menu-1-1 = reboot
 menu-1-1-exec = sudo reboot
 
-menu-2-0 = power off
-menu-2-0-exec = sudo poweroff
+menu-2-0 = poer off
+menu-2-0-exec = sudo poeroff
 menu-2-1 = cancel
 menu-2-1-exec = menu-open-0
 
@@ -468,7 +492,7 @@ screenchange-reload = true
 ;compositing-border = over
 ;pseudo-transparency = false
 
-[global/wm]
+[global/m]
 margin-top = 5
 margin-bottom = 5
 
