@@ -4,7 +4,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown', 'do': 'yarn install'}
-Plug 'arcticicestudio/nord-vim'
 call plug#end()
 
 set autochdir
@@ -24,6 +23,9 @@ let g:vimsence_small_text = 'NeoVim'
 let g:vimsence_small_image = 'neovim'
 let g:vimsence_editing_details = 'Editing: {}'
 let g:vimsence_editing_state = 'Workspace: {}'
+
+set tabstop=4
+set shiftwidth=4
 
 source $HOME/.config/nvim/general/settings.vim
 source $HOME/.config/nvim/keys/mappings.vim

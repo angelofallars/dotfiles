@@ -40,7 +40,7 @@ bar2 = #385971
 idth = 100%
 height = 21
 ;offset-x = 1%
-;offset-y = 1%
+;offset-y = -10%
 radius = 0
 fixed-center = true
 
@@ -56,7 +56,7 @@ border-color = #000a0a0a
 padding-left = 3
 padding-right = 3
 
-module-margin-left = 0
+module-margin-left = 1
 module-margin-right = 1
 
 ;font-0 = fixed:pixelsize=10;1
@@ -73,7 +73,7 @@ font-5 = Roboto Condensed Bold:pixelsize=11;2
 
 modules-left = osname bspm i3 
 modules-center = date 
-modules-right = 
+modules-right = cpu memory date2 
 
 tray-position = right 
 tray-padding = 3
@@ -242,11 +242,14 @@ card = intel_backlight
 [module/cpu]
 type = internal/cpu
 interval = 2
-format = <label> <bar-load>
+format = <label>
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
-;format-underline = ${colors.pattern1}
+format-background = #c7c7c7
+format-foreground = ${colors.background2}
+format-underline = ${colors.primary}
 label = CPU %percentage:2%%
+label-font = 5
 label-minlen = 8
 
 bar-load-indicator =
@@ -263,11 +266,14 @@ bar-load-empty-foreground = #444444
 [module/memory]
 type = internal/memory
 interval = 2
-format = <label> <bar-used>
+format = <label> 
+;<bar-used>
 format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-;format-underline = ${colors.pattern1}
-label = MEM %percentage_used%%
+format-background = #c7c7c7
+format-foreground = ${colors.background2}
+format-underline = ${colors.primary}
+label = MEM %percentage_used:2%%
+label-font = 5
 label-minlen = 8
 
 bar-used-indicator =
@@ -335,11 +341,36 @@ date =
 date-alt = " %Y-%m-%d"
 
 ;time = %H:%M
-time = %l:%M %p | %a %m/%e
+time = %l:%M %p
 time-alt = %H:%M:%S
 eekday = %a
 
 my-time = %I:%P
+
+format-prefix = 
+format-prefix-foreground = ${colors.foreground-alt}
+;format-underline = ${colors.pattern1}
+
+label = %time%
+
+[module/date2]
+type = internal/date
+interval = 60
+
+;format-background = ${colors.background2}
+;format-foreground = ${colors.primary2}
+format-background = #c7c7c7
+format-foreground = ${colors.background2}
+format-underline = ${colors.primary}
+label-font = 5
+format-padding = 2
+
+date =
+date-alt = " %Y-%m-%d"
+
+;time = %H:%M
+time = %a %m/%e
+time-alt = %H:%M:%S
 
 format-prefix = 
 format-prefix-foreground = ${colors.foreground-alt}
@@ -455,7 +486,7 @@ ramp-1 = 
 ramp-2 = 
 ramp-foreground = ${colors.foreground-alt}
 
-[module/poermenu]
+[module/powermenu]
 type = custom/menu
 
 expand-right = true
