@@ -77,9 +77,9 @@ modules-center = date
 modules-right = cpu memory date2
 
 tray-position = right 
-tray-padding = 3
-tray-background = ${colors.background2} 
-tray-underline = ${colors.primary}
+tray-padding = 1
+tray-background = ${colors.primary}
+tray-offset-x = -12
 
 ;m-restack = bspm
 m-restack = i3
