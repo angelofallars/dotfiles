@@ -258,7 +258,7 @@ format-foreground = #c7c7c7
 format-padding = 1
 
 label = %percentage:2%%
-label-foreground = #d7d7d7
+label-foreground = #dedede
 label-minlen = 4
 label-padding-left = 1
 label-font = 8
@@ -276,7 +276,7 @@ format-prefix = ""
 format-prefix-foreground = #c7c7c7
 format-background = ${colors.primary}
 format-foreground = #c7c7c7
-label-foreground = #d7d7d7
+label-foreground = #dedede
 format-padding = 1
 
 label = %percentage_used%%
