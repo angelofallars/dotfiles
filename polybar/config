@@ -40,7 +40,7 @@ bar2 = #385971
 idth = 100%
 height = 21
 ;offset-x = 1%
-;offset-y = -10%
+;offset-y = 1%
 radius = 0
 fixed-center = true
 
@@ -73,7 +73,7 @@ font-5 = Roboto Condensed Bold:pixelsize=11;2
 
 modules-left = osname bspm i3 
 modules-center = date 
-modules-right = cpu memory date2 
+modules-right = cpu memory date2
 
 tray-position = right 
 tray-padding = 3
@@ -245,12 +245,13 @@ interval = 2
 format = <label>
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
+;format-underline = ${colors.pattern1}
 format-background = #c7c7c7
 format-foreground = ${colors.background2}
 format-underline = ${colors.primary}
 label = CPU %percentage:2%%
-label-font = 5
 label-minlen = 8
+label-font = 5
 
 bar-load-indicator =
 bar-load-idth = 10
@@ -272,9 +273,9 @@ format-prefix = " "
 format-background = #c7c7c7
 format-foreground = ${colors.background2}
 format-underline = ${colors.primary}
-label = MEM %percentage_used:2%%
-label-font = 5
+label = MEM %percentage_used%%
 label-minlen = 8
+label-font = 5
 
 bar-used-indicator =
 bar-used-idth = 10
@@ -355,7 +356,7 @@ label = %time%
 
 [module/date2]
 type = internal/date
-interval = 60
+interval = 5
 
 ;format-background = ${colors.background2}
 ;format-foreground = ${colors.primary2}
@@ -486,7 +487,7 @@ ramp-1 = 
 ramp-2 = 
 ramp-foreground = ${colors.foreground-alt}
 
-[module/powermenu]
+[module/poermenu]
 type = custom/menu
 
 expand-right = true

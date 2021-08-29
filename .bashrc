@@ -12,6 +12,12 @@ alias ls='ls --color=auto'
 PS1='[\[\033[96m\]\u\[\033[0m\]:\[\033[96m\]\w\[\033[0m\]]$ '
 # PS1='[\u:\w]\$ '
 
+blue="\e[0;96m"
+reset="\e[0m"
+
+# Run pfetch at start
+pfetch
+
 # Install package with pacman
 pacstall ()
 {
@@ -27,14 +33,24 @@ pacdel ()
 # Update system with pacman
 alias pacdate="sudo pacman -Syu"
 
+# Head into code directory and list contents
+# alias tocode="cd ~/code && ls"
+tocode ()
+{
+	cd ~/code && cd "$1" && ls
+}
+
 # v for neovim
 v ()
 { 
 	nvim -- "$1"
 }
 
-# Head into code directory and list contents
-alias tocode="cd ~/code && ls"
+# open neovim in code directory
+vopen ()
+{
+	nvim -- ~/code/"$1"
+}
 
 # Compile then run code in C
 # Example: `crun hello.c`
@@ -43,7 +59,7 @@ alias tocode="cd ~/code && ls"
 ccomp ()
 {
 	filename=$(echo "$1" | cut -f 1 -d '.')
-	clang "$1" -o c-"$filename".o && ./c-"$filename".o
+	clang "$1" -o c-"$filename".o && echo -e "=== ${blue}$1${reset} -> ${blue}c-$filename.o${reset} ===" && ./c-"$filename".o
 }
 
 # Run already compiled code in C
@@ -54,7 +70,7 @@ crun ()
 }
 
 # Shorthand for valgrind
-vgr ()
+cmem ()
 {
 	filename=$(echo "$1" | cut -f 1 -d '.')
 	valgrind ./c-"$filename".o
@@ -65,5 +81,27 @@ py ()
 {
 	python "$1"
 }
+
+# Make a new folder and initialize a git project there
+gitdir ()
+{
+	mkdir "$1" && cd "$1" && git init && nvim
+}
+
+# Commit all in git
+gitcom ()
+{
+	git commit -am "$1"
+}
+
+# Kill picom and polybar then run game 
+rungame ()
+{
+	killall picom polybar
+	gamemoderun "$1"
+}
+
+# edit then update this config
+alias bashedit="nvim ~/.bashrc && source ~/.bashrc"
 
 export PATH=/home/angelo_f/.local/bin:$PATH
