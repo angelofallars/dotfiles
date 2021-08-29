@@ -244,38 +244,35 @@ card = intel_backlight
 type = internal/cpu
 interval = 2
 format = <label>
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-;format-underline = ${colors.pattern1}
+
+format-prefix = ""
+format-prefix-foreground = #10579D
 format-background = #c7c7c7
 format-foreground = ${colors.background2}
 format-underline = ${colors.primary}
-label = %{T7}%{T-} %percentage:2%%
-label-minlen = 8
-label-font = 5
+format-padding = 1
 
-bar-load-indicator =
-bar-load-idth = 10
-bar-load-font = 2
-bar-load-foreground-0 = ${colors.bar1} 
-bar-load-foreground-1 = ${colors.bar2}
-bar-load-foreground-2 = #f5a70a
-bar-load-foreground-3 = #ff5555
-bar-load-fill = ▐
-bar-load-empty = ▐
-bar-load-empty-foreground = #444444
+label = %percentage:2%%
+label-minlen = 4
+label-padding-left = 2
+label-font = 5
 
 [module/memory]
 type = internal/memory
 interval = 2
 format = <label>
-;<bar-used>
-format-prefix = " "
+
+format-prefix = ""
+#format-prefix-foreground = ${colors.primary}
+format-prefix-foreground = #0D7083
 format-background = #c7c7c7
 format-foreground = ${colors.background2}
 format-underline = ${colors.primary}
-label = %{T7}%{T-} %percentage_used%%
-label-minlen = 6
+format-padding = 1
+
+label = %percentage_used%%
+label-minlen = 4
+label-padding-left = 2
 label-font = 5
 
 bar-used-indicator =
@@ -371,14 +368,15 @@ date =
 date-alt = " %Y-%m-%d"
 
 ;time = %H:%M
-time = %{T7}%{T-} %a %m/%e
+time = %a %m/%e
 time-alt = %H:%M:%S
 
-format-prefix = 
-format-prefix-foreground = ${colors.foreground-alt}
+format-prefix = 
+format-prefix-foreground = #0D8370
 ;format-underline = ${colors.pattern1}
 
 label = %time%
+label-padding-left = 2
 
 [module/pulseaudio]
 type = internal/pulseaudio
