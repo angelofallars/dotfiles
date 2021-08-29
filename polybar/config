@@ -38,7 +38,7 @@ bar2 = #385971
 
 [bar/mybar]
 ;monitor = ${env:MONITOR:HDMI-1}
-idth = 100%
+width = 100%
 height = 23
 ;offset-x = 1%
 ;offset-y = 1%
@@ -76,7 +76,7 @@ font-7 = "Roboto Mono:pixelsize=11;2"
 
 modules-left = osname bspm i3 
 modules-center = date 
-modules-right = cpu memory date2
+modules-right = pulseaudio backlight cpu memory date2
 
 tray-position = right 
 tray-padding = 1
@@ -84,7 +84,7 @@ tray-background = ${colors.primary}
 tray-offset-x = -12
 
 ;m-restack = bspm
-m-restack = i3
+wm-restack = i3
 
 ;override-redirect = true
 
@@ -105,6 +105,44 @@ content-padding = 2
 content-background = #2b2b2b
 content-foreground = ${colors.primary2}
 content-underline = ${colors.primary-dark}
+
+[module/backlight]
+type = internal/backlight
+
+; Use the following command to list available cards:
+; $ ls -1 /sys/class/backlight/
+card = intel_backlight
+
+; (unreleased)
+; Use the `/sys/class/backlight/actual-brightness` file
+; rather than the regular `brightness` file.
+; Defaults to true unless the specified card is an amdgpu backlight.
+use-actual-brightness = true
+
+; Enable changing the backlight with the scroll wheel
+; NOTE: This may require additional configuration on some systems. Polybar will
+; write to `/sys/class/backlight/${self.card}/brightness` which requires polybar
+; to have write access to that file.
+; DO NOT RUN POLYBAR AS ROOT. 
+; The recommended way is to add the user to the
+; `video` group and give that group write-privileges for the `brightness` file.
+; See the ArchWiki for more information:
+; https://wiki.archlinux.org/index.php/Backlight#ACPI
+; Default: false
+enable-scroll = true
+
+; Available tags:
+;   <label> (default)
+;   <ramp>
+;   <bar>
+format = <label>
+format-background = #4EA121
+format-padding = 1
+
+; Available tokens:
+;   %percentage% (default)
+label =  %percentage%%
+label-font = 8
 
 [module/xindo]
 type = internal/xindo
@@ -225,18 +263,6 @@ type = internal/xbacklight
 
 format = <label> <bar>
 label = LIGHT %percentage%%
-
-bar-idth = 20
-bar-indicator = || 
-bar-indicator-foreground = #fff
-bar-indicator-font = 2
-bar-fill = ▆ 
-bar-fill-font = 2
-; bar-fill-foreground = #9f78e1
-bar-fill-foreground = ${colors.primary2}
-bar-empty = ▆
-bar-empty-font = 2
-bar-empty-foreground = ${colors.foreground-alt}
 
 [module/backlight-acpi]
 inherit = module/xbacklight
@@ -390,13 +416,14 @@ label-padding-left = 1
 [module/pulseaudio]
 type = internal/pulseaudio
 
-format-volume = <label-volume> <bar-volume>
-label-volume = VOL %percentage%%
+format-volume = <label-volume>
+label-volume =  %percentage%%
 label-volume-foreground = ${root.foreground}
-label-volume-minlen = 8
+label-volume-minlen = 4
+label-volume-font = 8
 
-format-volume-background = ${colors.background2}
-format-volume-padding = 2
+format-volume-background = #D57516
+format-volume-padding = 1
 
 label-muted = 🔇 muted
 label-muted-foreground = #666
@@ -406,7 +433,7 @@ label-muted-foreground = #666
 ;bar-volume-foreground-5 = #f5a70a
 ;▅
 
-bar-volume-idth = 20
+bar-volume-width = 20
 
 bar-volume-foreground-0 = ${colors.primary2}
 bar-volume-gradient = false
@@ -495,7 +522,7 @@ ramp-1 = 
 ramp-2 = 
 ramp-foreground = ${colors.foreground-alt}
 
-[module/poermenu]
+[module/powermenu]
 type = custom/menu
 
 expand-right = true
@@ -511,7 +538,7 @@ label-separator-foreground = ${colors.foreground-alt}
 
 menu-0-0 = reboot
 menu-0-0-exec = menu-open-1
-menu-0-1 = poer off
+menu-0-1 = power off
 menu-0-1-exec = menu-open-2
 
 menu-1-0 = cancel
@@ -519,8 +546,8 @@ menu-1-0-exec = menu-open-0
 menu-1-1 = reboot
 menu-1-1-exec = sudo reboot
 
-menu-2-0 = poer off
-menu-2-0-exec = sudo poeroff
+menu-2-0 = power off
+menu-2-0-exec = sudo poweroff
 menu-2-1 = cancel
 menu-2-1-exec = menu-open-0
 
