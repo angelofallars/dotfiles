@@ -82,6 +82,15 @@ py ()
 	python "$1"
 }
 
+# Activate virtual environment
+pyon ()
+{
+	source ~/venv/"$1"/bin/activate
+}
+
+# Deactivate virtual environment
+alias pyoff="deactivate"
+
 # Make a new folder and initialize a git project there
 gitdir ()
 {
