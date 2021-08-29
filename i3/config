@@ -249,6 +249,9 @@ bindsym $mod+m exec gscreenshot
 # swap control key and caps lock
 exec xmodmap ~/.config/i3/swapkeys -display :0
 
+# Set maximum floating size
+floating_maximum_size 800 x 600 
+
 # activate i3-gaps 
 for_window [class=".*"] border pixel 3
 
