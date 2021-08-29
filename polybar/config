@@ -19,7 +19,7 @@
 [colors]
 ;background = ${xrdb:color0:#222}
 background = #00111111
-background2 = #1e1e1e
+background2 = #2e2e2e
 background-alt = #444
 ;foreground = ${xrdb:color7:#222}
 foreground = #dfdfdf
@@ -53,11 +53,11 @@ line-color = #f00
 border-size = 2
 border-color = #000a0a0a
 
-padding-left = 3
-padding-right = 3
+padding-left = 2
+padding-right = 2
 
-module-margin-left = 1
-module-margin-right = 1
+module-margin-left = 0 
+module-margin-right = 1 
 
 ;font-0 = fixed:pixelsize=10;1
 ;font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
@@ -71,6 +71,7 @@ font-3 = fira sans extrabold:pixelsize=10;2
 font-4 = "roboto condensed:pixelsize=11;2"
 font-5 = "Roboto Condensed Bold:pixelsize=11;2"
 font-6 = "Symbols Nerd Font:pixelsize=15:antialias=true;3"
+font-7 = "Roboto Mono:pixelsize=11;2"
 
 modules-left = osname bspm i3 
 modules-center = date 
@@ -171,7 +172,7 @@ label-urgent-font = 4
 ; Only sho orkspaces on the same output as the bar
 ;pin-orkspaces = true
 
-label-mode-padding = 2
+label-mode-padding = 1
 label-mode-foreground = #dddddd
 label-mode-background = ${colors.primary}
 label-mode-font = 6
@@ -180,11 +181,11 @@ label-mode-font = 6
 label-focused = %index%
 label-focused-background = ${colors.primary}
 label-focused-underline= ${colors.primary-dark}
-label-focused-padding = 3
+label-focused-padding = 1
 
 ; unfocused = Inactive orkspace on any monitor
 label-unfocused = %index%
-label-unfocused-padding = 3
+label-unfocused-padding = 1
 label-unfocused-background = #c7c7c7
 label-unfocused-foreground = ${colors.background2}
 label-unfocused-underline = #8B8B8B
@@ -246,16 +247,19 @@ interval = 2
 format = <label>
 
 format-prefix = ""
-format-prefix-foreground = #10579D
-format-background = #c7c7c7
-format-foreground = ${colors.background2}
-format-underline = ${colors.primary}
+#format-prefix-foreground = #10579D
+#format-background = #c7c7c7
+#format-foreground = ${colors.background2}
+format-prefix-foreground = #c7c7c7
+format-background = #10579D
+format-foreground = #c7c7c7
 format-padding = 1
 
 label = %percentage:2%%
+label-foreground = #d7d7d7
 label-minlen = 4
-label-padding-left = 2
-label-font = 5
+label-padding-left = 1
+label-font = 8
 
 [module/memory]
 type = internal/memory
@@ -264,16 +268,19 @@ format = <label>
 
 format-prefix = ""
 #format-prefix-foreground = ${colors.primary}
-format-prefix-foreground = #0D7083
-format-background = #c7c7c7
-format-foreground = ${colors.background2}
-format-underline = ${colors.primary}
+#format-prefix-foreground = #0D7083
+#format-background = #c7c7c7
+#format-foreground = ${colors.background2}
+format-prefix-foreground = #c7c7c7
+format-background = ${colors.primary}
+format-foreground = #c7c7c7
+label-foreground = #d7d7d7
 format-padding = 1
 
 label = %percentage_used%%
 label-minlen = 4
-label-padding-left = 2
-label-font = 5
+label-padding-left = 1
+label-font = 8
 
 bar-used-indicator =
 bar-used-width = 10
@@ -334,7 +341,7 @@ format-background = #c7c7c7
 format-foreground = ${colors.background2}
 format-underline = ${colors.primary}
 label-font = 5
-format-padding = 2
+format-padding = 1
 
 date =
 date-alt = " %Y-%m-%d"
@@ -362,7 +369,7 @@ format-background = #c7c7c7
 format-foreground = ${colors.background2}
 format-underline = ${colors.primary}
 label-font = 5
-format-padding = 2
+format-padding = 1
 
 date =
 date-alt = " %Y-%m-%d"
@@ -376,7 +383,7 @@ format-prefix-foreground = #0D8370
 ;format-underline = ${colors.pattern1}
 
 label = %time%
-label-padding-left = 2
+label-padding-left = 1
 
 [module/pulseaudio]
 type = internal/pulseaudio
