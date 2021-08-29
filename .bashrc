@@ -15,6 +15,9 @@ PS1='[\[\033[96m\]\u\[\033[0m\]:\[\033[96m\]\w\[\033[0m\]]$ '
 blue="\e[0;96m"
 reset="\e[0m"
 
+# pfetch parameters
+export PF_INFO="ascii title os kernel uptime pkgs memory wm"
+
 # Run pfetch at start
 pfetch
 

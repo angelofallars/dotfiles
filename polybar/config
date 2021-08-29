@@ -31,6 +31,7 @@ primary-dark = #205881
 pattern1 = #50AC24
 secondary = #e60053
 alert = #bd2c40
+alert-dark = #88202E
 
 bar1 = #2972A7 
 bar2 = #385971
@@ -199,7 +200,8 @@ label-visible-padding = ${self.label-focused-padding}
 ; urgent = Workspace ith urgency hint set
 label-urgent = %index%
 label-urgent-background = ${colors.alert}
-label-urgent-padding = 2
+label-urgent-underline = ${colors.alert-dark}
+label-urgent-padding = 1
 
 ; Separator in beteen orkspaces
 ; label-separator = |
