@@ -38,7 +38,7 @@ bar2 = #385971
 [bar/mybar]
 ;monitor = ${env:MONITOR:HDMI-1}
 idth = 100%
-height = 21
+height = 23
 ;offset-x = 1%
 ;offset-y = 1%
 radius = 0
@@ -68,8 +68,9 @@ font-1 = unifont:fontformat=truetype:size=6:antialias=false;0
 font-2 = siji:pixelsize=10;1
 ;i3 orkspace numbering
 font-3 = fira sans extrabold:pixelsize=10;2
-font-4 = roboto condensed:pixelsize=11;2
-font-5 = Roboto Condensed Bold:pixelsize=11;2
+font-4 = "roboto condensed:pixelsize=11;2"
+font-5 = "Roboto Condensed Bold:pixelsize=11;2"
+font-6 = "Symbols Nerd Font:pixelsize=15:antialias=true;3"
 
 modules-left = osname bspm i3 
 modules-center = date 
@@ -249,7 +250,7 @@ format-prefix-foreground = ${colors.foreground-alt}
 format-background = #c7c7c7
 format-foreground = ${colors.background2}
 format-underline = ${colors.primary}
-label = CPU %percentage:2%%
+label = %{T7}%{T-} %percentage:2%%
 label-minlen = 8
 label-font = 5
 
@@ -267,18 +268,18 @@ bar-load-empty-foreground = #444444
 [module/memory]
 type = internal/memory
 interval = 2
-format = <label> 
+format = <label>
 ;<bar-used>
 format-prefix = " "
 format-background = #c7c7c7
 format-foreground = ${colors.background2}
 format-underline = ${colors.primary}
-label = MEM %percentage_used%%
-label-minlen = 8
+label = %{T7}%{T-} %percentage_used%%
+label-minlen = 6
 label-font = 5
 
 bar-used-indicator =
-bar-used-idth = 10
+bar-used-width = 10
 bar-used-font = 2
 bar-used-foreground-0 = ${colors.bar1}
 bar-used-foreground-1 = ${colors.bar2}
@@ -370,7 +371,7 @@ date =
 date-alt = " %Y-%m-%d"
 
 ;time = %H:%M
-time = %a %m/%e
+time = %{T7}%{T-} %a %m/%e
 time-alt = %H:%M:%S
 
 format-prefix = 
