@@ -32,6 +32,7 @@ pattern1 = #50AC24
 secondary = #e60053
 alert = #bd2c40
 alert-dark = #88202E
+offwhite = #E8E8E8
 
 bar1 = #2972A7 
 bar2 = #385971
@@ -68,15 +69,15 @@ font-0 = roboto mono medium:pixelsize=9;2
 font-1 = unifont:fontformat=truetype:size=6:antialias=false;0
 font-2 = siji:pixelsize=10;1
 ;i3 orkspace numbering
-font-3 = fira sans extrabold:pixelsize=10;2
+font-3 = roboto mono SemiBold:pixelsize=11;2
 font-4 = "roboto condensed:pixelsize=11;2"
 font-5 = "Roboto Condensed Bold:pixelsize=11;2"
 font-6 = "Symbols Nerd Font:pixelsize=15:antialias=true;3"
 font-7 = "Roboto Mono:pixelsize=11;2"
 
 modules-left = osname bspm i3 
-modules-center = date 
-modules-right = pulseaudio backlight cpu memory date2
+modules-center = xwindow
+modules-right = pulseaudio backlight cpu memory date date2
 
 tray-position = right 
 tray-padding = 1
@@ -101,7 +102,7 @@ cursor-scroll = ns-resize
 type = custom/text
 content = "Arch Linux"
 content-font = 4
-content-padding = 2
+content-padding = 1
 content-background = #2b2b2b
 content-foreground = ${colors.primary2}
 content-underline = ${colors.primary-dark}
@@ -137,16 +138,26 @@ enable-scroll = true
 ;   <bar>
 format = <label>
 format-background = #4EA121
+format-foreground = ${colors.offwhite}
 format-padding = 1
+format-prefix = ""  
 
 ; Available tokens:
 ;   %percentage% (default)
-label =  %percentage%%
+label = %percentage%%
+label-foreground = ${colors.offwhite}
+label-padding-left = 1
 label-font = 8
 
-[module/xindo]
-type = internal/xindo
+[module/xwindow]
+type = internal/xwindow
+format = <label>
+format-background = #23629D
+format-padding = 1
+
 label = %title:0:36:...%
+label-font = 8
+label-foreground = ${colors.offwhite}
 
 [module/xkeyboard]
 type = internal/xkeyboard
@@ -278,14 +289,13 @@ format-prefix = ""
 #format-prefix-foreground = #10579D
 #format-background = #c7c7c7
 #format-foreground = ${colors.background2}
-format-prefix-foreground = #c7c7c7
+format-prefix-foreground = ${colors.offwhite}
 format-background = #10579D
-format-foreground = #c7c7c7
+format-foreground = ${colors.offwhite}
 format-padding = 1
 
 label = %percentage:2%%
-label-foreground = #dedede
-label-minlen = 4
+label-foreground = ${colors.offwhite}
 label-padding-left = 1
 label-font = 8
 
@@ -299,14 +309,13 @@ format-prefix = ""
 #format-prefix-foreground = #0D7083
 #format-background = #c7c7c7
 #format-foreground = ${colors.background2}
-format-prefix-foreground = #c7c7c7
+format-prefix-foreground = ${colors.offwhite}
 format-background = ${colors.primary}
-format-foreground = #c7c7c7
-label-foreground = #dedede
+format-foreground = ${colors.offwhite} 
+label-foreground = ${colors.offwhite} 
 format-padding = 1
 
 label = %percentage_used%%
-label-minlen = 4
 label-padding-left = 1
 label-font = 8
 
@@ -371,6 +380,9 @@ format-underline = ${colors.primary}
 label-font = 5
 format-padding = 1
 
+format-prefix = ""
+format-prefix-foreground = #0D8370
+
 date =
 date-alt = " %Y-%m-%d"
 
@@ -381,8 +393,6 @@ eekday = %a
 
 my-time = %I:%P
 
-format-prefix = 
-format-prefix-foreground = ${colors.foreground-alt}
 ;format-underline = ${colors.pattern1}
 
 label = %time%
@@ -417,9 +427,11 @@ label-padding-left = 1
 type = internal/pulseaudio
 
 format-volume = <label-volume>
-label-volume =  %percentage%%
-label-volume-foreground = ${root.foreground}
-label-volume-minlen = 4
+format-volume-prefix = " "
+format-volume-foreground = ${color.offwhite}
+
+label-volume = %percentage%%
+label-volume-foreground = ${color.offwhite}
 label-volume-font = 8
 
 format-volume-background = #D57516
@@ -428,25 +440,6 @@ format-volume-padding = 1
 label-muted = 🔇 muted
 label-muted-foreground = #666
 
-;bar-volume-foreground-3 = #55aa55
-;bar-volume-foreground-4 = #55aa55
-;bar-volume-foreground-5 = #f5a70a
-;▅
-
-bar-volume-width = 20
-
-bar-volume-foreground-0 = ${colors.primary2}
-bar-volume-gradient = false
-;bar-volume-indicator = |
-bar-volume-indicator = ||
-bar-volume-indicator-font = 2
-;bar-volume-fill = ─
-bar-volume-fill = []
-bar-volume-fill-font = 2
-;bar-volume-empty = ─
-bar-volume-empty = []
-bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground-alt}
 
 [module/alsa]
 type = internal/alsa
@@ -529,9 +522,9 @@ expand-right = true
 
 format-spacing = 1
 
-label-open = 
+label-open = s
 label-open-foreground = ${colors.secondary}
-label-close =  cancel
+label-close = k cancel
 label-close-foreground = ${colors.secondary}
 label-separator = |
 label-separator-foreground = ${colors.foreground-alt}
@@ -559,7 +552,7 @@ screenchange-reload = true
 ;compositing-border = over
 ;pseudo-transparency = false
 
-[global/m]
+[global/wm]
 margin-top = 5
 margin-bottom = 5
 

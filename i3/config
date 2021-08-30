@@ -223,9 +223,6 @@ bindsym s exec --no-startup-id i3lock -i ~/Downloads/fantasyisle.png && systemct
 
 bindsym $mod+BackSpace mode "$mode_system"
 
-# Run Neovim (I use Vim btw)
-bindsym $mod+shift+s exec xfce4-terminal -e nvim
-
 # Brightness control
 bindsym $mod+F2 exec brightnessctl set 10%-
 bindsym $mod+F3 exec brightnessctl set +10%
@@ -243,8 +240,12 @@ exec_always picom  --vsync --backend glx -CGb -i 1 -no-fading-openclose --unredi
 # discord
 exec discord --start-minimized
 
+# gscreenshot
 for_window [title="gscreenshot"] floating enable
 bindsym $mod+m exec gscreenshot
+
+# neovim (I use neovim btw)
+bindsym $mod+Shift+s exec ~/startup.sh
 
 # swap control key and caps lock
 exec xmodmap ~/.config/i3/swapkeys -display :0
