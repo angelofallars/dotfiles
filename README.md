@@ -11,5 +11,5 @@ My dotfiles for software development on Arch Linux.
 * Dunst
 * Bash script
 
-![image](https://i.imgur.com/s85lQne.png)
+![image](https://i.imgur.com/4RUJL1U.png)
 
