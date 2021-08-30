@@ -85,7 +85,7 @@ tray-background = ${colors.primary}
 tray-offset-x = -12
 
 ;m-restack = bspm
-wm-restack = i3
+wm-restack = r3
 
 ;override-redirect = true
 
@@ -396,6 +396,7 @@ my-time = %I:%P
 ;format-underline = ${colors.pattern1}
 
 label = %time%
+label-padding-left = 1
 
 [module/date2]
 type = internal/date
