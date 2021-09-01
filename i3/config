@@ -47,6 +47,9 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+t exec alacritty
 
+# start a terminal but with Neovim title
+bindsym $mod+Shift+t exec alacritty -t Neovim
+
 # kill focused window
 bindsym $mod+Shift+q kill
 
