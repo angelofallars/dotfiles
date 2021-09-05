@@ -1,3 +1,5 @@
+let g:ale_disable_lsp = 1
+
 call plug#begin()
 Plug 'vimsence/vimsence'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
