@@ -23,7 +23,7 @@
   # available, otherwise `xterm-256color` is used.
   #TERM: alacritty
 
-#window:
+window:
   # Window dimensions (changes require restart)
   #
   # Number of lines/columns (not pixels) in the terminal. The number of columns
@@ -75,10 +75,10 @@
   #startup_mode: Windowed
 
   # Window title
-  #title: Alacritty
+  title: Terminal
 
   # Allow terminal applications to change Alacritty's window title.
-  #dynamic_title: true
+  dynamic_title: true
 
   # Window class (Linux/BSD only):
   #class:
@@ -114,7 +114,7 @@ font:
     family: fira code
 
     # The `style` can be specified to pick a specific face.
-    style: medium
+    style: retina
 
   # Bold font face
   #bold:
@@ -150,7 +150,7 @@ font:
     #style: Bold Italic
 
   # Point size
-  size: 10.5
+  size: 10.6
 
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter
@@ -181,8 +181,8 @@ colors:
   primary:
   #  background: '#1d1f21'
   #  foreground: '#c5c8c6'
-    background: '#1A232B'
-    foreground: '#f6f6f6'
+    background: '#161D22'
+    foreground: '#E8E8E8'
 
     # Bright and dim foreground colors
     #
@@ -209,9 +209,9 @@ colors:
   #
   # Allowed values are CellForeground/CellBackground, which reference the
   # affected cell, or hexadecimal colors like #ff00ff.
-  #vi_mode_cursor:
-  #  text: CellBackground
-  #  cursor: CellForeground
+  vi_mode_cursor:
+    text: CellBackground
+    cursor: CellForeground
 
   # Search colors
   #
@@ -268,13 +268,12 @@ colors:
   #  text: CellBackground
   #  background: CellForeground
 
-# Nord color scheme
   # Normal colors
   normal:
     black:   '#1F1F1F'
-    red:     '#AA0000'
+    red:     '#AA1E22'
     green:   '#14B137'
-    yellow:  '#918238'
+    yellow:  '#998C37'
     blue:    '#2B5EAA'
     magenta: '#7633AA'
     cyan:    '#1C5B95'
@@ -283,13 +282,13 @@ colors:
   # Bright colors
   bright:
     black:   '#555555'
-    red:     '#EB5E4B'
-    green:   '#61F281'
-    yellow:  '#CCB852'
-    blue:    '#2E78E6'
+    red:     '#EB4B50'
+    green:   '#61F262'
+    yellow:  '#D6C65E'
+    blue:    '#2E71E6'
     magenta: '#B170E4'
     cyan:    '#2789E3'
-    white:   '#FFFFFF'
+    white:   '#E4E4E4'
 
   # Dim colors
   #
@@ -368,7 +367,7 @@ colors:
 # Bell
 #
 # The bell is rung every time the BEL control character is received.
-#bell:
+bell:
   # Visual Bell Animation
   #
   # Animation effect for flashing the screen when the visual bell is rung.
@@ -384,7 +383,7 @@ colors:
   #   - EaseOutExpo
   #   - EaseOutCirc
   #   - Linear
-  #animation: EaseOutExpo
+  animation: EaseOutExpo
 
   # Duration of the visual bell flash in milliseconds. A `duration` of `0` will
   # disable the visual bell animation.
@@ -411,15 +410,14 @@ colors:
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
 background_opacity: 1
-#background_opacity: 1
 
-#selection:
+selection:
   # This string contains all characters that are used as separators for
   # "semantic words" in Alacritty.
   #semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
 
   # When set to `true`, selected text will be copied to the primary clipboard.
-  #save_to_clipboard: false
+  save_to_clipboard: true
 
 cursor:
   # Cursor style

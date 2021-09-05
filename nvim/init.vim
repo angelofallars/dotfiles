@@ -5,6 +5,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown', 'do': 'yarn install'}
 Plug 'dense-analysis/ale'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 call plug#end()
 
 set autochdir
@@ -13,7 +14,7 @@ set autochdir
 " colorscheme nord
 
 " run python
-autocmd FileType python nnoremap <buffer> <F5> :w<CR>:term python %<CR>
+" autocmd FileType python nnoremap <buffer> <F5> :w<CR>:term python %<CR>
 " run c++ (w/ input)
 map <F6> :w<CR> :!g++ %<cr> :term ./a.out<CR>
 " run c++ (w/o input)
