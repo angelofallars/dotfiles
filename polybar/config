@@ -377,7 +377,7 @@ interval = 5
 format-background = #c7c7c7
 format-foreground = ${colors.background2}
 format-underline = ${colors.primary}
-label-font = 5
+label-font = 8
 format-padding = 1
 
 format-prefix = ""
@@ -407,7 +407,7 @@ interval = 5
 format-background = #c7c7c7
 format-foreground = ${colors.background2}
 format-underline = ${colors.primary}
-label-font = 5
+label-font = 8
 format-padding = 1
 
 date =

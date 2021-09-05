@@ -55,7 +55,7 @@ bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
 # bindsym $mod+d exec --no-startup-id dmenu_run
-bindsym $mod+d exec --no-startup-id dmenu_run -fn roboto -sb '#2972A7' -sf '#F0F0F0' -nb '#111111' -nf '#F0F0F0' 
+bindsym $mod+d exec --no-startup-id dmenu_run -fn roboto -sb '#2972A7' -sf '#F0F0F0' -nb '#111111' -nf '#F0F0F0'
 
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
@@ -218,7 +218,7 @@ mode "$mode_system" {
     bindsym e exec --no-startup-id i3-msg exit, mode "default"
 bindsym s exec --no-startup-id i3lock -i ~/Downloads/fantasyisle.png && systemctl suspend, mode "default"
     bindsym r exec --no-startup-id systemctl reboot, mode "default"
-    bindsym Ctrl+s exec --no-startup-id systemctl poweroff -i, mode "default" 
+    bindsym Ctrl+s exec --no-startup-id systemctl poweroff -i, mode "default"
     # back to normal: Enter or Escape
     bindsym Return mode "default"
     bindsym Escape mode "default"
@@ -235,7 +235,7 @@ exec --no-startup-id redshift -l 14.599512:120.984222
 
 # Wallpaper
 # exec_always feh --bg-fill /usr/share/backgrounds/archlinux/split.png
-exec_always feh --bg-fill ~/Downloads/fantasyisle.jpg 
+exec_always feh --bg-fill ~/Downloads/fantasyisle.jpg
 
 # picom
 exec_always picom  --vsync --backend glx -CGb -i 1 -no-fading-openclose --unredir-if-possible --glx-no-stencil -D 8 --glx-no-rebind-pixmap -m 100
@@ -247,13 +247,13 @@ exec discord --start-minimized
 for_window [title="gscreenshot"] floating enable
 bindsym $mod+m exec gscreenshot
 
-# neovim (I use neovim btw)
-bindsym $mod+Shift+s exec ~/startup.sh
-
 # swap control key and caps lock
 exec xmodmap ~/.config/i3/swapkeys -display :0
 
-# activate i3-gaps 
+# Set maximum floating size
+floating_maximum_size 800 x 600
+
+# activate i3-gaps
 for_window [class=".*"] border pixel 3
 
 gaps inner 6
