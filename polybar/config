@@ -101,11 +101,11 @@ cursor-scroll = ns-resize
 [module/osname]
 type = custom/text
 
-content = " Arch Linux"
-content-font = 4
-content-padding = 1
 content-background = #2b2b2b
 content-foreground = ${colors.primary2}
+content = " %{F#c9c9c9}arch%{F-}%{F#2595E7}linux%{F-}"
+content-font = 4
+content-padding = 1
 content-underline = ${colors.primary-dark}
 
 [module/backlight]
