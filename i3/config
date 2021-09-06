@@ -235,7 +235,8 @@ exec --no-startup-id redshift -l 14.599512:120.984222
 
 # Wallpaper
 # exec_always feh --bg-fill /usr/share/backgrounds/archlinux/split.png
-exec_always feh --bg-fill ~/Downloads/fantasyisle.jpg
+# exec_always feh --bg-fill ~/Downloads/fantasyisle.jpg
+exec_always feh --bg-fill ~/Pictures/gnomewall2.png
 
 # picom
 exec_always picom  --vsync --backend glx -CGb -i 1 -no-fading-openclose --unredir-if-possible --glx-no-stencil -D 8 --glx-no-rebind-pixmap -m 100

@@ -32,7 +32,7 @@ pattern1 = #50AC24
 secondary = #e60053
 alert = #bd2c40
 alert-dark = #88202E
-offwhite = #E8E8E8
+offwhite = #c9c9c9
 
 bar1 = #2972A7 
 bar2 = #385971
@@ -102,8 +102,8 @@ cursor-scroll = ns-resize
 type = custom/text
 
 content-background = #2b2b2b
-content-foreground = ${colors.primary2}
-content = " %{F#c9c9c9}arch%{F-}%{F#2595E7}linux%{F-}"
+content-foreground = #3685D0
+content = " %{F#c9c9c9}arch%{F-}%{F#3685D0}linux%{F-}"
 content-font = 4
 content-padding = 1
 content-underline = ${colors.primary-dark}
@@ -138,10 +138,12 @@ enable-scroll = true
 ;   <ramp>
 ;   <bar>
 format = <label>
-format-background = #4EA121
+format-background = #2b2b2b
 format-foreground = ${colors.offwhite}
 format-padding = 1
 format-prefix = ""  
+format-prefix-foreground = #5BA823
+format-underline = #5BA823
 
 ; Available tokens:
 ;   %percentage% (default)
@@ -153,12 +155,15 @@ label-font = 8
 [module/xwindow]
 type = internal/xwindow
 format = <label>
-format-background = #23629D
-format-padding = 1
+# format-background = #1D5182
+format-background = #2b2b2b
 
+format-padding = 1
 label = %title:0:36:...%
 label-font = 8
-label-foreground = ${colors.offwhite}
+# label-foreground = ${colors.offwhite}
+label-foreground = #3685D0
+format-underline = ${colors.primary-dark}
 
 [module/xkeyboard]
 type = internal/xkeyboard
@@ -290,8 +295,9 @@ format-prefix = ""
 #format-prefix-foreground = #10579D
 #format-background = #c7c7c7
 #format-foreground = ${colors.background2}
-format-prefix-foreground = ${colors.offwhite}
-format-background = #10579D
+format-prefix-foreground = #10889D
+format-underline = #10889D
+format-background = #2b2b2b
 format-foreground = ${colors.offwhite}
 format-padding = 1
 
@@ -306,12 +312,9 @@ interval = 2
 format = <label>
 
 format-prefix = ""
-#format-prefix-foreground = ${colors.primary}
-#format-prefix-foreground = #0D7083
-#format-background = #c7c7c7
-#format-foreground = ${colors.background2}
-format-prefix-foreground = ${colors.offwhite}
-format-background = ${colors.primary}
+format-prefix-foreground = #2678BD
+format-underline = #2678BD
+format-background = #2b2b2b
 format-foreground = ${colors.offwhite} 
 label-foreground = ${colors.offwhite} 
 format-padding = 1
@@ -319,17 +322,6 @@ format-padding = 1
 label = %percentage_used%%
 label-padding-left = 1
 label-font = 8
-
-bar-used-indicator =
-bar-used-width = 10
-bar-used-font = 2
-bar-used-foreground-0 = ${colors.bar1}
-bar-used-foreground-1 = ${colors.bar2}
-bar-used-foreground-2 = #f5a70a
-bar-used-foreground-3 = #ff5555
-bar-used-fill = ▐
-bar-used-empty = ▐
-bar-used-empty-foreground = #444444
 
 [module/lan]
 type = internal/netork
@@ -375,14 +367,15 @@ interval = 5
 
 ;format-background = ${colors.background2}
 ;format-foreground = ${colors.primary2}
-format-background = #c7c7c7
+# format-background = #c7c7c7
+format-background = #2b2b2b
 format-foreground = ${colors.background2}
-format-underline = ${colors.primary}
+format-underline = #5639B8
 label-font = 5
 format-padding = 1
 
 format-prefix = ""
-format-prefix-foreground = #0D8370
+format-prefix-foreground = #5639B8
 
 date =
 date-alt = " %Y-%m-%d"
@@ -397,6 +390,7 @@ my-time = %I:%P
 ;format-underline = ${colors.pattern1}
 
 label = %time%
+label-foreground = #c9c9c9 
 label-padding-left = 1
 
 [module/date2]
@@ -405,9 +399,9 @@ interval = 5
 
 ;format-background = ${colors.background2}
 ;format-foreground = ${colors.primary2}
-format-background = #c7c7c7
+format-background = #2b2b2b
 format-foreground = ${colors.background2}
-format-underline = ${colors.primary}
+format-underline = #5639B8
 label-font = 5
 format-padding = 1
 
@@ -415,14 +409,15 @@ date =
 date-alt = " %Y-%m-%d"
 
 ;time = %H:%M
-time = %a %m/%e
+time = %a %m/%d
 time-alt = %H:%M:%S
 
 format-prefix = 
-format-prefix-foreground = #0D8370
+format-prefix-foreground = #5639B8
 ;format-underline = ${colors.pattern1}
 
 label = %time%
+label-foreground = #c9c9c9 
 label-padding-left = 1
 
 [module/pulseaudio]
@@ -430,13 +425,15 @@ type = internal/pulseaudio
 
 format-volume = <label-volume>
 format-volume-prefix = " "
-format-volume-foreground = ${color.offwhite}
+format-volume-prefix-foreground = #D56616
+format-volume-underline = #D56616
 
 label-volume = %percentage%%
 label-volume-foreground = ${color.offwhite}
 label-volume-font = 8
 
-format-volume-background = #D57516
+# format-volume-background = #D56616
+format-volume-background = #2b2b2b
 format-volume-padding = 1
 
 label-muted = 🔇 muted
