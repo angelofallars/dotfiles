@@ -85,6 +85,22 @@ py ()
 	python "$1"
 }
 
+# Create virtual environment
+pymake ()
+{
+	python -m venv ~/venv/"$1"
+}
+
+# Delete virtual environment
+pydel ()
+{
+	echo "WARNING: You will permanently delete the Python virtual environment $1. Are you sure? (Y/N)"
+	read user_input
+	if [ $user_input = 'y' ]; then
+		rm  ~/venv/"$1" -r
+	fi
+}
+
 # Activate virtual environment
 pyon ()
 {
@@ -113,7 +129,37 @@ rungame ()
 	gamemoderun "$1"
 }
 
+# Play a cute meow sound every time you use cat
+catt ()
+{
+    # cat "$1" && echo -n "${PS1@P}" & mpv ~/Downloads/catmeow.mp3 > /dev/null 2>&1 &
+    (cat "$1" && echo -n "${PS1@P}" & ) & (mpv ~/Downloads/catmeow.mp3 > /dev/null 2>&1 &)
+}
+alias cat="catt"
+
+# Switch to international keyboard
+intkey ()
+{
+    setxkbmap -layout us -variant intl
+    xmodmap ~/.config/i3/swapkeys -display :0
+}
+
+# Switch to regular keyboard
+uskey ()
+{
+    setxkbmap -layout us
+    xmodmap ~/.config/i3/swapkeys -display :0
+}
+
 # edit then update this config
 alias bashedit="nvim ~/.bashrc && source ~/.bashrc"
 
+# Debug for someone's project
+motive=true
+if [[ -f ~/.motive.sh && $motive = true ]]; then
+	bash ~/motive.sh
+fi
+
 export PATH=/home/angelo_f/.local/bin:$PATH
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

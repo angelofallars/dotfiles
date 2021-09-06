@@ -25,8 +25,8 @@ background-alt = #444
 foreground = #dfdfdf
 foreground-alt = #555
 primary = #2972A7 
-primary2 = #2595E7
-primary-dark = #205881
+primary2 = #2D74B6
+primary-dark = #205281
 #2972A7 
 pattern1 = #50AC24
 secondary = #e60053
@@ -75,17 +75,17 @@ font-5 = "Roboto Condensed Bold:pixelsize=11;2"
 font-6 = "Symbols Nerd Font:pixelsize=15:antialias=true;3"
 font-7 = "Roboto Mono:pixelsize=11;2"
 
-modules-left = osname bspm i3 
+modules-left = osname i3 
 modules-center = xwindow
 modules-right = pulseaudio backlight cpu memory date date2
 
 tray-position = right 
 tray-padding = 1
-tray-background = ${colors.primary}
+tray-background = #2b2b2b
 tray-offset-x = -12
 
 ;m-restack = bspm
-wm-restack = r3
+wm-restack = i3
 
 ;override-redirect = true
 
