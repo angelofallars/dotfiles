@@ -100,7 +100,8 @@ cursor-scroll = ns-resize
 
 [module/osname]
 type = custom/text
-content = "Arch Linux"
+
+content = " Arch Linux"
 content-font = 4
 content-padding = 1
 content-background = #2b2b2b
@@ -211,7 +212,7 @@ label-empty-padding = 2
 type = internal/i3
 format = <label-state> <label-mode>
 index-sort = true
-rapping-scroll = false
+wrapping-scroll = false
 
 ; Set font
 label-focused-font = 4
@@ -253,7 +254,7 @@ label-urgent-underline = ${colors.alert-dark}
 label-urgent-padding = 1
 
 ; Separator in beteen orkspaces
-; label-separator = |
+; label-separator = -
 
 
 [module/mpd]
@@ -377,7 +378,7 @@ interval = 5
 format-background = #c7c7c7
 format-foreground = ${colors.background2}
 format-underline = ${colors.primary}
-label-font = 8
+label-font = 5
 format-padding = 1
 
 format-prefix = ""
@@ -407,7 +408,7 @@ interval = 5
 format-background = #c7c7c7
 format-foreground = ${colors.background2}
 format-underline = ${colors.primary}
-label-font = 8
+label-font = 5
 format-padding = 1
 
 date =
