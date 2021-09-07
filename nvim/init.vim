@@ -35,6 +35,7 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set textwidth=80
+set ai
 
 let g:onedark_termcolors = 16
 let g:airline_theme='onedark'
@@ -43,6 +44,9 @@ colorscheme onedark
 " Highlight current row and column (Crosshair mode)
 set cursorline
 set cursorline cursorcolumn
+
+" Use mouse
+set mouse=a
 
 source $HOME/.config/nvim/general/settings.vim
 source $HOME/.config/nvim/keys/mappings.vim
