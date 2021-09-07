@@ -239,7 +239,8 @@ exec --no-startup-id redshift -l 14.599512:120.984222
 exec_always feh --bg-fill ~/Pictures/gnomewall2.png
 
 # picom
-exec_always picom  --vsync --backend glx -CGb -i 1 -no-fading-openclose --unredir-if-possible --glx-no-stencil -D 8 --glx-no-rebind-pixmap -m 100
+# exec_always picom  --vsync --backend glx -CGb -i 1 -no-fading-openclose --unredir-if-possible --glx-no-stencil -D 8 --glx-no-rebind-pixmap -m 100
+exec_always picom  --vsync --backend glx -cb -o 0.50 -i 1 --inactive-dim 0.15 --unredir-if-possible --glx-no-stencil -D 8 --glx-no-rebind-pixmap -m 100
 
 # discord
 exec discord --start-minimized
