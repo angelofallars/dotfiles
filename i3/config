@@ -240,7 +240,7 @@ exec_always feh --bg-fill ~/Pictures/gnomewall2.png
 
 # picom
 # exec_always picom  --vsync --backend glx -CGb -i 1 -no-fading-openclose --unredir-if-possible --glx-no-stencil -D 8 --glx-no-rebind-pixmap -m 100
-exec_always picom  --vsync --backend glx -cb -o 0.50 -i 1 --inactive-dim 0.15 --unredir-if-possible --glx-no-stencil -D 8 --glx-no-rebind-pixmap -m 100
+exec_always picom  --vsync --backend glx -cb -o 0.50 -i 1 --unredir-if-possible --glx-no-stencil -D 8 --glx-no-rebind-pixmap -m 100
 
 # discord
 exec discord --start-minimized
@@ -261,5 +261,5 @@ for_window [class=".*"] border pixel 3
 gaps inner 6
 gaps left 14
 gaps right 14
-gaps top -5
+gaps top -2
 gaps bottom 2
