@@ -11,6 +11,8 @@ alias ls='ls --color=auto'
 #PS1='[\e[96m\]\u\e[0m:\e[96m\]\w\e[0m]\$ '
 PS1='[\[\033[96m\]\u\[\033[0m\]:\[\033[96m\]\w\[\033[0m\]]$ '
 # PS1='[\u:\w]\$ '
+PS1='\[\033[96m\]  \w\[\033[0m\]  '
+PS1='\[\033[96m\] \w\[\033[0m\] >> '
 
 blue="\e[0;96m"
 reset="\e[0m"
@@ -20,6 +22,8 @@ export PF_INFO="ascii title os kernel uptime pkgs memory wm"
 
 # Run pfetch at start
 pfetch
+# Run cmatrix at start
+cmatrix -C cyan -s -u 7
 
 # Install package with pacman
 pacstall ()
@@ -135,7 +139,8 @@ catt ()
     # cat "$1" && echo -n "${PS1@P}" & mpv ~/Downloads/catmeow.mp3 > /dev/null 2>&1 &
     (cat "$1" && echo -n "${PS1@P}" & ) & (mpv ~/Downloads/catmeow.mp3 > /dev/null 2>&1 &)
 }
-alias cat="catt"
+# Comment out cat for now to prevent another forkbomb lmao
+# alias cat="catt"
 
 # Switch to international keyboard
 intkey ()
@@ -151,14 +156,31 @@ uskey ()
     xmodmap ~/.config/i3/swapkeys -display :0
 }
 
+# Switch smartly
+switchkey ()
+{
+    current_key=$(cat ~/.config/switchkey/current_key)
+
+    # To international keyboard layout
+    if [[ $current_key == "us" ]]; then
+        setxkbmap -layout us -variant intl
+        xmodmap ~/.config/i3/swapkeys -display :0
+
+        echo "Switched to international keyboard."
+        echo "intl" > ~/.config/switchkey/current_key
+
+    # To US keyboard layout
+    else
+        setxkbmap -layout us
+        xmodmap ~/.config/i3/swapkeys -display :0
+
+        echo "Switched to US keyboard."
+        echo "us" > ~/.config/switchkey/current_key
+    fi
+}
+
 # edit then update this config
 alias bashedit="nvim ~/.bashrc && source ~/.bashrc"
-
-# Debug for someone's project
-motive=true
-if [[ -f ~/.motive.sh && $motive = true ]]; then
-	bash ~/motive.sh
-fi
 
 export PATH=/home/angelo_f/.local/bin:$PATH
 

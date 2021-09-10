@@ -247,7 +247,12 @@ exec discord --start-minimized
 
 # gscreenshot
 for_window [title="gscreenshot"] floating enable
-bindsym $mod+m exec gscreenshot
+# bindsym $mod+m exec gscreenshot
+
+# Screenshot
+bindsym $mod+m exec scrot ~/Pictures/Screenshots/%b-%d-20%y_%I:%M%p-%Ss.png -e 'xclip -selection clipboard -t image/png -i $f'
+# Selection screenshot
+bindsym $mod+Shift+m exec scrot -sb ~/Pictures/Screenshots/%b-%d-20%y_%I:%M%p-%Ss.png -e 'xclip -selection clipboard -t image/png -i $f'
 
 # swap control key and caps lock
 exec xmodmap ~/.config/i3/swapkeys -display :0
