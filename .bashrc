@@ -188,6 +188,12 @@ switchkey ()
 	fi
 }
 
+# Music player
+alias music=cmux
+
+# File manager
+alias files=ranger
+
 # edit then update this config
 alias bashedit="nvim "${HOME}"/.bashrc && source "${HOME}"/.bashrc"
 

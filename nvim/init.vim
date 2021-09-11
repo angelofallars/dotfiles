@@ -41,9 +41,8 @@ let g:onedark_termcolors = 16
 let g:airline_theme='onedark'
 colorscheme onedark
 
-" Highlight current row and column (Crosshair mode)
+" Highlight current row
 set cursorline
-set cursorline cursorcolumn
 
 " Use mouse
 set mouse=a

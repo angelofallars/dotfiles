@@ -408,7 +408,8 @@ colors:
     blue:    '0x61afef'
     magenta: '0xc678dd'
     cyan:    '0x56b6c2'
-    white:   '0xabb2bf'
+    # white:   '0xabb2bf'
+    white:   '0xDCE5F6'
 # Bell
 #
 # The bell is rung every time the BEL control character is received.
