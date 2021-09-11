@@ -8,7 +8,7 @@ My dotfiles for software development on Arch Linux.
 * Alacritty
 * i3-gaps
 * Polybar
-* Dunst
-* Bash script
+* Ranger
+* Bash config
 
 ![image](https://i.imgur.com/TK4eHZA.png)
