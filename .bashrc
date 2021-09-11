@@ -189,7 +189,7 @@ switchkey ()
 }
 
 # Music player
-alias music=cmux
+alias music=cmus
 
 # File manager
 alias files=ranger

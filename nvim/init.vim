@@ -13,6 +13,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'joshdick/onedark.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'airblade/vim-gitgutter'
 call plug#end()
 
 set autochdir
@@ -46,6 +47,10 @@ set cursorline
 
 " Use mouse
 set mouse=a
+
+" Change window title to Neovim
+let &titlestring = "Neovim"
+set title
 
 source $HOME/.config/nvim/general/settings.vim
 source $HOME/.config/nvim/keys/mappings.vim
