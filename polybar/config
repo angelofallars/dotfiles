@@ -32,7 +32,7 @@ pattern1 = #50AC24
 secondary = #e60053
 alert = #bd2c40
 alert-dark = #88202E
-offwhite = #c9c9c9
+offwhite = #abb2bf
 
 bar1 = #2972A7 
 bar2 = #385971
@@ -40,7 +40,7 @@ bar2 = #385971
 [bar/mybar]
 ;monitor = ${env:MONITOR:HDMI-1}
 width = 100%
-height = 23
+height = 24
 ;offset-x = 1%
 ;offset-y = 1%
 radius = 0
@@ -75,17 +75,17 @@ font-5 = "Roboto Condensed Bold:pixelsize=11;2"
 font-6 = "Symbols Nerd Font:pixelsize=15:antialias=true;3"
 font-7 = "Roboto Mono:pixelsize=11;2"
 
-modules-left = osname i3 
+modules-left = osname i3 bspwm
 modules-center = xwindow
 modules-right = pulseaudio backlight cpu memory date date2
 
 tray-position = right 
 tray-padding = 1
-tray-background = #2b2b2b
+tray-background = #282c34
 tray-offset-x = -12
 
 ;m-restack = bspm
-wm-restack = i3
+wm-restack = bspwm
 
 ;override-redirect = true
 
@@ -101,7 +101,7 @@ cursor-scroll = ns-resize
 [module/osname]
 type = custom/text
 
-content-background = #2b2b2b
+content-background = #282c34
 content-foreground = #3685D0
 content = " %{F#c9c9c9}arch%{F-}%{F#3685D0}linux%{F-}"
 content-font = 4
@@ -138,7 +138,7 @@ enable-scroll = true
 ;   <ramp>
 ;   <bar>
 format = <label>
-format-background = #2b2b2b
+format-background = #282c34
 format-foreground = ${colors.offwhite}
 format-padding = 1
 format-prefix = ""  
@@ -156,7 +156,7 @@ label-font = 8
 type = internal/xwindow
 format = <label>
 # format-background = #1D5182
-format-background = #2b2b2b
+format-background = #282c34
 
 format-padding = 1
 label = %title:0:36:...%
@@ -191,24 +191,33 @@ label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground-alt}
 
-[module/bspm]
-type = internal/bspm
+[module/bspwm]
+type = internal/bspwm
+
+label-focused-font = 4
+label-occupied-font = 4
+label-urgent-font = 4
+label-empty-font = 4
 
 label-focused = %index%
-label-focused-background = ${colors.background-alt}
-label-focused-underline= ${colors.primary}
-label-focused-padding = 2
+label-focused-padding = 1
+label-focused-background = #c7c7c7
+label-focused-foreground = ${colors.primary}
+label-focused-underline = #8B8B8B
 
 label-occupied = %index%
-label-occupied-padding = 2
+label-occupied-background = ${colors.primary}
+label-occupied-underline= ${colors.primary-dark}
+label-occupied-padding = 1
 
-label-urgent = %index%!
+label-urgent = %index%
 label-urgent-background = ${colors.alert}
-label-urgent-padding = 2
+label-urgent-underline = ${colors.alert-dark}
+label-urgent-padding = 1
 
 label-empty = %index%
-label-empty-foreground = ${colors.foreground-alt}
-label-empty-padding = 2
+label-empty-background = #282c34
+label-empty-padding = 1
 
 ; Separator in beteen orkspaces
 ; label-separator = |
@@ -297,7 +306,7 @@ format-prefix = ""
 #format-foreground = ${colors.background2}
 format-prefix-foreground = #10889D
 format-underline = #10889D
-format-background = #2b2b2b
+format-background = #282c34
 format-foreground = ${colors.offwhite}
 format-padding = 1
 
@@ -314,7 +323,7 @@ format = <label>
 format-prefix = ""
 format-prefix-foreground = #2678BD
 format-underline = #2678BD
-format-background = #2b2b2b
+format-background = #282c34
 format-foreground = ${colors.offwhite} 
 label-foreground = ${colors.offwhite} 
 format-padding = 1
@@ -368,7 +377,7 @@ interval = 5
 ;format-background = ${colors.background2}
 ;format-foreground = ${colors.primary2}
 # format-background = #c7c7c7
-format-background = #2b2b2b
+format-background = #282c34
 format-foreground = ${colors.background2}
 format-underline = #5639B8
 label-font = 5
@@ -390,7 +399,7 @@ my-time = %I:%P
 ;format-underline = ${colors.pattern1}
 
 label = %time%
-label-foreground = #c9c9c9 
+label-foreground = ${colors.offwhite}
 label-padding-left = 1
 
 [module/date2]
@@ -399,7 +408,7 @@ interval = 5
 
 ;format-background = ${colors.background2}
 ;format-foreground = ${colors.primary2}
-format-background = #2b2b2b
+format-background = #282c34
 format-foreground = ${colors.background2}
 format-underline = #5639B8
 label-font = 5
@@ -417,7 +426,7 @@ format-prefix-foreground = #5639B8
 ;format-underline = ${colors.pattern1}
 
 label = %time%
-label-foreground = #c9c9c9 
+label-foreground = ${colors.offwhite}
 label-padding-left = 1
 
 [module/pulseaudio]
@@ -429,15 +438,16 @@ format-volume-prefix-foreground = #D56616
 format-volume-underline = #D56616
 
 label-volume = %percentage%%
-label-volume-foreground = ${color.offwhite}
+label-volume-foreground = ${colors.offwhite}
 label-volume-font = 8
 
 # format-volume-background = #D56616
-format-volume-background = #2b2b2b
+format-volume-background = #282c34
 format-volume-padding = 1
 
 label-muted = 🔇 muted
 label-muted-foreground = #666
+label-muted-background = #282c34
 
 
 [module/alsa]

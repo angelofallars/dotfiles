@@ -12,7 +12,7 @@ alias ls='ls --color=auto'
 PS1='[\[\033[96m\]\u\[\033[0m\]:\[\033[96m\]\w\[\033[0m\]]$ '
 # PS1='[\u:\w]\$ '
 PS1='\[\033[96m\]  \w\[\033[0m\]  '
-PS1='\[\033[96m\] \w\[\033[0m\] >> '
+# PS1='\[\033[96m\] \w\[\033[0m\] >> '
 
 blue="\e[0;96m"
 reset="\e[0m"
@@ -191,6 +191,9 @@ alias music=cmus
 
 # File manager
 alias files=ranger
+
+# COVID-19 stats
+alias covidstats="curl https://covid19-cli.wareneutron.com/philippines"
 
 # edit then update this config
 alias bashedit="nvim "${HOME}"/.bashrc && source "${HOME}"/.bashrc"
