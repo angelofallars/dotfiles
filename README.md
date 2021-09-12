@@ -6,7 +6,7 @@ My dotfiles for software development on Arch Linux.
 
 * Neovim
 * Alacritty
-* i3-gaps
+* ~~i3-gaps~~ bspwm
 * Polybar
 * Ranger
 * Bash config
