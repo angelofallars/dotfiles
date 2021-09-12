@@ -39,8 +39,10 @@ set textwidth=80
 set ai
 
 let g:onedark_termcolors = 16
-let g:airline_theme='onedark'
 colorscheme onedark
+
+let g:airline_theme='onedark'
+let g:airline_powerline_fonts = 1
 
 " Highlight current row
 set cursorline

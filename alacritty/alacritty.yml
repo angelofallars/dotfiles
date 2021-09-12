@@ -491,7 +491,8 @@ cursor:
   # the style of the active value of the normal cursor.
   #
   # See `cursor.style` for available options.
-  vi_mode_style: None
+  vi_mode_style:
+    shape: Beam
 
   # Cursor blinking interval in milliseconds.
   blink_interval: 250

@@ -22,8 +22,6 @@ export PF_INFO="ascii title os kernel uptime pkgs memory wm"
 
 # Run pfetch at start
 pfetch
-# Run cmatrix at start
-cmatrix -C cyan -s -u 7
 
 # Install package with pacman
 pacstall ()
