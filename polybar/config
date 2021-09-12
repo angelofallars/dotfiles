@@ -201,12 +201,13 @@ label-empty-font = 4
 
 label-focused = %index%
 label-focused-padding = 1
-label-focused-background = #c7c7c7
-label-focused-foreground = ${colors.primary}
+label-focused-background = #abb2bf
+label-focused-foreground = #1F5780
 label-focused-underline = #8B8B8B
 
 label-occupied = %index%
 label-occupied-background = ${colors.primary}
+label-occupied-foreground = #BFC6D5
 label-occupied-underline= ${colors.primary-dark}
 label-occupied-padding = 1
 
@@ -217,6 +218,8 @@ label-urgent-padding = 1
 
 label-empty = %index%
 label-empty-background = #282c34
+label-empty-foreground = ${colors.offwhite}
+label-empty-underline = ${colors.primary-dark}
 label-empty-padding = 1
 
 ; Separator in beteen orkspaces
