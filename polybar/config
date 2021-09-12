@@ -11,14 +11,14 @@
 ;
 ;   To learn more about ho to configure Polybar
 ;   go to https://github.com/polybar/polybar
-;▆
+;
 ;   The README contains a lot of information
 ;
 ;==========================================================
 
 [colors]
 ;background = ${xrdb:color0:#222}
-background = #00111111
+background = #282c34
 background2 = #2e2e2e
 background-alt = #444
 ;foreground = ${xrdb:color7:#222}
@@ -43,7 +43,7 @@ width = 100%
 height = 24
 ;offset-x = 1%
 ;offset-y = 1%
-radius = 0
+radius = 9
 fixed-center = true
 
 background = ${colors.background}
@@ -438,10 +438,10 @@ type = internal/pulseaudio
 format-volume = <label-volume>
 format-volume-prefix = " "
 format-volume-prefix-foreground = #D56616
-format-volume-underline = #D56616
+# format-volume-underline = #D56616
 
 label-volume = %percentage%%
-label-volume-foreground = ${colors.offwhite}
+label-volume-foreground = #D56616
 label-volume-font = 8
 
 # format-volume-background = #D56616
