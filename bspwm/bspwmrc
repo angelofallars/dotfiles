@@ -23,19 +23,20 @@ bspc rule -a Chromium desktop='^2'
 bspc rule -a mplayer2 state=floating
 bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
+bspc rule -a Gpick state=floating
 
 # Set cursor theme
 xsetroot -cursor_name left_ptr
 
 # Polybar
-polybar mybar &
+killall polybar ; polybar mybar &
 # Picom
-picom  --vsync --backend glx -cb -o 0.80 -i 1 --unredir-if-possible --glx-no-stencil -D 8 --glx-no-rebind-pixmap -m 100 &
+killall picom ; picom  --vsync --backend glx -cb -o 0.80 -i 1 --unredir-if-possible --glx-no-stencil -D 8 --glx-no-rebind-pixmap -m 100 &
 # Background
-feh --bg-fill ~/Pictures/randomnoise.png &
+killall feh ; feh --bg-fill ~/Pictures/randomnoise.png &
 # Night light
 killall redshift && redshift -l 14.599512:120.984222 &
 # Remap control key and caps lock
 xmodmap ~/.config/i3/swapkeys -display :0 &
 # Conky desktop monitor
-conky &
+killall conky ; conky &
