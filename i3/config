@@ -55,7 +55,8 @@ bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
 # bindsym $mod+d exec --no-startup-id dmenu_run
-bindsym $mod+d exec --no-startup-id dmenu_run -fn roboto -sb '#2972A7' -sf '#F0F0F0' -nb '#111111' -nf '#F0F0F0'
+#bindsym $mod+d exec --no-startup-id dmenu_run -fn roboto -sb '#2972A7' -sf '#F0F0F0' -nb '#111111' -nf '#F0F0F0'
+bindsym $mod+d exec --no-startup-id rofi -show drun -show-icons
 
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
@@ -236,11 +237,11 @@ exec --no-startup-id redshift -l 14.599512:120.984222
 # Wallpaper
 # exec_always feh --bg-fill /usr/share/backgrounds/archlinux/split.png
 # exec_always feh --bg-fill ~/Downloads/fantasyisle.jpg
-exec_always feh --bg-fill ~/Pictures/gnomewall2.png
+exec_always feh --bg-fill ~/Pictures/randomnoise.png
 
 # picom
 # exec_always picom  --vsync --backend glx -CGb -i 1 -no-fading-openclose --unredir-if-possible --glx-no-stencil -D 8 --glx-no-rebind-pixmap -m 100
-exec_always picom  --vsync --backend glx -cb -o 0.50 -i 1 --unredir-if-possible --glx-no-stencil -D 8 --glx-no-rebind-pixmap -m 100
+exec_always picom -b
 
 # discord
 exec discord --start-minimized

@@ -114,7 +114,7 @@ font:
     family: jetbrains mono
 
     # The `style` can be specified to pick a specific face.
-    style: medium
+    style: semibold
 
   # Bold font face
   #bold:
@@ -150,7 +150,7 @@ font:
     #style: Bold Italic
 
   # Point size
-  size: 9.8
+  size: 9.3
 
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter

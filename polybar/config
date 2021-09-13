@@ -9,7 +9,7 @@
 ;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
 ;
 ;
-;   To learn more about ho to configure Polybar
+;   To learn more about how to configure Polybar
 ;   go to https://github.com/polybar/polybar
 ;
 ;   The README contains a lot of information
@@ -17,31 +17,25 @@
 ;==========================================================
 
 [colors]
-;background = ${xrdb:color0:#222}
 background = #282c34
 background2 = #2e2e2e
 background-alt = #444
-;foreground = ${xrdb:color7:#222}
+
 foreground = #dfdfdf
 foreground-alt = #555
+
 primary = #2972A7 
 primary2 = #2D74B6
 primary-dark = #205281
-#2972A7 
-pattern1 = #50AC24
+
 secondary = #e60053
 alert = #bd2c40
 alert-dark = #88202E
 offwhite = #abb2bf
 
-bar1 = #2972A7 
-bar2 = #385971
-
 [bar/mybar]
-;monitor = ${env:MONITOR:HDMI-1}
 width = 100%
 height = 24
-;offset-x = 1%
 radius = 0
 fixed-center = true
 
@@ -60,19 +54,15 @@ padding-right = 2
 module-margin-left = 0 
 module-margin-right = 0 
 
-;font-0 = fixed:pixelsize=10;1
-;font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-;font-2 = siji:pixelsize=10;1
-
 font-0 = roboto mono medium:pixelsize=9;2
 font-1 = unifont:fontformat=truetype:size=6:antialias=false;0
 font-2 = siji:pixelsize=10;1
-font-3 = "Jetbrains Mono ExtraBold:pixelsize=11;3"
+font-3 = "Jetbrains Mono ExtraBold:pixelsize=6;3"
 font-4 = "Roboto Mono SemiBold:pixelsize=11;2"
 font-5 = "Roboto Condensed Bold:pixelsize=11;2"
 font-6 = "Symbols Nerd Font:pixelsize=15:antialias=true;3"
 font-7 = "Jetbrains Mono:pixelsize=10;3"
-font-8 = "Jetbrains Mono:pixelsize=10;3"
+font-8 = "Jetbrains Mono Medium:pixelsize=10;3"
 
 modules-left = osname i3 bspwm
 modules-center = xwindow
@@ -80,18 +70,8 @@ modules-right = pulseaudio backlight date date2
 
 tray-position = right 
 tray-padding = 1
-;tray-offset-x = -12
 
-;m-restack = bspm
 wm-restack = bspwm
-
-;override-redirect = true
-
-;scroll-up = bspm-desknext
-;scroll-don = bspm-deskprev
-
-;scroll-up = i3m-snext
-;scroll-don = i3m-sprev
 
 cursor-click = pointer
 cursor-scroll = ns-resize
@@ -149,16 +129,14 @@ label-font = 8
 
 [module/xwindow]
 type = internal/xwindow
-format = <label>
-# format-background = #1D5182
-format-background = #282c34
 
+format = <label>
+format-background = #282c34
 format-padding = 1
+
 label = %title:0:36:...%
 label-font = 9
-# label-foreground = ${colors.offwhite}
-label-foreground = #3685D0
-#format-underline = ${colors.primary-dark}
+label-foreground = #61afef
 
 [module/xkeyboard]
 type = internal/xkeyboard
@@ -194,30 +172,21 @@ label-occupied-font = 4
 label-urgent-font = 4
 label-empty-font = 4
 
-label-focused = %index%
+label-focused = 
+label-focused-foreground = #61afef
 label-focused-padding = 1
-label-focused-background = #B3BBC8
-label-focused-foreground = #256898
-label-focused-underline = #8B8B8B
 
-label-occupied = %index%
-label-occupied-background = ${colors.primary}
-label-occupied-foreground = #BFC6D5
-label-occupied-underline= ${colors.primary-dark}
+label-occupied = 
+label-occupied-foreground = #61afef
 label-occupied-padding = 1
 
-label-urgent = %index%
-label-urgent-background = ${colors.alert}
-label-urgent-underline = ${colors.alert-dark}
+label-urgent = 
+label-urgent-foreground = ${colors.alert}
 label-urgent-padding = 1
 
-label-empty = %index%
-label-empty-background = #282c34
+label-empty = 
 label-empty-foreground = ${colors.offwhite}
 label-empty-padding = 1
-
-; Separator in beteen orkspaces
-; label-separator = |
 
 [module/i3]
 type = internal/i3
@@ -240,26 +209,26 @@ label-mode-background = ${colors.primary}
 label-mode-font = 6
 
 ; focused = Active orkspace on focused monitor
-label-focused = %index%
+label-focused = 
 label-focused-background = ${colors.primary}
 label-focused-underline= ${colors.primary-dark}
 label-focused-padding = 1
 
 ; unfocused = Inactive orkspace on any monitor
-label-unfocused = %index%
+label-unfocused = 
 label-unfocused-padding = 1
 label-unfocused-background = #c7c7c7
 label-unfocused-foreground = ${colors.background2}
 label-unfocused-underline = #8B8B8B
 
 ; visible = Active orkspace on unfocused monitor
-label-visible = %index%
+label-visible = 
 label-visible-background = ${self.label-focused-background}
 label-visible-underline = ${self.label-focused-underline}
 label-visible-padding = ${self.label-focused-padding}
 
 ; urgent = Workspace ith urgency hint set
-label-urgent = %index%
+label-urgent = 
 label-urgent-background = ${colors.alert}
 label-urgent-underline = ${colors.alert-dark}
 label-urgent-padding = 1
@@ -281,28 +250,14 @@ icon-next = 
 label-song-maxlen = 25
 label-song-ellipsis = true
 
-[module/xbacklight]
-type = internal/xbacklight
-
-format = <label> <bar>
-label = LIGHT %percentage%%
-
-[module/backlight-acpi]
-inherit = module/xbacklight
-type = internal/backlight
-card = intel_backlight
-
 [module/cpu]
 type = internal/cpu
 interval = 2
 format = <label>
 
 format-prefix = ""
-#format-prefix-foreground = #10579D
-#format-background = #c7c7c7
-#format-foreground = ${colors.background2}
 format-prefix-foreground = #93A83D
-# format-underline = #10889D
+
 format-foreground = #93A83D
 format-padding = 1
 
@@ -324,94 +279,33 @@ label = %percentage_used%%
 label-padding-left = 1
 label-font = 8
 
-[module/lan]
-type = internal/netork
-interface = 
-interval = 3.0
-
-format-connected = <ramp-signal> <label-connected>
-format-connected-underline = #9f78e1
-label-connected = %essid%
-
-format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
-
-ramp-signal-0 = 
-ramp-signal-1 = 
-ramp-signal-2 = 
-ramp-signal-3 = 
-ramp-signal-4 = 
-ramp-signal-foreground = ${colors.foreground-alt}
-
-[module/eth]
-type = internal/netork
-interface = 
-interval = 3.0
-
-format-connected-underline = #55aa55
-format-connected-prefix = " "
-format-connected-prefix-foreground = ${colors.foreground-alt}
-label-connected = %local_ip%
-
-format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
-
 [module/date]
 type = internal/date
 interval = 5
 
-;format-background = ${colors.background2}
-;format-foreground = ${colors.primary2}
-# format-background = #c7c7c7
 format-foreground = #61afef
 label-font = 8
 format-padding = 1
 
-format-prefix = ""
+format-prefix = 
 format-prefix-foreground = #61afef
 
-date =
-date-alt = " %Y-%m-%d"
-
-;time = %H:%M
 time = %I:%M %p
-time-alt = %H:%M:%S
-weekday = %a
-
-my-time = %I:%P
-
-;format-underline = ${colors.pattern1}
-
 label = %time%
 label-padding-left = 1
 
 [module/date2]
 type = internal/date
-interval = 5
+interval = 120
 
-;format-background = ${colors.background2}
-;format-foreground = ${colors.primary2}
 format-foreground = #c678dd
 label-font = 8
 format-padding = 1
 
-date =
-date-alt = " %Y-%m-%d"
-
-;time = %H:%M
-time = %a %m/%d
-time-alt = %H:%M:%S
-
 format-prefix = 
 format-prefix-foreground = #c678dd
-;format-underline = ${colors.pattern1}
 
+time = %a %m/%d
 label = %time%
 label-padding-left = 1
 
@@ -420,43 +314,17 @@ type = internal/pulseaudio
 
 format-volume = <label-volume>
 format-volume-prefix = " "
-; red
-;format-volume-prefix-foreground = #CD352B
-; yellow
-;format-volume-prefix-foreground = #93A83D
 format-volume-prefix-foreground = #e5c07b
+
 format-volume-foreground = #e5c07b
-# format-volume-underline = #D56616
+
 label-volume = %percentage%%
 label-volume-font = 8
-
-# format-volume-background = #D56616
 format-volume-padding = 1
 
-label-muted = 🔇 muted
-
-
-[module/alsa]
-type = internal/alsa
-
-format-volume = <label-volume> <bar-volume>
-label-volume = VOL %percentage%
-label-volume-foreground = ${root.foreground}
-
-format-muted-prefix = " "
-format-muted-foreground = ${colors.foreground-alt}
-label-muted = sound muted
-
-bar-volume-width = 10
-bar-volume-foreground = #{colors.primary2}
-bar-volume-gradient = false
-bar-volume-indicator = ||
-bar-volume-indicator-font = 2
-bar-volume-fill = ▆
-bar-volume-fill-font = 2
-bar-volume-empty = ▆
-bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground-alt}
+label-muted =  MUTED
+label-muted-font = 8
+label-muted-foreground = #e5c07b
 
 [module/battery]
 type = internal/battery
@@ -541,11 +409,6 @@ menu-2-1-exec = menu-open-0
 
 [settings]
 screenchange-reload = true
-;compositing-background = xor
-;compositing-background = screen
-;compositing-foreground = source
-;compositing-border = over
-;pseudo-transparency = false
 
 [global/wm]
 margin-top = 5

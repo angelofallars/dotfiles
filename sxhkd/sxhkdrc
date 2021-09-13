@@ -10,6 +10,14 @@ super + Return
 super + d
     rofi -show drun -show-icons
 
+# alt-tab
+alt + Tab
+    rofi -show window -show-icons
+
+# thunar
+alt + f
+    thunar
+
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd

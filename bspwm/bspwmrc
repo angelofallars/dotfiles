@@ -36,7 +36,7 @@ killall picom ; picom -b &
 # Background
 killall feh ; feh --bg-fill ~/Pictures/randomnoise.png &
 # Night light
-killall redshift ; redshift -l 14.599512:120.984222 &
+# killall redshift ; killall redshift ; redshift -l 14.599512:120.984222 &
 # Remap control key and caps lock
 xmodmap ~/.config/i3/swapkeys -display :0 &
 # Conky desktop monitor
