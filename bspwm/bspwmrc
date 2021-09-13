@@ -11,12 +11,12 @@ bspc config right_padding        2
 
 # Colors
 bspc config focused_border_color "#5599D1"
-bspc config normal_border_color  "#2D2D2D"
+# bspc config normal_border_color  "#2D2D2D"
+bspc config normal_border_color  "#1E2128"
 
 bspc config split_ratio          0.52
 bspc config borderless_monocle   true
 bspc config gapless_monocle      false
-
 
 bspc rule -a Gimp desktop='^8' state=floating follow=on
 bspc rule -a Chromium desktop='^2'
@@ -24,13 +24,18 @@ bspc rule -a mplayer2 state=floating
 bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
 
+# Set cursor theme
+xsetroot -cursor_name left_ptr
+
 # Polybar
 polybar mybar &
 # Picom
-picom  --vsync --backend glx -cb -o 0.50 -i 1 --unredir-if-possible --glx-no-stencil -D 8 --glx-no-rebind-pixmap -m 100 &
+picom  --vsync --backend glx -cb -o 0.80 -i 1 --unredir-if-possible --glx-no-stencil -D 8 --glx-no-rebind-pixmap -m 100 &
 # Background
-feh --bg-fill ~/Pictures/gnomewall2.png &
+feh --bg-fill ~/Pictures/randomnoise.png &
 # Night light
 killall redshift && redshift -l 14.599512:120.984222 &
 # Remap control key and caps lock
 xmodmap ~/.config/i3/swapkeys -display :0 &
+# Conky desktop monitor
+conky &

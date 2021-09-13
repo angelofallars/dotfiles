@@ -111,10 +111,10 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: fira code
+    family: jetbrains mono
 
     # The `style` can be specified to pick a specific face.
-    style: retina
+    style: medium
 
   # Bold font face
   #bold:
@@ -150,7 +150,7 @@ font:
     #style: Bold Italic
 
   # Point size
-  size: 9.3
+  size: 9.8
 
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter

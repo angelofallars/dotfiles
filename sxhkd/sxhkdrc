@@ -8,19 +8,25 @@ super + Return
 
 # program launcher
 super + d
-    dmenu_run -fn roboto -sb '#61afef' -sf '#282c34' -nb '#282c34' -nf '#abb2bf'
+    rofi -show drun -show-icons
 
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
 
-# --- Volume Control --
-super + f8
+# --- Volume Control ---
+super + F8
     pactl set-sink-volume @DEFAULT_SINK@ +10%
-super + f7
+super + F7
     pactl set-sink-volume @DEFAULT_SINK@ -10%
-super + f6
+super + F6
     pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+# --- Brightness control ---
+super + F2
+    brightnessctl set 10%-
+super + F3
+    brightnessctl set +10%
 
 
 # Screenshot
