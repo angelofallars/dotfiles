@@ -9,6 +9,6 @@ My dotfiles for software development on Arch Linux.
 * ~~i3-gaps~~ bspwm
 * Polybar
 * Ranger
-* Bash config
+* Conky
 
 ![image](https://i.imgur.com/TK4eHZA.png)

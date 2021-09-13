@@ -31,11 +31,12 @@ xsetroot -cursor_name left_ptr
 # Polybar
 killall polybar ; polybar mybar &
 # Picom
-killall picom ; picom  --vsync --backend glx -cb -o 0.80 -i 1 --unredir-if-possible --glx-no-stencil -D 8 --glx-no-rebind-pixmap -m 100 &
+#killall picom ; picom  --vsync --backend glx -CGb -o 0 -i 1 --unredir-if-possible --glx-no-stencil -D 8 --glx-no-rebind-pixmap -m 100 &
+killall picom ; picom -b &
 # Background
 killall feh ; feh --bg-fill ~/Pictures/randomnoise.png &
 # Night light
-killall redshift && redshift -l 14.599512:120.984222 &
+killall redshift ; redshift -l 14.599512:120.984222 &
 # Remap control key and caps lock
 xmodmap ~/.config/i3/swapkeys -display :0 &
 # Conky desktop monitor
