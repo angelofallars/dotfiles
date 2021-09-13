@@ -32,7 +32,7 @@
     alternate-active-foreground: @active-foreground;
     active-background:           rgba ( 69, 90, 100, 100 % );
     selected-active-background:  rgba ( 0, 150, 136, 100 % );
-    font:                        "Roboto Mono 10";
+    font:                        "JetBrains Mono 10";
 }
 window {
     background-color: @background;
