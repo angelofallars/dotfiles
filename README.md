@@ -11,4 +11,4 @@ My dotfiles for software development on Arch Linux.
 * Ranger
 * Conky
 
-![image](https://i.imgur.com/TK4eHZA.png)
+![image](https://i.imgur.com/o2wW9Ye.png)
