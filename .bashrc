@@ -11,7 +11,7 @@ alias ls='ls --color=auto'
 #PS1='[\e[96m\]\u\e[0m:\e[96m\]\w\e[0m]\$ '
 PS1='[\[\033[96m\]\u\[\033[0m\]:\[\033[96m\]\w\[\033[0m\]]$ '
 # PS1='[\u:\w]\$ '
-PS1='\[\033[96m\]  \w\[\033[0m\]  '
+PS1='\[\033[34m\]  \w\[\033[0m\]  '
 # PS1='\[\033[96m\] \w\[\033[0m\] >> '
 
 blue="\e[0;96m"
@@ -194,6 +194,12 @@ alias files=ranger
 
 # COVID-19 stats
 alias covidstats="curl https://covid19-cli.wareneutron.com/philippines"
+
+# neofetch alias
+alias nf="neofetch"
+
+# gradient neofetch
+alias aquafetch="neofetch | lolcat --freq=0.08 --seed=32"
 
 # edit then update this config
 alias bashedit="nvim "${HOME}"/.bashrc && source "${HOME}"/.bashrc"

@@ -1,6 +1,8 @@
-set font "roboto sans 11"
+set font "jetbrains mono 9"
 set default-bg "#282c34"
 set default-fg "#abb2bf"
+set recolor
+set recolor-lightcolor "#282c34"
 
 set statusbar-bg "#61afef"
 set statusbar-fg "#282c34"
@@ -17,6 +19,8 @@ set highlight-color "#e5c07b"
 set highlight-fg "#222222"
 set highlight-active-color "#61afef"
 set highlight-transparency "0.7"
+
+set guioptions none
 
 #    yellow:  '0xe5c07b'
 #    green:   '0x98c379'
