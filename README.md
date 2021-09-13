@@ -4,11 +4,11 @@ My dotfiles for software development on Arch Linux.
 
 ## 🤖 Programs
 
+* bspwm
+* Polybar
 * Neovim
 * Alacritty
-* ~~i3-gaps~~ bspwm
-* Polybar
-* Ranger
 * Conky
+* Ranger
 
 ![image](https://i.imgur.com/o2wW9Ye.png)
