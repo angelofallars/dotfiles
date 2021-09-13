@@ -1,0 +1,25 @@
+set font "roboto sans 11"
+set default-bg "#282c34"
+set default-fg "#abb2bf"
+
+set statusbar-bg "#61afef"
+set statusbar-fg "#282c34"
+
+set inputbar-bg "#282c34"
+set inputbar-fg "#abb2bf"
+
+set completion-bg "#3A404B"
+set completion-fg "#abb2bf"
+set completion-highlight-bg "#61afef"
+set completion-highlight-fg "#282c34"
+
+set highlight-color "#e5c07b"
+set highlight-fg "#222222"
+set highlight-active-color "#61afef"
+set highlight-transparency "0.7"
+
+#    yellow:  '0xe5c07b'
+#    green:   '0x98c379'
+#    blue:    '0x61afef'
+#    cyan:    '0x56b6c2'
+#   white:    '0xDCE5F6'
