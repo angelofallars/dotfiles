@@ -17,7 +17,7 @@
 ;==========================================================
 
 [colors]
-background = #282c34
+background = #cc282c34
 background2 = #2e2e2e
 background-alt = #444
 
@@ -61,7 +61,7 @@ font-3 = "Jetbrains Mono ExtraBold:pixelsize=6;3"
 font-4 = "Roboto Mono SemiBold:pixelsize=11;2"
 font-5 = "Roboto Condensed Bold:pixelsize=11;2"
 font-6 = "Symbols Nerd Font:pixelsize=15:antialias=true;3"
-font-7 = "Jetbrains Mono:pixelsize=10;3"
+font-7 = "Jetbrains Mono Medium:pixelsize=10;3"
 font-8 = "Jetbrains Mono Medium:pixelsize=10;3"
 
 modules-left = osname i3 bspwm
@@ -72,6 +72,7 @@ tray-position = right
 tray-padding = 0
 
 wm-restack = bspwm
+override-redirect = true
 
 cursor-click = pointer
 cursor-scroll = ns-resize
@@ -131,7 +132,6 @@ label-font = 8
 type = internal/xwindow
 
 format = <label>
-format-background = #282c34
 format-padding = 1
 
 label = %title:0:40:...%
@@ -322,9 +322,13 @@ label-volume = %percentage%%
 label-volume-font = 8
 format-volume-padding = 1
 
-label-muted =  MUTED
+format-muted-prefix = "婢"
+format-muted-prefix-foreground = #e5c07b
+format-muted-font = 7
+label-muted = 0%
 label-muted-font = 8
 label-muted-foreground = #e5c07b
+label-muted-padding = 1
 
 [module/battery]
 type = internal/battery
@@ -411,7 +415,5 @@ menu-2-1-exec = menu-open-0
 screenchange-reload = true
 
 [global/wm]
-margin-top = 5
-margin-bottom = 5
 
 ; vim:ft=dosini

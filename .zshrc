@@ -1,21 +1,26 @@
-#
-# "${HOME}"/.bashrc
-#
+# The following lines were added by compinstall
+zstyle :compinstall filename '/home/angelo_f/.zshrc'
 
-# If not running interactively, don't do anything
-[[ $- != *i* ]] && return
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=1000
+setopt beep extendedglob
+unsetopt autocd nomatch notify
+bindkey -v
+# End of lines configured by zsh-newuser-install
 
 alias ls='ls --color=auto'
 
 # Fun blue color for Bash prompt
 #PS1='[\e[96m\]\u\e[0m:\e[96m\]\w\e[0m]\$ '
-PS1='[\[\033[96m\]\u\[\033[0m\]:\[\033[96m\]\w\[\033[0m\]]$ '
+#PS1='[\[\033[96m\]\u\[\033[0m\]:\[\033[96m\]\w\[\033[0m\]]$ '
 # PS1='[\u:\w]\$ '
-PS1='\[\033[34m\]  \w\[\033[0m\]  '
 # PS1='\[\033[96m\] \w\[\033[0m\] >> '
-
-blue="\e[0;96m"
-reset="\e[0m"
+PS1=' %F{blue}%f %~ %F{blue}%f '
 
 # pfetch parameters
 export PF_INFO="ascii title os kernel uptime pkgs memory wm"
@@ -218,5 +223,4 @@ alias cmatrix="cmatrix -C cyan -u 10"
 
 export PATH=/home/angelo_f/.local/bin:$PATH
 
-[ -f "${HOME}"/.fzf.bash ] && source "${HOME}"/.fzf.bash
 . "$HOME/.cargo/env"
