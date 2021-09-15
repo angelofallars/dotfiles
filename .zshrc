@@ -20,7 +20,7 @@ alias ls='ls --color=auto'
 #PS1='[\[\033[96m\]\u\[\033[0m\]:\[\033[96m\]\w\[\033[0m\]]$ '
 # PS1='[\u:\w]\$ '
 # PS1='\[\033[96m\] \w\[\033[0m\] >> '
-PS1=' %F{blue}%f %~ %F{blue}%f '
+PS1=' %F{red}%f %~ %F{blue}%f '
 
 # pfetch parameters
 export PF_INFO="ascii title os kernel uptime pkgs memory wm"
