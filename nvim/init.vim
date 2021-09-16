@@ -44,8 +44,16 @@ set ai
 let g:onedark_termcolors = 16
 colorscheme onedark
 
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+
 let g:airline_theme='onedark'
 let g:airline_powerline_fonts = 1
+let g:airline_symbols.linenr = ' L:'
+let g:airline_symbols.colnr = ' C:'
+let g:airline_section_y = ''
+let g:airline#extensions#ale#enabled = 1
 
 " Highlight current row
 set cursorline
@@ -56,6 +64,9 @@ set mouse=a
 " Change window title to Neovim
 let &titlestring = "Neovim"
 set title
+
+" NerdTree
+let NERDTreeMinimalUI=1
 
 source $HOME/.config/nvim/general/settings.vim
 source $HOME/.config/nvim/keys/mappings.vim
