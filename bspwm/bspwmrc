@@ -33,6 +33,8 @@ bspc config gapless_monocle      false
 ## Window rules ##
 ##################
 
+### Launch apps on specific workspaces
+
 ## Workspace 1 (Classes)
 bspc rule -a zoom desktop='^1' follow=on focus=on
 

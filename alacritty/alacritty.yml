@@ -46,8 +46,8 @@ window:
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
   #padding:
-  #  x: 0
-  #  y: 0
+  x: 10
+  y: 0
 
   # Spread additional padding evenly around the terminal content.
   #dynamic_padding: false
@@ -175,15 +175,6 @@ font:
 # If `true`, bold text is drawn using the bright color variants.
 draw_bold_text_with_bright_colors: true
 
-# Colors (Tomorrow Night)
-colors:
-  # Default colors
-  primary:
-  #  background: '#1d1f21'
-  #  foreground: '#c5c8c6'
-    background: '#161D22'
-    foreground: '#E8E8E8'
-
     # Bright and dim foreground colors
     #
     # The dimmed foreground color is calculated automatically if it is not
@@ -199,9 +190,9 @@ colors:
   #
   # Allowed values are CellForeground/CellBackground, which reference the
   # affected cell, or hexadecimal colors like #ff00ff.
-  cursor:
-    text: CellBackground
-    cursor: CellForeground
+  #cursor:
+  #  text: CellBackground
+  #  cursor: CellForeground
 
   # Vi mode cursor colors
   #
@@ -209,9 +200,9 @@ colors:
   #
   # Allowed values are CellForeground/CellBackground, which reference the
   # affected cell, or hexadecimal colors like #ff00ff.
-  vi_mode_cursor:
-    text: CellBackground
-    cursor: CellForeground
+  #vi_mode_cursor:
+  #  text: CellBackground
+  #  cursor: CellForeground
 
   # Search colors
   #
@@ -268,41 +259,6 @@ colors:
   #  text: CellBackground
   #  background: CellForeground
 
-  # Normal colors
-  normal:
-    black:   '#1F1F1F'
-    red:     '#AA1E22'
-    green:   '#14B137'
-    yellow:  '#998C37'
-    blue:    '#2B5EAA'
-    magenta: '#7633AA'
-    cyan:    '#1C5B95'
-    white:   '#AAAAAA'
-
-  # Bright colors
-  bright:
-    black:   '#555555'
-    red:     '#EB4B50'
-    green:   '#61F262'
-    yellow:  '#D6C65E'
-    blue:    '#2E71E6'
-    magenta: '#B170E4'
-    cyan:    '#2789E3'
-    white:   '#E4E4E4'
-
-  # Dim colors
-  #
-  # If the dim colors are not set, they will be calculated automatically based
-  # on the `normal` colors.
-  #dim:
-  #  black:   '#131415'
-  #  red:     '#864343'
-  #  green:   '#777c44'
-  #  yellow:  '#9e824c'
-  #  blue:    '#556a7d'
-  #  magenta: '#75617b'
-  #  cyan:    '#5b7d78'
-  #  white:   '#828482'
 
   # Indexed Colors
   #
@@ -313,63 +269,6 @@ colors:
   #   `- { index: 16, color: '#ff00ff' }`
   #
   #indexed_colors: []
-colors:
-  # Default colors
-  primary:
-    background: '0xC2CAD9'
-    foreground: '0xabb2bf'
-
-    # Bright and dim foreground colors
-    #
-    # The dimmed foreground color is calculated automatically if it is not present.
-    # If the bright foreground color is not set, or `draw_bold_text_with_bright_colors`
-    # is `false`, the normal foreground color will be used.
-    #dim_foreground: '0x9a9a9a'
-    bright_foreground: '0xe6efff'
-
-  # Cursor colors
-  #
-  # Colors which should be used to draw the terminal cursor. If these are unset,
-  # the cursor color will be the inverse of the cell color.
-  #cursor:
-  #  text: '0x000000'
-  #  cursor: '0xffffff'
-
-  # Normal colors
-  normal:
-    black:   '0x1e2127'
-    red:     '0xe06c75'
-    green:   '0x98c379'
-    yellow:  '0xd19a66'
-    blue:    '0x61afef'
-    magenta: '0xc678dd'
-    cyan:    '0x56b6c2'
-    white:   '0x828791'
-
-  # Bright colors
-  bright:
-    black:   '0x5c6370'
-    red:     '0xe06c75'
-    green:   '0x98c379'
-    yellow:  '0xd19a66'
-    blue:    '0x61afef'
-    magenta: '0xc678dd'
-    cyan:    '0x56b6c2'
-    white:   '0xe6efff'
-
-  # Dim colors
-  #
-  # If the dim colors are not set, they will be calculated automatically based
-  # on the `normal` colors.
-  dim:
-    black:   '0x1e2127'
-    red:     '0xe06c75'
-    green:   '0x98c379'
-    yellow:  '0xd19a66'
-    blue:    '0x61afef'
-    magenta: '0xc678dd'
-    cyan:    '0x56b6c2'
-    white:   '0x828791'
 
 # Colors (One Dark)
 colors:
@@ -474,7 +373,7 @@ cursor:
     #   - ▇ Block
     #   - _ Underline
     #   - | Beam
-    shape: Beam
+    shape: Block
 
     # Cursor blinking state
     #
@@ -483,7 +382,7 @@ cursor:
     #   - Off: Disable blinking by default
     #   - On: Enable blinking by default
     #   - Always: Force the cursor to always blink
-    blinking: Off 
+    blinking: On 
 
   # Vi mode cursor style
   #
@@ -492,10 +391,10 @@ cursor:
   #
   # See `cursor.style` for available options.
   vi_mode_style:
-    shape: Beam
+    shape: Block
 
   # Cursor blinking interval in milliseconds.
-  blink_interval: 250
+  blink_interval: 525
 
   # If this is `true`, the cursor will be rendered as a hollow box when the
   # window is not focused.
@@ -503,7 +402,7 @@ cursor:
 
   # Thickness of the cursor relative to the cell width as floating point number
   # from `0.0` to `1.0`.
-  thickness: 1
+  thickness: 0.25
 
 # Live config reload (changes require restart)
 #live_config_reload: true
