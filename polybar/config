@@ -167,26 +167,33 @@ label-unmounted-foreground = ${colors.foreground-alt}
 [module/bspwm]
 type = internal/bspwm
 
-label-focused-font = 4
-label-occupied-font = 4
-label-urgent-font = 4
-label-empty-font = 4
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;ﭮ
+ws-icon-4 = 5;
+ws-icon-5 = 6;
+ws-icon-6 = 7;
+ws-icon-7 = 8;
+ws-icon-default = 
 
-label-focused = " "
+format = <label-state>
+
+label-focused = %icon%
 label-focused-foreground = #61afef
-label-focused-padding = 0
+label-focused-padding = 1
 
-label-occupied = " "
-label-occupied-foreground = #61afef
-label-occupied-padding = 0
+label-occupied = %icon%
+label-occupied-foreground = #246194
+label-occupied-padding = 1
 
-label-urgent = " "
+label-urgent = %icon%
 label-urgent-foreground = ${colors.alert}
-label-urgent-padding = 0
+label-urgent-padding = 1
 
-label-empty = " "
+label-empty = %icon%
 label-empty-foreground = ${colors.offwhite}
-label-empty-padding = 0
+label-empty-padding = 1
 
 [module/i3]
 type = internal/i3

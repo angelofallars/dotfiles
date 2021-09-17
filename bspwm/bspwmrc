@@ -28,15 +28,22 @@ bspc config gapless_monocle      false
 ## Window rules ##
 ##################
 
+### App-specific stats
+bspc rule -a Gpick state=floating
+
+
 ### Launch apps on specific workspaces
 
 ## Workspace 1 (Classes)
 bspc rule -a zoom desktop='^1' follow=on focus=on
+bspc rule -a zoom:Chat desktop='^1' state=floating
 
 ## Workspace 2 (Web Browser)
 bspc rule -a Brave-browser desktop='^2' follow=on focus=on
 bspc rule -a qutebrowser desktop='^2' follow=on focus=on
 bspc rule -a LibreWolf desktop='^2' follow=on focus=on
+
+bspc rule -a FreeTube desktop='^2' follow=on focus=on
 
 ## Workspace 3 (Terminal)
 bspc rule -a Alacritty desktop='^3' follow=on focus=on
@@ -44,26 +51,25 @@ bspc rule -a Alacritty desktop='^3' follow=on focus=on
 ## Workspace 4 (Social)
 bspc rule -a discord desktop='^4' follow=on focus=on
 
-## Workspace 5 (Files)
-bspc rule -a Thunar desktop='^5' follow=on focus=on
-bspc rule -a Transmission desktop='^5' follow=on focus=on
-
-## Workspace 6 (Work/Study)
+## Workspace 5 (Work/Study)
 
 # Email
-bspc rule -a Geary desktop='^6' follow=on focus=on
+bspc rule -a Geary desktop='^5' follow=on focus=on
 
 # FreeOffice suite
-bspc rule -a tm desktop='^6' follow=on focus=on
-bspc rule -a pm desktop='^6' follow=on focus=on
-bspc rule -a pr desktop='^6' follow=on focus=on
+bspc rule -a tm desktop='^5' follow=on focus=on
+bspc rule -a pm desktop='^5' follow=on focus=on
+bspc rule -a pr desktop='^5' follow=on focus=on
 
 # LibreOffice
-bspc rule -a libreoffice-startcenter desktop='^6' follow=on focus=on
+bspc rule -a libreoffice-startcenter desktop='^5' follow=on focus=on
 
 # Anki
-bspc rule -a Anki desktop='^6' follow=on focus=on
+bspc rule -a Anki desktop='^5' follow=on focus=on state=floating
 
+## Workspace 6 (Files)
+bspc rule -a Thunar desktop='^6' follow=on focus=on
+bspc rule -a Transmission desktop='^6' follow=on focus=on
 
 ## Workspace 7 (Multimedia)
 bspc rule -a vlc desktop='^7' follow=on focus=on
