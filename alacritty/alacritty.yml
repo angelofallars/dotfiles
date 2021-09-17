@@ -117,40 +117,40 @@ font:
     style: semibold
 
   # Bold font face
-  #bold:
+  bold:
     # Font family
     #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
-    #family: monospace
+    family: JetBrains Mono
 
     # The `style` can be specified to pick a specific face.
-    #style: Bold
+    style: ExtraBold
 
   # Italic font face
-  #italic:
+  italic:
     # Font family
     #
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    #family: monospace
+    family: JetBrains Mono
 
     # The `style` can be specified to pick a specific face.
-    #style: Italic
+    style: Italic
 
   # Bold italic font face
-  #bold_italic:
+  bold_italic:
     # Font family
     #
     # If the bold italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    #family: monospace
+    family: JetBrains Mono
 
     # The `style` can be specified to pick a specific face.
-    #style: Bold Italic
+    style: Bold Italic
 
   # Point size
-  size: 9.3
+  size: 9.8
 
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter
@@ -190,9 +190,6 @@ draw_bold_text_with_bright_colors: true
   #
   # Allowed values are CellForeground/CellBackground, which reference the
   # affected cell, or hexadecimal colors like #ff00ff.
-  #cursor:
-  #  text: CellBackground
-  #  cursor: CellForeground
 
   # Vi mode cursor colors
   #
@@ -272,15 +269,19 @@ draw_bold_text_with_bright_colors: true
 
 # Colors (One Dark)
 colors:
+  cursor:
+    text: CellBackground
+    cursor: CellForeground
+
   # Default colors
   primary:
     foreground: '0xabb2bf'
     background: '0x282c34'
 
   # Cursor colors
-  cursor:
-    text: '0x2c323c'
-    cursor: '0x5c6370'
+  #cursor:
+    #  text: '0x2c323c'
+    # cursor: '0x5c6370'
 
   # Selection colors
   selection:
@@ -289,7 +290,8 @@ colors:
 
   # Normal colors
   normal:
-    black:   '0x2c323c'
+    # black:   '0x2c323c'
+    black:   '0x323844'
     red:     '0xe06c75'
     green:   '0x98c379'
     yellow:  '0xe5c07b'
@@ -300,7 +302,8 @@ colors:
 
   # Bright colors
   bright:
-    black:   '0x3e4452'
+    # black:   '0x3e4452'
+    black:   '0x51596B'
     red:     '0xe06c75'
     green:   '0x98c379'
     yellow:  '0xe5c07b'
@@ -309,6 +312,7 @@ colors:
     cyan:    '0x56b6c2'
     # white:   '0xabb2bf'
     white:   '0xDCE5F6'
+
 # Bell
 #
 # The bell is rung every time the BEL control character is received.
@@ -354,7 +358,8 @@ bell:
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-background_opacity: 0.84
+background_opacity: 1
+background_opacity: 0.88
 
 selection:
   # This string contains all characters that are used as separators for

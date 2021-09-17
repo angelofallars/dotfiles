@@ -4,13 +4,8 @@ pgrep -x sxhkd > /dev/null || sxhkd &
 
 bspc monitor -d 1 2 3 4 5 6 7 8
 
-bspc config border_width         3
+bspc config border_width         2
 bspc config window_gap           9
-# With gaps
-bspc config left_padding         -6
-bspc config right_padding        -6
-bspc config top_padding          19
-bspc config bottom_padding       -6
 # Completely covered
 bspc config window_gap           6
 bspc config left_padding         6
@@ -52,6 +47,29 @@ bspc rule -a discord desktop='^4' follow=on focus=on
 ## Workspace 5 (Files)
 bspc rule -a Thunar desktop='^5' follow=on focus=on
 bspc rule -a Transmission desktop='^5' follow=on focus=on
+
+## Workspace 6 (Work/Study)
+
+# Email
+bspc rule -a Geary desktop='^6' follow=on focus=on
+
+# FreeOffice suite
+bspc rule -a tm desktop='^6' follow=on focus=on
+bspc rule -a pm desktop='^6' follow=on focus=on
+bspc rule -a pr desktop='^6' follow=on focus=on
+
+# LibreOffice
+bspc rule -a libreoffice-startcenter desktop='^6' follow=on focus=on
+
+# Anki
+bspc rule -a Anki desktop='^6' follow=on focus=on
+
+
+## Workspace 7 (Multimedia)
+bspc rule -a vlc desktop='^7' follow=on focus=on
+bspc rule -a Gimp-2.10 desktop='^7' follow=on focus=on
+bspc rule -a Audacity desktop='^7' follow=on focus=on
+
 
 # Set cursor theme
 xsetroot -cursor_name left_ptr

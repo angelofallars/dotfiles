@@ -43,10 +43,13 @@ super + F3
 
 # Screenshot
 super + n
-    scrot ~/Pictures/Screenshots/%b-%d-20%y_%I:%M%p-%Ss.png -e 'xclip -selection clipboard -t image/png -i $f'
+    scrot ~/Pictures/Screenshots/%b-%d-20%y_%I:%M%p-%Ss.png -e 'xclip -selection clipboard -t image/png -i $f' && notify-send "Screenshot taken" "Saved in Pictures/Screenshots"
 # Current window screenshot
 super + shift + N
-    scrot -ub ~/Pictures/Screenshots/%b-%d-20%y_%I:%M%p-%Ss.png -e 'xclip -selection clipboard -t image/png -i $f'
+    scrot -ub ~/Pictures/Screenshots/%b-%d-20%y_%I:%M%p-%Ss.png -e 'xclip -selection clipboard -t image/png -i $f' && notify-send "Screenshot taken" "Saved in Pictures/Screenshots"
+# Selection screenshot (No save)
+super + shift + M
+    maim -s -u | xclip -selection clipboard -t image/png -i && notify-send "Screenshot taken"
 
 #
 # bspwm hotkeys

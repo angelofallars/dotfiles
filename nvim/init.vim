@@ -1,10 +1,8 @@
+" coc already has lsp so disable lsp of ale
 let g:ale_disable_lsp = 1
 
 call plug#begin()
-" Native LSP
-Plug 'neovim/nvim-lspconfig'
-
-" Discord Rich Presence
+" Discord Rich Presence (The most important plugin)
 Plug 'vimsence/vimsence'
 
 " Popular LSP provider
@@ -24,7 +22,7 @@ Plug 'dense-analysis/ale'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
-" Fancy NERDFonts
+" Fancy NERDFont symbols
 Plug 'ryanoasis/vim-devicons'
 
 " Automatic pairing of () [] and {}
@@ -45,19 +43,25 @@ Plug 'tpope/vim-fugitive'
 
 call plug#end()
 
-" Vimsence options
+" Vimsence (Discord Rich Presence) options
 let g:vimsence_small_text = 'Neovim'
 let g:vimsence_small_image = 'neovim'
 let g:vimsence_editing_details = 'Editing: {}'
 let g:vimsence_editing_state = 'Workspace: {}'
 
 set autochdir
+
 set expandtab
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
+
 set textwidth=80
+
 set ai
+
+" Blinking cursor
+set guicursor+=n-v-c-i:blinkon5
 
 " Highlight current row
 set cursorline
@@ -65,18 +69,28 @@ set cursorline
 " Use mouse
 set mouse=a
 
+" One Dark theme
 let g:onedark_termcolors = 16
 colorscheme onedark
+let g:airline_theme='onedark'
+
+" Airline setup
+let g:airline#extensions#ale#enabled = 1
 
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
-let g:airline_theme='onedark'
+
 let g:airline_powerline_fonts = 1
-let g:airline_symbols.linenr = ' L:'
+let g:airline_symbols.linenr = ' '
 let g:airline_symbols.colnr = ' C:'
+
+" Disable display of text encoding
 let g:airline_section_y = ''
-let g:airline#extensions#ale#enabled = 1
+
+" I prefer a rectangular status bar
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
 
 " Change window title to Neovim
 let &titlestring = "Neovim"
