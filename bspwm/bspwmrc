@@ -69,10 +69,10 @@ bspc rule -a Anki desktop='^5' follow=on focus=on state=floating
 
 ## Workspace 6 (Files)
 bspc rule -a Thunar desktop='^6' follow=on focus=on
-bspc rule -a Transmission desktop='^6' follow=on focus=on
+bspc rule -a Transmission-gtk desktop='^6' follow=on focus=on
 
 ## Workspace 7 (Multimedia)
-bspc rule -a vlc desktop='^7' follow=on focus=on
+bspc rule -a vlc desktop='^7' follow=on focus=on state=fullscreen
 bspc rule -a Gimp-2.10 desktop='^7' follow=on focus=on
 bspc rule -a Audacity desktop='^7' follow=on focus=on
 

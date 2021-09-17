@@ -3,7 +3,8 @@ let g:ale_disable_lsp = 1
 
 call plug#begin()
 " Discord Rich Presence (The most important plugin)
-Plug 'vimsence/vimsence'
+"Plug 'vimsence/vimsence'
+Plug 'andweeb/presence.nvim'
 
 " Popular LSP provider
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -98,6 +99,9 @@ set title
 
 " NerdTree
 let NERDTreeMinimalUI=1
+
+" Rich presence text on large image
+let g:presence_neovim_image_text   = "I use Neovim btw"
 
 source $HOME/.config/nvim/general/settings.vim
 source $HOME/.config/nvim/keys/mappings.vim

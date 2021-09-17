@@ -43,6 +43,9 @@ tnoremap <C-q> <C-\><C-n>:q!<cr>
 tnoremap <A-p> <C-\><C-n>:resize +1<cr>i
 tnoremap <A-o> <C-\><C-n>:resize -1<cr>i
 
+" Remove highlighting
+map <C-c> :noh<cr>
+
 " FZF
 noremap <leader>p :Files<cr>
 noremap <leader>g :GFiles<cr>

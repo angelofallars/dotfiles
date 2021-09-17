@@ -63,11 +63,11 @@ font-5 = "Roboto Condensed Bold:pixelsize=11;2"
 font-6 = "Symbols Nerd Font:pixelsize=14:antialias=true;3"
 font-7 = "Jetbrains Mono Medium:pixelsize=10;3"
 font-8 = "Jetbrains Mono Medium:pixelsize=10;3"
-font-9 = "Symbols Nerd Font:pixelsize=14:antialias=true;3.5"
+font-9 = "Symbols Nerd Font:pixelsize=14:antialias=true;4"
 
 modules-left = osname i3 bspwm
 modules-center = xwindow
-modules-right = pulseaudio backlight date date2
+modules-right = github pulseaudio backlight date date2
 
 tray-position = right 
 tray-padding = 0
@@ -344,86 +344,48 @@ label-muted-font = 8
 label-muted-foreground = #e5c07b
 label-muted-padding = 1
 
-[module/battery]
-type = internal/battery
-battery = BAT0
-adapter = AC
-full-at = 98
+[module/github]
+type = internal/github
 
-format-charging = <animation-charging> <label-charging>
-format-charging-underline = #ffb52a
+; Accessing an access token stored in file
+token = ${file:/home/angelo_f/.token}
 
-format-discharging = <animation-discharging> <label-discharging>
-format-discharging-underline = ${self.format-charging-underline}
+; Accessing an access token stored in an environment variable
+; token = ${env:GITHUB_ACCESS_TOKEN}
 
-format-full-prefix = " "
-format-full-prefix-foreground = ${colors.foreground-alt}
-format-full-underline = ${self.format-charging-underline}
+; The github user for the token
+; If not specified, this module uses the deprecated method of accessing your
+; notifications, which may stop working at some point.
+user = angelo_f
 
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-foreground = ${colors.foreground-alt}
+; Whether empty notifications should be displayed or not
+empty-notifications = false
 
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-foreground = ${colors.foreground-alt}
-animation-charging-framerate = 750
+; Number of seconds in between requests
+interval = 10
 
-animation-discharging-0 = 
-animation-discharging-1 = 
-animation-discharging-2 = 
-animation-discharging-foreground = ${colors.foreground-alt}
-animation-discharging-framerate = 750
+; Github API URL
+; Default: https://api.github.com/
+api-url = https://api.github.com/
 
-[module/temperature]
-type = internal/temperature
-thermal-zone = 0
-arn-temperature = 60
+; Available tags:
+;   <label> (default)
+format = <label>
 
-format = <ramp> <label>
-format-underline = #f50a4d
-format-arn = <ramp> <label-arn>
-format-arn-underline = ${self.format-underline}
+; Available tokens:
+;   %notifications% (default)
+; Default: Notifications: %notifications%
+label = Notifications: %notifications%
 
-label = %temperature-c%
-label-arn = %temperature-c%
-label-arn-foreground = ${colors.secondary}
+; Used when GitHub can't be reached
+; Available tags:
+;   <label-offline> (default)
+format-offline = <label-offline>
 
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
-ramp-foreground = ${colors.foreground-alt}
-
-[module/powermenu]
-type = custom/menu
-
-expand-right = true
-
-format-spacing = 1
-
-label-open = s
-label-open-foreground = ${colors.secondary}
-label-close = k cancel
-label-close-foreground = ${colors.secondary}
-label-separator = |
-label-separator-foreground = ${colors.foreground-alt}
-
-menu-0-0 = reboot
-menu-0-0-exec = menu-open-1
-menu-0-1 = power off
-menu-0-1-exec = menu-open-2
-
-menu-1-0 = cancel
-menu-1-0-exec = menu-open-0
-menu-1-1 = reboot
-menu-1-1-exec = sudo reboot
-
-menu-2-0 = power off
-menu-2-0-exec = sudo poweroff
-menu-2-1 = cancel
-menu-2-1-exec = menu-open-0
+; Available tokens:
+;   None
+; Default: Offline
+label-offline = Offline
 
 [settings]
 screenchange-reload = true
