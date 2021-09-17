@@ -76,6 +76,11 @@ bspc rule -a vlc desktop='^7' follow=on focus=on
 bspc rule -a Gimp-2.10 desktop='^7' follow=on focus=on
 bspc rule -a Audacity desktop='^7' follow=on focus=on
 
+## Workspace 8 (Settings)
+bspc rule -a Lxappearance desktop='^8' follow=on focus=on state=floating
+bspc rule -a Xfce4-settings-editor desktop='^8' follow=on focus=on state=floating
+bspc rule -a Xfce4-settings-manager desktop='^8' follow=on focus=on state=floating
+
 
 # Set cursor theme
 xsetroot -cursor_name left_ptr
