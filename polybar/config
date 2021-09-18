@@ -186,12 +186,12 @@ label-empty-font = 7
 format = <label-state>
 
 label-focused = %icon%
-label-focused-foreground = #61afef
-label-focused-background = #dd474E5C
+label-focused-background = #61afef
+label-focused-foreground = #cc282c34
 label-focused-padding = 1
 
 label-occupied = %icon%
-label-occupied-foreground = #26679C
+label-occupied-foreground = #61afef
 label-occupied-padding = 1
 
 label-urgent = %icon%
