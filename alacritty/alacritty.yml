@@ -275,7 +275,8 @@ colors:
 
   # Default colors
   primary:
-    foreground: '0xabb2bf'
+    #foreground: '0xabb2bf'
+    foreground: '0xC4C9D2'
     background: '0x282c34'
 
   # Cursor colors
@@ -358,8 +359,8 @@ bell:
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-background_opacity: 1
 background_opacity: 0.88
+background_opacity: 1
 
 selection:
   # This string contains all characters that are used as separators for

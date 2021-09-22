@@ -36,7 +36,7 @@ bspc rule -a Gpick state=floating
 
 ## Workspace 1 (Classes)
 bspc rule -a zoom desktop='^1' follow=on focus=on
-bspc rule -a zoom:Chat desktop='^1' state=floating
+bspc rule -a Chat desktop='^1' state=floating
 
 ## Workspace 2 (Web Browser)
 bspc rule -a Brave-browser desktop='^2' follow=on focus=on
