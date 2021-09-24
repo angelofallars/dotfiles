@@ -1,2 +1,3 @@
 //@theme "/usr/share/rofi/themes/Adapta-Nokto.rasi"
-@theme "/home/angelo_f/.config/rofi/themes/mytheme.rasi"
+//@theme "/home/angelo_f/.config/rofi/themes/mytheme.rasi"
+@theme "/home/angelo_f/.config/rofi/themes/onedark.rasi"

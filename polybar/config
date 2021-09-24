@@ -80,13 +80,13 @@ modules-center = date
 modules-right = pulseaudio backlight date2 menu-apps 
 
 tray-position = right
-tray-spacing-right = 4
+tray-spacing-right = 5
 
 wm-restack = bspwm
 override-redirect = true
 
-cursor-click = pointer
-cursor-scroll = ns-resize
+;cursor-click = pointer
+;cursor-scroll = ns-resize
 
 [module/osname]
 type = custom/text
@@ -398,14 +398,19 @@ expand-right = true
 ;
 ; Commands will be executed using "/bin/sh -c $COMMAND"
 
-menu-0-0 = OFF
-menu-0-0-exec = systemctl shutdown
-menu-0-1 = RESTART
+menu-0-0 = ﮣ
+menu-0-0-exec = systemctl poweroff -i
+menu-0-1 = ﰇ
 menu-0-1-exec = systemctl reboot
-menu-0-2 = SUSPEND
-menu-0-2-exec = systemctl suspend
-menu-0-3 = LOCK
+menu-0-2 = 
+menu-0-2-exec = zsh -c "i3lock -i ~/Pictures/randomnoise.png --{inside,ring}-color=282c3499 --{inside,ring}ver-color=61afefaa --{key,bs}hl-color=61afefff --separator-color=61afefff --line-uses-inside --{layout,time,date,greeter,verif,wrong,modif}-color=abb2bfff --{inside,ring}wrong-color=e06c75aa --{time,date,layout,verif,wrong,greeter}-font=\"JetBrains Mono\" -k --radius 108 --ring-width 12" ; systemctl suspend
+menu-0-3 = 
 menu-0-3-exec = zsh -c "i3lock -i ~/Pictures/randomnoise.png --{inside,ring}-color=282c3499 --{inside,ring}ver-color=61afefaa --{key,bs}hl-color=61afefff --separator-color=61afefff --line-uses-inside --{layout,time,date,greeter,verif,wrong,modif}-color=abb2bfff --{inside,ring}wrong-color=e06c75aa --{time,date,layout,verif,wrong,greeter}-font=\"JetBrains Mono\" -k --radius 108 --ring-width 12"
+
+menu-0-3-foreground = ${colors.onedark-red}
+menu-0-2-foreground = ${colors.onedark-yellow}
+menu-0-1-foreground = ${colors.onedark-green}
+menu-0-0-foreground = ${colors.onedark-cyan}
 
 [settings]
 screenchange-reload = true
