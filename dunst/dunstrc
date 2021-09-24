@@ -1,5 +1,5 @@
     [global]
-    font = Roboto 11
+    font = Roboto Medium 12
 
     # allow a small subset of html markup:
     # <b>bold</b>
@@ -66,7 +66,7 @@
     # right side of the screen.  Y is measured from the top and down respectevly.
     # The width can be negative. In this case the actual width is the
     # screen width minus the width defined in within the geometry option.
-    geometry = "450x5-20+28"
+    geometry = "450x5-15+33"
 
     # The transparency of the window. range: [0; 100]
     # This option will only work if a compositing windowmanager is present (e.g. xcompmgr, compiz, etc..)
@@ -132,7 +132,7 @@
 
 [frame]
     width = 4
-    color = "#1A6298"#"#0000FF"
+    color = "#61afef"#"#0000FF"
 
 [shortcuts]
     # shortcuts are specified as [modifier+][modifier+]...key
@@ -155,18 +155,18 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the '#' and following  would be interpreted as a comment.
-    background = "#EEEEEE"
-    foreground = "#101010"
-    timeout = 10
+    background = "#282c34"
+    foreground = "#C4C9D2"
+    timeout = 5
 
 [urgency_normal]
-    background = "#EEEEEE"
-    foreground = "#101010"
-    timeout = 10
+    background = "#282c34"
+    foreground = "#C4C9D2"
+    timeout = 5
 
 [urgency_critical]
-    background = "#EEEEEE"
-    foreground = "#101010"
+    background = "#282c34"
+    foreground = "#C4C9D2"
     timeout = 0
 
 

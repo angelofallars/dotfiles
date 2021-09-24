@@ -28,16 +28,24 @@ primary = #2972A7
 primary2 = #2D74B6
 primary-dark = #205281
 
+alert = #e06c75
+
 secondary = #e60053
-alert = #bd2c40
-alert-dark = #88202E
-;offwhite = #abb2bf
-offwhite = #C4C9D2
+offwhite = #D6DAE0
+
+onedark-blue = #61afef
+onedark-green = #98c379 
+onedark-red = #e06c75
+onedark-yellow = #e5c07b
+onedark-magenta = #c678dd
+onedark-cyan = #56b6c2
 
 [bar/mybar]
-width = 100%
-height = 24
+width = 1340
+height = 27
 radius = 0
+offset-x = 13
+offset-y = 0.07%
 fixed-center = true
 
 background = ${colors.background}
@@ -46,11 +54,11 @@ foreground = ${colors.foreground}
 line-size = 3
 line-color = #f00
 
-border-size = 0
+border-size = 3
 border-color = #000a0a0a
 
-padding-left = 2
-padding-right = 2
+padding-left = 0
+padding-right = 1
 
 module-margin-left = 0
 module-margin-right = 0
@@ -61,17 +69,18 @@ font-2 = siji:pixelsize=10;1
 font-3 = "Jetbrains Mono ExtraBold:pixelsize=6;3"
 font-4 = "Roboto Mono SemiBold:pixelsize=11;2"
 font-5 = "Roboto Condensed Bold:pixelsize=11;2"
-font-6 = "Symbols Nerd Font:pixelsize=14:antialias=true;3"
-font-7 = "Fira Sans Medium:pixelsize=10;3"
-font-8 = "Fira Sans Medium:pixelsize=10;3"
-font-9 = "Symbols Nerd Font:pixelsize=14:antialias=true;4"
+font-6 = "Symbols Nerd Font:pixelsize=15:antialias=true;4"
+font-7 = "JetBrains Mono SemiBold:pixelsize=10;3"
+font-8 = "JetBrains Mono SemiBold:pixelsize=10;3"
+font-9 = "Symbols Nerd Font:pixelsize=15:antialias=true;5"
+font-10 = "JetBrains Mono SemiBold:pixelsize=9;4"
 
-modules-left = osname i3 bspwm
-modules-center = xwindow
-modules-right = pulseaudio backlight date date2 powermenu
+modules-left = i3 bspwm mpd
+modules-center = date 
+modules-right = pulseaudio backlight date2 menu-apps 
 
-tray-position = right 
-tray-padding = 0
+tray-position = right
+tray-spacing-right = 4
 
 wm-restack = bspwm
 override-redirect = true
@@ -119,7 +128,7 @@ enable-scroll = true
 format = <label>
 format-padding = 1
 format-prefix = ""  
-format-prefix-foreground = #98c379
+format-prefix-foreground = ${colors.onedark-yellow}
 format-foreground = ${colors.offwhite}
 ; format-foreground = #D56616
 # format-underline = #5BA823
@@ -187,12 +196,12 @@ label-empty-font = 7
 format = <label-state>
 
 label-focused = %icon%
-label-focused-background = #61afef
-label-focused-foreground = #ff282c34
+label-focused-background = ${colors.onedark-blue}
+label-focused-foreground = ${colors.background}
 label-focused-padding = 1
 
 label-occupied = %icon%
-label-occupied-foreground = #61afef
+label-occupied-foreground = ${colors.onedark-blue}
 label-occupied-padding = 1
 
 label-urgent = %icon%
@@ -202,6 +211,8 @@ label-urgent-padding = 1
 label-empty = %icon%
 label-empty-foreground = ${colors.offwhite}
 label-empty-padding = 1
+
+format-padding = 1
 
 [module/i3]
 type = internal/i3
@@ -254,16 +265,34 @@ label-urgent-padding = 1
 
 [module/mpd]
 type = internal/mpd
-format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
+format-online = <bar-progress> <label-song>
+format-foreground = ${colors.offwhite}
+label-song-padding = 1
+label-song-foreground = ${colors.onedark-blue}
+label-song = %title% - %artist%
+label-font = 11
 
-icon-prev = 
-icon-stop = 
-icon-play = 
-icon-pause = 
-icon-next = 
+icon-play = 契
+icon-pause = 
+icon-stop = 栗
+icon-prev = 玲
+icon-next = 怜
+
+icon-play-font = 10
+icon-pause-font = 10
+icon-stop-font = 10
+icon-prev-font = 10
+icon-next-font = 10
 
 label-song-maxlen = 25
 label-song-ellipsis = true
+
+bar-progress-width = 12
+bar-progress-indicator = |
+bar-progress-fill = ─
+bar-progress-empty = ─
+bar-progress-spacing = 8
+
 
 [module/cpu]
 type = internal/cpu
@@ -302,12 +331,12 @@ format-foreground = ${colors.offwhite}
 label-font = 8
 format-padding = 1
 
-format-prefix = 
-format-prefix-foreground = #61afef
+;format-prefix = 
+format-prefix-foreground = ${colors.onedark-blue}
 
 time = %I:%M %p
 label = %time%
-label-padding-left = 1
+label-padding-left = 0
 
 [module/date2]
 type = internal/date
@@ -318,7 +347,7 @@ label-font = 8
 format-padding = 1
 
 format-prefix = 
-format-prefix-foreground = #c678dd
+format-prefix-foreground = ${colors.onedark-green}
 
 time = %a %m/%d
 label = %time%
@@ -329,7 +358,7 @@ type = internal/pulseaudio
 
 format-volume = <label-volume>
 format-volume-prefix = " "
-format-volume-prefix-foreground = #e5c07b
+format-volume-prefix-foreground = ${colors.onedark-red}
 
 format-volume-foreground = ${colors.offwhite}
 
@@ -338,55 +367,45 @@ label-volume-font = 8
 format-volume-padding = 1
 
 format-muted-prefix = "婢"
-format-muted-prefix-foreground = #e5c07b
+format-muted-prefix-foreground = ${colors.onedark-red}
 format-muted-font = 7
 label-muted = 0%
 label-muted-font = 8
-label-muted-foreground = #e5c07b
+label-muted-foreground = ${colors.onedark-blue}
 label-muted-padding = 1
 
-[module/github]
-type = internal/github
+[module/menu-apps]
+type = custom/menu
 
-; Accessing an access token stored in file
-token = ${file:/home/angelo_f/.token}
+format-prefix-padding = 1
+format-padding = 1
+format-foreground = ${colors.offwhite}
 
-; Accessing an access token stored in an environment variable
-; token = ${env:GITHUB_ACCESS_TOKEN}
+label-open = 
+label-open-foreground = ${colors.onedark-blue}
+label-close = 
+label-close-foreground = ${colors.onedark-blue}
+label-separator = |
+label-padding-left = 1
+format-font = 8
 
-; The github user for the token
-; If not specified, this module uses the deprecated method of accessing your
-; notifications, which may stop working at some point.
-user = angelo_f
+; If true, <label-toggle> will be to the left of the menu items (default).
+; If false, it will be on the right of all the items.
+expand-right = true
 
-; Whether empty notifications should be displayed or not
-empty-notifications = false
+; "menu-LEVEL-N" has the same properties as "label-NAME" with
+; the additional "exec" property
+;
+; Commands will be executed using "/bin/sh -c $COMMAND"
 
-; Number of seconds in between requests
-interval = 10
-
-; Github API URL
-; Default: https://api.github.com/
-api-url = https://api.github.com/
-
-; Available tags:
-;   <label> (default)
-format = <label>
-
-; Available tokens:
-;   %notifications% (default)
-; Default: Notifications: %notifications%
-label = Notifications: %notifications%
-
-; Used when GitHub can't be reached
-; Available tags:
-;   <label-offline> (default)
-format-offline = <label-offline>
-
-; Available tokens:
-;   None
-; Default: Offline
-label-offline = Offline
+menu-0-0 = OFF
+menu-0-0-exec = systemctl shutdown
+menu-0-1 = RESTART
+menu-0-1-exec = systemctl reboot
+menu-0-2 = SUSPEND
+menu-0-2-exec = systemctl suspend
+menu-0-3 = LOCK
+menu-0-3-exec = zsh -c "i3lock -i ~/Pictures/randomnoise.png --{inside,ring}-color=282c3499 --{inside,ring}ver-color=61afefaa --{key,bs}hl-color=61afefff --separator-color=61afefff --line-uses-inside --{layout,time,date,greeter,verif,wrong,modif}-color=abb2bfff --{inside,ring}wrong-color=e06c75aa --{time,date,layout,verif,wrong,greeter}-font=\"JetBrains Mono\" -k --radius 108 --ring-width 12"
 
 [settings]
 screenchange-reload = true

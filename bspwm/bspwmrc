@@ -4,21 +4,22 @@ pgrep -x sxhkd > /dev/null || sxhkd &
 
 bspc monitor -d 1 2 3 4 5 6 7 8
 
-bspc config border_width         2
+bspc config border_width         3
 bspc config window_gap           9
 # Completely covered
 bspc config window_gap           6
-bspc config left_padding         6
-bspc config right_padding        6
-bspc config top_padding          21
-bspc config bottom_padding       -3
+bspc config left_padding         10
+bspc config right_padding        10
+bspc config top_padding          31
+bspc config bottom_padding       4
 
 # Polybar
 killall polybar ; polybar mybar &
 
 # Colors
-bspc config focused_border_color "#5599D1"
-bspc config normal_border_color  "#23272E"
+#bspc config focused_border_color "#5599D1"
+bspc config focused_border_color "#656F83"
+bspc config normal_border_color  "#1D2025"
 
 bspc config split_ratio          0.52
 bspc config borderless_monocle   true

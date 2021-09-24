@@ -11,7 +11,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " File manager
 Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
+" Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " Instant markdown results in browser
 " Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown', 'do': 'yarn install'}
@@ -19,12 +19,15 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 " PEP8 linter
 Plug 'dense-analysis/ale'
 
+" Smooth scrolling
+Plug 'psliwka/vim-smoothie'
+
 " Fuzzy finder
 " Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 " Plug 'junegunn/fzf.vim'
 
 " Fancy NERDFont symbols
-Plug 'ryanoasis/vim-devicons'
+" Plug 'ryanoasis/vim-devicons'
 
 " Automatic pairing of () [] and {}
 " Plug 'jiangmiao/auto-pairs'
@@ -40,7 +43,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
 
 " Show git branch and add :Git functionality
-Plug 'tpope/vim-fugitive'
+" Plug 'tpope/vim-fugitive'
 
 call plug#end()
 
