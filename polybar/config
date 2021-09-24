@@ -34,7 +34,7 @@ secondary = #e60053
 offwhite = #D6DAE0
 
 onedark-blue = #61afef
-onedark-green = #98c379 
+onedark-green = #98c379
 onedark-red = #e06c75
 onedark-yellow = #e5c07b
 onedark-magenta = #c678dd
@@ -76,8 +76,8 @@ font-9 = "Symbols Nerd Font:pixelsize=15:antialias=true;5"
 font-10 = "JetBrains Mono SemiBold:pixelsize=9;4"
 
 modules-left = i3 bspwm mpd
-modules-center = date 
-modules-right = pulseaudio backlight date2 menu-apps 
+modules-center = date
+modules-right = pulseaudio backlight date2 menu-apps
 
 tray-position = right
 tray-spacing-right = 5
@@ -113,7 +113,7 @@ use-actual-brightness = true
 ; NOTE: This may require additional configuration on some systems. Polybar will
 ; write to `/sys/class/backlight/${self.card}/brightness` which requires polybar
 ; to have write access to that file.
-; DO NOT RUN POLYBAR AS ROOT. 
+; DO NOT RUN POLYBAR AS ROOT.
 ; The recommended way is to add the user to the
 ; `video` group and give that group write-privileges for the `brightness` file.
 ; See the ArchWiki for more information:
@@ -127,7 +127,7 @@ enable-scroll = true
 ;   <bar>
 format = <label>
 format-padding = 1
-format-prefix = ""  
+format-prefix = ""
 format-prefix-foreground = ${colors.onedark-yellow}
 format-foreground = ${colors.offwhite}
 ; format-foreground = #D56616
