@@ -41,11 +41,12 @@ onedark-magenta = #c678dd
 onedark-cyan = #56b6c2
 
 [bar/mybar]
-width = 1340
+;width = 1340
+width = 100%
 height = 27
 radius = 0
-offset-x = 13
-offset-y = 0.07%
+;offset-x = 13
+;offset-y = 0.07%
 fixed-center = true
 
 background = ${colors.background}
@@ -54,11 +55,11 @@ foreground = ${colors.foreground}
 line-size = 3
 line-color = #f00
 
-border-size = 3
+border-size = 0
 border-color = #000a0a0a
 
-padding-left = 0
-padding-right = 1
+padding-left = 1
+padding-right = 2
 
 module-margin-left = 0
 module-margin-right = 0
@@ -79,14 +80,13 @@ modules-left = i3 bspwm mpd
 modules-center = date
 modules-right = pulseaudio backlight date2 menu-apps
 
-tray-position = right
-tray-spacing-right = 5
+tray-position = none
 
 wm-restack = bspwm
 override-redirect = true
 
-;cursor-click = pointer
-;cursor-scroll = ns-resize
+cursor-click = pointer
+cursor-scroll = ns-resize
 
 [module/osname]
 type = custom/text
@@ -126,12 +126,11 @@ enable-scroll = true
 ;   <ramp>
 ;   <bar>
 format = <label>
-format-padding = 1
+format-margin = 1
 format-prefix = ""
 format-prefix-foreground = ${colors.onedark-yellow}
 format-foreground = ${colors.offwhite}
-; format-foreground = #D56616
-# format-underline = #5BA823
+format-underline = ${colors.onedark-yellow}
 
 ; Available tokens:
 ;   %percentage% (default)
@@ -328,11 +327,12 @@ type = internal/date
 interval = 5
 
 format-foreground = ${colors.offwhite}
+format-underline = ${colors.onedark-blue}
 label-font = 8
 format-padding = 1
 
 ;format-prefix = 
-format-prefix-foreground = ${colors.onedark-blue}
+format-prefix-foreground = ${colors.background}
 
 time = %I:%M %p
 label = %time%
@@ -343,11 +343,12 @@ type = internal/date
 interval = 120
 
 format-foreground = ${colors.offwhite}
+format-margin = 1
 label-font = 8
-format-padding = 1
 
 format-prefix = 
 format-prefix-foreground = ${colors.onedark-green}
+format-underline = ${colors.onedark-green}
 
 time = %a %m/%d
 label = %time%
@@ -358,21 +359,25 @@ type = internal/pulseaudio
 
 format-volume = <label-volume>
 format-volume-prefix = " "
+
 format-volume-prefix-foreground = ${colors.onedark-red}
+format-volume-underline = ${colors.onedark-red}
 
 format-volume-foreground = ${colors.offwhite}
+format-margin = 1
 
 label-volume = %percentage%%
 label-volume-font = 8
-format-volume-padding = 1
 
 format-muted-prefix = "婢"
 format-muted-prefix-foreground = ${colors.onedark-red}
 format-muted-font = 7
-label-muted = 0%
+
+label-muted = N/A
 label-muted-font = 8
-label-muted-foreground = ${colors.onedark-blue}
-label-muted-padding = 1
+label-muted-foreground = ${colors.offwhite}
+format-muted-underline = ${colors.onedark-red}
+label-muted-padding-left = 1
 
 [module/menu-apps]
 type = custom/menu
@@ -382,9 +387,15 @@ format-padding = 1
 format-foreground = ${colors.offwhite}
 
 label-open = 
-label-open-foreground = ${colors.onedark-blue}
-label-close = 
-label-close-foreground = ${colors.onedark-blue}
+label-open-foreground = ${colors.background}
+label-open-background = ${colors.onedark-blue}
+label-open-padding = 1
+
+label-close = 
+label-close-foreground = ${colors.background}
+label-close-background = ${colors.onedark-blue}
+label-close-padding = 1
+
 label-separator = |
 label-padding-left = 1
 format-font = 8
@@ -398,14 +409,14 @@ expand-right = true
 ;
 ; Commands will be executed using "/bin/sh -c $COMMAND"
 
-menu-0-0 = ﮣ
-menu-0-0-exec = systemctl poweroff -i
-menu-0-1 = ﰇ
-menu-0-1-exec = systemctl reboot
-menu-0-2 = 
-menu-0-2-exec = zsh -c "i3lock -i ~/Pictures/randomnoise.png --{inside,ring}-color=282c3499 --{inside,ring}ver-color=61afefaa --{key,bs}hl-color=61afefff --separator-color=61afefff --line-uses-inside --{layout,time,date,greeter,verif,wrong,modif}-color=abb2bfff --{inside,ring}wrong-color=e06c75aa --{time,date,layout,verif,wrong,greeter}-font=\"JetBrains Mono\" -k --radius 108 --ring-width 12" ; systemctl suspend
-menu-0-3 = 
-menu-0-3-exec = zsh -c "i3lock -i ~/Pictures/randomnoise.png --{inside,ring}-color=282c3499 --{inside,ring}ver-color=61afefaa --{key,bs}hl-color=61afefff --separator-color=61afefff --line-uses-inside --{layout,time,date,greeter,verif,wrong,modif}-color=abb2bfff --{inside,ring}wrong-color=e06c75aa --{time,date,layout,verif,wrong,greeter}-font=\"JetBrains Mono\" -k --radius 108 --ring-width 12"
+menu-0-0 = SHUTDOWN
+menu-0-0-exec = zenity --question --text "Shut down the computer?" && systemctl poweroff -i
+menu-0-1 = ﰇRESTART
+menu-0-1-exec = zenity --question --text "Restart the computer?" && systemctl reboot
+menu-0-2 = SLEEP
+menu-0-2-exec = zenity --question --text "Put the computer in Sleep mode?" && zsh -c "i3lock -i ~/Pictures/randomnoise.png --{inside,ring}-color=282c3499 --{inside,ring}ver-color=61afefaa --{key,bs}hl-color=61afefff --separator-color=61afefff --line-uses-inside --{layout,time,date,greeter,verif,wrong,modif}-color=abb2bfff --{inside,ring}wrong-color=e06c75aa --{time,date,layout,verif,wrong,greeter}-font=\"JetBrains Mono\" -k --radius 108 --ring-width 12" ; systemctl suspend
+menu-0-3 = LOCK
+menu-0-3-exec = zenity --question --text "Lock the computer?" && zsh -c "i3lock -i ~/Pictures/randomnoise.png --{inside,ring}-color=282c3499 --{inside,ring}ver-color=61afefaa --{key,bs}hl-color=61afefff --separator-color=61afefff --line-uses-inside --{layout,time,date,greeter,verif,wrong,modif}-color=abb2bfff --{inside,ring}wrong-color=e06c75aa --{time,date,layout,verif,wrong,greeter}-font=\"JetBrains Mono\" -k --radius 108 --ring-width 12"
 
 menu-0-3-foreground = ${colors.onedark-red}
 menu-0-2-foreground = ${colors.onedark-yellow}

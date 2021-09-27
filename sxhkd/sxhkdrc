@@ -62,8 +62,10 @@ super + shift + {p,r}
 	bspc {quit,wm -r | killall polybar | polybar mybar &}
 
 # close and kill
-super + {_,shift + }q
-	bspc node -{k,c}
+#super + {_,shift + }q
+#	bspc node -{k,c}
+super + shift + q
+	bspc node -c
 
 # alternate between the tiled and monocle layout
 super + m

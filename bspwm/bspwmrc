@@ -87,10 +87,9 @@ bspc rule -a Xfce4-settings-manager desktop='^8' follow=on focus=on state=floati
 xsetroot -cursor_name left_ptr
 
 # Picom
-#killall picom ; picom  --vsync --backend glx -CGb -o 0 -i 1 --unredir-if-possible --glx-no-stencil -D 8 --glx-no-rebind-pixmap -m 100 &
 killall picom ; picom -b &
 # Background
-killall feh ; feh --bg-fill ~/Pictures/bluewall.png &
+killall feh ; feh --bg-fill ~/.config/wallpapers/robots.jpg
 # Night light
 # killall redshift ; killall redshift ; redshift -l 14.599512:120.984222 &
 # Remap control key and caps lock
