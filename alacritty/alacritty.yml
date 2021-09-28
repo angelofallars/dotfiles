@@ -46,8 +46,8 @@ window:
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
   padding:
-    x: 10
-    y: 5
+    x: 11
+    y: 7
 
   # Spread additional padding evenly around the terminal content.
   #dynamic_padding: false
@@ -111,10 +111,10 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: JetBrains Mono NL
+    family: Fira Code
 
     # The `style` can be specified to pick a specific face.
-    style: semibold
+    style: Medium
 
   # Bold font face
   bold:
@@ -122,10 +122,10 @@ font:
     #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: JetBrains Mono
+    family: Fira Code
 
     # The `style` can be specified to pick a specific face.
-    style: ExtraBold
+    style: Bold
 
   # Italic font face
   italic:
@@ -133,7 +133,7 @@ font:
     #
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: JetBrains Mono
+    family: Fira Code
 
     # The `style` can be specified to pick a specific face.
     style: Italic
@@ -144,7 +144,7 @@ font:
     #
     # If the bold italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: JetBrains Mono
+    family: Fira Code
 
     # The `style` can be specified to pick a specific face.
     style: Bold Italic
@@ -360,7 +360,7 @@ bell:
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
 background_opacity: 1
-background_opacity: 0.87
+background_opacity: 0.82
 
 selection:
   # This string contains all characters that are used as separators for

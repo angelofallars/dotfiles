@@ -18,12 +18,14 @@ killall polybar ; polybar mybar &
 
 # Colors
 #bspc config focused_border_color "#5599D1"
-bspc config focused_border_color "#656F83"
-bspc config normal_border_color  "#1D2025"
+bspc config focused_border_color "#505768"
+bspc config normal_border_color  "#30343E"
 
 bspc config split_ratio          0.52
 bspc config borderless_monocle   true
 bspc config gapless_monocle      false
+
+# bspc config border_radius 20
 
 ##################
 ## Window rules ##

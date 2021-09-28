@@ -58,7 +58,7 @@ line-color = #f00
 border-size = 0
 border-color = #000a0a0a
 
-padding-left = 1
+padding-left = 2
 padding-right = 2
 
 module-margin-left = 0
@@ -71,16 +71,17 @@ font-3 = "Jetbrains Mono ExtraBold:pixelsize=6;3"
 font-4 = "Roboto Mono SemiBold:pixelsize=11;2"
 font-5 = "Roboto Condensed Bold:pixelsize=11;2"
 font-6 = "Symbols Nerd Font:pixelsize=15:antialias=true;4"
-font-7 = "JetBrains Mono SemiBold:pixelsize=10;3"
-font-8 = "JetBrains Mono SemiBold:pixelsize=10;3"
+font-7 = "Fira Code SemiBold:pixelsize=10;3"
+font-8 = "Fira Code SemiBold:pixelsize=10;3"
 font-9 = "Symbols Nerd Font:pixelsize=15:antialias=true;5"
 font-10 = "JetBrains Mono SemiBold:pixelsize=9;4"
+font-11 = "Symbols Nerd Font:pixelsize=16:antialias=true;4"
 
 modules-left = i3 bspwm mpd
 modules-center = date
 modules-right = pulseaudio backlight date2 menu-apps
 
-tray-position = none
+tray-position = right
 
 wm-restack = bspwm
 override-redirect = true
@@ -187,29 +188,34 @@ ws-icon-6 = 7;
 ws-icon-7 = 8;漣
 ws-icon-default = 
 
-label-focused-font = 7
-label-occupied-font = 7
-label-urgent-font = 7
-label-empty-font = 7
+label-focused-font = 12
+label-occupied-font = 12
+label-urgent-font = 12
+label-empty-font = 12
 
 format = <label-state>
 
-label-focused = %icon%
-label-focused-background = ${colors.onedark-blue}
-label-focused-foreground = ${colors.background}
-label-focused-padding = 1
+;label-focused = %icon%
+label-focused = 
+;label-focused-background = ${colors.onedark-blue}
+;label-focused-foreground = ${colors.background}
+label-focused-foreground = ${colors.onedark-blue}
+label-focused-padding-right = 1
 
-label-occupied = %icon%
+;label-occupied = %icon%
+label-occupied = 
 label-occupied-foreground = ${colors.onedark-blue}
-label-occupied-padding = 1
+label-occupied-padding-right = 1
 
-label-urgent = %icon%
+;label-urgent = %icon%
+label-urgent = 
 label-urgent-foreground = ${colors.alert}
-label-urgent-padding = 1
+label-urgent-padding-right = 1
 
-label-empty = %icon%
+;label-empty = %icon%
+label-empty = 
 label-empty-foreground = ${colors.offwhite}
-label-empty-padding = 1
+label-empty-padding-right = 1
 
 format-padding = 1
 
@@ -343,7 +349,7 @@ type = internal/date
 interval = 120
 
 format-foreground = ${colors.offwhite}
-format-margin = 1
+;format-margin = 1
 label-font = 8
 
 format-prefix = 
