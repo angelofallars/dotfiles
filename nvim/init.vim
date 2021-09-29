@@ -7,7 +7,7 @@ call plug#begin()
 Plug 'andweeb/presence.nvim'
 
 " Popular LSP provider
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " File manager
 Plug 'scrooloose/nerdtree'
@@ -17,7 +17,7 @@ Plug 'scrooloose/nerdtree'
 " Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown', 'do': 'yarn install'}
 
 " PEP8 linter
-Plug 'dense-analysis/ale'
+" Plug 'dense-analysis/ale'
 
 " Smooth scrolling
 Plug 'psliwka/vim-smoothie'

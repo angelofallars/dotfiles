@@ -1,6 +1,6 @@
 # 📂 dotfiles
 
-My dotfiles for software development on Arch Linux.
+My dotfiles for software development on Void Linux.
 
 ## 🤖 Programs
 
@@ -8,8 +8,6 @@ My dotfiles for software development on Arch Linux.
 * Polybar
 * Neovim
 * Alacritty
-* Conky
-* Ranger
 
-![image1](https://i.imgur.com/BiukM5V.png)
-![image2](https://i.imgur.com/o2wW9Ye.png)
+![image1](https://cdn.discordapp.com/attachments/518205487091548314/892810221444022303/Sep-30-2021_1223AM-45s.png)
+![image2](https://cdn.discordapp.com/attachments/518205487091548314/892810152300933130/unknown.png)

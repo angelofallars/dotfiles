@@ -10,17 +10,13 @@ super + Return
 super + d
     rofi -show drun -show-icons
 
-# alt-tab
-alt + Tab
-    rofi -show window -show-icons
-
-# thunar
+# file manager
 alt + f
     thunar
 
-# music
-alt + m
-    alacritty -e cmus
+# alt-tab
+alt + Tab
+    rofi -show window -show-icons
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -36,9 +32,9 @@ super + F6
 
 # --- Brightness control ---
 super + F2
-    brightnessctl set 10%-
+    xbacklight -dec 10
 super + F3
-    brightnessctl set +10%
+    xbacklight -inc 10
 
 
 # Screenshot

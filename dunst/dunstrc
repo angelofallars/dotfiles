@@ -1,5 +1,5 @@
     [global]
-    font = Roboto Medium 12
+    font = Fira Code Medium 11
 
     # allow a small subset of html markup:
     # <b>bold</b>
@@ -13,7 +13,7 @@
 
     #show_indicators=true
     icon_position=left
-    icon_folders = "/usr/share/icons/Adwaita++/apps/48/:/usr/share/icons/adwaita/48x48/status/:/usr/share/icons/adwaita/48x48/devices/"
+    icon_folders = "~/.local/share/icons/McMojave-circle-blue/apps/scalable:~/.local/share/icons/McMojave-circle-blue/status/32:~/.local/share/icons/McMojave-circle-blue/devices/24"
     max_icon_size=48
     shrink=yes
 
@@ -26,7 +26,8 @@
     #   %p  progress value if set ([  0%] to [100%]) or nothing
     # Markup is allowed
     #format = "<b>%s</b>\n%b"
-    format = "%s\n%b\n\n<i>%a</i>"
+    #format = "%s\n%b\n\n<i>%a</i>"
+    format = "<b>%s</b>\n%b"
 
     # Sort messages by urgency
     sort = yes
@@ -66,11 +67,11 @@
     # right side of the screen.  Y is measured from the top and down respectevly.
     # The width can be negative. In this case the actual width is the
     # screen width minus the width defined in within the geometry option.
-    geometry = "450x5-15+33"
+    geometry = "750x5-16+37"
 
     # The transparency of the window. range: [0; 100]
     # This option will only work if a compositing windowmanager is present (e.g. xcompmgr, compiz, etc..)
-    transparency = 5
+    transparency = 0
 
     # Don't remove messages, if the user is idle (no mouse or keyboard input)
     # for longer than idle_threshold seconds.
@@ -131,8 +132,8 @@
     browser = /usr/bin/brave -new-tab
 
 [frame]
-    width = 4
-    color = "#61afef"#"#0000FF"
+    width = 0
+    color = "#282c34"#"#0000FF"
 
 [shortcuts]
     # shortcuts are specified as [modifier+][modifier+]...key
@@ -155,18 +156,18 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the '#' and following  would be interpreted as a comment.
-    background = "#282c34"
-    foreground = "#C4C9D2"
+    background = "#98c379"
+    foreground = "#282c34"
     timeout = 5
 
 [urgency_normal]
-    background = "#282c34"
-    foreground = "#C4C9D2"
+    background = "#98c379"
+    foreground = "#282c34"
     timeout = 5
 
 [urgency_critical]
-    background = "#282c34"
-    foreground = "#C4C9D2"
+    background = "#98c379"
+    foreground = "#282c34"
     timeout = 0
 
 

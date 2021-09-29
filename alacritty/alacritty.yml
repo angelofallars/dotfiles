@@ -46,8 +46,8 @@ window:
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
   padding:
-    x: 11
-    y: 7
+    x: 10
+    y: 5
 
   # Spread additional padding evenly around the terminal content.
   #dynamic_padding: false
@@ -147,7 +147,7 @@ font:
     family: Fira Code
 
     # The `style` can be specified to pick a specific face.
-    style: Bold Italic
+    style: Extra Bold Italic
 
   # Point size
   size: 9.8
@@ -173,7 +173,7 @@ font:
   #use_thin_strokes: true
 
 # If `true`, bold text is drawn using the bright color variants.
-  draw_bold_text_with_bright_colors: true
+draw_bold_text_with_bright_colors: true
 
     # Bright and dim foreground colors
     #
@@ -197,9 +197,9 @@ font:
   #
   # Allowed values are CellForeground/CellBackground, which reference the
   # affected cell, or hexadecimal colors like #ff00ff.
-  vi_mode_cursor:
-    text: CellBackground
-    cursor: CellForeground
+  #vi_mode_cursor:
+  #  text: CellBackground
+  #  cursor: CellForeground
 
   # Search colors
   #
@@ -252,9 +252,9 @@ font:
   #
   # Allowed values are CellForeground/CellBackground, which reference the
   # affected cell, or hexadecimal colors like #ff00ff.
-  selection:
-    text: CellForeground
-    background: CellBackground
+  #selection:
+  #  text: CellBackground
+  #  background: CellForeground
 
 
   # Indexed Colors
@@ -360,7 +360,7 @@ bell:
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
 background_opacity: 1
-background_opacity: 0.82
+background_opacity: 0.74
 
 selection:
   # This string contains all characters that are used as separators for

@@ -43,7 +43,7 @@ onedark-cyan = #56b6c2
 [bar/mybar]
 ;width = 1340
 width = 100%
-height = 27
+height = 24
 radius = 0
 ;offset-x = 13
 ;offset-y = 0.07%
@@ -56,10 +56,10 @@ line-size = 3
 line-color = #f00
 
 border-size = 0
-border-color = #000a0a0a
+border-color = ${colors.background}
 
-padding-left = 2
-padding-right = 2
+padding-left = 5
+padding-right = 6
 
 module-margin-left = 0
 module-margin-right = 0
@@ -71,23 +71,82 @@ font-3 = "Jetbrains Mono ExtraBold:pixelsize=6;3"
 font-4 = "Roboto Mono SemiBold:pixelsize=11;2"
 font-5 = "Roboto Condensed Bold:pixelsize=11;2"
 font-6 = "Symbols Nerd Font:pixelsize=15:antialias=true;4"
-font-7 = "Fira Code SemiBold:pixelsize=10;3"
-font-8 = "Fira Code SemiBold:pixelsize=10;3"
-font-9 = "Symbols Nerd Font:pixelsize=15:antialias=true;5"
-font-10 = "JetBrains Mono SemiBold:pixelsize=9;4"
-font-11 = "Symbols Nerd Font:pixelsize=16:antialias=true;4"
+font-7 = "Fira Code Medium:pixelsize=10;3"
+font-8 = "Fira Code Semibold:pixelsize=10;3"
+font-9 = "Symbols Nerd Font:pixelsize=15:antialias=true;4"
+font-10 = "JetBrains Mono SemiBold:pixelsize=9;3"
+font-11 = "JetBrainsMono Nerd Font Mono:pixelsize=21:antialias=true;5"
+font-12 = "Open Sans ExtraBold:pixelsize=11;3"
 
-modules-left = i3 bspwm mpd
+modules-left = bspwm i3 xwindow
 modules-center = date
-modules-right = pulseaudio backlight date2 menu-apps
+modules-right = pulseaudio backlight filesystem network date2 
 
-tray-position = right
+tray-position = none
+tray-detached = true
+tray-offset-x = -295
 
 wm-restack = bspwm
 override-redirect = true
 
-cursor-click = pointer
-cursor-scroll = ns-resize
+;cursor-click = pointer
+;cursor-scroll = ns-resize
+
+[module/network]
+type = internal/network
+interface = wlp2s0
+
+interval = 5.0
+
+format-connected-prefix = ""
+format-disconnected-prefix = "睊"
+
+label-connected-font = 8
+format-connected-background = ${colors.onedark-blue}
+format-connected-foreground = ${colors.background}
+
+label-disconnected-font = 8
+format-disconnected-background = ${colors.onedark-blue}
+format-disconnected-foreground = ${colors.background}
+
+;udspeed-minwidth = 4
+format-connected-padding = 2
+format-disconnected-padding = 2
+
+accumulate-stats = true
+
+unknown-as-up = true
+
+format-connected = <label-connected>
+format-disconnected = <label-disconnected>
+
+label-connected = %downspeed:8:8%
+label-connected-padding-left = 1
+label-disconnected = N/A
+label-disconnected-padding-left = 1
+
+[module/filesystem]
+type = internal/fs
+
+interval = 120
+
+format-mounted-prefix = 
+mount-0 = /
+
+format-mounted-background = ${colors.onedark-green}
+format-mounted-foreground = ${colors.background}
+
+label-mounted-font = 8
+format-mounted-padding = 2
+label-mounted-padding-left = 2
+
+label-mounted = %free:3:3%G
+
+[module/sep]
+type = custom/text
+content = >>
+content-font = 13
+content-padding = 3
 
 [module/osname]
 type = custom/text
@@ -100,43 +159,20 @@ content-padding = 1
 [module/backlight]
 type = internal/backlight
 
-; Use the following command to list available cards:
-; $ ls -1 /sys/class/backlight/
 card = intel_backlight
-
-; (unreleased)
-; Use the `/sys/class/backlight/actual-brightness` file
-; rather than the regular `brightness` file.
-; Defaults to true unless the specified card is an amdgpu backlight.
 use-actual-brightness = true
-
-; Enable changing the backlight with the scroll wheel
-; NOTE: This may require additional configuration on some systems. Polybar will
-; write to `/sys/class/backlight/${self.card}/brightness` which requires polybar
-; to have write access to that file.
-; DO NOT RUN POLYBAR AS ROOT.
-; The recommended way is to add the user to the
-; `video` group and give that group write-privileges for the `brightness` file.
-; See the ArchWiki for more information:
-; https://wiki.archlinux.org/index.php/Backlight#ACPI
-; Default: false
 enable-scroll = true
 
-; Available tags:
-;   <label> (default)
-;   <ramp>
-;   <bar>
 format = <label>
-format-margin = 1
+format-padding = 2
 format-prefix = ""
-format-prefix-foreground = ${colors.onedark-yellow}
-format-foreground = ${colors.offwhite}
-format-underline = ${colors.onedark-yellow}
 
-; Available tokens:
-;   %percentage% (default)
-label = %percentage%%
-label-padding-left = 1
+format-background = ${colors.onedark-yellow}
+format-prefix-foreground = ${colors.background}
+format-foreground = ${colors.background}
+
+label = %percentage:3:3%
+label-padding-left = 2
 label-font = 8
 
 [module/xwindow]
@@ -146,34 +182,8 @@ format = <label>
 format-padding = 1
 
 label = %title:0:40:...%
-label-font = 9
+label-font = 8
 label-foreground = ${colors.offwhite}
-
-[module/xkeyboard]
-type = internal/xkeyboard
-blacklist-0 = num lock
-
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-format-prefix-underline = ${colors.secondary}
-
-label-layout = %layout%
-label-layout-underline = ${colors.secondary}
-
-label-indicator-padding = 2
-label-indicator-margin = 1
-label-indicator-background = ${colors.secondary}
-label-indicator-underline = ${colors.secondary}
-
-[module/filesystem]
-type = internal/fs
-interval = 25
-
-mount-0 = /
-
-label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
-label-unmounted = %mountpoint% not mounted
-label-unmounted-foreground = ${colors.foreground-alt}
 
 [module/bspwm]
 type = internal/bspwm
@@ -199,74 +209,25 @@ format = <label-state>
 label-focused = 
 ;label-focused-background = ${colors.onedark-blue}
 ;label-focused-foreground = ${colors.background}
-label-focused-foreground = ${colors.onedark-blue}
+label-focused-foreground = ${colors.onedark-green}
 label-focused-padding-right = 1
 
 ;label-occupied = %icon%
 label-occupied = 
-label-occupied-foreground = ${colors.onedark-blue}
+label-occupied-foreground = ${colors.onedark-green}
 label-occupied-padding-right = 1
 
 ;label-urgent = %icon%
-label-urgent = 
-label-urgent-foreground = ${colors.alert}
+label-urgent = 
+label-urgent-foreground = ${colors.onedark-red}
 label-urgent-padding-right = 1
 
 ;label-empty = %icon%
-label-empty = 
+label-empty = 
 label-empty-foreground = ${colors.offwhite}
 label-empty-padding-right = 1
 
 format-padding = 1
-
-[module/i3]
-type = internal/i3
-format = <label-state> <label-mode>
-index-sort = true
-wrapping-scroll = false
-
-; Set font
-label-focused-font = 4
-label-unfocused-font = 4
-label-visible-font = 4
-label-urgent-font = 4
-
-; Only sho orkspaces on the same output as the bar
-;pin-orkspaces = true
-
-label-mode-padding = 1
-label-mode-foreground = #dddddd
-label-mode-background = ${colors.primary}
-label-mode-font = 6
-
-; focused = Active orkspace on focused monitor
-label-focused = 
-label-focused-background = ${colors.primary}
-label-focused-underline= ${colors.primary-dark}
-label-focused-padding = 1
-
-; unfocused = Inactive orkspace on any monitor
-label-unfocused = 
-label-unfocused-padding = 1
-label-unfocused-background = #c7c7c7
-label-unfocused-foreground = ${colors.background2}
-label-unfocused-underline = #8B8B8B
-
-; visible = Active orkspace on unfocused monitor
-label-visible = 
-label-visible-background = ${self.label-focused-background}
-label-visible-underline = ${self.label-focused-underline}
-label-visible-padding = ${self.label-focused-padding}
-
-; urgent = Workspace ith urgency hint set
-label-urgent = 
-label-urgent-background = ${colors.alert}
-label-urgent-underline = ${colors.alert-dark}
-label-urgent-padding = 1
-
-; Separator in beteen orkspaces
-; label-separator = -
-
 
 [module/mpd]
 type = internal/mpd
@@ -298,46 +259,14 @@ bar-progress-fill = ─
 bar-progress-empty = ─
 bar-progress-spacing = 8
 
-
-[module/cpu]
-type = internal/cpu
-interval = 2
-format = <label>
-
-format-prefix = ""
-format-prefix-foreground = #93A83D
-
-format-foreground = #93A83D
-format-padding = 1
-
-label = %percentage:2%%
-label-padding-left = 1
-label-font = 8
-
-[module/memory]
-type = internal/memory
-interval = 2
-format = <label>
-
-format-prefix = ""
-format-prefix-foreground = #23A848
-format-foreground = #23A848
-format-padding = 1
-
-label = %percentage_used%%
-label-padding-left = 1
-label-font = 8
-
 [module/date]
 type = internal/date
 interval = 5
 
 format-foreground = ${colors.offwhite}
-format-underline = ${colors.onedark-blue}
-label-font = 8
+label-font = 9
 format-padding = 1
 
-;format-prefix = 
 format-prefix-foreground = ${colors.background}
 
 time = %I:%M %p
@@ -348,42 +277,45 @@ label-padding-left = 0
 type = internal/date
 interval = 120
 
-format-foreground = ${colors.offwhite}
-;format-margin = 1
+format-background = ${colors.onedark-magenta}
+format-foreground = ${colors.background}
+format-prefix-foreground = ${colors.background}
+
+format-padding = 2
 label-font = 8
 
 format-prefix = 
-format-prefix-foreground = ${colors.onedark-green}
-format-underline = ${colors.onedark-green}
 
 time = %a %m/%d
 label = %time%
-label-padding-left = 1
+label-padding-left = 2
 
 [module/pulseaudio]
 type = internal/pulseaudio
 
 format-volume = <label-volume>
 format-volume-prefix = " "
+format-volume-padding = 2
 
-format-volume-prefix-foreground = ${colors.onedark-red}
-format-volume-underline = ${colors.onedark-red}
+format-volume-background = ${colors.onedark-red}
+format-volume-prefix-foreground = ${colors.background}
+format-volume-foreground = ${colors.background}
 
-format-volume-foreground = ${colors.offwhite}
-format-margin = 1
+format-muted-background = ${colors.onedark-red}
+format-muted-prefix-foreground = ${colors.background}
+format-muted-foreground = ${colors.background}
+format-muted-padding = 2
 
-label-volume = %percentage%%
+
+label-volume = %percentage:3:3%
+label-volume-padding-left = 2
 label-volume-font = 8
 
-format-muted-prefix = "婢"
-format-muted-prefix-foreground = ${colors.onedark-red}
-format-muted-font = 7
+format-muted-prefix = 婢
 
-label-muted = N/A
+label-muted = "N/A "
 label-muted-font = 8
-label-muted-foreground = ${colors.offwhite}
-format-muted-underline = ${colors.onedark-red}
-label-muted-padding-left = 1
+label-muted-padding-left = 2
 
 [module/menu-apps]
 type = custom/menu
@@ -394,12 +326,12 @@ format-foreground = ${colors.offwhite}
 
 label-open = 
 label-open-foreground = ${colors.background}
-label-open-background = ${colors.onedark-blue}
+label-open-background = ${colors.onedark-green}
 label-open-padding = 1
 
 label-close = 
 label-close-foreground = ${colors.background}
-label-close-background = ${colors.onedark-blue}
+label-close-background = ${colors.onedark-green}
 label-close-padding = 1
 
 label-separator = |
