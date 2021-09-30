@@ -78,13 +78,14 @@ font-10 = "JetBrains Mono SemiBold:pixelsize=9;3"
 font-11 = "JetBrainsMono Nerd Font Mono:pixelsize=21:antialias=true;5"
 font-12 = "Open Sans ExtraBold:pixelsize=11;3"
 
-modules-left = bspwm i3 xwindow
+modules-left = power bspwm i3
 modules-center = date
-modules-right = pulseaudio backlight filesystem network date2 
+modules-right = pulseaudio backlight filesystem network date2
 
 tray-position = left
 tray-detached = true
-tray-offset-x = 295
+tray-offset-x = 226
+;tray-background = #1E2127
 
 wm-restack = bspwm
 override-redirect = true
@@ -98,7 +99,7 @@ interface = wlp2s0
 
 interval = 5.0
 
-format-connected-prefix = ""
+format-connected-prefix = "直"
 format-disconnected-prefix = "睊"
 
 label-connected-font = 8
@@ -130,7 +131,7 @@ type = internal/fs
 
 interval = 120
 
-format-mounted-prefix = 
+format-mounted-prefix = 力
 mount-0 = /
 
 format-mounted-background = ${colors.onedark-green}
@@ -165,7 +166,7 @@ enable-scroll = true
 
 format = <label>
 format-padding = 2
-format-prefix = ""
+format-prefix = 
 
 format-background = ${colors.onedark-yellow}
 format-prefix-foreground = ${colors.background}
@@ -265,11 +266,11 @@ interval = 5
 
 format-foreground = ${colors.offwhite}
 label-font = 9
-format-padding = 1
+format-padding = 0
 
 format-prefix-foreground = ${colors.background}
 
-time = %I:%M %p
+time = %l:%M %p
 label = %time%
 label-padding-left = 0
 
@@ -284,7 +285,7 @@ format-prefix-foreground = ${colors.background}
 format-padding = 2
 label-font = 8
 
-format-prefix = 
+format-prefix = 
 
 time = %a %m/%d
 label = %time%
@@ -294,7 +295,7 @@ label-padding-left = 2
 type = internal/pulseaudio
 
 format-volume = <label-volume>
-format-volume-prefix = " "
+format-volume-prefix = "墳"
 format-volume-padding = 2
 
 format-volume-background = ${colors.onedark-red}
@@ -317,49 +318,20 @@ label-muted = "N/A "
 label-muted-font = 8
 label-muted-padding-left = 2
 
-[module/menu-apps]
-type = custom/menu
+[module/power]
+type = custom/text
 
-format-prefix-padding = 1
-format-padding = 1
 format-foreground = ${colors.offwhite}
 
-label-open = 
-label-open-foreground = ${colors.background}
-label-open-background = ${colors.onedark-green}
-label-open-padding = 1
+content = 
+content-foreground = ${colors.background}
+content-background = ${colors.onedark-green}
+content-padding = 2
+content-margin = 1
 
-label-close = 
-label-close-foreground = ${colors.background}
-label-close-background = ${colors.onedark-green}
-label-close-padding = 1
-
-label-separator = |
-label-padding-left = 1
 format-font = 8
 
-; If true, <label-toggle> will be to the left of the menu items (default).
-; If false, it will be on the right of all the items.
-expand-right = true
-
-; "menu-LEVEL-N" has the same properties as "label-NAME" with
-; the additional "exec" property
-;
-; Commands will be executed using "/bin/sh -c $COMMAND"
-
-menu-0-0 = SHUTDOWN
-menu-0-0-exec = zenity --question --text "Shut down the computer?" && systemctl poweroff -i
-menu-0-1 = ﰇRESTART
-menu-0-1-exec = zenity --question --text "Restart the computer?" && systemctl reboot
-menu-0-2 = SLEEP
-menu-0-2-exec = zenity --question --text "Put the computer in Sleep mode?" && zsh -c "i3lock -i ~/Pictures/randomnoise.png --{inside,ring}-color=282c3499 --{inside,ring}ver-color=61afefaa --{key,bs}hl-color=61afefff --separator-color=61afefff --line-uses-inside --{layout,time,date,greeter,verif,wrong,modif}-color=abb2bfff --{inside,ring}wrong-color=e06c75aa --{time,date,layout,verif,wrong,greeter}-font=\"JetBrains Mono\" -k --radius 108 --ring-width 12" ; systemctl suspend
-menu-0-3 = LOCK
-menu-0-3-exec = zenity --question --text "Lock the computer?" && zsh -c "i3lock -i ~/Pictures/randomnoise.png --{inside,ring}-color=282c3499 --{inside,ring}ver-color=61afefaa --{key,bs}hl-color=61afefff --separator-color=61afefff --line-uses-inside --{layout,time,date,greeter,verif,wrong,modif}-color=abb2bfff --{inside,ring}wrong-color=e06c75aa --{time,date,layout,verif,wrong,greeter}-font=\"JetBrains Mono\" -k --radius 108 --ring-width 12"
-
-menu-0-3-foreground = ${colors.onedark-red}
-menu-0-2-foreground = ${colors.onedark-yellow}
-menu-0-1-foreground = ${colors.onedark-green}
-menu-0-0-foreground = ${colors.onedark-cyan}
+click-left = clearine
 
 [settings]
 screenchange-reload = true
