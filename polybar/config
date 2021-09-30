@@ -82,9 +82,9 @@ modules-left = bspwm i3 xwindow
 modules-center = date
 modules-right = pulseaudio backlight filesystem network date2 
 
-tray-position = none
+tray-position = left
 tray-detached = true
-tray-offset-x = -295
+tray-offset-x = 295
 
 wm-restack = bspwm
 override-redirect = true
@@ -120,8 +120,8 @@ unknown-as-up = true
 format-connected = <label-connected>
 format-disconnected = <label-disconnected>
 
-label-connected = %downspeed:8:8%
-label-connected-padding-left = 1
+label-connected = %downspeed:0:8%
+label-connected-padding-left = 2
 label-disconnected = N/A
 label-disconnected-padding-left = 1
 
@@ -140,7 +140,7 @@ label-mounted-font = 8
 format-mounted-padding = 2
 label-mounted-padding-left = 2
 
-label-mounted = %free:3:3%G
+label-mounted = %free:0:3%G
 
 [module/sep]
 type = custom/text
@@ -171,7 +171,7 @@ format-background = ${colors.onedark-yellow}
 format-prefix-foreground = ${colors.background}
 format-foreground = ${colors.background}
 
-label = %percentage:3:3%
+label = %percentage:0:3%%
 label-padding-left = 2
 label-font = 8
 
@@ -307,7 +307,7 @@ format-muted-foreground = ${colors.background}
 format-muted-padding = 2
 
 
-label-volume = %percentage:3:3%
+label-volume = %percentage:0:3%
 label-volume-padding-left = 2
 label-volume-font = 8
 
