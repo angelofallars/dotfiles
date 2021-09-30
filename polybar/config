@@ -17,7 +17,7 @@
 ;==========================================================
 
 [colors]
-background = #ff282c34
+background = #ca282c34
 background2 = #2e2e2e
 background-alt = #444
 
@@ -59,7 +59,7 @@ border-size = 0
 border-color = ${colors.background}
 
 padding-left = 5
-padding-right = 6
+padding-right = 5
 
 module-margin-left = 0
 module-margin-right = 0
@@ -77,21 +77,92 @@ font-9 = "Symbols Nerd Font:pixelsize=15:antialias=true;4"
 font-10 = "JetBrains Mono SemiBold:pixelsize=9;3"
 font-11 = "JetBrainsMono Nerd Font Mono:pixelsize=21:antialias=true;5"
 font-12 = "Open Sans ExtraBold:pixelsize=11;3"
+font-13 = "Open Sans Extrabold:pixelsize=12;2"
 
-modules-left = power bspwm i3
+modules-left = bspwm i3 traysep
 modules-center = date
-modules-right = pulseaudio backlight filesystem network date2
+modules-right = sep1 pulseaudio sep2 backlight sep3 filesystem sep4 network sep5 date2 sep6 power
 
 tray-position = left
 tray-detached = true
-tray-offset-x = 226
-;tray-background = #1E2127
+tray-offset-x = 201
 
 wm-restack = bspwm
 override-redirect = true
 
 ;cursor-click = pointer
 ;cursor-scroll = ns-resize
+
+[module/sep1]
+type = custom/text
+
+format-foreground = ${colors.offwhite}
+
+content = 
+content-foreground = ${colors.onedark-red}
+
+format-font = 8
+
+[module/sep2]
+type = custom/text
+
+format-foreground = ${colors.offwhite}
+
+content = 
+content-background = ${colors.onedark-red}
+content-foreground = ${colors.onedark-yellow}
+
+format-font = 8
+
+[module/sep3]
+type = custom/text
+
+format-foreground = ${colors.offwhite}
+
+content = 
+content-background = ${colors.onedark-yellow}
+content-foreground = ${colors.onedark-green}
+
+format-font = 8
+
+[module/sep4]
+type = custom/text
+
+format-foreground = ${colors.offwhite}
+
+content = 
+content-background = ${colors.onedark-green}
+content-foreground = ${colors.onedark-blue}
+
+format-font = 8
+
+[module/sep5]
+type = custom/text
+
+format-foreground = ${colors.offwhite}
+
+content = 
+content-background = ${colors.onedark-blue}
+content-foreground = ${colors.onedark-magenta}
+
+format-font = 8
+
+[module/sep6]
+type = custom/text
+
+format-foreground = ${colors.offwhite}
+
+content = 
+content-foreground = ${colors.onedark-magenta}
+
+format-font = 8
+
+[module/traysep]
+type = custom/text
+
+content = ::
+content-foreground = #606A7D
+content-font = 14
 
 [module/network]
 type = internal/network
@@ -111,8 +182,8 @@ format-disconnected-background = ${colors.onedark-blue}
 format-disconnected-foreground = ${colors.background}
 
 ;udspeed-minwidth = 4
-format-connected-padding = 2
-format-disconnected-padding = 2
+format-connected-padding = 1
+format-disconnected-padding = 1
 
 accumulate-stats = true
 
@@ -138,16 +209,10 @@ format-mounted-background = ${colors.onedark-green}
 format-mounted-foreground = ${colors.background}
 
 label-mounted-font = 8
-format-mounted-padding = 2
+format-mounted-padding = 1
 label-mounted-padding-left = 2
 
 label-mounted = %free:0:3%G
-
-[module/sep]
-type = custom/text
-content = >>
-content-font = 13
-content-padding = 3
 
 [module/osname]
 type = custom/text
@@ -165,7 +230,7 @@ use-actual-brightness = true
 enable-scroll = true
 
 format = <label>
-format-padding = 2
+format-padding = 1
 format-prefix = 
 
 format-background = ${colors.onedark-yellow}
@@ -225,7 +290,8 @@ label-urgent-padding-right = 1
 
 ;label-empty = %icon%
 label-empty = 
-label-empty-foreground = ${colors.offwhite}
+;label-empty-foreground = ${colors.offwhite}
+label-empty-foreground = #8997B2
 label-empty-padding-right = 1
 
 format-padding = 1
@@ -282,7 +348,7 @@ format-background = ${colors.onedark-magenta}
 format-foreground = ${colors.background}
 format-prefix-foreground = ${colors.background}
 
-format-padding = 2
+format-padding = 1
 label-font = 8
 
 format-prefix = 
@@ -296,7 +362,7 @@ type = internal/pulseaudio
 
 format-volume = <label-volume>
 format-volume-prefix = "墳"
-format-volume-padding = 2
+format-volume-padding = 1
 
 format-volume-background = ${colors.onedark-red}
 format-volume-prefix-foreground = ${colors.background}
@@ -305,7 +371,7 @@ format-volume-foreground = ${colors.background}
 format-muted-background = ${colors.onedark-red}
 format-muted-prefix-foreground = ${colors.background}
 format-muted-foreground = ${colors.background}
-format-muted-padding = 2
+format-muted-padding = 1
 
 
 label-volume = %percentage:0:3%
@@ -324,10 +390,8 @@ type = custom/text
 format-foreground = ${colors.offwhite}
 
 content = 
-content-foreground = ${colors.background}
-content-background = ${colors.onedark-green}
-content-padding = 2
-content-margin = 1
+content-padding = 1
+;content-margin = 1
 
 format-font = 8
 

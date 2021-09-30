@@ -92,9 +92,9 @@ let g:airline_symbols.colnr = ' C:'
 " Disable display of text encoding
 let g:airline_section_y = ''
 
-" I prefer a rectangular status bar
-let g:airline_left_sep = ''
-let g:airline_right_sep = ''
+" Diagonal powerline
+"let g:airline_left_sep = ''
+"let g:airline_right_sep = ''
 
 " Change window title to Neovim
 let &titlestring = "Neovim"
