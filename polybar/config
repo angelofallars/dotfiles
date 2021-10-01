@@ -202,7 +202,7 @@ type = internal/fs
 
 interval = 120
 
-format-mounted-prefix = 力
+format-mounted-prefix = 
 mount-0 = /
 
 format-mounted-background = ${colors.onedark-green}
@@ -351,7 +351,7 @@ format-prefix-foreground = ${colors.background}
 format-padding = 1
 label-font = 8
 
-format-prefix = 
+format-prefix = 
 
 time = %a %m/%d
 label = %time%

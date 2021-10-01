@@ -41,6 +41,9 @@ bspc config gapless_monocle      false
 bspc rule -a Gpick state=floating
 bspc rule -a File-roller state=floating
 bspc rule -a Lxappearance state=floating
+bspc rule -a Ristretto state=floating
+
+bspc rule -a back-alacritty layer='below' state='fullscreen'
 
 ### Launch apps on specific workspaces
 
@@ -63,7 +66,7 @@ bspc rule -a Alacritty desktop='^3' follow=on focus=on
 bspc rule -a discord desktop='^4' follow=on focus=on
 
 ## Workspace 5 (Files)
-bspc rule -a Thunar desktop='^5' follow=on focus=on
+bspc rule -a Thunar desktop='^5' follow=on focus=on state=floating
 bspc rule -a Transmission-gtk desktop='^5' follow=on focus=on
 
 ## Workspace 6 (Work/Study)
