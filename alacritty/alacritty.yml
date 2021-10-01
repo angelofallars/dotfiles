@@ -47,7 +47,7 @@ window:
   # by DPI and the specified value is always added at both opposing sides.
   padding:
     x: 10
-    y: 5
+    y: 8
 
   # Spread additional padding evenly around the terminal content.
   #dynamic_padding: false
@@ -277,7 +277,8 @@ colors:
   primary:
     #foreground: '0xabb2bf'
     foreground: '0xC4C9D2'
-    background: '0x282c34'
+    #background: '0x282c34'
+    background: '0x1E2127'
 
   # Cursor colors
   #cursor:
@@ -360,7 +361,7 @@ bell:
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
 background_opacity: 1
-background_opacity: 0.69
+background_opacity: 0.65
 
 selection:
   # This string contains all characters that are used as separators for

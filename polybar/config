@@ -17,7 +17,8 @@
 ;==========================================================
 
 [colors]
-background = #ca282c34
+background = #bb1E2127
+background-opaque = #cf1E2127
 background2 = #2e2e2e
 background-alt = #444
 
@@ -42,11 +43,11 @@ onedark-cyan = #56b6c2
 
 [bar/mybar]
 ;width = 1340
-width = 100%
+width = 1350
 height = 24
-radius = 0
-;offset-x = 13
-;offset-y = 0.07%
+radius = 12
+offset-x = 8
+offset-y = 5
 fixed-center = true
 
 background = ${colors.background}
@@ -77,7 +78,7 @@ font-9 = "Symbols Nerd Font:pixelsize=15:antialias=true;4"
 font-10 = "JetBrains Mono SemiBold:pixelsize=9;3"
 font-11 = "JetBrainsMono Nerd Font Mono:pixelsize=21:antialias=true;5"
 font-12 = "Open Sans ExtraBold:pixelsize=11;3"
-font-13 = "Open Sans Extrabold:pixelsize=12;2"
+font-13 = "Open Sans Extrabold:pixelsize=12;1"
 
 modules-left = bspwm i3 traysep
 modules-center = date
@@ -175,11 +176,11 @@ format-disconnected-prefix = "睊"
 
 label-connected-font = 8
 format-connected-background = ${colors.onedark-blue}
-format-connected-foreground = ${colors.background}
+format-connected-foreground = ${colors.background-opaque}
 
 label-disconnected-font = 8
 format-disconnected-background = ${colors.onedark-blue}
-format-disconnected-foreground = ${colors.background}
+format-disconnected-foreground = ${colors.background-opaque}
 
 ;udspeed-minwidth = 4
 format-connected-padding = 1
@@ -206,7 +207,7 @@ format-mounted-prefix = 
 mount-0 = /
 
 format-mounted-background = ${colors.onedark-green}
-format-mounted-foreground = ${colors.background}
+format-mounted-foreground = ${colors.background-opaque}
 
 label-mounted-font = 8
 format-mounted-padding = 1
@@ -234,8 +235,8 @@ format-padding = 1
 format-prefix = 
 
 format-background = ${colors.onedark-yellow}
-format-prefix-foreground = ${colors.background}
-format-foreground = ${colors.background}
+format-prefix-foreground = ${colors.background-opaque}
+format-foreground = ${colors.background-opaque}
 
 label = %percentage:0:3%%
 label-padding-left = 2
@@ -291,7 +292,7 @@ label-urgent-padding-right = 1
 ;label-empty = %icon%
 label-empty = 
 ;label-empty-foreground = ${colors.offwhite}
-label-empty-foreground = #8997B2
+label-empty-foreground = #7792A1BE
 label-empty-padding-right = 1
 
 format-padding = 1
@@ -345,8 +346,8 @@ type = internal/date
 interval = 120
 
 format-background = ${colors.onedark-magenta}
-format-foreground = ${colors.background}
-format-prefix-foreground = ${colors.background}
+format-foreground = ${colors.background-opaque}
+format-prefix-foreground = ${colors.background-opaque}
 
 format-padding = 1
 label-font = 8
@@ -365,11 +366,11 @@ format-volume-prefix = "墳"
 format-volume-padding = 1
 
 format-volume-background = ${colors.onedark-red}
-format-volume-prefix-foreground = ${colors.background}
+format-volume-prefix-foreground = ${colors.background-opaque}
 format-volume-foreground = ${colors.background}
 
 format-muted-background = ${colors.onedark-red}
-format-muted-prefix-foreground = ${colors.background}
+format-muted-prefix-foreground = ${colors.background-opaque}
 format-muted-foreground = ${colors.background}
 format-muted-padding = 1
 

@@ -68,7 +68,7 @@ set ai
 set guicursor+=n-v-c-i:blinkon5
 
 " Highlight current row
-set cursorline
+" set cursorline
 
 " Use mouse
 set mouse=a
