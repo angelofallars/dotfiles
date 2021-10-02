@@ -94,7 +94,7 @@ bspc rule -a Xfce4-settings-editor desktop='^8' follow=on focus=on state=floatin
 bspc rule -a Xfce4-settings-manager desktop='^8' follow=on focus=on state=floating
 
 #feh --bg-fill ~/.config/bspwm/wallpaper/voidlogo.png &
-feh --bg-fill ~/.config/bspwm/wallpaper/darkleaf.jpg &
+feh --bg-fill ~/.config/bspwm/wallpaper/darkleaf2.png &
 
 # Remap control key and caps lock
 xmodmap ~/.config/bspwm/swapkeys -display :0 &

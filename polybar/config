@@ -41,6 +41,12 @@ onedark-yellow = #e5c07b
 onedark-magenta = #c678dd
 onedark-cyan = #56b6c2
 
+mlm-1 = #34BB9D
+mlm-2 = #A0D6BC
+mlm-3 = #E0E0E0
+mlm-4 = #88AED5
+mlm-5 = #7243BE
+
 [bar/mybar]
 ;width = 1340
 width = 1350
@@ -86,7 +92,7 @@ modules-right = sep1 pulseaudio sep2 backlight sep3 filesystem sep4 network sep5
 
 tray-position = left
 tray-detached = true
-tray-offset-x = 201
+tray-offset-x = 202
 
 wm-restack = bspwm
 override-redirect = true
@@ -97,66 +103,42 @@ override-redirect = true
 [module/sep1]
 type = custom/text
 
-format-foreground = ${colors.offwhite}
-
 content = 
-content-foreground = ${colors.onedark-red}
-
-format-font = 8
+content-foreground = ${colors.mlm-1}
 
 [module/sep2]
 type = custom/text
 
-format-foreground = ${colors.offwhite}
-
 content = 
-content-background = ${colors.onedark-red}
-content-foreground = ${colors.onedark-yellow}
-
-format-font = 8
+content-background = ${colors.mlm-1}
+content-foreground = ${colors.mlm-2}
 
 [module/sep3]
 type = custom/text
 
-format-foreground = ${colors.offwhite}
-
 content = 
-content-background = ${colors.onedark-yellow}
-content-foreground = ${colors.onedark-green}
-
-format-font = 8
+content-background = ${colors.mlm-2}
+content-foreground = ${colors.mlm-3}
 
 [module/sep4]
 type = custom/text
 
-format-foreground = ${colors.offwhite}
-
 content = 
-content-background = ${colors.onedark-green}
-content-foreground = ${colors.onedark-blue}
-
-format-font = 8
+content-background = ${colors.mlm-3}
+content-foreground = ${colors.mlm-4}
 
 [module/sep5]
 type = custom/text
 
-format-foreground = ${colors.offwhite}
-
 content = 
-content-background = ${colors.onedark-blue}
-content-foreground = ${colors.onedark-magenta}
-
-format-font = 8
+content-background = ${colors.mlm-4}
+content-foreground = ${colors.mlm-5}
 
 [module/sep6]
 type = custom/text
 
-format-foreground = ${colors.offwhite}
-
 content = 
-content-foreground = ${colors.onedark-magenta}
-
-format-font = 8
+content-foreground = ${colors.mlm-5}
 
 [module/traysep]
 type = custom/text
@@ -175,11 +157,11 @@ format-connected-prefix = "直"
 format-disconnected-prefix = "睊"
 
 label-connected-font = 8
-format-connected-background = ${colors.onedark-blue}
+format-connected-background = ${colors.mlm-4}
 format-connected-foreground = ${colors.background-opaque}
 
 label-disconnected-font = 8
-format-disconnected-background = ${colors.onedark-blue}
+format-disconnected-background = ${colors.mlm-4}
 format-disconnected-foreground = ${colors.background-opaque}
 
 ;udspeed-minwidth = 4
@@ -206,7 +188,7 @@ interval = 120
 format-mounted-prefix = 
 mount-0 = /
 
-format-mounted-background = ${colors.onedark-green}
+format-mounted-background = ${colors.mlm-3}
 format-mounted-foreground = ${colors.background-opaque}
 
 label-mounted-font = 8
@@ -234,7 +216,7 @@ format = <label>
 format-padding = 1
 format-prefix = 
 
-format-background = ${colors.onedark-yellow}
+format-background = ${colors.mlm-2}
 format-prefix-foreground = ${colors.background-opaque}
 format-foreground = ${colors.background-opaque}
 
@@ -345,7 +327,7 @@ label-padding-left = 0
 type = internal/date
 interval = 120
 
-format-background = ${colors.onedark-magenta}
+format-background = ${colors.mlm-5}
 format-foreground = ${colors.background-opaque}
 format-prefix-foreground = ${colors.background-opaque}
 
@@ -365,11 +347,11 @@ format-volume = <label-volume>
 format-volume-prefix = "墳"
 format-volume-padding = 1
 
-format-volume-background = ${colors.onedark-red}
+format-volume-background = ${colors.mlm-1}
 format-volume-prefix-foreground = ${colors.background-opaque}
 format-volume-foreground = ${colors.background}
 
-format-muted-background = ${colors.onedark-red}
+format-muted-background = ${colors.mlm-1}
 format-muted-prefix-foreground = ${colors.background-opaque}
 format-muted-foreground = ${colors.background}
 format-muted-padding = 1
