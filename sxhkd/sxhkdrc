@@ -33,10 +33,14 @@ super + F5
     notify-send "Test"
 
 # --- Brightness control ---
+#super + F2
+#   xbacklight -dec 10 -time 0 
+#super + F3
+#   xbacklight -inc 10 -time 0
 super + F2
-    xbacklight -dec 10 -time 0 
+    sudo brightnessctl set 10%-
 super + F3
-    xbacklight -inc 10 -time 0
+    sudo brightnessctl set +10%
 
 
 # Screenshot
