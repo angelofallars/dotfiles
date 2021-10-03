@@ -24,11 +24,13 @@ super + Escape
 
 # --- Volume Control ---
 super + F8
-    pactl set-sink-volume @DEFAULT_SINK@ +10%
+    pactl set-sink-volume @DEFAULT_SINK@ +10% && notify-send $(pamixer --get-volume)
 super + F7
-    pactl set-sink-volume @DEFAULT_SINK@ -10%
+    pactl set-sink-volume @DEFAULT_SINK@ -10% && notify-send $(pamixer --get-volume)
 super + F6
     pactl set-sink-mute @DEFAULT_SINK@ toggle
+super + F5
+    notify-send "Test"
 
 # --- Brightness control ---
 super + F2
