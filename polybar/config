@@ -88,7 +88,7 @@ font-13 = "Open Sans Extrabold:pixelsize=12;1"
 
 modules-left = bspwm i3 traysep
 modules-center = date
-modules-right = sep1 pulseaudio sep2 backlight sep3 filesystem sep4 network sep5 date2 sep6 power
+modules-right = sep3 filesystem sep4 network sep5 date2 sep6 power
 
 tray-position = left
 tray-detached = true
@@ -117,28 +117,27 @@ content-foreground = ${colors.mlm-2}
 type = custom/text
 
 content = 
-content-background = ${colors.mlm-2}
-content-foreground = ${colors.mlm-3}
+content-foreground = ${colors.onedark-red}
 
 [module/sep4]
 type = custom/text
 
 content = 
-content-background = ${colors.mlm-3}
-content-foreground = ${colors.mlm-4}
+content-background = ${colors.onedark-red}
+content-foreground = ${colors.onedark-yellow}
 
 [module/sep5]
 type = custom/text
 
 content = 
-content-background = ${colors.mlm-4}
-content-foreground = ${colors.mlm-5}
+content-background = ${colors.onedark-yellow}
+content-foreground = ${colors.onedark-green}
 
 [module/sep6]
 type = custom/text
 
 content = 
-content-foreground = ${colors.mlm-5}
+content-foreground = ${colors.onedark-green}
 
 [module/traysep]
 type = custom/text
@@ -157,11 +156,11 @@ format-connected-prefix = "直"
 format-disconnected-prefix = "睊"
 
 label-connected-font = 8
-format-connected-background = ${colors.mlm-4}
+format-connected-background = ${colors.onedark-yellow}
 format-connected-foreground = ${colors.background-opaque}
 
 label-disconnected-font = 8
-format-disconnected-background = ${colors.mlm-4}
+format-disconnected-background = ${colors.yellow}
 format-disconnected-foreground = ${colors.background-opaque}
 
 ;udspeed-minwidth = 4
@@ -188,7 +187,7 @@ interval = 120
 format-mounted-prefix = 
 mount-0 = /
 
-format-mounted-background = ${colors.mlm-3}
+format-mounted-background = ${colors.onedark-red}
 format-mounted-foreground = ${colors.background-opaque}
 
 label-mounted-font = 8
@@ -327,7 +326,7 @@ label-padding-left = 0
 type = internal/date
 interval = 120
 
-format-background = ${colors.mlm-5}
+format-background = ${colors.onedark-green}
 format-foreground = ${colors.background-opaque}
 format-prefix-foreground = ${colors.background-opaque}
 
