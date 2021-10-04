@@ -27,7 +27,7 @@ observer.start()
 try:
     while True:
         sys.stdout.flush()
-        time.sleep(0.1)
+        time.sleep(1)
 except KeyboardInterrupt:
     observer.stop()
 observer.join()
