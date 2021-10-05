@@ -31,6 +31,8 @@ bspc config bottom_padding       0
 
 # Colors
 bspc config focused_border_color "#596173"
+bspc config focused_border_color "#6E9850"
+
 bspc config normal_border_color "#343944"
 bspc config presel_feedback_color "#98c379"
 

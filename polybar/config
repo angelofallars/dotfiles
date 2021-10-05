@@ -17,8 +17,10 @@
 ;==========================================================
 
 [colors]
-background = #bb1E2127
-background-opaque = #cf1E2127
+;background = #bb1E2127
+background = #1E2127
+;background-opaque = #cf1E2127
+background-opaque = #1E2127
 background2 = #2e2e2e
 background-alt = #444
 
@@ -76,9 +78,9 @@ font-1 = unifont:fontformat=truetype:size=6:antialias=false;0
 font-2 = siji:pixelsize=10;1
 font-3 = "Jetbrains Mono ExtraBold:pixelsize=6;3"
 font-4 = "Roboto Mono SemiBold:pixelsize=11;2"
-font-5 = "Roboto Condensed Bold:pixelsize=11;2"
+font-5 = "Roboto Condensed Bold:pixelsize=12;2"
 font-6 = "Symbols Nerd Font:pixelsize=15:antialias=true;4"
-font-7 = "Fira Code Medium:pixelsize=10;3"
+font-7 = "Fira Code Medium:pixelsize=9;3"
 font-8 = "Fira Code Semibold:pixelsize=10;3"
 font-9 = "Symbols Nerd Font:pixelsize=15:antialias=true;4"
 font-10 = "JetBrains Mono SemiBold:pixelsize=9;3"
@@ -86,13 +88,14 @@ font-11 = "JetBrainsMono Nerd Font Mono:pixelsize=21:antialias=true;5"
 font-12 = "Open Sans ExtraBold:pixelsize=11;3"
 font-13 = "Open Sans Extrabold:pixelsize=12;1"
 
-modules-left = bspwm i3 traysep
-modules-center = date
-modules-right = sep3 filesystem sep4 network sep5 date2 sep6 power
+modules-left = bspwm i3 xwindow
+modules-center = 
+;modules-right = date sep5 date2 sep6 power
+modules-right = traysep date date2 power
 
-tray-position = left
+tray-position = right
 tray-detached = true
-tray-offset-x = 202
+tray-offset-x = -270
 
 wm-restack = bspwm
 override-redirect = true
@@ -130,7 +133,7 @@ content-foreground = ${colors.onedark-yellow}
 type = custom/text
 
 content = 
-content-background = ${colors.onedark-yellow}
+#content-background = ${colors.onedark-yellow}
 content-foreground = ${colors.onedark-green}
 
 [module/sep6]
@@ -144,6 +147,15 @@ type = custom/text
 
 content = ::
 content-foreground = #606A7D
+content-padding = 1
+content-font = 14
+
+[module/leftsep]
+type = custom/text
+
+content = ::
+content-foreground = #606A7D
+content-padding = 0
 content-font = 14
 
 [module/network]
@@ -227,7 +239,13 @@ label-font = 8
 type = internal/xwindow
 
 format = <label>
-format-padding = 1
+format-padding = 0
+
+format-prefix = ::
+format-prefix-foreground = #606A7D
+format-prefix-padding-left = 0
+format-prefix-padding-right = 2
+format-prefix-font = 14
 
 label = %title:0:40:...%
 label-font = 8
@@ -276,7 +294,7 @@ label-empty = 
 label-empty-foreground = #7792A1BE
 label-empty-padding-right = 1
 
-format-padding = 1
+format-margin-left = 1
 
 [module/mpd]
 type = internal/mpd
@@ -314,9 +332,9 @@ interval = 5
 
 format-foreground = ${colors.offwhite}
 label-font = 9
-format-padding = 0
+format-padding = 2
 
-format-prefix-foreground = ${colors.background}
+format-prefix = 
 
 time = %l:%M %p
 label = %time%
@@ -326,11 +344,11 @@ label-padding-left = 0
 type = internal/date
 interval = 120
 
-format-background = ${colors.onedark-green}
-format-foreground = ${colors.background-opaque}
-format-prefix-foreground = ${colors.background-opaque}
+;format-background = ${colors.onedark-green}
+;format-foreground = ${colors.background-opaque}
+;format-prefix-foreground = ${colors.background-opaque}
 
-format-padding = 1
+format-padding = 2
 label-font = 8
 
 format-prefix = 
@@ -369,10 +387,10 @@ label-muted-padding-left = 2
 [module/power]
 type = custom/text
 
-format-foreground = ${colors.offwhite}
+content-foreground = ${colors.onedark-green}
 
 content = 
-content-padding = 1
+content-padding = 2
 ;content-margin = 1
 
 format-font = 8
