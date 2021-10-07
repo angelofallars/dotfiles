@@ -51,15 +51,20 @@ mlm-5 = #7243BE
 
 [bar/mybar]
 ;width = 1340
-width = 1350
-height = 24
-radius = 12
-offset-x = 8
-offset-y = 5
+width = 100%
+height = 20
+radius = 0
+offset-x = 0
+offset-y = 0
 fixed-center = true
 
 background = ${colors.background}
 foreground = ${colors.foreground}
+
+border-top-size = 4
+border-bottom-size = 4
+border-top-color = ${colors.background}
+border-bottom-color = ${colors.background}
 
 line-size = 3
 line-color = #f00
@@ -73,35 +78,47 @@ padding-right = 5
 module-margin-left = 0
 module-margin-right = 0
 
-font-0 = roboto mono medium:pixelsize=9;2
+font-0 = roboto mono medium:pixelsize=16;2
 font-1 = unifont:fontformat=truetype:size=6:antialias=false;0
 font-2 = siji:pixelsize=10;1
 font-3 = "Jetbrains Mono ExtraBold:pixelsize=6;3"
 font-4 = "Roboto Mono SemiBold:pixelsize=11;2"
 font-5 = "Roboto Condensed Bold:pixelsize=12;2"
 font-6 = "Symbols Nerd Font:pixelsize=15:antialias=true;4"
-font-7 = "Fira Code Medium:pixelsize=9;3"
-font-8 = "Fira Code Semibold:pixelsize=10;3"
+font-7 = "JetBrainsMono Nerd Font Mono:style=Bold:pixelsize=21;5"
+font-8 = "JetBrainsMono Nerd Font Mono:style=Bold:pixelsize=11;3"
 font-9 = "Symbols Nerd Font:pixelsize=15:antialias=true;4"
 font-10 = "JetBrains Mono SemiBold:pixelsize=9;3"
 font-11 = "JetBrainsMono Nerd Font Mono:pixelsize=21:antialias=true;5"
 font-12 = "Open Sans ExtraBold:pixelsize=11;3"
 font-13 = "Open Sans Extrabold:pixelsize=12;1"
+font-14 = "Material Icons=1000;4"
+font-15 = "Fira Code:style=Bold:pixelsize=11;3"
 
-modules-left = bspwm i3 xwindow
+modules-left = round-left bspwm round-right i3 xwindow
 modules-center = 
 ;modules-right = date sep5 date2 sep6 power
-modules-right = traysep date date2 power
+modules-right = round-left date round-right power
 
 tray-position = right
 tray-detached = true
-tray-offset-x = -270
+tray-offset-x = -256
 
 wm-restack = bspwm
 override-redirect = true
 
 ;cursor-click = pointer
 ;cursor-scroll = ns-resize
+
+[module/round-left]
+type = custom/text
+content = %{T15}%{T-}
+content-foreground = #2a2e36
+
+[module/round-right]
+type = custom/text
+content = %{T15}%{T-}
+content-foreground = #2a2e36
 
 [module/sep1]
 type = custom/text
@@ -147,7 +164,7 @@ type = custom/text
 
 content = ::
 content-foreground = #606A7D
-content-padding = 1
+content-padding = 0
 content-font = 14
 
 [module/leftsep]
@@ -241,14 +258,15 @@ type = internal/xwindow
 format = <label>
 format-padding = 0
 
-format-prefix = ::
+;format-prefix = ::
 format-prefix-foreground = #606A7D
 format-prefix-padding-left = 0
 format-prefix-padding-right = 2
 format-prefix-font = 14
 
-label = %title:0:40:...%
-label-font = 8
+label = %title:0:30:...%
+label-font = 9
+label-padding-left = 2
 label-foreground = ${colors.offwhite}
 
 [module/bspwm]
@@ -270,6 +288,7 @@ label-urgent-font = 12
 label-empty-font = 12
 
 format = <label-state>
+format-background = #2a2e36
 
 ;label-focused = %icon%
 label-focused = 
@@ -294,7 +313,7 @@ label-empty = 
 label-empty-foreground = #7792A1BE
 label-empty-padding-right = 1
 
-format-margin-left = 1
+format-padding = -1
 
 [module/mpd]
 type = internal/mpd
@@ -331,14 +350,15 @@ type = internal/date
 interval = 5
 
 format-foreground = ${colors.offwhite}
+format-background = #2a2e36
 label-font = 9
-format-padding = 2
+format-padding = 0
 
-format-prefix = 
+;format-prefix = 
 
-time = %l:%M %p
+time = "%I:%M %p  %a %m/%d"
 label = %time%
-label-padding-left = 0
+;label-padding-left = 0
 
 [module/date2]
 type = internal/date
@@ -390,10 +410,10 @@ type = custom/text
 content-foreground = ${colors.onedark-green}
 
 content = 
-content-padding = 2
+content-padding = 1
 ;content-margin = 1
 
-format-font = 8
+content-font = 16
 
 click-left = clearine
 

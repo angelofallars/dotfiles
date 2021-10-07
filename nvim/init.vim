@@ -3,8 +3,8 @@ let g:ale_disable_lsp = 1
 
 call plug#begin()
 " Discord Rich Presence (The most important plugin)
-"Plug 'vimsence/vimsence'
-Plug 'andweeb/presence.nvim'
+Plug 'vimsence/vimsence'
+"Plug 'andweeb/presence.nvim'
 
 " Popular LSP provider
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -27,10 +27,10 @@ Plug 'psliwka/vim-smoothie'
 " Plug 'junegunn/fzf.vim'
 
 " Fancy NERDFont symbols
-" Plug 'ryanoasis/vim-devicons'
+Plug 'ryanoasis/vim-devicons'
 
 " Automatic pairing of () [] and {}
-" Plug 'jiangmiao/auto-pairs'
+Plug 'jiangmiao/auto-pairs'
 
 " One Dark theme
 Plug 'joshdick/onedark.vim'
