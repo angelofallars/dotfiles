@@ -1,5 +1,6 @@
 set font "jetbrains mono 9"
-set default-bg "#282c34"
+#set default-bg "#282c34"
+set default-bg "#1E2127"
 set default-fg "#abb2bf"
 set recolor
 set recolor-lightcolor "#282c34"

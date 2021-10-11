@@ -79,12 +79,12 @@ module-margin-left = 0
 module-margin-right = 0
 
 font-0 = roboto mono medium:pixelsize=16;2
-font-1 = unifont:fontformat=truetype:size=6:antialias=false;0
-font-2 = siji:pixelsize=10;1
-font-3 = "Jetbrains Mono ExtraBold:pixelsize=6;3"
-font-4 = "Roboto Mono SemiBold:pixelsize=11;2"
-font-5 = "Roboto Condensed Bold:pixelsize=12;2"
-font-6 = "Symbols Nerd Font:pixelsize=15:antialias=true;4"
+font-1 = roboto mono medium:pixelsize=16;2
+font-2 = roboto mono medium:pixelsize=16;2
+font-3 = roboto mono medium:pixelsize=16;2
+font-4 = roboto mono medium:pixelsize=16;2
+font-5 = roboto mono medium:pixelsize=16;2
+font-6 = roboto mono medium:pixelsize=16;2
 font-7 = "JetBrainsMono Nerd Font Mono:style=Bold:pixelsize=21;5"
 font-8 = "JetBrainsMono Nerd Font Mono:style=Bold:pixelsize=11;3"
 font-9 = "Symbols Nerd Font:pixelsize=15:antialias=true;4"

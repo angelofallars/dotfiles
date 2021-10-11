@@ -18,6 +18,10 @@ alt + f
 alt + Tab
     rofi -show window -show-icons
 
+# Toggle dropdown terminal
+super + u
+        scratchpad.sh dropdown
+
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
