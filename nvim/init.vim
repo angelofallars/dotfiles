@@ -42,6 +42,12 @@ Plug 'vim-airline/vim-airline-themes'
 " Show added, modified and removed lines
 Plug 'airblade/vim-gitgutter'
 
+" HTML close tag
+Plug 'alvan/vim-closetag'
+
+" CSS coloring
+Plug 'ap/vim-css-color'
+
 " Show git branch and add :Git functionality
 " Plug 'tpope/vim-fugitive'
 
