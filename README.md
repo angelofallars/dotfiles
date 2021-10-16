@@ -1,4 +1,4 @@
-# 📂 dotfiles
+# 🐧 dotfiles
 
 My dotfiles for software development on Void Linux.
 
