@@ -6,4 +6,7 @@ set number relativenumber                      " Line numbers
 set background=dark                     " tell vim what the background color looks like
 set nobackup                            " This is recommended by coc
 set nowritebackup                       " This is recommended by coc
+set noswapfile
 set updatetime=300                      " Faster completion
+
+set cursorline

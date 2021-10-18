@@ -29,5 +29,8 @@ nnoremap <C-n> :NERDTreeToggle<cr>
 " FZF (Fuzzy Finder)
 nnoremap <C-p> :FZF<cr>
 
+" Yank to end of line
+nnoremap Y yg_
+
 " Remove highlighting
 map <C-c> :noh<cr>
