@@ -95,7 +95,8 @@ bspc rule -a Anki desktop='^6' follow=on focus=on state=floating
 #feh --bg-fill ~/.config/bspwm/wallpaper/voidlogo.png &
 #feh --bg-fill ~/.config/bspwm/wallpaper/leaves2.jpg &
 #feh --bg-fill ~/.config/bspwm/wallpaper/darkleaf2.png &
-feh --bg-fill ~/.config/bspwm/wallpaper/vibrantforest2.png &
+feh --bg-fill ~/.config/bspwm/wallpaper/solidlime.png &
+feh --bg-fill ~/.config/bspwm/wallpaper/solidred.png &
 
 # Remap control key and caps lock
 xmodmap ~/.config/bspwm/swapkeys -display :0 &

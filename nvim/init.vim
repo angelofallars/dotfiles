@@ -20,11 +20,11 @@ Plug 'scrooloose/nerdtree'
 Plug 'dense-analysis/ale'
 
 " Smooth scrolling
-Plug 'psliwka/vim-smoothie'
+" Plug 'psliwka/vim-smoothie'
 
 " Fuzzy finder
-" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-" Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 " Fancy NERDFont symbols
 Plug 'ryanoasis/vim-devicons'
@@ -49,7 +49,7 @@ Plug 'alvan/vim-closetag'
 Plug 'ap/vim-css-color'
 
 " Show git branch and add :Git functionality
-" Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 
 call plug#end()
 
@@ -97,6 +97,8 @@ let g:airline_symbols.colnr = ' C:'
 
 " Disable display of text encoding
 let g:airline_section_y = ''
+
+set colorcolumn=80
 
 " Diagonal powerline
 "let g:airline_left_sep = ''

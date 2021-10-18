@@ -1,5 +1,5 @@
     [global]
-    font = Roboto Medium 12
+    font = JetBrains Mono Medium 13
 
     # allow a small subset of html markup:
     # <b>bold</b>
@@ -67,7 +67,7 @@
     # right side of the screen.  Y is measured from the top and down respectevly.
     # The width can be negative. In this case the actual width is the
     # screen width minus the width defined in within the geometry option.
-    geometry = "750x5-18+29"
+    geometry = "750x5-18+38"
 
     # The transparency of the window. range: [0; 100]
     # This option will only work if a compositing windowmanager is present (e.g. xcompmgr, compiz, etc..)
@@ -156,18 +156,18 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the '#' and following  would be interpreted as a comment.
-    background = "#282c34"
-    foreground = "#C4C9D2"
+    foreground = "#282c34"
+    background = "#C4C9D2"
     timeout = 5
 
 [urgency_normal]
-    background = "#282c34"
-    foreground = "#C4C9D2"
+    foreground = "#282c34"
+    background = "#C4C9D2"
     timeout = 5
 
 [urgency_critical]
-    background = "#282c34"
-    foreground = "#C4C9D2"
+    foreground = "#282c34"
+    background = "#C4C9D2"
     timeout = 0
 
 
