@@ -4,7 +4,7 @@
 
 # terminal emulator
 super + Return
-	alacritty
+	alacritty -t "Terminal"
 
 # program launcher
 super + d
@@ -17,10 +17,6 @@ alt + f
 # alt-tab
 alt + Tab
     rofi -show window -show-icons
-
-# Toggle dropdown terminal
-super + u
-        scratchpad.sh dropdown
 
 # make sxhkd reload its configuration files:
 super + Escape

@@ -77,7 +77,7 @@ set guicursor+=n-v-c-i:blinkon5
 " set cursorline
 
 " Use mouse
-set mouse=a
+" set mouse=a
 
 " One Dark theme
 let g:onedark_termcolors = 16
@@ -100,6 +100,8 @@ let g:airline_section_y = ''
 
 set colorcolumn=80
 
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.7 } }
+
 let g:fzf_preview_window = ['right:50%', 'ctrl-/']
 
 " Diagonal powerline
@@ -110,7 +112,7 @@ let g:fzf_preview_window = ['right:50%', 'ctrl-/']
 let &titlestring = "Neovim"
 set title
 
-let $FZF_DEFAULT_OPTS="--preview='bat {}'"
+let $FZF_DEFAULT_OPTS="--preview='source-highlight --failsafe --out-format=esc -o STDOUT -i {}' --layout reverse"
 
 " NerdTree
 let NERDTreeMinimalUI=1
