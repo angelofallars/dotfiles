@@ -100,6 +100,8 @@ let g:airline_section_y = ''
 
 set colorcolumn=80
 
+let g:fzf_preview_window = ['right:50%', 'ctrl-/']
+
 " Diagonal powerline
 "let g:airline_left_sep = ''
 "let g:airline_right_sep = ''
@@ -107,6 +109,8 @@ set colorcolumn=80
 " Change window title to Neovim
 let &titlestring = "Neovim"
 set title
+
+let $FZF_DEFAULT_OPTS="--preview='bat {}'"
 
 " NerdTree
 let NERDTreeMinimalUI=1
