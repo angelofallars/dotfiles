@@ -313,8 +313,6 @@ label-empty = 
 label-empty-foreground = #7792A1BE
 label-empty-padding-right = 1
 
-format-padding = -1
-
 [module/mpd]
 type = internal/mpd
 format-online = <bar-progress> <label-song>
