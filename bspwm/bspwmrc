@@ -36,7 +36,7 @@ bspc config focused_border_color "#596173"
 bspc config normal_border_color "#343944"
 bspc config presel_feedback_color "#98c379"
 
-bspc config split_ratio          0.52
+bspc config split_ratio          0.55
 bspc config borderless_monocle   false
 bspc config gapless_monocle      false
 bspc config paddingless_monocle  true
@@ -51,24 +51,22 @@ bspc rule -a File-roller state=floating
 bspc rule -a Lxappearance state=floating
 bspc rule -a Ristretto state=floating
 
-bspc rule -a back-alacritty layer='below' state='fullscreen'
-
 ### Launch apps on specific workspaces
 
 ## Workspace 1 (Classes)
 bspc rule -a zoom desktop='^1' follow=on focus=on
 bspc rule -a Chat desktop='^1' state=floating
+bspc rule -a FreeTube desktop='^1' follow=on focus=on
 
 ## Workspace 2 (Web Browser)
+bspc rule -a LibreWolf desktop='^2' follow=on focus=on
+bspc rule -a Chromium desktop='^2' follow=on focus=on
 bspc rule -a Brave-browser desktop='^2' follow=on focus=on
 bspc rule -a qutebrowser desktop='^2' follow=on focus=on
-bspc rule -a LibreWolf desktop='^2' follow=on focus=on
 bspc rule -a Firefox desktop='^2' follow=on focus=on
 
-bspc rule -a FreeTube desktop='^2' follow=on focus=on
-
 ## Workspace 3 (Terminal)
-bspc rule -a Alacritty desktop='^3' follow=on focus=on
+bspc rule -a Alacritty desktop='^3' follow=on focus=on state=fullscreen
 
 ## Workspace 4 (Social)
 bspc rule -a discord desktop='^4' follow=on focus=on
@@ -80,23 +78,9 @@ bspc rule -a Transmission-gtk desktop='^5' follow=on focus=on
 ## Workspace 6 (Work/Study)
 # Email
 bspc rule -a Geary desktop='^6' follow=on focus=on
+bspc rule -a Zathura desktop='^6' follow=on focus=on
 
-# FreeOffice suite
-bspc rule -a tm desktop='^6' follow=on focus=on
-bspc rule -a pm desktop='^6' follow=on focus=on
-bspc rule -a pr desktop='^6' follow=on focus=on
-
-# LibreOffice
-bspc rule -a libreoffice-startcenter desktop='^6' follow=on focus=on
-
-# Anki
-bspc rule -a Anki desktop='^6' follow=on focus=on state=floating
-
-#feh --bg-fill ~/.config/bspwm/wallpaper/voidlogo.png &
-#feh --bg-fill ~/.config/bspwm/wallpaper/leaves2.jpg &
-#feh --bg-fill ~/.config/bspwm/wallpaper/darkleaf2.png &
 feh --bg-fill ~/.config/bspwm/wallpaper/solidlime.png &
-#feh --bg-fill ~/.config/bspwm/wallpaper/solidred.png &
 
 # Remap control key and caps lock
 xmodmap ~/.config/bspwm/swapkeys -display :0 &

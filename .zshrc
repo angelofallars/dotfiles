@@ -27,6 +27,7 @@ alias cat='source-highlight --failsafe --out-format=esc -o STDOUT -i'
 #┗━%F{blue}$%f '
 #PS1=' %F{blue}%~%f %F{green}%F{247}%f%F{green}%f '
 PS1=' %F{blue}%~%f %F{green}%f '
+PS1=' %F{blue}%~%f %F{green}%f '
 
 # Simplify xbps commands
 alias install="sudo xbps-install"
@@ -43,10 +44,7 @@ tocode ()
 }
 
 # v for neovim
-v ()
-{
-	nvim -- "$1"
-}
+alias v="neovim"
 
 # Compile then run code in C
 # Example: `crun hello.c`
@@ -112,26 +110,6 @@ pyls ()
 	echo ${reset} > /dev/null
 }
 
-# Make a new folder and initialize a git project there
-gitdir ()
-{
-	mkdir "$1" && cd "$1" && git init && nvim
-}
-
-# Commit all in git
-gitcom ()
-{
-	git commit -am "$1"
-}
-
-# Kill picom and polybar then run game
-rungame ()
-{
-	killall picom polybar
-	gamemoderun "$1"
-    bspc wm -r
-}
-
 # Switch to international keyboard
 intkey ()
 {
@@ -169,27 +147,33 @@ switchkey ()
 	fi
 }
 
-# COVID-19 stats
-alias covidstats="curl https://covid19-cli.wareneutron.com/philippines"
-
-# neofetch alias
-alias nf="neofetch"
-
-# gradient neofetch
-alias aquafetch="neofetch | lolcat --freq=0.08 --seed=32"
-
 # edit then update this config
 alias zshedit="nvim "${HOME}"/.zshrc && source "${HOME}"/.zshrc"
 
-# lock the screen
-alias lock="i3lock -i ~/Pictures/randomnoise.png --{inside,ring}-color=282c3499 --{inside,ring}ver-color=61afefaa --{key,bs}hl-color=61afefff --separator-color=61afefff --line-uses-inside --{layout,time,date,greeter,verif,wrong,modif}-color=abb2bfff --{inside,ring}wrong-color=e06c75aa --{time,date,layout,verif,wrong,greeter}-font=\"JetBrains Mono\" -k --radius 108 --ring-width 12"
+# Edit my config files
+edit () {
+
+    case $1 in
+        "zsh")    nvim ~/.zshrc && source ~/.zshrc ;;
+       "tmux")    nvim ~/.tmux.conf && tmux source-file ~/.tmux.conf ;;
+        "bsp")    nvim ~/.config/bspwm/bspwmrc && bspc wm -r ;;
+        "sxh")    nvim ~/.config/sxhkd/sxhkdrc && pkill -USR1 -x sxhkd ;;
+       "poly")    nvim ~/.config/polybar/config && \
+                  killall polybar && polybar mybar &;;
+   "neofetch")    nvim ~/.config/neofetch/config.conf ;;
+  "alacritty")    nvim ~/.config/alacritty/alacritty.yml ;;
+      "dunst")    nvim ~/.config/dunst/dunstrc && killall dunst ;;
+      "picom")    nvim ~/.config/picom/picom.conf ;;
+    "zathura")    nvim ~/.config/zathura/zathurarc ;;
+    esac
+}
 
 # fun pipes on the terminal
 alias pipes="pipes.sh -c 2 -c 3 -f 60 -r 800"
 alias pipeswarm="pipes.sh -c 1 -c 3 -f 60 -r 800"
 
 # cool matrix effect
-alias cmatrix="cmatrix -C cyan -u 10"
+alias cmatrix="cmatrix -C green -u 10"
 
 # redshift
 alias redshift="redshift -l 14.599512:120.984222 &"

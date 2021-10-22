@@ -95,7 +95,7 @@ font-13 = "Open Sans Extrabold:pixelsize=12;1"
 font-14 = "Material Icons=1000;4"
 font-15 = "Fira Code:style=Bold:pixelsize=11;3"
 
-modules-left = round-left bspwm round-right i3 xwindow
+modules-left = round-left bspwm round-right
 modules-center = 
 ;modules-right = date sep5 date2 sep6 power
 modules-right = round-left date round-right power

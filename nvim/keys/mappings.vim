@@ -34,3 +34,6 @@ nnoremap Y yg_
 
 " Remove highlighting
 map <C-c> :noh<cr>
+
+" Remap ctrl+a to ctrl+s because tmux already got ctrl+a
+nnoremap <C-s> <C-a>

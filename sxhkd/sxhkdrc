@@ -70,7 +70,7 @@ super + shift + q
 	bspc node -c
 
 # alternate between the tiled and monocle layout
-super + m
+super + v
 	bspc desktop -l next
 
 # send the newest marked node to the newest preselected node
