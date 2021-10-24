@@ -27,7 +27,7 @@ alias cat='source-highlight --failsafe --out-format=esc -o STDOUT -i'
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git svn
 # This line obtains information from the vcs.
-zstyle ':vcs_info:git*' formats " %F{yellow}%b%f"
+zstyle ':vcs_info:git*' formats "%F{yellow}%b%f "
 precmd() {
     vcs_info
 }
@@ -37,7 +37,7 @@ setopt prompt_subst
 
 NEWLINE=$'\n'
 
-prompt=' %F{cyan}%3~%f$NEWLINE${vcs_info_msg_0_} %F{green}%f '
+prompt='%F{cyan}%3~%f$NEWLINE${vcs_info_msg_0_}%F{green}%f '
 
 # Simplify xbps commands
 alias install="sudo xbps-install"

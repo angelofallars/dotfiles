@@ -35,7 +35,10 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'jiangmiao/auto-pairs'
 
 " One Dark theme
-Plug 'joshdick/onedark.vim'
+" Plug 'joshdick/onedark.vim'
+
+" Gruvbox baby!
+Plug 'gruvbox-community/gruvbox'
 
 " Pretty status line
 Plug 'vim-airline/vim-airline'
@@ -54,6 +57,8 @@ Plug 'ap/vim-css-color'
 Plug 'tpope/vim-fugitive'
 
 call plug#end()
+
+colorscheme gruvbox
 
 " Vimsence (Discord Rich Presence) options
 let g:vimsence_small_text = 'Neovim'
@@ -139,11 +144,6 @@ require('lspconfig').sqlls.setup {
 }
 EOF
 
-" One Dark theme
-let g:onedark_termcolors = 16
-colorscheme onedark
-let g:airline_theme='onedark'
-
 " Airline setup
 let g:airline#extensions#ale#enabled = 1
 if !exists('g:airline_symbols')
@@ -156,6 +156,8 @@ let g:airline_symbols.colnr = ' C:'
 let g:airline_section_y = ''
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
+
+let g:airline_theme='gruvbox'
 
 " FZF
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.7 } }
@@ -173,6 +175,7 @@ let NERDTreeMinimalUI=1
 " Indent width on web dev languages
 autocmd FileType html setlocal shiftwidth=2 tabstop=2 textwidth=120
 autocmd FileType css setlocal shiftwidth=2 tabstop=2
+autocmd FileType sass setlocal shiftwidth=2 tabstop=2
 autocmd FileType scss setlocal shiftwidth=2 tabstop=2
 autocmd FileType less setlocal shiftwidth=2 tabstop=2
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
