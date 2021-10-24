@@ -74,6 +74,9 @@ set ai
 set colorcolumn=80
 set updatetime=500
 
+set ignorecase
+set smartcase
+
 " Blinking cursor
 set guicursor+=n-v-c-i:blinkon5
 

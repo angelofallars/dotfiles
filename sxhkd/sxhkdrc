@@ -6,6 +6,10 @@
 super + Return
 	alacritty -t "Terminal" -e "/home/angelo_f/.config/sxhkd/new_tmux_terminal.sh"
 
+# terminal emulator (no tmux)
+super + shift + Return
+	alacritty -t "Terminal"
+
 # program launcher
 super + d
     rofi -show drun -show-icons

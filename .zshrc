@@ -23,11 +23,21 @@ alias grep='grep --color=auto'
 # Cat with syntax highlighting
 alias cat='source-highlight --failsafe --out-format=esc -o STDOUT -i'
 
-#PS1='┏━━(%F{green}%~%f)
-#┗━%F{blue}$%f '
-#PS1=' %F{blue}%~%f %F{green}%F{247}%f%F{green}%f '
-PS1=' %F{blue}%~%f %F{green}%f '
-PS1=' %F{blue}%~%f %F{green}%f '
+# Enabling and setting git info var to be used in prompt config.
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' enable git svn
+# This line obtains information from the vcs.
+zstyle ':vcs_info:git*' formats " %F{yellow}%b%f"
+precmd() {
+    vcs_info
+}
+
+# Enable substitution in the prompt.
+setopt prompt_subst
+
+NEWLINE=$'\n'
+
+prompt=' %F{cyan}%3~%f$NEWLINE${vcs_info_msg_0_} %F{green}%f '
 
 # Simplify xbps commands
 alias install="sudo xbps-install"
@@ -184,5 +194,7 @@ export PATH=/home/angelo_f/.local/bin:$PATH
 
 # Record video
 alias rec="ffmpeg -video_size 1366x768 -framerate 30 -f x11grab -i :0.0 -pix_fmt yuv420p -c:v libx264 -preset ultrafast -y -v error -stats"
+
+export GIT_EDITOR="nvim"
 
 #. "$HOME/.cargo/env"
