@@ -4,7 +4,7 @@
 
 # terminal emulator
 super + Return
-	alacritty -t "Terminal"
+	alacritty -t "Terminal" -e "/home/angelo_f/.config/sxhkd/new_tmux_terminal.sh"
 
 # program launcher
 super + d

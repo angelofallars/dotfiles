@@ -66,7 +66,7 @@ bspc rule -a qutebrowser desktop='^2' follow=on focus=on
 bspc rule -a Firefox desktop='^2' follow=on focus=on
 
 ## Workspace 3 (Terminal)
-bspc rule -a Alacritty desktop='^3' follow=on focus=on state=fullscreen
+bspc rule -a Alacritty desktop='^3' follow=on focus=on
 
 ## Workspace 4 (Social)
 bspc rule -a discord desktop='^4' follow=on focus=on
