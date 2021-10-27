@@ -46,11 +46,11 @@ window:
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
   padding:
-    x: 10
+    x: 8
     y: 3
 
   # Spread additional padding evenly around the terminal content.
-  #dynamic_padding: false
+  dynamic_padding: true
 
   # Window decorations
   #
@@ -75,7 +75,7 @@ window:
   #startup_mode: Windowed
 
   # Window title
-  title: Alacritty
+  title: Terminal
 
   # Allow terminal applications to change Alacritty's window title.
   dynamic_title: true
@@ -114,7 +114,7 @@ font:
     family: JetBrainsMono Nerd Font
 
     # The `style` can be specified to pick a specific face.
-    style: Medium
+    style:
 
   # Bold font face
   bold:
@@ -147,7 +147,7 @@ font:
     family: JetBrainsMono Nerd Font
 
     # The `style` can be specified to pick a specific face.
-    style: Extra Bold Italic
+    style: Bold Italic
 
   # Point size
   size: 11.3
@@ -156,8 +156,8 @@ font:
   # of as modifying the line spacing, and `offset.x` as modifying the letter
   # spacing.
   #offset:
-  #  x: 0
-  #  y: 0
+    #x: 0
+    #y: 0
 
   # Glyph offset determines the locations of the glyphs within their cells with
   # the default being at the bottom. Increasing `x` moves the glyph to the
@@ -173,7 +173,7 @@ font:
   #use_thin_strokes: true
 
 # If `true`, bold text is drawn using the bright color variants.
-draw_bold_text_with_bright_colors: true
+draw_bold_text_with_bright_colors: false
 
     # Bright and dim foreground colors
     #
@@ -197,9 +197,10 @@ draw_bold_text_with_bright_colors: true
   #
   # Allowed values are CellForeground/CellBackground, which reference the
   # affected cell, or hexadecimal colors like #ff00ff.
-  #vi_mode_cursor:
-  #  text: CellBackground
-  #  cursor: CellForeground
+cursor:
+  vi_mode_cursor:
+    text: CellBackground
+    cursor: CellForeground
 
   # Search colors
   #
@@ -242,9 +243,9 @@ draw_bold_text_with_bright_colors: true
   # search and vi mode.
   #
   # By default, these will use the opposing primary color.
-  #line_indicator:
-  #  foreground: None
-  #  background: None
+  line_indicator:
+    foreground: None
+    background: '#B8BB26'
 
   # Selection colors
   #
@@ -302,6 +303,30 @@ colors:
     cyan:    '0xd65d0e'
     white:   '0xfbf1c7'
 
+# Gruvbox Material dark
+colors:
+    primary:
+      background: '0x262626'
+      foreground: '0xd5c4a1'
+    normal:
+      black:   '0x3c3836'
+      red:     '0xea6962'
+      green:   '0xa9b665'
+      yellow:  '0xd8a657'
+      blue:    '0x7daea3'
+      magenta: '0xd3869b'
+      cyan:    '0x89b482'
+      white:   '0xd4be98'
+    bright:
+      black:   '0x3c3836'
+      red:     '0xea6962'
+      green:   '0xa9b665'
+      yellow:  '0xd8a657'
+      blue:    '0x7daea3'
+      magenta: '0xd3869b'
+      cyan:    '0x89b482'
+      white:   '0xd4be98'
+
 draw_bold_text_with_bright_colors: false
 
 # Bell
@@ -323,14 +348,14 @@ bell:
   #   - EaseOutExpo
   #   - EaseOutCirc
   #   - Linear
-  animation: EaseOutExpo
+  animation: EaseOut
 
   # Duration of the visual bell flash in milliseconds. A `duration` of `0` will
   # disable the visual bell animation.
-  #duration: 0
+  duration: 0
 
   # Visual bell animation color.
-  #color: '#ffffff'
+  color: '#2E2E2E'
 
   # Bell Command
   #
@@ -343,7 +368,9 @@ bell:
   #     program: notify-send
   #     args: ["Hello, World!"]
   #
-  #command: None
+  #command:
+    #program: aplay
+    #args: ["/home/angelo_f/projects/personal-projects/pomoff/assets/audio/bell_counter.wav"]
 
 # Background opacity
 #
@@ -378,7 +405,7 @@ cursor:
     #   - Off: Disable blinking by default
     #   - On: Enable blinking by default
     #   - Always: Force the cursor to always blink
-    blinking: On 
+    blinking: Always 
 
   # Vi mode cursor style
   #
@@ -390,7 +417,7 @@ cursor:
     shape: Block
 
   # Cursor blinking interval in milliseconds.
-  blink_interval: 525
+  blink_interval: 480
 
   # If this is `true`, the cursor will be rendered as a hollow box when the
   # window is not focused.
@@ -398,7 +425,7 @@ cursor:
 
   # Thickness of the cursor relative to the cell width as floating point number
   # from `0.0` to `1.0`.
-  thickness: 0.25
+  thickness: 0.22
 
 # Live config reload (changes require restart)
 #live_config_reload: true

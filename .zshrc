@@ -27,7 +27,7 @@ alias cat='source-highlight --failsafe --out-format=esc -o STDOUT -i'
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git svn
 # This line obtains information from the vcs.
-zstyle ':vcs_info:git*' formats "%F{yellow}%b%f "
+zstyle ':vcs_info:git*' formats "%B%F{yellow}%b%f "
 precmd() {
     vcs_info
 }
@@ -37,7 +37,7 @@ setopt prompt_subst
 
 NEWLINE=$'\n'
 
-prompt='%F{cyan}%3~%f$NEWLINE${vcs_info_msg_0_}%F{green}%f '
+prompt='$NEWLINE%B%F{cyan}%~%f%b$NEWLINE${vcs_info_msg_0_}%F{green}%f%b '
 
 # Simplify xbps commands
 alias install="sudo xbps-install"
@@ -45,15 +45,14 @@ alias update="sudo xbps-install -Su"
 alias query="xbps-query -Rs"
 alias remove="sudo xbps-remove -R"
 
+alias gi="git init"
+alias gs="git status"
+alias gd="git add"
+alias gm="git commit"
+alias gps="git push"
+alias gpl="git pull"
+alias gl="git log"
 
-# Head into code directory and list contents
-# alias tocode="cd "${HOME}"/code && ls"
-tocode ()
-{
-	cd "${HOME}"/projects && cd "$1" && ls
-}
-
-# v for neovim
 alias v="neovim"
 
 # Compile then run code in C
@@ -157,23 +156,38 @@ switchkey ()
 	fi
 }
 
-# edit then update this config
-alias zshedit="nvim "${HOME}"/.zshrc && source "${HOME}"/.zshrc"
-
 # Edit my config files
 edit () {
 
     case $1 in
-        "zsh")    nvim ~/.zshrc && source ~/.zshrc ;;
-       "tmux")    nvim ~/.tmux.conf && tmux source-file ~/.tmux.conf ;;
-        "bsp")    nvim ~/.config/bspwm/bspwmrc && bspc wm -r ;;
-        "sxh")    nvim ~/.config/sxhkd/sxhkdrc && pkill -USR1 -x sxhkd ;;
-       "poly")    nvim ~/.config/polybar/config && \
-                  killall polybar && polybar mybar &;;
+        "zsh")    nvim ~/.zshrc && \
+                    source ~/.zshrc ;;
+
+       "tmux")    nvim ~/.tmux.conf && \
+                    tmux source-file ~/.tmux.conf ;;
+
+      "bspwm")    nvim ~/.config/bspwm/bspwmrc && \
+                    bspc wm -r ;;
+
+      "sxhkd")    nvim ~/.config/sxhkd/sxhkdrc && \
+                    pkill -USR1 -x sxhkd ;;
+
+    "polybar")    nvim ~/.config/polybar/config && \
+                    killall polybar && polybar mybar &;;
+
    "neofetch")    nvim ~/.config/neofetch/config.conf ;;
+
+     "neovim")    nvim ~/.config/nvim/init.vim ;;
+
+       "nvim")    nvim ~/.config/nvim/init.vim ;;
+
   "alacritty")    nvim ~/.config/alacritty/alacritty.yml ;;
-      "dunst")    nvim ~/.config/dunst/dunstrc && killall dunst ;;
+
+      "dunst")    nvim ~/.config/dunst/dunstrc && \
+                    killall dunst ;;
+
       "picom")    nvim ~/.config/picom/picom.conf ;;
+
     "zathura")    nvim ~/.config/zathura/zathurarc ;;
     esac
 }

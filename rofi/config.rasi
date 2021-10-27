@@ -1,1 +1,2 @@
-@theme "/home/angelo_f/.config/rofi/themes/onedark.rasi"
+//@theme "/home/angelo_f/.config/rofi/themes/onedark.rasi"
+@theme "/usr/share/rofi/themes/gruvbox-dark.rasi"

@@ -19,7 +19,7 @@
 [colors]
 ;background = #bb1E2127
 background = #262626
-background-highlight = #373737
+background-highlight = #353535
 ;background-opaque = #cf1E2127
 background-opaque = #1E2127
 background2 = #2e2e2e
@@ -35,25 +35,18 @@ primary-dark = #205281
 alert = #e06c75
 
 secondary = #e60053
-offwhite = #d5c4a1
 
-onedark-blue = #83a598
-onedark-green = #b8bb26
-onedark-red = #fb4934
-onedark-yellow = #fabd2f
-onedark-magenta = #d3869b
-onedark-cyan = #8ec07c
-
-mlm-1 = #34BB9D
-mlm-2 = #A0D6BC
-mlm-3 = #E0E0E0
-mlm-4 = #88AED5
-mlm-5 = #7243BE
+gruvbox-blue =    #83a598
+gruvbox-green =   #AFAF5F
+gruvbox-red =     #fb4934
+gruvbox-yellow =  #fabd2f
+gruvbox-magenta = #d3869b
+gruvbox-cyan =    #8ec07c
 
 [bar/mybar]
 ;width = 1340
 width = 100%
-height = 20
+height = 22
 radius = 0
 offset-x = 0
 offset-y = 0
@@ -62,8 +55,8 @@ fixed-center = true
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-border-top-size = 4
-border-bottom-size = 4
+border-top-size = 3
+border-bottom-size = 3
 border-top-color = ${colors.background}
 border-bottom-color = ${colors.background}
 
@@ -87,23 +80,22 @@ font-4 = roboto mono medium:pixelsize=16;2
 font-5 = roboto mono medium:pixelsize=16;2
 font-6 = roboto mono medium:pixelsize=16;2
 font-7 = "JetBrainsMono Nerd Font Mono:style=Bold:pixelsize=21;5"
-font-8 = "JetBrainsMono Nerd Font Mono:style=Bold:pixelsize=11;3"
+font-8 = "JetBrainsMono Nerd Font Mono:style=Bold:pixelsize=12;3"
 font-9 = "Symbols Nerd Font:pixelsize=15:antialias=true;4"
 font-10 = "JetBrains Mono SemiBold:pixelsize=9;3"
 font-11 = "JetBrainsMono Nerd Font Mono:pixelsize=21:antialias=true;5"
 font-12 = "Open Sans ExtraBold:pixelsize=11;3"
 font-13 = "Open Sans Extrabold:pixelsize=12;1"
-font-14 = "Material Icons=1000;4"
+font-14 = "JetBrainsMono Nerd Font Mono:pixelsize=14;4"
 font-15 = "Fira Code:style=Bold:pixelsize=11;3"
 
 modules-left = round-left bspwm round-right
-modules-center = 
-;modules-right = date sep5 date2 sep6 power
-modules-right = round-left date round-right power
+modules-center =
+modules-right = round-left date round-right
 
 tray-position = right
 tray-detached = true
-tray-offset-x = -256
+tray-offset-x = -240
 
 wm-restack = bspwm
 override-redirect = true
@@ -138,27 +130,27 @@ content-foreground = ${colors.mlm-2}
 type = custom/text
 
 content = 
-content-foreground = ${colors.onedark-red}
+content-foreground = ${colors.gruvbox-red}
 
 [module/sep4]
 type = custom/text
 
 content = 
-content-background = ${colors.onedark-red}
-content-foreground = ${colors.onedark-yellow}
+content-background = ${colors.gruvbox-red}
+content-foreground = ${colors.gruvbox-yellow}
 
 [module/sep5]
 type = custom/text
 
 content = 
-#content-background = ${colors.onedark-yellow}
-content-foreground = ${colors.onedark-green}
+#content-background = ${colors.gruvbox-yellow}
+content-foreground = ${colors.gruvbox-green}
 
 [module/sep6]
 type = custom/text
 
 content = 
-content-foreground = ${colors.onedark-green}
+content-foreground = ${colors.gruvbox-green}
 
 [module/traysep]
 type = custom/text
@@ -186,7 +178,7 @@ format-connected-prefix = "直"
 format-disconnected-prefix = "睊"
 
 label-connected-font = 8
-format-connected-background = ${colors.onedark-yellow}
+format-connected-background = ${colors.gruvbox-yellow}
 format-connected-foreground = ${colors.background-opaque}
 
 label-disconnected-font = 8
@@ -217,7 +209,7 @@ interval = 120
 format-mounted-prefix = 
 mount-0 = /
 
-format-mounted-background = ${colors.onedark-red}
+format-mounted-background = ${colors.gruvbox-red}
 format-mounted-foreground = ${colors.background-opaque}
 
 label-mounted-font = 8
@@ -268,7 +260,7 @@ format-prefix-font = 14
 label = %title:0:30:...%
 label-font = 9
 label-padding-left = 2
-label-foreground = ${colors.offwhite}
+label-foreground = ${colors.foreground}
 
 [module/bspwm]
 type = internal/bspwm
@@ -293,33 +285,33 @@ format-background = ${colors.background-highlight}
 
 ;label-focused = %icon%
 label-focused = 
-;label-focused-background = ${colors.onedark-blue}
+;label-focused-background = ${colors.gruvbox-blue}
 ;label-focused-foreground = ${colors.background}
-label-focused-foreground = ${colors.onedark-green}
+label-focused-foreground = ${colors.gruvbox-green}
 label-focused-padding-right = 1
 
 ;label-occupied = %icon%
 label-occupied = 
-label-occupied-foreground = ${colors.onedark-green}
+label-occupied-foreground = ${colors.gruvbox-green}
 label-occupied-padding-right = 1
 
 ;label-urgent = %icon%
 label-urgent = 
-label-urgent-foreground = ${colors.onedark-red}
+label-urgent-foreground = ${colors.gruvbox-red}
 label-urgent-padding-right = 1
 
 ;label-empty = %icon%
 label-empty = 
-;label-empty-foreground = ${colors.offwhite}
+;label-empty-foreground = ${colors.foreground}
 label-empty-foreground = #595959
 label-empty-padding-right = 1
 
 [module/mpd]
 type = internal/mpd
 format-online = <bar-progress> <label-song>
-format-foreground = ${colors.offwhite}
+format-foreground = ${colors.foreground}
 label-song-padding = 1
-label-song-foreground = ${colors.onedark-blue}
+label-song-foreground = ${colors.gruvbox-blue}
 label-song = %title% - %artist%
 label-font = 11
 
@@ -348,10 +340,10 @@ bar-progress-spacing = 8
 type = internal/date
 interval = 5
 
-format-foreground = ${colors.offwhite}
+format-foreground = ${colors.foreground}
 format-background = ${colors.background-highlight}
 label-font = 9
-format-padding = 0
+format-padding = 1
 
 ;format-prefix = 
 
@@ -363,7 +355,7 @@ label = %time%
 type = internal/date
 interval = 120
 
-;format-background = ${colors.onedark-green}
+;format-background = ${colors.gruvbox-green}
 ;format-foreground = ${colors.background-opaque}
 ;format-prefix-foreground = ${colors.background-opaque}
 
@@ -406,7 +398,7 @@ label-muted-padding-left = 2
 [module/power]
 type = custom/text
 
-content-foreground = ${colors.onedark-green}
+content-foreground = ${colors.gruvbox-green}
 
 content = 
 content-padding = 1
