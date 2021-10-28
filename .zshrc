@@ -45,9 +45,10 @@ alias remove="sudo xbps-remove -R"
 alias srcsh="source ~/.zshrc"
 
 # Convenient Git aliases
-alias gm="git commit"
-alias gma="git commit -a"
-alias gmm="git-commit-am"
+# gm - git commit
+# gma - git commit -a
+#alias gm="gitcut"
+#alias gma="gitcut"
 alias ga="git add"
 
 alias gps="git push"
@@ -56,6 +57,9 @@ alias gpl="git pull"
 alias gin="git init"
 alias gcl="git clone"
 
+alias grv="git remote -v"
+alias gra="git remote add"
+
 alias gs="git status"
 alias gl="git log"
 
@@ -63,10 +67,12 @@ alias grebase="git rebase"
 alias gmerge="git merge"
 
 alias ghelp="echo -en \"Git shortcuts:
-gm    - git commit
-gmm   - git commit -am (-a if no args)
-example: gmm add new color options
-[no need to capitalize first word]
+gm    - git commit (optional message)
+gma   - git commit -a
+example: gma add new color options
+output:  git commit -am \"Add new color options\"
+example: gm add stuff ,, origin main
+output:  git commit -m \"Add stuff\" && git push origin main
 
 ga    - git add
 
@@ -75,6 +81,9 @@ gpl   - git pull
 
 gin   - git init
 gcl   - git clone
+
+gra   - git remote add
+grv   - git remote -v
 
 gs    - git status
 gl    - git log
