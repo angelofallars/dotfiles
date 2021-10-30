@@ -23,8 +23,8 @@ Plug 'gruvbox-community/gruvbox'
 Plug 'sainnhe/gruvbox-material'
 
 " Pretty status line
-" Plug 'vim-airline/vim-airline'
-" Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 " Show added, modified and removed lines
 Plug 'airblade/vim-gitgutter'
