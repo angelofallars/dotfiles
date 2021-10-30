@@ -66,8 +66,8 @@ line-color = #f00
 border-size = 0
 border-color = ${colors.background}
 
-padding-left = 5
-padding-right = 5
+padding-left = 6
+padding-right = 6
 
 module-margin-left = 0
 module-margin-right = 0
@@ -95,7 +95,7 @@ modules-right = round-left date round-right
 
 tray-position = right
 tray-detached = true
-tray-offset-x = -219
+tray-offset-x = -226
 
 wm-restack = bspwm
 override-redirect = true

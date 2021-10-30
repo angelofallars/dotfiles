@@ -79,7 +79,7 @@ bspc rule -a Transmission-gtk desktop='^5' follow=on focus=on state=floating
 bspc rule -a Geary desktop='^6' follow=on focus=on
 bspc rule -a Zathura desktop='^6' follow=on focus=on
 
-feh --bg-fill ~/.config/bspwm/wallpaper/leavesgruv.png &
+feh --bg-fill ~/.config/bspwm/wallpaper/gruvvoid.png &
 
 # Remap control key and caps lock
 xmodmap ~/.config/bspwm/swapkeys -display :0 &

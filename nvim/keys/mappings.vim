@@ -12,6 +12,7 @@ noremap <C-h> <C-W><C-H>
 " Search for <files> in the git repository
 "nnoremap <leader>f :GFiles<cr> -- Currently broken
 nnoremap <leader>f :call fzf#run({'source': 'dirget', 'sink': 'e', 'window': {'width': 0.65, 'height': 0.85}})<cr>
+nnoremap <leader>g :call fzf#run({'source': 'dirget -a', 'sink': 'e', 'window': {'width': 0.65, 'height': 0.85}})<cr>
 
 " Yank to end of line
 nnoremap Y yg_

@@ -66,7 +66,7 @@ alias gl="git log"
 alias grebase="git rebase"
 alias gmerge="git merge"
 
-alias ghelp="echo -en \"Git shortcuts:
+alias ghelp="echo -n 'Git shortcuts:
 gm    - git commit (optional message)
 gma   - git commit -a
 example: gma add new color options
@@ -92,7 +92,7 @@ grebase  -  git rebase
 gmerge   -  git merge
 
 ghelp - show this help message
-\""
+'"
 
 alias v="nvim"
 
