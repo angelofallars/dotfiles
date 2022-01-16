@@ -1,0 +1,34 @@
+# Font configuration
+font:
+  # Normal (roman) font face
+  normal:
+    family: "JetBrains Mono Nerd Font"
+    style: Medium
+
+  # Bold font face
+  bold:
+    family: "JetBrains Mono Nerd Font"
+    style: "Extra Bold"
+
+  # Italic font face
+  italic:
+    family: "JetBrains Mono Nerd Font"
+    style: "Italic"
+
+  # Bold italic font face
+  bold_italic:
+    family: "JetBrains Mono Nerd Font"
+    style: "Extra Bold Italic"
+
+  # Point size
+  size: 10.3
+
+  # Offset
+  #offset:
+  #  x: 0
+  #  y: 0
+
+  # Glyph offset
+  #glyph_offset:
+  #  x: 0
+  #  y: 0

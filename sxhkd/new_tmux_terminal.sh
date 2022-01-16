@@ -1,0 +1,1 @@
+tmux a || tmux

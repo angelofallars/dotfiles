@@ -1,0 +1,252 @@
+{
+  "aro": [
+    {
+      "color": "#3BA740",
+      "height": 2
+    },
+    {
+      "color": "#A8D47A",
+      "height": 2
+    },
+    {
+      "color": "#FFFFFF",
+      "height": 2
+    },
+    {
+      "color": "#ABABAB",
+      "height": 2
+    },
+    {
+      "color": "#000000",
+      "height": 2
+    }
+  ],
+
+  "germany": [
+    {
+      "color": "#000000",
+      "height": 3
+    },
+    {
+      "color": "#DE0000",
+      "height": 3
+    },
+    {
+      "color": "#FFCF00",
+      "height": 3
+    }
+  ],
+
+  "ace": [
+    {
+      "color": "#000000",
+      "height": 2
+    },
+    {
+      "color": "#A4A4A4",
+      "height": 2
+    },
+    {
+      "color": "#FFFFFF",
+      "height": 2
+    },
+    {
+      "color": "#810081",
+      "height": 2
+    }
+  ],
+
+  "bi": [
+    {
+      "color": "#D60270",
+      "height": 4
+    },
+    {
+      "color": "#9B4F96",
+      "height": 3
+    },
+    {
+      "color": "#0038A8",
+      "height": 4
+    }
+  ],
+
+  "pride": [
+    {
+      "color": "#E50000",
+      "height": 2
+    },
+    {
+      "color": "#FF8D00",
+      "height": 2
+    },
+    {
+      "color": "#FFEE00",
+      "height": 2
+    },
+    {
+      "color": "#028121",
+      "height": 2
+    },
+    {
+      "color": "#004CFF",
+      "height": 2
+    },
+    {
+      "color": "#770088",
+      "height": 2
+    }
+  ],
+
+  "pastel": [
+    {
+      "color": "#F59679",
+      "height": 2
+    },
+    {
+      "color": "#F9CE7B",
+      "height": 2
+    },
+    {
+      "color": "#FCF37C",
+      "height": 2
+    },
+    {
+      "color": "#9FFD7C",
+      "height": 2
+    },
+    {
+      "color": "#7BA1FB",
+      "height": 2
+    },
+    {
+      "color": "#AC7CFA",
+      "height": 2
+    }
+  ],
+
+  "enby": [
+    {
+      "color": "#FCF431",
+      "height": 2
+    },
+    {
+      "color": "#FCFCFC",
+      "height": 2
+    },
+    {
+      "color": "#9D59D2",
+      "height": 2
+    },
+    {
+      "color": "#282828",
+      "height": 2
+    }
+  ],
+
+  "les": [
+    {
+      "color": "#D62800",
+      "height": 2
+    },
+    {
+      "color": "#FF9B56",
+      "height": 2
+    },
+    {
+      "color": "#FFFFFF",
+      "height": 2
+    },
+    {
+      "color": "#D462A6",
+      "height": 2
+    },
+    {
+      "color": "#A40062",
+      "height": 2
+    }
+  ],
+
+  "gay": [
+    {
+      "color": "#078D70",
+      "height": 2
+    },
+    {
+      "color": "#98E8C1",
+      "height": 2
+    },
+    {
+      "color": "#FFFFFF",
+      "height": 2
+    },
+    {
+      "color": "#7BADE2",
+      "height": 2
+    },
+    {
+      "color": "#3D1A78",
+      "height": 2
+    }
+  ],
+
+  "gay-gruvbox": [
+    {
+      "color": "#26806C",
+      "height": 2
+    },
+    {
+      "color": "#9AD9BA",
+      "height": 2
+    },
+    {
+      "color": "#DED6CC",
+      "height": 2
+    },
+    {
+      "color": "#83AFDD",
+      "height": 2
+    },
+    {
+      "color": "#432673",
+      "height": 2
+    }
+  ],
+  "pan": [
+    {
+      "color": "#FF1C8D",
+      "height": 4
+    },
+    {
+      "color": "#FFD700",
+      "height": 4
+    },
+    {
+      "color": "#1AB3FF",
+      "height": 4
+    }
+  ],
+
+  "trans": [
+    {
+      "color": "#5BCFFB",
+      "height": 2
+    },
+    {
+      "color": "#F5ABB9",
+      "height": 2
+    },
+    {
+      "color": "#FFFFFF",
+      "height": 2
+    },
+    {
+      "color": "#F5ABB9",
+      "height": 2
+    },
+    {
+      "color": "#5BCFFB",
+      "height": 2
+    }
+  ]
+} 
