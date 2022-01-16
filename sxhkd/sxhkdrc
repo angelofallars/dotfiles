@@ -2,80 +2,85 @@
 # wm independent hotkeys
 #
 
-# terminal emulator
+# reloads sxhkd configuration:
+super + Escape
+    pkill -USR1 -x sxhkd
+
+# Launch Terminal
 super + Return
-	alacritty -t "Terminal" -e "/home/angelo_f/.config/sxhkd/new_tmux_terminal.sh"
+    kitty -T "Terminal" /home/angelo-f/.config/sxhkd/new_tmux_terminal.sh
 
 # terminal emulator (no tmux)
 super + shift + Return
-	alacritty -t "Terminal"
+	kitty -T "Terminal"
 
-# program launcher
-super + d
-    rofi -show drun -show-icons
+# terminal emulator (new tmux session)
+super + alt + Return
+	kitty -T "Terminal" tmux
 
-# file manager
-alt + f
-    thunar
+# j4 dmenu
+alt + F1
+    j4-dmenu
 
-# alt-tab
-alt + Tab
-    rofi -show window -show-icons
+# Launch Menus
+super + {x,n,d}
+    {powermenu,def-nmdmenu,def-dmenu}
 
-# make sxhkd reload its configuration files:
-super + Escape
-	pkill -USR1 -x sxhkd
+# Lock Screen
+ctrl + alt + l
+    lock
 
-# --- Volume Control ---
-super + F8
-    pactl set-sink-volume @DEFAULT_SINK@ +10%
-super + F7
-    pactl set-sink-volume @DEFAULT_SINK@ -10%
-super + F6
-    pactl set-sink-mute @DEFAULT_SINK@ toggle
-super + F5
-    notify-send "Test"
+# custom dmenu scripts
+# alt + {e,l}
+#{edit-configs, quick-links}
+alt + e
+    edit-configs
 
-# --- Brightness control ---
-#super + F2
-#   xbacklight -dec 10 -time 0 
-#super + F3
-#   xbacklight -inc 10 -time 0
-super + F2
-    sudo brightnessctl set 10%-
-super + F3
-    sudo brightnessctl set +10%
+# Volume controls
+XF86Audio{RaiseVolume,LowerVolume,Mute}
+    volume{ --inc, --dec, --toggle}
 
+# Brightness controls
+XF86MonBrightness{Up,Down}
+    brightness{ --inc, --dec}
 
-# Screenshot
-super + n
-    scrot ~/Pictures/Screenshots/%b-%d-20%y_%I:%M%p-%Ss.png -e 'xclip -selection clipboard -t image/png -i $f' && notify-send "Screenshot taken" "Saved in Pictures/Screenshots"
-# Current window screenshot
-super + shift + N
-    scrot -ub ~/Pictures/Screenshots/%b-%d-20%y_%I:%M%p-%Ss.png -e 'xclip -selection clipboard -t image/png -i $f' && notify-send "Screenshot taken" "Saved in Pictures/Screenshots"
-# Selection screenshot (No save)
-super + shift + M
-    maim -s -u | xclip -selection clipboard -t image/png -i && notify-send "Screenshot taken"
+# screenshot
+Print
+    flameshot gui
+
+# screenshot in 5 seconds
+alt + Print
+    takeshot --in5
+
+# screenshot in 10 seconds
+shift + Print
+    takeshot --in10
+
+# screenshot active window
+ctrl + Print
+    takeshot --win
+
+# screenshot selected area
+ctrl + alt + Print
+    takeshot --area
 
 #
-# bspwm hotkeys
+#
+# BSPWM HOTKEYS
+#
 #
 
 # quit/restart bspwm
-# super + shift + {q,r}
-#	bspc {quit,wm -r}
-super + shift + {p,r}
-	bspc {quit,wm -r | killall polybar | polybar mybar &}
+ctrl + shift + {q,r}
+    bspc {quit,wm -r}
 
 # close and kill
-#super + {_,shift + }q
-#	bspc node -{k,c}
-super + shift + q
-	bspc node -c
+super + q
+    bspc node -c
 
 # alternate between the tiled and monocle layout
-super + v
-	bspc desktop -l next
+super + space
+	bspc node -t "~"{floating,tiled}
 
 # send the newest marked node to the newest preselected node
 super + y
@@ -90,13 +95,21 @@ super + g
 #
 
 # set the window state
-super + {t,shift + t,s,f}
+super + {t,ctrl + t,s,f}
 	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
 # set the node flags
 super + ctrl + {m,x,y,z}
 	bspc node -g {marked,locked,sticky,private}
 
+# Send the window to another edge of the screen
+super + {_,shift + }{Left,Down,Up,Right}
+    bspc node -{f,s} {west,south,north,east}
+
+# Change focus to next window, including floating window
+alt + {_,shift + }Tab
+    bspc node -f {next.local,prev.local}
+ 
 #
 # focus/swap
 #
@@ -155,6 +168,14 @@ super + ctrl + shift + space
 # move/resize
 #
 
+# Expanding windows
+super + control {Left,Right,Up,Down}
+    bspc node -z {left -20 0,right 20 0,top 0 -20,bottom 0 20}
+
+# Shrinking windows
+super + alt + {Left,Right,Up,Down}
+    bspc node -z {left 20 0,right -20 0,top 0 20,bottom 0 -20}
+
 # expand a window by moving one of its side outward
 super + alt + {h,j,k,l}
 	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
@@ -166,4 +187,3 @@ super + alt + shift + {h,j,k,l}
 # move a floating window
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
-

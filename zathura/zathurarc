@@ -1,7 +1,0 @@
-set font "jetbrains mono 9"
-set recolor
-set recolor-lightcolor "#F8F4E1"
-set recolor-darkcolor "#282828"
-set default-bg "#CDCABA"
-
-set guioptions none

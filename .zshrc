@@ -33,7 +33,7 @@ setopt prompt_subst
 
 NEWLINE=$'\n'
 
-prompt='$NEWLINE%B%F{cyan}%~%f%b$NEWLINE${vcs_info_msg_0_}%F{green}%f%b '
+prompt='%B%F{green}%~%f%b%F{green} ${vcs_info_msg_0_}%F{green}%f%b '
 
 # Simplify XBPS commands
 alias install="sudo xbps-install"
@@ -50,6 +50,7 @@ alias srcsh="source ~/.zshrc"
 #alias gm="gitcut"
 #alias gma="gitcut"
 alias ga="git add"
+alias gm="git commit"
 
 alias gps="git push"
 alias gpl="git pull"
@@ -62,19 +63,15 @@ alias gra="git remote add"
 
 alias gs="git status"
 alias gl="git log"
+alias gd="git diff"
+alias gds="git diff --staged"
 
 alias grebase="git rebase"
 alias gmerge="git merge"
 
 alias ghelp="echo -n 'Git shortcuts:
-gm    - git commit (optional message)
-gma   - git commit -a
-example: gma add new color options
-output:  git commit -am \"Add new color options\"
-example: gm add stuff ,, origin main
-output:  git commit -m \"Add stuff\" && git push origin main
-
 ga    - git add
+gm    - git commit
 
 gps   - git push
 gpl   - git pull
@@ -87,6 +84,8 @@ grv   - git remote -v
 
 gs    - git status
 gl    - git log
+gd    - git diff
+gd    - git diff --staged
 
 grebase  -  git rebase
 gmerge   -  git merge
@@ -117,6 +116,9 @@ pyon ()
 {
     source "${HOME}"/.venv/"$1"/bin/activate
 }
+
+alias venvon="source venv/bin/activate"
+alias venvoff="deactivate"
 
 # Deactivate virtual environment
 alias pyoff="deactivate"
@@ -217,6 +219,23 @@ alias swapctrl="xmodmap ~/.config/i3/swapkeys -display :0 &"
 # Record video
 alias rec="ffmpeg -video_size 1366x768 -framerate 30 -f x11grab -i :0.0 -pix_fmt yuv420p -c:v libx264 -preset ultrafast -y -v error -stats"
 
+# autosuggestions
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+alias discord="discord --ignore-gpu-blocklist --disable-features=UseOzonePlatform --enable-features=VaapiVideoDecoder --use-gl=desktop --enable-gpu-rasterization --enable-zero-copy > /dev/null 2>&1 & disown"
+
 export GIT_EDITOR="nvim"
 export PATH=/home/angelo_f/.local/bin:$PATH
 #. "$HOME/.cargo/env"
+
+alias pd="pushd"
+alias ppd="popd"
+
+# Created by `pipx` on 2021-11-09 19:31:24
+export PATH="$PATH:/home/angelo-f/.local/bin"
+# source /home/angelo-f/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+export EXA_COLORS="di=32"
+
+# A nice lil bonsai shell for Rust lovers.
+treefetch --bonsai
