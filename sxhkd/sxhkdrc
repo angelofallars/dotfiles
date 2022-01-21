@@ -8,15 +8,15 @@ super + Escape
 
 # Launch Terminal
 super + Return
-    kitty -T "Terminal" /home/angelo-f/.config/sxhkd/new_tmux_terminal.sh
+    alacritty -t "Terminal" -e "/home/angelo-f/.config/sxhkd/new_tmux_terminal.sh"
 
 # terminal emulator (no tmux)
 super + shift + Return
-	kitty -T "Terminal"
+	alacritty -t "Terminal"
 
 # terminal emulator (new tmux session)
 super + alt + Return
-	kitty -T "Terminal" tmux
+	alacritty -t "Terminal" -e "tmux"
 
 # j4 dmenu
 alt + F1
@@ -33,8 +33,8 @@ ctrl + alt + l
 # custom dmenu scripts
 # alt + {e,l}
 #{edit-configs, quick-links}
-alt + e
-    edit-configs
+#alt + e
+#  edit-configs
 
 # Volume controls
 XF86Audio{RaiseVolume,LowerVolume,Mute}
@@ -95,7 +95,7 @@ super + g
 #
 
 # set the window state
-super + {t,ctrl + t,s,f}
+super + {t,shift + t,s,f}
 	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
 # set the node flags

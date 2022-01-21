@@ -3,7 +3,7 @@ monitor = 0
 follow = mouse
 width = 280
 height = 150
-offset = 8x34
+offset = 15x34
 indicate_hidden = yes
 shrink = no
 separator_height = 4
@@ -32,6 +32,7 @@ browser = x-www-browser -new-tab
 always_run_script = true
 title = Dunst
 class = Dunst
+progress_bar = true
 
 [shortcuts]
 close = ctrl+shift+space

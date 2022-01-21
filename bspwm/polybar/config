@@ -49,6 +49,8 @@ font-1 = "Iosevka Nerd Font:size=15;4"
 font-2 = "Iosevka Nerd Font:size=15.46;4"
 font-3 = "Iosevka Nerd Font:size=18;4"
 font-4 = "Source Code Pro Bold:size=13;3"
+font-5 = "Source Han Sans JP:style=Regular:size=13;3"
+font-6 = "Source Han Sans JP:style=Bold:size=13;3"
 
 # Default
 modules-left = spacing spacing leftcirc bspwm rightcirc
@@ -66,6 +68,112 @@ tray-offset-x = 0
 tray-offset-y = 0
 tray-padding = 5 
 tray-scale = 1.0
+
+enable-ipc = true
+
+cursor-click = pointer
+cursor-scroll = pointer
+
+[bar/bspwm-bar]
+monitor =
+monitor-fallback =
+monitor-strict = false
+
+override-redirect = true
+wm-restack = bspwm
+
+bottom = false
+fixed-center = true
+
+width = 220
+height = 25
+
+background = ${color.background}
+foreground = ${color.foreground}
+
+radius-top = 10.0
+radius-bottom = 10.0
+
+offset-y = 3
+offset-x = 22
+
+line-size = 2
+line-color = ${color.blue}
+
+border-size = 0
+border-color = ${color.background}
+
+padding = 0
+
+module-margin-left = 0
+module-margin-right = 0
+
+font-0 = "JetBrainsMono Nerd Font Mono:style=Medium:size=10.5;3"
+font-1 = "Iosevka Nerd Font:size=15;4"
+font-2 = "Iosevka Nerd Font:size=15.46;4"
+font-3 = "Iosevka Nerd Font:size=18;4"
+font-4 = "Source Code Pro Bold:size=13;3"
+font-5 = "Source Han Sans JP:style=Regular:size=13;3"
+font-6 = "Source Han Sans JP:style=Bold:size=13;3"
+
+# Default
+modules-center = bspwm
+
+spacing = 0
+dim-value = 1.0
+
+enable-ipc = true
+
+cursor-click = pointer
+cursor-scroll = pointer
+
+[bar/time]
+monitor =
+monitor-fallback =
+monitor-strict = false
+
+override-redirect = true
+wm-restack = bspwm
+
+bottom = false
+fixed-center = true
+
+width = 205
+height = 25
+
+background = ${color.background}
+foreground = ${color.foreground}
+
+radius-top = 10.0
+radius-bottom = 10.0
+
+offset-y = 3
+offset-x = 1140
+
+line-size = 2
+line-color = ${color.blue}
+
+border-size = 0
+border-color = ${color.background}
+
+padding = 0
+
+module-margin-left = 0
+module-margin-right = 0
+
+font-0 = "JetBrainsMono Nerd Font Mono:style=Medium:size=10.5;3"
+font-1 = "Iosevka Nerd Font:size=15;4"
+font-2 = "Iosevka Nerd Font:size=15.46;4"
+font-3 = "Iosevka Nerd Font:size=18;4"
+font-4 = "Source Code Pro Bold:size=13;3"
+font-5 = "Source Han Sans JP:style=Regular:size=13;3"
+font-6 = "Source Han Sans JP:style=Bold:size=13;3"
+
+# Default
+modules-center = time
+
+spacing = 0
+dim-value = 1.0
 
 enable-ipc = true
 

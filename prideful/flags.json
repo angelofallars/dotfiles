@@ -22,21 +22,6 @@
     }
   ],
 
-  "germany": [
-    {
-      "color": "#000000",
-      "height": 3
-    },
-    {
-      "color": "#DE0000",
-      "height": 3
-    },
-    {
-      "color": "#FFCF00",
-      "height": 3
-    }
-  ],
-
   "ace": [
     {
       "color": "#000000",
@@ -190,28 +175,6 @@
     }
   ],
 
-  "gay-gruvbox": [
-    {
-      "color": "#26806C",
-      "height": 2
-    },
-    {
-      "color": "#9AD9BA",
-      "height": 2
-    },
-    {
-      "color": "#DED6CC",
-      "height": 2
-    },
-    {
-      "color": "#83AFDD",
-      "height": 2
-    },
-    {
-      "color": "#432673",
-      "height": 2
-    }
-  ],
   "pan": [
     {
       "color": "#FF1C8D",

@@ -169,41 +169,43 @@ reverse-scroll = true
 
 fuzzy-match = true
 
-ws-icon-0=I;
-ws-icon-1=II;
-ws-icon-2=III;
-ws-icon-3=IV;
-ws-icon-4=V;
-ws-icon-5=VI;
-ws-icon-6=VII;漣
+ws-icon-0=1;一
+ws-icon-1=2;二
+ws-icon-2=3;三
+ws-icon-3=4;四
+ws-icon-4=5;五
+ws-icon-5=6;六
 ws-icon-default = 
 
 format = <label-state>
-format-font = 2
 
 label-monitor = %name%
 
-label-focused = ﱣ
-label-focused-foreground = ${color.foreground}
+label-focused = %icon%
+label-focused-foreground = ${color.blue}
 ;label-focused-underline =  ${color.blue}
+label-focused-font = 7
 label-focused-padding = 0
 
-label-occupied = ﱣ
-label-occupied-foreground = ${color.blue}
+label-occupied = %icon%
+label-occupied-foreground = ${color.foreground-dark-light}
 ;label-occupied-underline =
+label-occupied-font = 7
 label-occupied-padding = 0
 
-label-urgent = ﱣ
+label-urgent = %icon%
 label-urgent-foreground = ${color.red}
 label-urgent-underline =  ${color.red}
+label-urgent-font = 7
 label-urgent-padding = 0
 
-label-empty = ﱤ
-label-empty-foreground = ${color.foreground}
+label-empty = %icon%
+label-empty-foreground = ${color.foreground-dark}
+label-empty-font = 6
 label-empty-padding = 0
 
 ; Separator in between workspaces
-label-separator = "∙"
+label-separator = "  "
 label-separator-padding = 0
 label-separator-foreground = ${color.altblack}
 

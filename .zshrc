@@ -33,7 +33,7 @@ setopt prompt_subst
 
 NEWLINE=$'\n'
 
-prompt='%B%F{green}%~%f%b%F{green} ${vcs_info_msg_0_}%F{green}%f%b '
+prompt='%B%F{blue}%~%f%b%F{blue} ${vcs_info_msg_0_}%F{blue}%f%b '
 
 # Simplify XBPS commands
 alias install="sudo xbps-install"
@@ -130,6 +130,12 @@ pyls ()
     echo ${blue} > /dev/null
     ls "${HOME}"/.venv
     echo ${reset} > /dev/null
+}
+
+# Run C code
+crun ()
+{
+    gcc -Wall "$1" -o a.out && ./a.out
 }
 
 # Switch to international keyboard
