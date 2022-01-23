@@ -1,10 +1,10 @@
 <h1 align=center>🐧 gruvbox - neovim - axyl</h1>
 
-<img src="https://user-images.githubusercontent.com/39676098/149642512-dd73209a-3091-4383-905e-fe82d55741d3.png" alt="DuckDuckGo, neofetch, cbonsai" align=right height=240px>
+<img src="https://user-images.githubusercontent.com/39676098/150668849-5b9bd25a-6242-411e-ad1e-f5d391069b8a.png" alt="neofetch, prideful, cmatrix" align=right height=240px>
 
 My (messy) dotfiles on [Axyl](https://axylos.org). Uses the [Gruvbox Material](https://github.com/sainnhe/gruvbox-material) theme.
 
-[Wallpaper **(1080p)**](https://user-images.githubusercontent.com/39676098/149642494-5abf0613-8937-4859-a7c8-ceeaceaefbeb.png)
+[Wallpaper **(1080p)**](https://cdn.discordapp.com/attachments/635625973764849684/932943872248655893/jotaro-paper-gruvbox.png)
 
 ## Desktop
 
@@ -18,5 +18,5 @@ My (messy) dotfiles on [Axyl](https://axylos.org). Uses the [Gruvbox Material](h
 - **Shell** - Zsh
 - **Multiplexer** - tmux
 
-![image](https://user-images.githubusercontent.com/39676098/149642443-ebabc8e6-9e71-43c3-952b-58b2210dd323.png)
-![image2](https://user-images.githubusercontent.com/39676098/149642428-bd8757a7-42d6-4eb6-bab6-13a54c8d4b81.png)
+![image](https://user-images.githubusercontent.com/39676098/150668850-9abfbb47-b4ef-43c5-8384-de18776503fb.png)
+![image2](https://user-images.githubusercontent.com/39676098/150668851-e8b92e7d-dce7-4f8f-8090-f1a3c7ded79a.png)
