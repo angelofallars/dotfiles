@@ -175,6 +175,29 @@
     }
   ],
 
+  "gay-gruvbox": [
+    {
+      "color": "#26806C",
+      "height": 2
+    },
+    {
+      "color": "#9AD9BA",
+      "height": 2
+    },
+    {
+      "color": "#DED6CC",
+      "height": 2
+    },
+    {
+      "color": "#83AFDD",
+      "height": 2
+    },
+    {
+      "color": "#432673",
+      "height": 2
+    }
+  ],
+
   "pan": [
     {
       "color": "#FF1C8D",
@@ -212,4 +235,4 @@
       "height": 2
     }
   ]
-} 
+}
