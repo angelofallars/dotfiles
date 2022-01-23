@@ -132,10 +132,16 @@ pyls ()
     echo ${reset} > /dev/null
 }
 
-# Run C code
+# Compile & run C code
 crun ()
 {
     gcc -Wall "$1" -o a.out && ./a.out
+}
+
+# Compile & debug C code
+cdeb ()
+{
+    gcc -Wall "$1" -g -o a.out && gdb ./a.out
 }
 
 # Switch to international keyboard
