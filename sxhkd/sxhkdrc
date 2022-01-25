@@ -45,7 +45,7 @@ XF86MonBrightness{Up,Down}
     brightness{ --inc, --dec}
 
 # screenshot
-Print
+Pause
     flameshot gui
 
 # screenshot in 5 seconds

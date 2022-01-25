@@ -7,11 +7,11 @@ pgrep -x sxhkd > /dev/null || sxhkd &
 $HOME/.config/bspwm/polybar/launch.sh
 
 workspaces() {
-	name=1
-	for monitor in `bspc query -M`; do
-		bspc monitor ${monitor} -n "$name" -d '1' '2' '3' '4' '5' '6'
-		let name++
-	done
+    name=1
+    for monitor in `bspc query -M`; do
+        bspc monitor ${monitor} -n "$name" -d '1' '2' '3' '4' '5' '6'
+        let name++
+    done
 }
 workspaces
 
@@ -29,7 +29,7 @@ bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 bspc config paddingless_monocle true
 bspc config single_monocle false
-bspc config focus_follows_pointer true
+bspc config focus_follows_pointer false
 
 # fix pointer
 xsetroot -cursor_name left_ptr
@@ -63,8 +63,8 @@ bspc rule -a Geary desktop='^6' follow=on focus=on
 bspc rule -a vlc desktop='^6' follow=on focus=on
 bspc rule -a obs desktop='^6' follow=on focus=on
 bspc rule -a mpv desktop='^6' follow=on focus=on
-bspc rule -a Gimp desktop='^6' follow=on focus=on
-bspc rule -a Gimp-2.10 desktop='^6' follow=on focus=on
+bspc rule -a Gimp desktop='^4' follow=on focus=on
+bspc rule -a Gimp-2.10 desktop='^4' follow=on focus=on
 
 # floating windows
 declare -a floats=(Alafloat Lxappearance Arandr \
@@ -116,3 +116,9 @@ xmodmap ~/.config/bspwm/swapkeys -display :0 &
 
 # Redshift night time
 pgrep -x redshift > /dev/null || redshift -l 14.599512:120.984222 &
+
+# If third workspace empty, open a terminal there
+if [ -z $(bspc query -N -d 3) ]
+then
+    alacritty -e "$HOME/.config/sxhkd/new_tmux_terminal.sh" &
+fi
