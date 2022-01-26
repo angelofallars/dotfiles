@@ -5,7 +5,7 @@ let mapleader = " "
 
 " Search for <files> in the git repository
 "nnoremap <leader>f :GFiles<cr> -- Currently broken
-nnoremap <leader>f :call fzf#run({'source': 'dirget', 'sink': 'e', 'window': {'width': 0.85, 'height': 0.90}})<cr>
+nnoremap <leader>f :GFiles<cr>
 nnoremap <leader>g :call fzf#run({'source': 'dirget -a', 'sink': 'e', 'window': {'width': 0.85, 'height': 0.90}})<cr>
 
 " Get list of buffers with FZF

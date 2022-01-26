@@ -32,7 +32,7 @@ window:
   multiplier: 3
 
 ## Background opacity
-background_opacity: 1.00
+window.opacity: 1.00
 
 ## Cursor
 cursor:
