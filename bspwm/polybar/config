@@ -180,6 +180,39 @@ enable-ipc = true
 cursor-click = pointer
 cursor-scroll = pointer
 
+[bar/tray]
+monitor =
+monitor-fallback =
+monitor-strict = false
+
+override-redirect = true
+wm-restack = bspwm
+
+bottom = false
+fixed-center = true
+
+width = 205
+height = 25
+
+background = #00000000
+foreground = ${color.foreground}
+modules-center = sep
+
+radius-top = 10.0
+radius-bottom = 10.0
+
+offset-y = 3
+offset-x = 925
+
+tray-position = right
+tray-detached = false
+tray-maxsize = 16
+tray-background = ${color.background}
+tray-offset-x = 0
+tray-offset-y = 0
+tray-padding = 3 
+tray-scale = 1.0
+
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
 [settings]

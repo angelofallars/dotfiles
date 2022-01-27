@@ -9,9 +9,9 @@ type = custom/text
 content = ""
 
 content-font = 3
-content-background = ${color.background}
+content-background = #000000
 content-foreground = ${color.altblack}
-content-padding = 1
+content-padding = 0
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
