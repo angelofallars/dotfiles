@@ -20,4 +20,4 @@ My (messy) dotfiles on Artix. Uses the [Gruvbox Material](https://github.com/sai
 
 ![image](https://media.discordapp.net/attachments/518205487091548314/938210095249104916/unknown.png)
 ![image2](https://media.discordapp.net/attachments/518205487091548314/938210410211999884/unknown.png)
-![image3](https://media.discordapp.net/attachments/518205487091548314/938211320392716328/unknown.png)
+![image3](https://cdn.discordapp.com/attachments/518205487091548314/938211320392716328/unknown.png)
