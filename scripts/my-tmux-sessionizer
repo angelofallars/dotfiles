@@ -1,0 +1,62 @@
+#!/usr/bin/env bash
+
+selected=$(\
+           find \
+               ~/projects ~/study \
+               -mindepth 1 -maxdepth 1 -type d | \
+
+           sed --regexp-extended "s/^\/home\/[^\/]+\///g" |
+
+           fzf --border=rounded --reverse --prompt="  ➡️  " --ansi --cycle \
+               --header="🚀 tmux-sessionizer" --header-first \
+               --pointer="🔥" \
+               --padding 1,0 --margin 0,2,1,2 \
+               --color="prompt:blue,prompt:bold,border:green,border:dim" \
+               --color="fg+:yellow" \
+               --color="hl:underline,hl+:underline,hl:magenta,hl+:magenta" \
+               --color="info:green" \
+               --preview='\
+                          gitdir="$(echo "$HOME/")$(echo {})$(echo "/.git")" ;\
+
+                          if [ -e $gitdir ] ;\
+                          then ;\
+                              projectname=$(basename {}) ;\
+                              commitcount=$(git --git-dir=$gitdir \
+                                            rev-list --all --count) ;\
+
+                              printf "\e[0;93m\e[1;34m $projectname \e[0m\n" ;\
+
+                              printf "\e[0;93m\e[0;34m branch\e[0m  " ;\
+
+                              git --git-dir=$gitdir \
+                              rev-parse --abbrev-ref HEAD ;\
+
+                              printf "\e[0;93m\e[0;34m commits\e[0m " ;\
+                              echo $commitcount ;\
+
+                              echo ;\
+                          fi;
+
+                          export EXA_COLORS="di=33" && \
+                          ~/.local/bin/exa -1 --icons -T -L 3 \
+                          --group-directories-first -l --no-permissions --git-ignore\
+                          --no-user --no-filesize --changed --no-time $HOME/{} ;\
+                          ' \
+               --preview-window=border-left,50%)
+
+if [ $? != 0 ]
+then
+    exit
+fi
+
+selected="$HOME/${selected}"
+
+selected_name=$(basename "$selected" | tr . _)
+
+if ! tmux has-session -t $selected_name 2> /dev/null; then
+    tmux new-session -ds $selected_name -c $selected \
+        -x $(tput cols) -y $(tput lines) nvim $selected
+    tmux new-window -t $selected_name:2 -d -c $selected zsh
+fi
+
+tmux switch-client -t $selected_name

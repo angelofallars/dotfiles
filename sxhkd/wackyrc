@@ -1,0 +1,208 @@
+
+# wm independent hotkeys
+#
+
+# reloads sxhkd configuration:
+super + Escape
+    pkill -USR1 -x sxhkd ; sxhkd &
+
+# Launch Terminal
+super + Return
+    alacritty -t "Terminal" -e "/home/angelo-f/.config/sxhkd/new_tmux_terminal.sh"
+
+# terminal emulator (no tmux)
+super + shift + Return
+	alacritty -t "Terminal"
+
+# terminal emulator (new tmux session)
+super + alt + Return
+	alacritty -t "Terminal" -e "tmux"
+
+# Program launcher
+super + d
+	dmenu_run_gruv
+
+# Music player
+super + 0
+    play-song.sh Anime
+
+super + minus
+    play-song.sh KPOP
+
+
+# screenshot
+Pause
+    flameshot gui
+
+# Media Controls
+# Designed for the control keys on the right of Royal Kludge RK71 (btw)
+
+shift + Home
+    pamixer -i 10
+
+shift + Insert
+    pamixer -d 10
+
+shift + End
+    xbacklight -inc 10 -fps 30 -time 200
+
+shift + Delete
+    xbacklight -dec 10 -fps 30 -time 200
+
+# Toggle mute
+shift + Pause
+    pamixer -t
+
+# mpd controls
+
+ctrl + Insert
+    mpc prev
+
+ctrl + Home
+    mpc next
+
+ctrl + Delete
+    mpc seekthrough -8
+
+ctrl + shift + Delete
+    mpc seek 0
+
+ctrl + End
+    mpc seekthrough +8
+
+ctrl + Pause
+    mpc toggle
+
+# Remaps
+
+# # ` key
+# shift + Escape
+#     xdotool keyup Escape ; xdotool keyup shift ; xdotool key grave ; xdotool keydown shift
+# 
+# # ~ key
+# ctrl + Escape
+#     xdotool keyup Escape ; xdotool keyup shift ; xdotool keyup control ; xdotool key asciitilde ; xdotool keydown control
+
+#
+#
+# BSPWM HOTKEYS
+#
+#
+
+# quit/restart bspwm
+ctrl + shift + {q,r}
+    bspc {quit,wm -r}
+
+# close and kill
+super + q
+    bspc node -c
+
+# alternate between the tiled and monocle layout
+super + space
+	bspc node -t "~"{floating,tiled}
+
+# send the newest marked node to the newest preselected node
+super + y
+	bspc node newest.marked.local -n newest.!automatic.local
+
+# swap the current node and the biggest window
+super + g
+	bspc node -s biggest.window
+
+#
+# state/flags
+#
+
+# set the window state
+super + {t,shift + t,s,f}
+	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+# set the node flags
+super + ctrl + {m,x,y,z}
+	bspc node -g {marked,locked,sticky,private}
+
+# Send the window to another edge of the screen
+super + {_,shift + }{Left,Down,Up,Right}
+    bspc node -{f,s} {west,south,north,east}
+
+# Change focus to next window, including floating window
+alt + {_,shift + }Tab
+    bspc node -f {next.local,prev.local}
+ 
+#
+# focus/swap
+#
+
+# focus the node in the given direction
+super + {_,shift + }{h,j,k,l}
+	bspc node -{f,s} {west,south,north,east}
+
+# focus the node for the given path jump
+super + {p,b,comma,period}
+	bspc node -f @{parent,brother,first,second}
+
+# focus the next/previous window in the current desktop
+super + {_,shift + }c
+	bspc node -f {next,prev}.local.!hidden.window
+
+# focus the next/previous desktop in the current monitor
+super + bracket{left,right}
+	bspc desktop -f {prev,next}.local
+
+# focus the last node/desktop
+super + {grave,Tab}
+	bspc {node,desktop} -f last
+
+# focus the older or newer node in the focus history
+super + {o,i}
+	bspc wm -h off; \
+	bspc node {older,newer} -f; \
+	bspc wm -h on
+
+# focus or send to the given desktop
+super + {_,shift + }{1-9,0}
+	bspc {desktop -f,node -d} '^{1-9,10}'
+
+#
+# preselect
+#
+
+# preselect the direction
+super + ctrl + {h,j,k,l}
+	bspc node -p {west,south,north,east}
+
+# preselect the ratio
+super + ctrl + {1-9}
+	bspc node -o 0.{1-9}
+
+# cancel the preselection for the focused node
+super + ctrl + space
+	bspc node -p cancel
+
+# cancel the preselection for the focused desktop
+super + ctrl + shift + space
+	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+
+#
+# move/resize
+#
+
+# Expanding windows
+super + control {Left,Right,Up,Down}
+    bspc node -z {left -20 0,right 20 0,top 0 -20,bottom 0 20}
+
+# Shrinking windows
+super + alt + {Left,Right,Up,Down}
+    bspc node -z {left 20 0,right -20 0,top 0 20,bottom 0 -20}
+
+# expand a window by moving one of its side outward
+super + alt + {h,j,k,l}
+	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+
+# contract a window by moving one of its side inward
+super + alt + shift + {h,j,k,l}
+	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+
+# move a floating window
+super + {Left,Down,Up,Right}
+	bspc node -v {-20 0,0 20,0 -20,20 0}

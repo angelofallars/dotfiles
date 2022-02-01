@@ -1,0 +1,36 @@
+#!/bin/zsh
+
+playlist=$(mpc playlist)
+lines=$(mpc playlist | wc -l)
+dmenu_in=""
+
+# Construct a playlist picker with numbers for each song name
+for ((i = 1; i < $lines + 1; i++)); do
+
+    # Add extra space to ones-digit numbers for better formatting
+    if [ $i -lt 10 ]
+    then
+        dmenu_in="${dmenu_in}${i}  - "
+    else
+        dmenu_in="${dmenu_in}${i} - "
+    fi
+
+    song_name=$(echo $playlist | sed "${i}q;d")
+    dmenu_in="${dmenu_in}${song_name}"
+
+    # Don't add a newline on the last line
+    if [ $i -ne $lines ]
+    then
+        dmenu_in="${dmenu_in}\n"
+    fi
+done
+
+song_to_play=$(echo $dmenu_in | dmenu_gruv "⏯ Playlist")
+if [ $? != 0 ]
+then
+    exit
+fi
+
+line_number=$(echo $song_to_play | grep -oP '^\d+')
+
+mpc play $line_number

@@ -1,0 +1,196 @@
+[color]
+
+background = #D7B18E
+foreground = #534035
+black = #3c3836
+red = #ea6962
+green = #6D7833
+yellow = #d8a657
+blue = #7daea3
+magenta = #d3869b
+cyan = #89b482
+white = #d4be98
+
+accent-color = ${self.green}
+
+foreground-light = #957968
+green-light = #a9b665
+
+[base]
+wm-restack = bspwm
+radius = 5
+height = 24
+offset-y = 4
+fixed-center = true
+width = 220
+
+background = ${color.background}
+foreground = ${color.foreground}
+
+font-0 = "JetBrainsMono Nerd Font Mono:style=Medium:size=10.5;3"
+font-1 = "JetBrainsMono Nerd Font Mono:style=Bold:size=10.5;3"
+font-2 = "Source Han Sans JP:style=Regular:size=13;3"
+font-3 = "Source Han Sans JP:style=Bold:size=13;3"
+font-4 = "Twemoji:scale=5;3"
+font-5 = "Source Han Sans KR:style=Regular:size=13;3"
+
+cursor-click = pointer
+cursor-scroll = pointer
+
+module-margin = 1
+
+[bar/left]
+inherit = base
+offset-x = 12
+width = 210
+modules-center = bspwm
+
+[bar/center-left]
+inherit = base
+offset-x = 16.95%
+width = 230
+modules-center = treefetch-downloads
+
+[bar/center]
+inherit = base
+offset-x = 34.5%
+width = 460
+background = #00
+modules-left = mpd mpd-scroll-song
+module-margin = 0
+
+scroll-up = mpc seek +3
+scroll-down = mpc seek -3
+click-left = bspc rule -a \* -o state=floating && alacritty --command ncmpcpp -s visualizer
+
+[bar/center-tray]
+inherit = base
+offset-x = 59.1%
+width = 150
+background = #00
+modules-center = none
+tray-position = right
+
+[bar/center-right]
+inherit = base
+offset-x = 70.45%
+width = 160
+modules-center = backlight audio
+
+[bar/right]
+inherit = base
+offset-x = 82.8%
+width = 225
+modules-center = time
+
+[module/bspwm]
+type = internal/bspwm
+
+format-padding = 1
+
+pin-workspaces = true
+inline-mode = false
+enable-click = true
+enable-scroll = true
+fuzzy-match = true
+
+ws-icon-0=1;一
+ws-icon-1=2;二
+ws-icon-2=3;三
+ws-icon-3=4;四
+ws-icon-4=5;五
+ws-icon-5=6;六
+ws-icon-default = 
+
+format = <label-state>
+
+label-focused = " %icon% "
+label-focused-background = ${color.accent-color}
+label-focused-foreground = ${color.background}
+label-focused-font = 4
+
+label-occupied = " %icon% "
+label-occupied-font = 4
+
+label-urgent = " %icon% "
+label-urgent-foreground = ${color.red}
+label-urgent-font = 4
+
+label-empty = " %icon% "
+label-empty-foreground = ${color.foreground-light}
+label-empty-font = 4
+
+; Separator in between workspaces
+label-separator = " "
+label-separator-background = ${color.background}
+
+[module/time]
+type = internal/date
+interval = 1
+time = "🕒 %I:%M %p | %a, %b %d"
+label = %time%
+
+[module/audio]
+type = internal/pulseaudio
+format-volume = <ramp-volume> <label-volume>
+
+label-muted = "🔇 ... "
+ramp-volume-0 = 🔈
+ramp-volume-1 = 🔉
+ramp-volume-2 = 🔊
+
+label-volume-minlen = 4
+label-volume-alignment = left
+
+[module/backlight]
+type = internal/backlight
+card = intel_backlight
+enable-scroll = true
+format = <ramp> <label>
+label = %percentage%%
+
+label-minlen = 4
+label-alignment = left
+
+ramp-0 = 🌑
+ramp-1 = 🌘
+ramp-2 = 🌗
+ramp-3 = 🌖
+ramp-4 = 🌕
+
+[module/treefetch-downloads]
+type = custom/script
+exec = python ~/.config/polybar/scripts/downloads.py angelofallars treefetch
+
+format = <label>
+label = %output% downloads
+interval = 240
+format-prefix = "🌲treefetch: "
+format-prefix-foreground = ${color.accent-color}
+format-prefix-font = 2
+
+[module/mpd]
+type = internal/mpd
+interval = 1
+
+format-online = <toggle> <label-time>
+
+label-time = "%elapsed%/%total% "
+
+label-time-foreground = ${color.accent-color}
+label-time-font = 2
+
+icon-play = ▶️
+icon-pause = ⏸
+
+icon-play-font = 5
+icon-pause-font = 5
+
+[module/mpd-scroll-song]
+type = custom/script
+exec = "~/.config/polybar/scripts/mpd-song-scroll.py"
+tail = true
+
+[module/none]
+type = custom/text
+content = " "

@@ -1,0 +1,10 @@
+#!/bin/sh
+
+book=$(ls ~/Documents/Books | dmenu_gruv "📚 Read a Book")
+
+if [ $? != 0 ]
+then
+    exit
+fi
+
+zathura ~/Documents/Books/$book

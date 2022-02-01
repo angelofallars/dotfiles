@@ -1,0 +1,8 @@
+#!/bin/zsh
+
+if [ ! -z $1 ]
+then
+    rofi -dmenu -i -p "$1"
+else
+    rofi -dmenu -i
+fi

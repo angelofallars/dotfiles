@@ -1,0 +1,5 @@
+#!/bin/sh
+
+dmenu_run -i -fn "JetBrains Mono Nerd Font-12" -l 10 -p "Select program:" \
+          -nb "#282828" -nf "#d4be98" \
+          -sb "#a9b665" -sf "#282828" \

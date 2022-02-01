@@ -1,0 +1,12 @@
+set font "jetbrains mono 12"
+set recolor
+set recolor-lightcolor "#282828"
+set recolor-darkcolor "#DFBF83"
+set default-bg "#212121"
+
+set inputbar-bg "#282828"
+set inputbar-fg "#d4be98"
+
+set guioptions none
+set page-padding 3
+set scroll-step 80

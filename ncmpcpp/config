@@ -1,0 +1,11 @@
+visualizer_data_source = "/tmp/mpd.fifo"
+visualizer_output_name = "my_fifo"
+visualizer_in_stereo = "yes"
+visualizer_type = "spectrum"
+visualizer_look = "+|"
+visualizer_fps = 60
+visualizer_spectrum_smooth_look = yes
+visualizer_autoscale = yes
+visualizer_color = green, cyan, blue, magenta, red, yellow
+visualizer_spectrum_dft_size = 2
+user_interface = alternative

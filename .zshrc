@@ -1,0 +1,1 @@
+/home/angelo-f/.zshrc
