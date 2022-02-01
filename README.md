@@ -1,4 +1,4 @@
-<h1 align=center>🐧 gruvbox - neovim - axyl</h1>
+<h1 align=center>🐧 gruvbox - neovim - artix</h1>
 
 <img src="https://media.discordapp.net/attachments/518205487091548314/938212020820516954/unknown.png?width=416&height=240" alt="neofetch, meow.sh, cbonsai, neovim" align=right>
 
