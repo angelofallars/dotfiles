@@ -1,0 +1,71 @@
+#!/bin/python3
+# fzf does not display the colors of onefetch correctly so I have to do this
+import fileinput
+import json
+from os import WCOREDUMP, wait
+
+RESET = "\033[0m"
+RED = "\033[0;31m"
+GREEN = "\033[0;32m"
+ORANGE = "\033[0;33m"
+BLUE = "\033[0;34m"
+MAGENTA = "\033[0;35m"
+CYAN = "\033[0;36m"
+YELLOW = "\033[0;93m"
+BOLD = "\033[1m"
+
+language_symbols = {
+        "C": f"{BLUE}{RESET}",
+        "C++": f"{BLUE}{RESET}",
+        "C#": f"{MAGENTA}{RESET}",
+        "Rust": f"{RED}{RESET}",
+        "Go": f"{CYAN}{RESET}",
+        "Swift": f"{ORANGE}ﯣ{RESET}",
+        "Java": f"{ORANGE}{RESET}",
+        "Python": f"{YELLOW}{RESET}",
+        "Lua": f"{BLUE}{RESET}",
+        "Ruby": f"{RED}{RESET}",
+        "Julia": "",
+        "PHP": f"{MAGENTA}{RESET}",
+        "Dart": f"{CYAN}{RESET}",
+        "Shell": "",
+        "HTML": f"{ORANGE}{RESET}",
+        "CSS": f"{BLUE}{RESET}",
+        "Sass": f"{MAGENTA}ﳪ{RESET}",
+        "JavaScript": f"{YELLOW}{RESET}",
+        "TypeScript": f"{BLUE}ﯤ{RESET}",
+        }
+
+output = ""
+for line in fileinput.input():
+    output += str(line)
+repo_json = json.loads(output)
+
+languages: dict[str, str] = repo_json['languages']
+language_format = ""
+for language in languages:
+    language_format += f"{language}, "
+language_format = language_format[:-2]
+
+format = ""
+
+format += f"{YELLOW}{BOLD}Project:{RESET} {repo_json['repoName']}"
+if repo_json['numberOfBranches'] > 0:
+    format += f" ({repo_json['numberOfBranches']} \
+{'branches' if repo_json['numberOfBranches'] > 1 else 'branch'})\n"
+format += f"{YELLOW}{BOLD}Created:{RESET} {repo_json['creationDate']}\n"
+format += f"{YELLOW}{BOLD}Language:{RESET} {language_format}\n"
+format += f"{YELLOW}{BOLD}Last change:{RESET} {repo_json['lastChange']}\n"
+format += f"{YELLOW}{BOLD}Lines of code:{RESET} {repo_json['linesOfCode']}\n"
+format += f"{YELLOW}{BOLD}Size:{RESET} {repo_json['repoSize']}\n"
+
+if repo_json['license']:
+    format += f"{YELLOW}{BOLD}License:{RESET} {repo_json['license']}\n"
+
+for (key, value) in language_symbols.items():
+    if key in languages:
+        print(value, end=" ")
+print()
+print()
+
+print(format)

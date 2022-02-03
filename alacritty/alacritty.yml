@@ -1,9 +1,3 @@
-## Configuration for Alacritty, the GPU enhanced terminal emulator.
-
-## It's a very basic and simple config file, for full configuration...
-## See, /usr/share/doc/alacritty/example/alacritty.yml
-
-## Import files (Colors, Fonts, Etc)
 import:
   - ~/.config/alacritty/colors.yml
   - ~/.config/alacritty/fonts.yml
@@ -14,9 +8,6 @@ env:
 
 ## Terminal window settings
 window:
-  # dimensions:
-    # columns: 82
-    # lines: 25
 
   padding:
     x: 10
