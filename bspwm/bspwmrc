@@ -15,7 +15,7 @@ bspc config split_ratio          0.50
 bspc config bottom_padding       0
 bspc config top_padding          24
 
-bspc config focused_border_color "#737373"
+bspc config focused_border_color "#A9B665"
 bspc config normal_border_color  "#525252"
 bspc config active_border_color  "#474747"
 
@@ -99,7 +99,8 @@ picom &
 feh --bg-fill ~/.config/bspwm/wallpapers/sugigata.png &
 
 # Remap control key and caps lock
-xmodmap ~/.config/bspwm/swapkeys -display :0 &
+# and map shift + tab to grave ` and shift + escape to ~
+xmodmap ~/.config/scripts/setup_keys -display :0 &
 
 # Redshift night time
 pgrep -x redshift > /dev/null || redshift -l 14.599512:120.984222 &

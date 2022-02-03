@@ -37,12 +37,12 @@ window.opacity: 1.00
 ## Cursor
 cursor:
   style:
-    shape: Block
+    shape: Beam
     blinking: always
 
   unfocused_hollow: false
 
-  thickness: 0.17
+  thickness: 0.21
 
 ## Live config reload
 live_config_reload: true
