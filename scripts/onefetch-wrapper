@@ -14,7 +14,7 @@ CYAN = "\033[0;36m"
 YELLOW = "\033[0;93m"
 BOLD = "\033[1m"
 
-language_symbols = {
+language_emojis = {
         "C": f"{BLUE}{RESET}",
         "C++": f"{BLUE}{RESET}",
         "C#": f"{MAGENTA}{RESET}",
@@ -36,35 +36,61 @@ language_symbols = {
         "TypeScript": f"{BLUE}ﯤ{RESET}",
         }
 
+language_colors = {
+        "C": f"{BLUE}",
+        "C++": f"{BLUE}",
+        "C#": f"{MAGENTA}",
+        "Rust": f"{RED}",
+        "Go": f"{CYAN}",
+        "Swift": f"{ORANGE}",
+        "Java": f"{ORANGE}",
+        "Python": f"{YELLOW}",
+        "Lua": f"{BLUE}",
+        "Ruby": f"{RED}",
+        "PHP": f"{MAGENTA}",
+        "Dart": f"{CYAN}",
+        "HTML": f"{ORANGE}",
+        "CSS": f"{BLUE}",
+        "Sass": f"{MAGENTA}",
+        "JavaScript": f"{YELLOW}",
+        "TypeScript": f"{BLUE}",
+        }
+
 output = ""
 for line in fileinput.input():
     output += str(line)
 repo_json = json.loads(output)
 
-languages: dict[str, str] = repo_json['languages']
+languages: list[str] = repo_json['languages']
 language_format = ""
 for language in languages:
     language_format += f"{language}, "
 language_format = language_format[:-2]
 
-format = ""
+# Determine the color of the field names
+if len(languages) > 1 and languages[0] in language_colors:
+    output_color = language_colors[languages[0]]
+else:
+    output_color = YELLOW
 
-format += f"{YELLOW}{BOLD}Project:{RESET} {repo_json['repoName']}"
+# Format the onefetch output
+format = ""
+format += f"{output_color}{BOLD}Project:{RESET} {repo_json['repoName']}"
 if repo_json['numberOfBranches'] > 0:
     format += f" ({repo_json['numberOfBranches']} \
 {'branches' if repo_json['numberOfBranches'] > 1 else 'branch'})\n"
-format += f"{YELLOW}{BOLD}Created:{RESET} {repo_json['creationDate']}\n"
-format += f"{YELLOW}{BOLD}Language:{RESET} {language_format}\n"
-format += f"{YELLOW}{BOLD}Last change:{RESET} {repo_json['lastChange']}\n"
-format += f"{YELLOW}{BOLD}Lines of code:{RESET} {repo_json['linesOfCode']}\n"
-format += f"{YELLOW}{BOLD}Size:{RESET} {repo_json['repoSize']}\n"
-
+format += f"{output_color}{BOLD}Created:{RESET} {repo_json['creationDate']}\n"
+format += f"{output_color}{BOLD}Language:{RESET} {language_format}\n"
+format += f"{output_color}{BOLD}Last change:{RESET} {repo_json['lastChange']}\n"
+format += f"{output_color}{BOLD}Lines of code:{RESET} {repo_json['linesOfCode']}\n"
+format += f"{output_color}{BOLD}Size:{RESET} {repo_json['repoSize']}\n"
 if repo_json['license']:
-    format += f"{YELLOW}{BOLD}License:{RESET} {repo_json['license']}\n"
+    format += f"{output_color}{BOLD}License:{RESET} {repo_json['license']}\n"
 
-for (key, value) in language_symbols.items():
-    if key in languages:
-        print(value, end=" ")
+# Print emojis
+for language in languages:
+    if language in language_emojis:
+        print(language_emojis[language], end=" ")
 print()
 print()
 
