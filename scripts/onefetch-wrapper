@@ -2,7 +2,6 @@
 # fzf does not display the colors of onefetch correctly so I have to do this
 import fileinput
 import json
-from os import WCOREDUMP, wait
 
 RESET = "\033[0m"
 RED = "\033[0;31m"
@@ -78,8 +77,8 @@ format = ""
 format += f"{output_color}{BOLD}Project:{RESET} {repo_json['repoName']}"
 if repo_json['numberOfBranches'] > 0:
     format += f" ({repo_json['numberOfBranches']} \
-{'branches' if repo_json['numberOfBranches'] > 1 else 'branch'})\n"
-format += f"{output_color}{BOLD}Created:{RESET} {repo_json['creationDate']}\n"
+{'branches' if repo_json['numberOfBranches'] > 1 else 'branch'})"
+format += f"\n{output_color}{BOLD}Created:{RESET} {repo_json['creationDate']}\n"
 format += f"{output_color}{BOLD}Language:{RESET} {language_format}\n"
 format += f"{output_color}{BOLD}Last change:{RESET} {repo_json['lastChange']}\n"
 format += f"{output_color}{BOLD}Lines of code:{RESET} {repo_json['linesOfCode']}\n"

@@ -33,7 +33,7 @@ cursor:
 
   unfocused_hollow: false
 
-  thickness: 0.21
+  thickness: 0.22
 
 ## Live config reload
 live_config_reload: true

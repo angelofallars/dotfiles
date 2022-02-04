@@ -41,6 +41,8 @@ Plug 'alvan/vim-closetag', { 'for': 'html' }
 " CSS coloring
 Plug 'ap/vim-css-color', { 'for': ['css', 'sass', 'scss', 'less'] }
 
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
 " Prettier format for web dev
 " Plug 'prettier/vim-prettier', {
   " \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
@@ -74,9 +76,6 @@ let g:gruvbox_material_transparent_background = 1
 
 colorscheme gruvbox-material
 
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#formatter = 'unique_tail'
-
 set autochdir
 set expandtab
 set tabstop=4
@@ -85,7 +84,7 @@ set shiftwidth=4
 set noswapfile
 set textwidth=0
 set ai
-set colorcolumn=80
+set colorcolumn=0
 set updatetime=500
 
 set ignorecase
@@ -117,7 +116,6 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
@@ -200,34 +198,60 @@ end
 EOF
 
 " Airline setup
-" let g:airline#extensions#ale#enabled = 1
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
-let g:airline_powerline_fonts = 1
-let g:airline_symbols.linenr = '☰'
-let g:airline_symbols.colnr = '::'
-let g:airline_symbols.maxlinenr = ''
-" Disable display of text encoding
-let g:airline_section_c = airline#section#create(['🍀 ', '%<', 'path', g:airline_symbols.space, 'readonly', 'coc_status', 'lsp_progress'])
-let g:airline_section_x = airline#section#create(['filetype', ' ', '🌵💚'])
-let g:airline_section_y = ''
-let g:airline_section_z = airline#section#create(['linenr', '', 'maxlinenr', 'colnr'])
 
+let g:airline_powerline_fonts = 1
+let g:airline_symbols.colnr = ''
+let g:airline_symbols.maxlinenr = ''
+let g:airline_section_c = airline#section#create(['', '%<', 'path', g:airline_symbols.space, 'readonly', 'lsp_progress'])
+let g:airline_section_x = airline#section#create(['filetype'])
+let g:airline_section_y = ''
+let g:airline_section_z = airline#section#create(['linenr', 'maxlinenr', 'colnr'])
+
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+let g:airline#extensions#tabline#buffers_label = '🍀'
+let g:airline#extensions#tabline#show_buffers = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline#extensions#tabline#buffer_nr_format = '%s '
+let g:airline_symbols.linenr = ''
+
+function! AirlineInit()
+    highlight airline_tabsel gui=none
+
+    " Rice the lines
+    " Maintain the original line number colors
+    hi LineNrAbove ctermfg=239 guifg=#5a524c
+    hi LineNrBelow ctermfg=239 guifg=#5a524c
+    " But change the current line number
+    hi LineNr ctermfg=246 guifg=#a89984
+    " Reverse the text colors in visual mode
+    hi Visual gui=reverse
+    " Hide the tildes on blank lines
+    hi EndOfBuffer guifg=#282828
+endfunction
+autocmd User AirlineAfterInit call AirlineInit()
+
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = ' '
+let g:airline#extensions#tabline#right_sep = ' '
+let g:airline#extensions#tabline#right_alt_sep = ' '
 let g:airline_highlighting_cache = 0
 
 " Do not draw separators for empty sections
-let g:airline_skip_empty_sections = 1
+let g:airline_skip_empty_sections = 0
 
 let g:airline_theme='gruvbox_material'
 
-" FZF
+"" FZF
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }
 let g:fzf_preview_window = ['right:50%', 'ctrl-/']
-
-" Change window title to Neovim
-let &titlestring = "Neovim"
-set title
 
 let $FZF_DEFAULT_OPTS="--preview='source-highlight --failsafe --out-format=esc -o STDOUT -i {}' --layout reverse"
 
@@ -273,7 +297,9 @@ let g:user_emmet_settings = {
 " Indent width for C (the Unix Way)
 autocmd FileType c setlocal shiftwidth=8 tabstop=8
 
+let g:netrw_browse_split = 0
+let g:netrw_banner = 0
+let g:netrw_winsize = 25
+
 source $HOME/.config/nvim/general/settings.vim
 source $HOME/.config/nvim/keys/mappings.vim
-
-highlight ColorColumn guibg=#504945

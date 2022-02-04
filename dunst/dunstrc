@@ -1,7 +1,7 @@
 [global]
 monitor = 0
 follow = mouse
-width = 280
+width = 520
 height = 150
 offset = 20x36
 indicate_hidden = yes
@@ -13,7 +13,7 @@ horizontal_padding = 15
 frame_width = 0
 sort = no
 idle_threshold = 120
-font = JetBrains Mono Nerd Font Medium 11
+font = JetBrains Mono Nerd Font Medium 13
 line_height = 4
 markup = full
 format = "%s %b"

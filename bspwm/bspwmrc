@@ -9,11 +9,11 @@ workspaces() {
 }
 workspaces
 
-bspc config border_width         2
+bspc config border_width         3
 bspc config window_gap           8
 bspc config split_ratio          0.50
 bspc config bottom_padding       0
-bspc config top_padding          24
+bspc config top_padding          26
 
 bspc config focused_border_color "#A9B665"
 bspc config normal_border_color  "#525252"

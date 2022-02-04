@@ -5,8 +5,7 @@ colors:
     foreground: '#dfbf8e'
 
   normal:
-    # black:   '#665c54'
-    black:   '#282828'
+    black:   '#665c54'
     red:     '#ea6962'
     green:   '#a9b665'
     yellow:  '#e78a4e'
