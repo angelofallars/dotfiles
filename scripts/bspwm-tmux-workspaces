@@ -1,0 +1,21 @@
+#!/bin/sh
+
+display_workspace_name() {
+    workspace=$(bspc query -D -d focused --names)
+
+    case "$workspace" in
+
+        "1") echo "一" ;;
+        "2") echo "二" ;;
+        "3") echo "三" ;;
+        "4") echo "四" ;;
+        "5") echo "五" ;;
+        "6") echo "六" ;;
+
+    esac
+}
+
+display_workspace_name
+bspc subscribe desktop node_transfer | while read -r _ ; do
+    display_workspace_name
+done
