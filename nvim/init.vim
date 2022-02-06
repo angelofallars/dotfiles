@@ -86,6 +86,7 @@ set textwidth=0
 set ai
 set colorcolumn=0
 set updatetime=500
+set nowrap
 
 set ignorecase
 set smartcase
@@ -215,7 +216,7 @@ let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 let g:airline#extensions#tabline#buffers_label = '🍀'
 let g:airline#extensions#tabline#show_buffers = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
-let g:airline#extensions#tabline#buffer_nr_format = '%s '
+let g:airline#extensions#tabline#buffer_nr_format = '[%s] '
 let g:airline_symbols.linenr = ''
 
 function! AirlineInit()

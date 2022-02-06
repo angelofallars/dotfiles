@@ -15,7 +15,7 @@
     /* Theme settings */
     highlight: bold italic;
     scrollbar: true;
-    font: "JetBrains Mono Nerd Font Medium 11.8";
+    font: "JetBrains Mono Nerd Font Medium 12.8";
 
     /* Gruvbox dark colors */
     gruvbox-dark-bg0:          argb:ff282828;

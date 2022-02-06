@@ -12,7 +12,7 @@ super + Return
 
 # Launch kitty
 super + apostrophe
-    kitty
+    notify-send something #HELLO WORLD
 
 # terminal emulator (no tmux)
 super + shift + Return

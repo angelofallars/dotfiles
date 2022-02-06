@@ -83,11 +83,7 @@ polybar -r --config=$poly_cfg center-right &
 polybar -r --config=$poly_cfg right &
 
 # Launch notification daemon
-dunst \
--geom "280x50-10+38" -frame_width "1" -font "Roboto Medium 10" \
--lb "#282828FF" -lf "#dfbf8eFF" -lfr "#a9b665FF" \
--nb "#282828FF" -nf "#dfbf8eFF" -nfr "#a9b665FF" \
--cb "#282828FF" -cf "#ea6962FF" -cfr "#ea6962FF" &
+dunst &
 
 # Launch keybindings daemon
 sxhkd &
@@ -105,7 +101,7 @@ xmodmap ~/.config/scripts/setup_keys -display :0 &
 # Redshift night time
 pgrep -x redshift > /dev/null || redshift -l 14.599512:120.984222 &
 
-~/mpd-notify-song-change.py
+~/random_scripts/mpd-notify-song-change.py &
 
 # If third workspace empty, open a terminal there
 if [ -z $(bspc query -N -d 3) ]

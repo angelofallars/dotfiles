@@ -23,10 +23,13 @@ nnoremap <C-l> <C-^>
 nnoremap Y yg_
 
 " Remove highlighting
-map <C-c> :noh<cr>:<esc>
+map <C-c> :noh<cr>
 
 " Remap ctrl+a to ctrl+s because tmux already got ctrl+a
 nnoremap <C-s> <C-a>
+
+" Close all other windows (emacs binding LOL)
+nnoremap <C-1> :on<cr>
 
 " System clipboard Mappings
 nnoremap <leader>y "+y

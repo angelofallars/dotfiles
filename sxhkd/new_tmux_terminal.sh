@@ -1,7 +1,7 @@
 
 first_tmux_session() {
     tmux \
-    new-session -d -n "nvim" \
+    new-session -d \
         ~/.config/sxhkd/zsh-forever.sh ';' \
     attach ';'
 }

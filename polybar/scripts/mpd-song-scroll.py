@@ -5,7 +5,7 @@ from time import sleep
 from sys import exit
 from mpd import MPDClient
 
-MAX_LEN = 36
+MAX_LEN = 30
 SLEEP_INTERVAL = 0.8
 
 
