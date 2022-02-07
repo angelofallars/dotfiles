@@ -9,12 +9,12 @@ selected=$(\
 
            sed --regexp-extended "s/^\/home\/[^\/]+\///g" |
 
-           fzf --border=rounded --reverse --prompt="  ➡️  " --ansi --cycle \
+           fzf --border=none --reverse --prompt="  ➡️  " --ansi --cycle \
                --header="🚀 tmux-sessionizer" --header-first \
                --pointer="🔥" \
                --no-mouse \
                --no-info \
-               --padding 1,0 --margin 0,2,1,2 \
+               --padding 0,1 --margin 0 \
                --color="prompt:blue,prompt:bold,border:green,border:dim" \
                --color="fg+:yellow" \
                --color="hl:underline,hl+:underline,hl:magenta,hl+:magenta" \
@@ -85,7 +85,7 @@ selected=$(\
                   fi
 
                           ' \
-               --preview-window=border-left,55%)
+               --preview-window=border-left,58%)
 
 if [ $? != 0 ]
 then

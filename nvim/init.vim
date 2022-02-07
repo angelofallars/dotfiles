@@ -43,6 +43,10 @@ Plug 'ap/vim-css-color', { 'for': ['css', 'sass', 'scss', 'less'] }
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
+Plug 'rust-lang/rust.vim'
+
+Plug 'mhinz/vim-startify'
+
 " Prettier format for web dev
 " Plug 'prettier/vim-prettier', {
   " \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
@@ -82,11 +86,11 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set noswapfile
-set textwidth=0
+set textwidth=80
 set ai
 set colorcolumn=0
 set updatetime=500
-set nowrap
+set wrap
 
 set ignorecase
 set smartcase
@@ -115,6 +119,7 @@ local on_attach = function(client, bufnr)
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
@@ -123,8 +128,7 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>m', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 end
 
 -- Setup nvim-cmp.
@@ -207,11 +211,11 @@ let g:airline_powerline_fonts = 1
 let g:airline_symbols.colnr = ''
 let g:airline_symbols.maxlinenr = ''
 let g:airline_section_c = airline#section#create(['', '%<', 'path', g:airline_symbols.space, 'readonly', 'lsp_progress'])
-let g:airline_section_x = airline#section#create(['filetype'])
+let g:airline_section_x = airline#section#create(['filetype', ' 🐈'])
 let g:airline_section_y = ''
 let g:airline_section_z = airline#section#create(['linenr', 'maxlinenr', 'colnr'])
 
-let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled = 0
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 let g:airline#extensions#tabline#buffers_label = '🍀'
 let g:airline#extensions#tabline#show_buffers = 1
@@ -229,7 +233,7 @@ function! AirlineInit()
     " But change the current line number
     hi LineNr ctermfg=246 guifg=#a89984
     " Reverse the text colors in visual mode
-    hi Visual gui=reverse
+    " hi Visual gui=reverse
     " Hide the tildes on blank lines
     hi EndOfBuffer guifg=#282828
 endfunction
@@ -251,7 +255,7 @@ let g:airline_skip_empty_sections = 0
 let g:airline_theme='gruvbox_material'
 
 "" FZF
-let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }
+let g:fzf_layout = { 'window': { 'width': 1.0, 'height': 0.6, 'yoffset': 1.0 } }
 let g:fzf_preview_window = ['right:50%', 'ctrl-/']
 
 let $FZF_DEFAULT_OPTS="--preview='source-highlight --failsafe --out-format=esc -o STDOUT -i {}' --layout reverse"
@@ -301,6 +305,34 @@ autocmd FileType c setlocal shiftwidth=8 tabstop=8
 let g:netrw_browse_split = 0
 let g:netrw_banner = 0
 let g:netrw_winsize = 25
+
+let g:startify_custom_header = startify#center([
+            \'                   ██          ██                    ',
+            \'                 ██▒▒██      ██▒▒██                  ',
+            \'                 ██▒▒▓▓██████▓▓▒▒██                  ',
+            \'               ██▓▓▒▒▒▒▓▓▓▓▓▓▒▒▒▒▓▓██                ',
+            \'               ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██                ',
+            \'             ██▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓██              ',
+            \'             ██▒▒▒▒██▒▒▒▒██▒▒▒▒██▒▒▒▒██              ',
+            \'             ██▒▒▒▒▒▒▒▒██▒▒██▒▒▒▒▒▒▒▒██              ',
+            \'           ██▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓██            ',
+            \'           ██▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓██            ',
+            \'           ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██            ',
+            \'           ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██            ',
+            \'         ██▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓██          ',
+            \'         ██▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓██          ',
+            \'         ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██    ████  ',
+            \'         ██▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓██  ██▒▒▒▒██',
+            \'         ██▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓██    ██▓▓██',
+            \'         ██▒▒▒▒▒▒██▒▒▒▒▒▒▒▒▒▒▒▒▒▒██▒▒▒▒▒▒██    ██▒▒██',
+            \'         ██▓▓▒▒▒▒██▒▒██▒▒▒▒▒▒██▒▒██▒▒▒▒▓▓██████▒▒▒▒██',
+            \'           ██▓▓▒▒██▒▒██▒▒▒▒▒▒██▒▒██▒▒▓▓██▒▒▒▒▓▓▒▒██  ',
+            \'             ██████▒▒██████████▒▒████████████████    ',
+            \'                 ██████      ██████                  ',
+            \ ])
+highlight StartifyHeader ctermfg=50 guifg=green
+
+let g:startify_lists = []
 
 source $HOME/.config/nvim/general/settings.vim
 source $HOME/.config/nvim/keys/mappings.vim

@@ -86,8 +86,7 @@ super + minus
 # Map Shift + Tab to `
 # Map Shift + Escape to ~
 super + shift + k
-    xmodmap ~/.config/scripts/setup_keys -display :0 && \
-    notify-send "Switched to your keycap setup"
+    xmodmap ~/.config/scripts/setup_keys -display :0 ; notify-send "Switched to your keycap setup"
 
 #
 #
