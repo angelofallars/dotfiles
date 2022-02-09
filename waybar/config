@@ -1,7 +1,7 @@
 {
     "layer": "top",
     "height": 30,
-    "spacing": 10,
+    "spacing": 0,
 
     "modules-left": ["river/tags"],
     "modules-center": ["mpd", "custom/mpd-song-scroll"],
@@ -15,7 +15,7 @@
     },
 
     "mpd": {
-        "format": "{stateIcon} {elapsedTime:%M:%S}/{totalTime:%M:%S}",
+        "format": "{stateIcon} {elapsedTime:%M:%S}/{totalTime:%M:%S} ",
         "interval": 2,
         "state-icons": {
             "paused": "⏸",
@@ -55,13 +55,7 @@
         "format": "{icon} {volume}% ",
         "format-muted": "🔇 ...",
         "format-icons": {
-            "headphone": "🎧",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", "", ""]
+            "default": ["🔈", "🔉", "🔊"]
         },
         "on-click": "pavucontrol"
     },

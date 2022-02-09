@@ -10,26 +10,22 @@ window#waybar {
 }
 
 .modules-left, .modules-center, .modules-right {
-    background: #383838;
-    border-radius: 7px;
-    margin-top: 4px;
-    padding: 0 12px;
-    font-family: "JetBrains Mono Nerd Font", monospace;
-    font-weight: 500;
-    font-size: 15.0px;
+  background: transparent;
+  border-radius: 7px;
+  margin-top: 4px;
+  padding: 0 12px;
+  font-family: "JetBrains Mono Nerd Font", monospace;
+  font-weight: 500;
+  font-size: 15.0px;
 }
 
 .modules-center {
-  background: transparent;
   font-size: 14.5px;
 }
 
 .modules-left {
+    background: #383838;
     margin-left: 12px;
-}
-
-.modules-right {
-    margin-right: 12px;
 }
 
 tooltip {
@@ -39,6 +35,30 @@ tooltip {
 
 tooltip label {
   color: white;
+}
+
+#clock {
+  background: #383838;
+  margin-left: 7px;
+  padding: 0 10px;
+  border-radius: 5px;
+}
+
+#backlight, #pulseaudio {
+  background: #383838;
+}
+
+#backlight {
+  padding-left: 10px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  padding-right: 15px;
+}
+
+#pulseaudio {
+  padding-right: 10px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 #mode {
