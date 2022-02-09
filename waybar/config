@@ -1,0 +1,76 @@
+{
+    "layer": "top",
+    "height": 30,
+    "spacing": 10,
+
+    "modules-left": ["river/tags"],
+    "modules-center": ["mpd", "custom/mpd-song-scroll"],
+    "modules-right": ["backlight", "pulseaudio",  "clock", "tray"],
+
+    "river/tags": {
+        "num-tags": 6,
+        "tag-labels": [
+            "一", "二", "三", "四", "五", "六",
+           ]
+    },
+
+    "mpd": {
+        "format": "{stateIcon} {elapsedTime:%M:%S}/{totalTime:%M:%S}",
+        "interval": 2,
+        "state-icons": {
+            "paused": "⏸",
+            "playing": "▶️"
+        },
+        "tooltip-format": "MPD (connected)",
+        "tooltip-format-disconnected": "MPD (disconnected)"
+    },
+
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 10
+    },
+
+    "clock": {
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format": "{:🕒 %I:%M %p | %a, %b %d}",
+        "format-alt": "{:%Y-%m-%d}"
+    },
+
+    "backlight": {
+        "device": "intel-backlight",
+        "format": "{icon} {percent}%",
+        "format-icons": [
+            "🌑",
+            "🌘",
+            "🌗",
+            "🌖",
+            "🌕"
+        ],
+        "on-scroll-up": "xbacklight -inc 5",
+        "on-scroll-down": "xbacklight -dec 5",
+    },
+
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "{icon} {volume}% ",
+        "format-muted": "🔇 ...",
+        "format-icons": {
+            "headphone": "🎧",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+
+    "custom/mpd-song-scroll": {
+        "format": "{}",
+        "max-length": 40,
+        "escape": true,
+        "exec":  "~/.config/polybar/scripts/mpd-song-scroll.py"
+    }
+}
+

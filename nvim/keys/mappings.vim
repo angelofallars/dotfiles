@@ -22,6 +22,8 @@ nnoremap <C-l> <C-^>
 " Yank to end of line
 nnoremap Y yg_
 
+inoremap <C-'> <Esc>
+
 " Remove highlighting
 " map <C-c> :noh<cr>
 

@@ -1,0 +1,90 @@
+* {
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+}
+
+window#waybar {
+    background: rgba(0, 0, 0, 0);
+    color: #dfbf8e;
+}
+
+.modules-left, .modules-center, .modules-right {
+    background: #383838;
+    border-radius: 7px;
+    margin-top: 4px;
+    padding: 0 12px;
+    font-family: "JetBrains Mono Nerd Font", monospace;
+    font-weight: 500;
+    font-size: 15.0px;
+}
+
+.modules-center {
+  background: transparent;
+  font-size: 14.5px;
+}
+
+.modules-left {
+    margin-left: 12px;
+}
+
+.modules-right {
+    margin-right: 12px;
+}
+
+tooltip {
+  background: rgba(43, 48, 59, 0.5);
+  border: 1px solid rgba(100, 114, 125, 0.5);
+}
+
+tooltip label {
+  color: white;
+}
+
+#mode {
+    background: #64727D;
+    border-bottom: 3px solid white;
+}
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: black;
+    }
+}
+
+#mpd {
+  color: #a9b665;
+}
+
+#tags {
+  font-weight: 900;
+}
+
+#tags button {
+  color: #8C795D;
+  font-family: "Source Han Sans JP";
+  font-weight: 700;
+  padding: 0 6px;
+  margin: 0 3px;
+  font-size: 16px;
+}
+
+#tags button.occupied {
+  color: inherit;
+}
+
+#tags button.focused {
+  color: #383838;
+  background-color: #a9b665;
+}
+
+#tags button.urgent {
+  color: red;
+}
+
+#tags button:hover {
+    box-shadow: inherit;
+    text-shadow: inherit;
+    background: inherit;
+}

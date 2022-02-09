@@ -92,7 +92,7 @@ sxhkd &
 picom &
 
 # Feh
-feh --bg-fill ~/.config/bspwm/wallpapers/sugigata.png &
+feh --bg-fill ~/.config/bspwm/wallpapers/rust-wallpaper2.png &
 
 # Remap control key and caps lock
 # and map shift + tab to grave ` and shift + escape to ~
