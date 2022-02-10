@@ -1,19 +1,33 @@
 #!/bin/sh
 
-# This is the example configuration file for river.
-#
-# If you wish to edit this, you will probably want to copy it to
-# $XDG_CONFIG_HOME/river/init or $HOME/.config/river/init first.
-#
-# See the river(1), riverctl(1), and rivertile(1) man pages for complete
-# documentation.
-
-# Note: the "Super" modifier is also known as Logo, GUI, Windows, Mod4, etc.
-
 # Super+Shift+Return to start an instance of foot (https://codeberg.org/dnkl/foot)
 riverctl map normal Super Return spawn 'alacritty -e "$HOME/.config/sxhkd/new_tmux_terminal.sh"'
 
-riverctl map normal Super D spawn bemenu-run
+riverctl map normal Super D spawn "bemenu-run -i -l 10 \
+    --fn 'JetBrains Mono Nerd Font Medium 18px' \
+    --nb '#202020[FF]' --nf '#dfbf8e[FF]' \
+    --tb '#202020[FF]' --tf '#a9b665[FF]' \
+    --fb '#202020[FF]' --ff '#dfbf8e[FF]' \
+    --hb '#323232[FF]' --hf '#a9b665[FF]' \
+    --sb '#202020[FF]' --sf '#dfbf8e[FF]' \
+    "
+
+riverctl map normal Shift Insert spawn "pamixer -d 10"
+riverctl map normal Shift Home spawn "pamixer -i 10"
+riverctl map normal Shift Delete spawn \
+    "xbacklight -dec 10 -fps 30 -time 200"
+riverctl map normal Shift End spawn \
+    "xbacklight -inc 10 -fps 30 -time 200"
+riverctl map normal Shift Pause spawn "pamixer -t"
+
+riverctl map normal Control Insert spawn "mpc prev"
+riverctl map normal Control Home spawn "mpc next"
+riverctl map normal Control Delete spawn "mpc seekthrough -8"
+riverctl map normal Control End spawn "mpc seekthrough +8"
+riverctl map normal Control+Shift Delete spawn "mpc seek 0 && mpc play"
+riverctl map normal Control Pause spawn "mpc toggle"
+
+riverctl map normal Pause spawn "grim -g "$(slurp)" - | swappy -f -"
 
 # Super+Q to close the focused view
 riverctl map normal Super Q close
@@ -33,9 +47,6 @@ riverctl map normal Super+Shift K swap previous
 # Super+Period and Super+Comma to focus the next/previous output
 riverctl map normal Super Period focus-output next
 riverctl map normal Super Comma focus-output previous
-
-riverctl map normal Shift End 'xbacklight -inc 10 -fps 30 -time 200'
-riverctl map normal Shift Delete 'xbacklight -dec 10 -fps 30 -time 200'
 
 # Super+Shift+{Period,Comma} to send the focused view to the next/previous output
 riverctl map normal Super+Shift Period send-to-output next
@@ -73,7 +84,7 @@ riverctl map-pointer normal Super BTN_LEFT move-view
 # Super + Right Mouse Button to resize views
 riverctl map-pointer normal Super BTN_RIGHT resize-view
 
-for i in $(seq 1 9)
+for i in $(seq 1 6)
 do
     tags=$((1 << ($i - 1)))
 
@@ -118,33 +129,11 @@ riverctl map normal Super F11 enter-mode passthrough
 # Super+F11 to return to normal mode
 riverctl map passthrough Super F11 enter-mode normal
 
-# Various media key mapping examples for both normal and locked mode which do
-# not have a modifier
-for mode in normal locked
-do
-    # Eject the optical drive (well if you still have one that is)
-    riverctl map $mode None XF86Eject spawn 'eject -T'
-
-    # Control pulse audio volume with pamixer (https://github.com/cdemoulins/pamixer)
-    riverctl map $mode None XF86AudioRaiseVolume  spawn 'pamixer -i 5'
-    riverctl map $mode None XF86AudioLowerVolume  spawn 'pamixer -d 5'
-    riverctl map $mode None XF86AudioMute         spawn 'pamixer --toggle-mute'
-
-    # Control MPRIS aware media players with playerctl (https://github.com/altdesktop/playerctl)
-    riverctl map $mode None XF86AudioMedia spawn 'playerctl play-pause'
-    riverctl map $mode None XF86AudioPlay  spawn 'playerctl play-pause'
-    riverctl map $mode None XF86AudioPrev  spawn 'playerctl previous'
-    riverctl map $mode None XF86AudioNext  spawn 'playerctl next'
-
-    # Control screen backlight brighness with light (https://github.com/haikarainen/light)
-    riverctl map $mode None XF86MonBrightnessUp   spawn 'light -A 5'
-    riverctl map $mode None XF86MonBrightnessDown spawn 'light -U 5'
-done
-
 # Set background and border color
 riverctl background-color 0x002b36
 riverctl border-color-unfocused 0x525252
 riverctl border-color-focused 0xa9b665
+riverctl border-width 3
 
 # Set keyboard repeat rate
 riverctl set-repeat 50 300
@@ -154,11 +143,16 @@ riverctl float-filter-add app-id float
 riverctl float-filter-add title "popup title with spaces"
 
 waybar &
-swaybg -i ~/Pictures/Wallpapers/rust-wallpaper2.png &
+swaybg -i ~/.config/bspwm/wallpapers/haircut.png &
 
-/usr/bin/pipewire & /usr/bin/pipewire-pulse & /usr/bin/wireplumber &
+/usr/bin/pipewire &
+/usr/bin/pipewire-pulse &
+/usr/bin/wireplumber &
+mpd &
+
+wlsunset -l 14.6 -L 121 &
 
 # Set and exec into the default layout generator, rivertile.
 # River will send the process group of the init executable SIGTERM on exit.
 riverctl default-layout rivertile
-exec rivertile -view-padding 6 -outer-padding 6
+exec rivertile -view-padding 4 -outer-padding 4

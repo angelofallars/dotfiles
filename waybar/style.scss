@@ -1,0 +1,134 @@
+@use 'color-light' as *;
+
+$screen-margin: 12px;
+$module-margin: 8px;
+$module-padding: 12px;
+$bar-border-radius: 7px;
+$font: "JetBrains Mono Nerd Font";
+
+* {
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+}
+
+window#waybar {
+  background: rgba(0, 0, 0, 0);
+  color: $fg;
+}
+
+.modules-left, .modules-center, .modules-right {
+  background: transparent;
+  margin-top: 4px;
+  border-radius: $bar-border-radius;
+  font-family: $font, monospace;
+  font-size: 15.0px;
+  font-weight: 500;
+}
+
+.modules-center {
+  font-size: 14.0px;
+  margin-right: 50px;
+}
+
+.modules-left {
+  margin-left: $screen-margin;
+}
+
+.modules-right {
+  margin-right: $screen-margin;
+}
+
+#backlight, #pulseaudio {
+  background: $bg;
+}
+
+#backlight {
+  padding-left: $module-padding;
+  border-top-left-radius: $bar-border-radius;
+  border-bottom-left-radius: $bar-border-radius;
+  padding-right: 15px;
+}
+
+#pulseaudio {
+  padding-right: $module-padding;
+  border-top-right-radius: $bar-border-radius;
+  border-bottom-right-radius: $bar-border-radius;
+}
+
+#clock {
+  background: $bg;
+  margin-left: $module-margin;
+  padding: 0 $module-padding;
+  border-radius: $bar-border-radius;
+}
+
+#custom-treefetch-downloads {
+  background: $bg;
+  padding: 0 $bar-border-radius;
+  border-radius: $bar-border-radius;
+  margin: 0 $module-margin;
+}
+
+#mpd {
+  color: $green;
+}
+
+// River tags
+#tags {
+  background: $bg;
+  padding: 0 9px;
+  border-radius: $bar-border-radius;
+}
+
+#tags button {
+  color: #8C795D;
+  font-family: "Source Han Sans JP";
+  font-weight: 700;
+  padding: 0 6px;
+  margin: 0 4px;
+  font-size: 17px;
+}
+
+#tags button.occupied {
+  color: inherit;
+}
+
+#tags button:hover {
+  box-shadow: inherit;
+  text-shadow: inherit;
+  background: $fg-alt;
+  color: $bg;
+  transition: 0.20s;
+}
+
+#tags button.focused {
+  color: $bg;
+  background-color: $green;
+}
+
+#tags button.urgent {
+  color: red;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+tooltip {
+  background: $bg;
+  border-radius: 7px;
+  font-family: $font, monospace;
+  color: transparent;
+  animation-name: fadein;
+  animation-duration: 0.5s;
+}
+
+tooltip label {
+  color: $fg;
+}

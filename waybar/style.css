@@ -1,84 +1,75 @@
 * {
-    border: none;
-    border-radius: 0;
-    min-height: 0;
+  border: none;
+  border-radius: 0;
+  min-height: 0;
 }
 
 window#waybar {
-    background: rgba(0, 0, 0, 0);
-    color: #dfbf8e;
+  background: rgba(0, 0, 0, 0);
+  color: #534035;
 }
 
 .modules-left, .modules-center, .modules-right {
   background: transparent;
-  border-radius: 7px;
   margin-top: 4px;
-  padding: 0 12px;
+  border-radius: 7px;
   font-family: "JetBrains Mono Nerd Font", monospace;
+  font-size: 15px;
   font-weight: 500;
-  font-size: 15.0px;
 }
 
 .modules-center {
-  font-size: 14.5px;
+  font-size: 14px;
+  margin-right: 50px;
 }
 
 .modules-left {
-    background: #383838;
-    margin-left: 12px;
+  margin-left: 12px;
 }
 
-tooltip {
-  background: rgba(43, 48, 59, 0.5);
-  border: 1px solid rgba(100, 114, 125, 0.5);
-}
-
-tooltip label {
-  color: white;
-}
-
-#clock {
-  background: #383838;
-  margin-left: 7px;
-  padding: 0 10px;
-  border-radius: 5px;
+.modules-right {
+  margin-right: 12px;
 }
 
 #backlight, #pulseaudio {
-  background: #383838;
+  background: #D7B18E;
 }
 
 #backlight {
-  padding-left: 10px;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
+  padding-left: 12px;
+  border-top-left-radius: 7px;
+  border-bottom-left-radius: 7px;
   padding-right: 15px;
 }
 
 #pulseaudio {
-  padding-right: 10px;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
+  padding-right: 12px;
+  border-top-right-radius: 7px;
+  border-bottom-right-radius: 7px;
 }
 
-#mode {
-    background: #64727D;
-    border-bottom: 3px solid white;
+#clock {
+  background: #D7B18E;
+  margin-left: 8px;
+  padding: 0 12px;
+  border-radius: 7px;
 }
 
-@keyframes blink {
-    to {
-        background-color: #ffffff;
-        color: black;
-    }
+#custom-treefetch-downloads {
+  background: #D7B18E;
+  padding: 0 7px;
+  border-radius: 7px;
+  margin: 0 8px;
 }
 
 #mpd {
-  color: #a9b665;
+  color: #6D7833;
 }
 
 #tags {
-  font-weight: 900;
+  background: #D7B18E;
+  padding: 0 9px;
+  border-radius: 7px;
 }
 
 #tags button {
@@ -86,25 +77,48 @@ tooltip label {
   font-family: "Source Han Sans JP";
   font-weight: 700;
   padding: 0 6px;
-  margin: 0 3px;
-  font-size: 16px;
+  margin: 0 4px;
+  font-size: 17px;
 }
 
 #tags button.occupied {
   color: inherit;
 }
 
+#tags button:hover {
+  box-shadow: inherit;
+  text-shadow: inherit;
+  background: #8C795D;
+  color: #D7B18E;
+  transition: 0.2s;
+}
+
 #tags button.focused {
-  color: #383838;
-  background-color: #a9b665;
+  color: #D7B18E;
+  background-color: #6D7833;
 }
 
 #tags button.urgent {
   color: red;
 }
 
-#tags button:hover {
-    box-shadow: inherit;
-    text-shadow: inherit;
-    background: inherit;
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+tooltip {
+  background: #D7B18E;
+  border-radius: 7px;
+  font-family: "JetBrains Mono Nerd Font", monospace;
+  color: transparent;
+  animation-name: fadein;
+  animation-duration: 0.5s;
+}
+
+tooltip label {
+  color: #534035;
 }

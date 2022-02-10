@@ -3,9 +3,9 @@
     "height": 30,
     "spacing": 0,
 
-    "modules-left": ["river/tags"],
+    "modules-left": ["river/tags", "custom/treefetch-downloads"],
     "modules-center": ["mpd", "custom/mpd-song-scroll"],
-    "modules-right": ["backlight", "pulseaudio",  "clock", "tray"],
+    "modules-right": ["tray", "backlight", "pulseaudio",  "clock"],
 
     "river/tags": {
         "num-tags": 6,
@@ -16,13 +16,18 @@
 
     "mpd": {
         "format": "{stateIcon} {elapsedTime:%M:%S}/{totalTime:%M:%S} ",
-        "interval": 2,
+        "format-stopped": "",
+        "interval": 1,
         "state-icons": {
-            "paused": "⏸",
-            "playing": "▶️"
+            "paused": "▶️",
+            "playing": "⏸"
         },
         "tooltip-format": "MPD (connected)",
-        "tooltip-format-disconnected": "MPD (disconnected)"
+        "tooltip-format-disconnected": "MPD (disconnected)",
+        "on-scroll-up": "mpc seek +3",
+        "on-scroll-down": "mpc seek -3",
+        "on-click": "mpc toggle",
+        "on-click-right": "alacritty --command ncmpcpp"
     },
 
     "tray": {
@@ -51,20 +56,27 @@
     },
 
     "pulseaudio": {
-        // "scroll-step": 1, // %, can be a float
+        "scroll-step": 2, // %, can be a float
         "format": "{icon} {volume}% ",
-        "format-muted": "🔇 ...",
+        "format-muted": "🔇 ... ",
         "format-icons": {
             "default": ["🔈", "🔉", "🔊"]
         },
-        "on-click": "pavucontrol"
+        "on-click": "pamixer -t"
     },
 
     "custom/mpd-song-scroll": {
         "format": "{}",
-        "max-length": 40,
+        "max-length": 80,
         "escape": true,
         "exec":  "~/.config/polybar/scripts/mpd-song-scroll.py"
+    },
+
+    "custom/treefetch-downloads": {
+        "format": "🌲<span color='#6D7833'>treefetch:</span> {} downloads",
+        "interval": 240,
+        "escape": true,
+        "exec":  "~/.config/polybar/scripts/downloads.py angelofallars treefetch"
     }
 }
 
