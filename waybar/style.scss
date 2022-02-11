@@ -1,14 +1,15 @@
-@use 'color-light' as *;
+@use 'color-dark' as *;
 
 $screen-margin: 12px;
-$module-margin: 8px;
-$module-padding: 12px;
-$bar-border-radius: 7px;
+$module-margin: 6px;
+$module-padding: 10px;
+$bar-border-radius: 0px;
 $font: "JetBrains Mono Nerd Font";
+$font-size: 15px;
+
+$box-shadow-radius: 4px;
 
 * {
-  border: none;
-  border-radius: 0;
   min-height: 0;
 }
 
@@ -22,13 +23,14 @@ window#waybar {
   margin-top: 4px;
   border-radius: $bar-border-radius;
   font-family: $font, monospace;
-  font-size: 15.0px;
+  font-size: $font-size;
   font-weight: 500;
 }
 
 .modules-center {
   font-size: 14.0px;
   margin-right: 50px;
+  margin-bottom: 3px;
 }
 
 .modules-left {
@@ -39,24 +41,34 @@ window#waybar {
   margin-right: $screen-margin;
 }
 
+@mixin square-shadow {
+  box-shadow: $box-shadow-radius $box-shadow-radius 0 $shadow;
+  margin-bottom: 5px;
+  margin-right: 5px;
+}
+
 #backlight, #pulseaudio {
   background: $bg;
 }
 
 #backlight {
-  padding-left: $module-padding;
-  border-top-left-radius: $bar-border-radius;
-  border-bottom-left-radius: $bar-border-radius;
-  padding-right: 15px;
+  @include square-shadow;
+  background: $bg;
+  margin-left: $module-margin;
+  padding: 0 $module-padding;
+  border-radius: $bar-border-radius;
 }
 
 #pulseaudio {
-  padding-right: $module-padding;
-  border-top-right-radius: $bar-border-radius;
-  border-bottom-right-radius: $bar-border-radius;
+  @include square-shadow;
+  background: $bg;
+  margin-left: $module-margin;
+  padding: 0 $module-padding;
+  border-radius: $bar-border-radius;
 }
 
 #clock {
+  @include square-shadow;
   background: $bg;
   margin-left: $module-margin;
   padding: 0 $module-padding;
@@ -64,30 +76,37 @@ window#waybar {
 }
 
 #custom-treefetch-downloads {
+  @include square-shadow;
   background: $bg;
-  padding: 0 $bar-border-radius;
+  margin-left: $module-margin;
+  margin-right: $module-margin;
+  padding: 0 $module-padding;
   border-radius: $bar-border-radius;
-  margin: 0 $module-margin;
 }
 
 #mpd {
-  color: $green;
+  color: $accent-color;
+  margin-left: $module-margin;
 }
 
 // River tags
 #tags {
+  @include square-shadow;
   background: $bg;
   padding: 0 9px;
   border-radius: $bar-border-radius;
 }
 
 #tags button {
-  color: #8C795D;
+  color: $fg-alt;
   font-family: "Source Han Sans JP";
   font-weight: 700;
   padding: 0 6px;
   margin: 0 4px;
   font-size: 17px;
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
 }
 
 #tags button.occupied {
@@ -95,8 +114,8 @@ window#waybar {
 }
 
 #tags button:hover {
-  box-shadow: inherit;
-  text-shadow: inherit;
+  box-shadow: none;
+  text-shadow: none;
   background: $fg-alt;
   color: $bg;
   transition: 0.20s;
@@ -104,7 +123,7 @@ window#waybar {
 
 #tags button.focused {
   color: $bg;
-  background-color: $green;
+  background-color: $accent-color;
 }
 
 #tags button.urgent {
@@ -124,11 +143,27 @@ tooltip {
   background: $bg;
   border-radius: 7px;
   font-family: $font, monospace;
-  color: transparent;
+  font-weight: 500;
+  font-size: $font-size;
+  padding: 5px;
   animation-name: fadein;
-  animation-duration: 0.5s;
+  animation-duration: 0.2s;
+  border: 2px solid $fg-alt;
+  text-shadow: none;
+  color: $fg;
 }
 
 tooltip label {
   color: $fg;
+}
+
+#tray menu {
+  background: $bg;
+  color: $fg;
+  border-radius: 5px;
+  border: 2px solid $fg-alt;
+}
+
+.treefetch {
+  color: $green;
 }

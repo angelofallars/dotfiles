@@ -1,18 +1,16 @@
 * {
-  border: none;
-  border-radius: 0;
   min-height: 0;
 }
 
 window#waybar {
   background: rgba(0, 0, 0, 0);
-  color: #534035;
+  color: #d4be98;
 }
 
 .modules-left, .modules-center, .modules-right {
   background: transparent;
   margin-top: 4px;
-  border-radius: 7px;
+  border-radius: 0px;
   font-family: "JetBrains Mono Nerd Font", monospace;
   font-size: 15px;
   font-weight: 500;
@@ -21,6 +19,7 @@ window#waybar {
 .modules-center {
   font-size: 14px;
   margin-right: 50px;
+  margin-bottom: 3px;
 }
 
 .modules-left {
@@ -32,53 +31,74 @@ window#waybar {
 }
 
 #backlight, #pulseaudio {
-  background: #D7B18E;
+  background: #45403d;
 }
 
 #backlight {
-  padding-left: 12px;
-  border-top-left-radius: 7px;
-  border-bottom-left-radius: 7px;
-  padding-right: 15px;
+  box-shadow: 4px 4px 0 #181818;
+  margin-bottom: 5px;
+  margin-right: 5px;
+  background: #45403d;
+  margin-left: 6px;
+  padding: 0 10px;
+  border-radius: 0px;
 }
 
 #pulseaudio {
-  padding-right: 12px;
-  border-top-right-radius: 7px;
-  border-bottom-right-radius: 7px;
+  box-shadow: 4px 4px 0 #181818;
+  margin-bottom: 5px;
+  margin-right: 5px;
+  background: #45403d;
+  margin-left: 6px;
+  padding: 0 10px;
+  border-radius: 0px;
 }
 
 #clock {
-  background: #D7B18E;
-  margin-left: 8px;
-  padding: 0 12px;
-  border-radius: 7px;
+  box-shadow: 4px 4px 0 #181818;
+  margin-bottom: 5px;
+  margin-right: 5px;
+  background: #45403d;
+  margin-left: 6px;
+  padding: 0 10px;
+  border-radius: 0px;
 }
 
 #custom-treefetch-downloads {
-  background: #D7B18E;
-  padding: 0 7px;
-  border-radius: 7px;
-  margin: 0 8px;
+  box-shadow: 4px 4px 0 #181818;
+  margin-bottom: 5px;
+  margin-right: 5px;
+  background: #45403d;
+  margin-left: 6px;
+  margin-right: 6px;
+  padding: 0 10px;
+  border-radius: 0px;
 }
 
 #mpd {
-  color: #6D7833;
+  color: #a9b665;
+  margin-left: 6px;
 }
 
 #tags {
-  background: #D7B18E;
+  box-shadow: 4px 4px 0 #181818;
+  margin-bottom: 5px;
+  margin-right: 5px;
+  background: #45403d;
   padding: 0 9px;
-  border-radius: 7px;
+  border-radius: 0px;
 }
 
 #tags button {
-  color: #8C795D;
+  color: #7c6f64;
   font-family: "Source Han Sans JP";
   font-weight: 700;
   padding: 0 6px;
   margin: 0 4px;
   font-size: 17px;
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
 }
 
 #tags button.occupied {
@@ -86,16 +106,16 @@ window#waybar {
 }
 
 #tags button:hover {
-  box-shadow: inherit;
-  text-shadow: inherit;
-  background: #8C795D;
-  color: #D7B18E;
+  box-shadow: none;
+  text-shadow: none;
+  background: #7c6f64;
+  color: #45403d;
   transition: 0.2s;
 }
 
 #tags button.focused {
-  color: #D7B18E;
-  background-color: #6D7833;
+  color: #45403d;
+  background-color: #a9b665;
 }
 
 #tags button.urgent {
@@ -111,14 +131,30 @@ window#waybar {
   }
 }
 tooltip {
-  background: #D7B18E;
+  background: #45403d;
   border-radius: 7px;
   font-family: "JetBrains Mono Nerd Font", monospace;
-  color: transparent;
+  font-weight: 500;
+  font-size: 15px;
+  padding: 5px;
   animation-name: fadein;
-  animation-duration: 0.5s;
+  animation-duration: 0.2s;
+  border: 2px solid #7c6f64;
+  text-shadow: none;
+  color: #d4be98;
 }
 
 tooltip label {
-  color: #534035;
+  color: #d4be98;
+}
+
+#tray menu {
+  background: #45403d;
+  color: #d4be98;
+  border-radius: 5px;
+  border: 2px solid #7c6f64;
+}
+
+.treefetch {
+  color: #a9b665;
 }
