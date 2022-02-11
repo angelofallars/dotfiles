@@ -85,8 +85,12 @@ window#waybar {
 }
 
 #mpd {
-  color: $accent-color;
+  color: $accent-color-no-bg;
   margin-left: $module-margin;
+}
+
+#custom-mpd-song-scroll {
+  color: $fg-no-bg;
 }
 
 // River tags

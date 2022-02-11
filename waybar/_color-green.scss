@@ -6,9 +6,20 @@ $cyan:         #89b482;
 $blue:         #7daea3;
 $magenta:      #d3869b;
 
-$fg:           #534035;
 $bg:           #F47F79;
+$fg:           #534035;
+$fg-opposite:  #d4be98;
 
-$shadow:       scale-color($bg, $lightness: -34%, $saturation: -25%);
-$fg-alt:       $shadow;
-$accent-color: $shadow;
+$shadow:              scale-color($bg, $lightness: -34%, $saturation: -28%);
+$fg-alt:              $shadow;
+$accent-color:        $shadow;
+
+$fg-no-bg:            $fg;
+$accent-color-no-bg:  $shadow;
+
+$dark-theme:   false;
+
+@if $dark-theme {
+  $fg-no-bg:             $fg-opposite;
+  $accent-color-no-bg:   $bg;
+}

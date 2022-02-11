@@ -35,7 +35,7 @@ window#waybar {
 }
 
 #backlight {
-  box-shadow: 4px 4px 0 #c5332c;
+  box-shadow: 4px 4px 0 #c2362f;
   margin-bottom: 5px;
   margin-right: 5px;
   background: #F47F79;
@@ -45,7 +45,7 @@ window#waybar {
 }
 
 #pulseaudio {
-  box-shadow: 4px 4px 0 #c5332c;
+  box-shadow: 4px 4px 0 #c2362f;
   margin-bottom: 5px;
   margin-right: 5px;
   background: #F47F79;
@@ -55,7 +55,7 @@ window#waybar {
 }
 
 #clock {
-  box-shadow: 4px 4px 0 #c5332c;
+  box-shadow: 4px 4px 0 #c2362f;
   margin-bottom: 5px;
   margin-right: 5px;
   background: #F47F79;
@@ -65,7 +65,7 @@ window#waybar {
 }
 
 #custom-treefetch-downloads {
-  box-shadow: 4px 4px 0 #c5332c;
+  box-shadow: 4px 4px 0 #c2362f;
   margin-bottom: 5px;
   margin-right: 5px;
   background: #F47F79;
@@ -76,12 +76,16 @@ window#waybar {
 }
 
 #mpd {
-  color: #c5332c;
+  color: #c2362f;
   margin-left: 6px;
 }
 
+#custom-mpd-song-scroll {
+  color: #534035;
+}
+
 #tags {
-  box-shadow: 4px 4px 0 #c5332c;
+  box-shadow: 4px 4px 0 #c2362f;
   margin-bottom: 5px;
   margin-right: 5px;
   background: #F47F79;
@@ -90,7 +94,7 @@ window#waybar {
 }
 
 #tags button {
-  color: #c5332c;
+  color: #c2362f;
   font-family: "Source Han Sans JP";
   font-weight: 700;
   padding: 0 6px;
@@ -108,14 +112,14 @@ window#waybar {
 #tags button:hover {
   box-shadow: none;
   text-shadow: none;
-  background: #c5332c;
+  background: #c2362f;
   color: #F47F79;
   transition: 0.2s;
 }
 
 #tags button.focused {
   color: #F47F79;
-  background-color: #c5332c;
+  background-color: #c2362f;
 }
 
 #tags button.urgent {
@@ -139,7 +143,7 @@ tooltip {
   padding: 5px;
   animation-name: fadein;
   animation-duration: 0.2s;
-  border: 2px solid #c5332c;
+  border: 2px solid #c2362f;
   text-shadow: none;
   color: #534035;
 }
@@ -152,7 +156,7 @@ tooltip label {
   background: #F47F79;
   color: #534035;
   border-radius: 5px;
-  border: 2px solid #c5332c;
+  border: 2px solid #c2362f;
 }
 
 .treefetch {
