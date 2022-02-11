@@ -23,52 +23,52 @@ window#waybar {
 }
 
 .modules-left {
-  margin-left: 12px;
+  margin-left: 18px;
 }
 
 .modules-right {
-  margin-right: 12px;
+  margin-right: 18px;
 }
 
 #backlight, #pulseaudio {
-  background: #D7B18E;
+  background: #F47F79;
 }
 
 #backlight {
-  box-shadow: 4px 4px 0 #6D7833;
+  box-shadow: 4px 4px 0 #c5332c;
   margin-bottom: 5px;
   margin-right: 5px;
-  background: #D7B18E;
+  background: #F47F79;
   margin-left: 6px;
   padding: 0 10px;
   border-radius: 0px;
 }
 
 #pulseaudio {
-  box-shadow: 4px 4px 0 #6D7833;
+  box-shadow: 4px 4px 0 #c5332c;
   margin-bottom: 5px;
   margin-right: 5px;
-  background: #D7B18E;
+  background: #F47F79;
   margin-left: 6px;
   padding: 0 10px;
   border-radius: 0px;
 }
 
 #clock {
-  box-shadow: 4px 4px 0 #6D7833;
+  box-shadow: 4px 4px 0 #c5332c;
   margin-bottom: 5px;
   margin-right: 5px;
-  background: #D7B18E;
+  background: #F47F79;
   margin-left: 6px;
   padding: 0 10px;
   border-radius: 0px;
 }
 
 #custom-treefetch-downloads {
-  box-shadow: 4px 4px 0 #6D7833;
+  box-shadow: 4px 4px 0 #c5332c;
   margin-bottom: 5px;
   margin-right: 5px;
-  background: #D7B18E;
+  background: #F47F79;
   margin-left: 6px;
   margin-right: 6px;
   padding: 0 10px;
@@ -76,21 +76,21 @@ window#waybar {
 }
 
 #mpd {
-  color: #6D7833;
+  color: #c5332c;
   margin-left: 6px;
 }
 
 #tags {
-  box-shadow: 4px 4px 0 #6D7833;
+  box-shadow: 4px 4px 0 #c5332c;
   margin-bottom: 5px;
   margin-right: 5px;
-  background: #D7B18E;
+  background: #F47F79;
   padding: 0 9px;
   border-radius: 0px;
 }
 
 #tags button {
-  color: #8C795D;
+  color: #c5332c;
   font-family: "Source Han Sans JP";
   font-weight: 700;
   padding: 0 6px;
@@ -108,14 +108,14 @@ window#waybar {
 #tags button:hover {
   box-shadow: none;
   text-shadow: none;
-  background: #8C795D;
-  color: #D7B18E;
+  background: #c5332c;
+  color: #F47F79;
   transition: 0.2s;
 }
 
 #tags button.focused {
-  color: #D7B18E;
-  background-color: #6D7833;
+  color: #F47F79;
+  background-color: #c5332c;
 }
 
 #tags button.urgent {
@@ -131,7 +131,7 @@ window#waybar {
   }
 }
 tooltip {
-  background: #D7B18E;
+  background: #F47F79;
   border-radius: 7px;
   font-family: "JetBrains Mono Nerd Font", monospace;
   font-weight: 500;
@@ -139,7 +139,7 @@ tooltip {
   padding: 5px;
   animation-name: fadein;
   animation-duration: 0.2s;
-  border: 2px solid #8C795D;
+  border: 2px solid #c5332c;
   text-shadow: none;
   color: #534035;
 }
@@ -149,12 +149,12 @@ tooltip label {
 }
 
 #tray menu {
-  background: #D7B18E;
+  background: #F47F79;
   color: #534035;
   border-radius: 5px;
-  border: 2px solid #8C795D;
+  border: 2px solid #c5332c;
 }
 
 .treefetch {
-  color: #6D7833;
+  color: #a9b665;
 }

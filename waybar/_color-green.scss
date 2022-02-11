@@ -1,0 +1,14 @@
+$red:          #ea6962;
+$orange:       #e78a4e;
+$yellow:       #d8a657;
+$green:        #a9b665;
+$cyan:         #89b482;
+$blue:         #7daea3;
+$magenta:      #d3869b;
+
+$fg:           #534035;
+$bg:           #F47F79;
+
+$shadow:       scale-color($bg, $lightness: -34%, $saturation: -25%);
+$fg-alt:       $shadow;
+$accent-color: $shadow;

@@ -73,7 +73,7 @@
     },
 
     "custom/treefetch-downloads": {
-        "format": "🌲<span color='#a9b665'>treefetch:</span> {} downloads",
+        "format": "🌲<span underline='single'>treefetch</span> {} downloads",
         "interval": 240,
         "escape": true,
         "exec":  "~/.config/polybar/scripts/downloads.py angelofallars treefetch"
