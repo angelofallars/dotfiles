@@ -4,7 +4,7 @@
 
 window#waybar {
   background: rgba(0, 0, 0, 0);
-  color: #d4be98;
+  color: #534035;
 }
 
 .modules-left, .modules-center, .modules-right {
@@ -31,44 +31,44 @@ window#waybar {
 }
 
 #backlight, #pulseaudio {
-  background: #45403d;
+  background: #D7B18E;
 }
 
 #backlight {
-  box-shadow: 4px 4px 0 #181818;
+  box-shadow: 4px 4px 0 #6D7833;
   margin-bottom: 5px;
   margin-right: 5px;
-  background: #45403d;
+  background: #D7B18E;
   margin-left: 6px;
   padding: 0 10px;
   border-radius: 0px;
 }
 
 #pulseaudio {
-  box-shadow: 4px 4px 0 #181818;
+  box-shadow: 4px 4px 0 #6D7833;
   margin-bottom: 5px;
   margin-right: 5px;
-  background: #45403d;
+  background: #D7B18E;
   margin-left: 6px;
   padding: 0 10px;
   border-radius: 0px;
 }
 
 #clock {
-  box-shadow: 4px 4px 0 #181818;
+  box-shadow: 4px 4px 0 #6D7833;
   margin-bottom: 5px;
   margin-right: 5px;
-  background: #45403d;
+  background: #D7B18E;
   margin-left: 6px;
   padding: 0 10px;
   border-radius: 0px;
 }
 
 #custom-treefetch-downloads {
-  box-shadow: 4px 4px 0 #181818;
+  box-shadow: 4px 4px 0 #6D7833;
   margin-bottom: 5px;
   margin-right: 5px;
-  background: #45403d;
+  background: #D7B18E;
   margin-left: 6px;
   margin-right: 6px;
   padding: 0 10px;
@@ -76,21 +76,21 @@ window#waybar {
 }
 
 #mpd {
-  color: #a9b665;
+  color: #6D7833;
   margin-left: 6px;
 }
 
 #tags {
-  box-shadow: 4px 4px 0 #181818;
+  box-shadow: 4px 4px 0 #6D7833;
   margin-bottom: 5px;
   margin-right: 5px;
-  background: #45403d;
+  background: #D7B18E;
   padding: 0 9px;
   border-radius: 0px;
 }
 
 #tags button {
-  color: #7c6f64;
+  color: #8C795D;
   font-family: "Source Han Sans JP";
   font-weight: 700;
   padding: 0 6px;
@@ -108,14 +108,14 @@ window#waybar {
 #tags button:hover {
   box-shadow: none;
   text-shadow: none;
-  background: #7c6f64;
-  color: #45403d;
+  background: #8C795D;
+  color: #D7B18E;
   transition: 0.2s;
 }
 
 #tags button.focused {
-  color: #45403d;
-  background-color: #a9b665;
+  color: #D7B18E;
+  background-color: #6D7833;
 }
 
 #tags button.urgent {
@@ -131,7 +131,7 @@ window#waybar {
   }
 }
 tooltip {
-  background: #45403d;
+  background: #D7B18E;
   border-radius: 7px;
   font-family: "JetBrains Mono Nerd Font", monospace;
   font-weight: 500;
@@ -139,22 +139,22 @@ tooltip {
   padding: 5px;
   animation-name: fadein;
   animation-duration: 0.2s;
-  border: 2px solid #7c6f64;
+  border: 2px solid #8C795D;
   text-shadow: none;
-  color: #d4be98;
+  color: #534035;
 }
 
 tooltip label {
-  color: #d4be98;
+  color: #534035;
 }
 
 #tray menu {
-  background: #45403d;
-  color: #d4be98;
+  background: #D7B18E;
+  color: #534035;
   border-radius: 5px;
-  border: 2px solid #7c6f64;
+  border: 2px solid #8C795D;
 }
 
 .treefetch {
-  color: #a9b665;
+  color: #6D7833;
 }
