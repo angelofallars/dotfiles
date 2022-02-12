@@ -23,11 +23,11 @@ window#waybar {
 }
 
 .modules-left {
-  margin-left: 18px;
+  margin-left: 7px;
 }
 
 .modules-right {
-  margin-right: 18px;
+  margin-right: 7px;
 }
 
 #backlight, #pulseaudio {
@@ -119,7 +119,7 @@ window#waybar {
 
 #tags button.focused {
   color: #F47F79;
-  background-color: #c2362f;
+  background-color: #747E40;
 }
 
 #tags button.urgent {

@@ -1,6 +1,6 @@
-@use 'color-green' as *;
+@use 'color-colorful' as *;
 
-$screen-margin: 18px;
+$screen-margin: 7px;
 $module-margin: 6px;
 $module-padding: 10px;
 $bar-border-radius: 0px;
@@ -129,7 +129,6 @@ window#waybar {
   color: $bg;
   background-color: $accent-color;
 }
-
 #tags button.urgent {
   color: red;
 }

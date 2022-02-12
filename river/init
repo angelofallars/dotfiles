@@ -27,7 +27,7 @@ riverctl map normal Control End spawn "mpc seekthrough +8"
 riverctl map normal Control+Shift Delete spawn "mpc seek 0 && mpc play"
 riverctl map normal Control Pause spawn "mpc toggle"
 
-riverctl map normal Pause spawn "grim -g "$(slurp)" - | swappy -f -"
+riverctl map normal Super N spawn "~/.config/scripts/takeshot"
 
 # Super+Q to close the focused view
 riverctl map normal Super Q close
@@ -132,7 +132,7 @@ riverctl map passthrough Super F11 enter-mode normal
 # Set background and border color
 riverctl background-color 0x002b36
 riverctl border-color-unfocused 0x525252
-riverctl border-color-focused 0xa9b665
+riverctl border-color-focused 0xBE443E
 riverctl border-width 3
 
 # Set keyboard repeat rate

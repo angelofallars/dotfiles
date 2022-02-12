@@ -5,7 +5,7 @@
 
     "modules-left": ["river/tags", "custom/treefetch-downloads"],
     "modules-center": ["mpd", "custom/mpd-song-scroll"],
-    "modules-right": ["tray", "backlight", "pulseaudio",  "clock"],
+    "modules-right": ["tray", "pulseaudio", "backlight", "clock#date", "clock"],
 
     "river/tags": {
         "num-tags": 6,
@@ -37,20 +37,18 @@
 
     "clock": {
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format": "{:🕒 %I:%M %p | %a, %b %d}",
-        "format-alt": "{:%Y-%m-%d}"
+        "format": "🥑 {:%I:%M %p}",
+    },
+
+    "clock#date": {
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format": "{:🍅 %a, %b %d}",
     },
 
     "backlight": {
         "device": "intel-backlight",
         "format": "{icon} {percent}%",
-        "format-icons": [
-            "🌑",
-            "🌘",
-            "🌗",
-            "🌖",
-            "🌕"
-        ],
+        "format-icons": [ "🌽" ],
         "on-scroll-up": "xbacklight -inc 5",
         "on-scroll-down": "xbacklight -dec 5",
     },
@@ -60,7 +58,7 @@
         "format": "{icon} {volume}% ",
         "format-muted": "🔇 ... ",
         "format-icons": {
-            "default": ["🔈", "🔉", "🔊"]
+            "default": ["🌮"]
         },
         "on-click": "pamixer -t"
     },
@@ -73,7 +71,7 @@
     },
 
     "custom/treefetch-downloads": {
-        "format": "🌲<span underline='single'>treefetch</span> {} downloads",
+        "format": "🌶️ <span underline='single'>treefetch</span> {} downloads",
         "interval": 240,
         "escape": true,
         "exec":  "~/.config/polybar/scripts/downloads.py angelofallars treefetch"

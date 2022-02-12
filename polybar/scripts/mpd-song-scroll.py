@@ -81,10 +81,12 @@ def format_song_name(client: MPDClient) -> str:
 def main() -> int:
     client = MPDClient()
 
-    try:
-        client.connect("localhost", 6600)
-    except ConnectionRefusedError:
-        return 1
+    for i in range(1, 8):
+        try:
+            client.connect("localhost", 6600)
+            break
+        except ConnectionRefusedError:
+            sleep(2)
 
     # Check if a song is playing
     # If so, play the scroll
