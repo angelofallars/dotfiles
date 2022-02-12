@@ -1,3 +1,6 @@
+// Angelo's Waybar config
+// https://github.com/angelofallars/dotfiles
+
 {
     "layer": "top",
     "height": 36,
@@ -63,18 +66,20 @@
         "on-click": "pamixer -t"
     },
 
+    // Need mpd installed for this to work
     "custom/mpd-song-scroll": {
         "format": "{}",
         "max-length": 80,
         "escape": true,
-        "exec":  "~/.config/polybar/scripts/mpd-song-scroll.py"
+        "exec":  "~/.config/waybar/scripts/mpd-song-scroll.py"
     },
 
+    // List the downloads for a specific Github repo
     "custom/treefetch-downloads": {
         "format": "🌶️ <span underline='single'>Axyl</span> {} downloads",
         "interval": 240,
         "escape": true,
-        "exec":  "~/.config/polybar/scripts/downloads.py axyl-os axyl-iso"
+        "exec":  "~/.config/waybar/scripts/downloads.py axyl-os axyl-iso"
     }
 }
 

@@ -1,3 +1,18 @@
+#backlight,
+#pulseaudio,
+#clock,
+#custom-treefetch-downloads,
+#tags {
+  box-shadow: 4px 4px 0 #c2362f;
+  margin-bottom: 4px;
+  margin-right: 4px;
+  margin-left: 2px;
+  margin-right: 6px;
+  padding: 0 10px;
+  background: #F47F79;
+  border-radius: 0px;
+}
+
 * {
   min-height: 0;
 }
@@ -16,12 +31,6 @@ window#waybar {
   font-weight: 500;
 }
 
-.modules-center {
-  font-size: 14px;
-  margin-right: 50px;
-  margin-bottom: 3px;
-}
-
 .modules-left {
   margin-left: 6px;
 }
@@ -30,19 +39,9 @@ window#waybar {
   margin-right: 6px;
 }
 
-#backlight,
-#pulseaudio,
-#clock,
-#custom-treefetch-downloads,
-#tags {
-  box-shadow: 4px 4px 0 #c2362f;
-  margin-bottom: 4px;
-  margin-right: 4px;
-  margin-left: 2px;
-  margin-right: 6px;
-  padding: 0 10px;
-  background: #F47F79;
-  border-radius: 0px;
+#mpd, #custom-mpd-song-scroll {
+  font-size: 14px;
+  margin-bottom: 3px;
 }
 
 #mpd {
@@ -52,6 +51,7 @@ window#waybar {
 
 #custom-mpd-song-scroll {
   color: #534035;
+  margin-right: 50px;
 }
 
 #tags button {
@@ -70,8 +70,8 @@ window#waybar {
 }
 
 #tags button:hover {
-  background: #c2362f;
   color: #F47F79;
+  background: #c2362f;
   box-shadow: none;
   text-shadow: none;
   transition: 0.2s;
@@ -83,7 +83,7 @@ window#waybar {
 }
 
 #tags button.urgent {
-  color: red;
+  color: #ea6962;
 }
 
 @keyframes fadein {
