@@ -29,4 +29,4 @@ The command for this on Arch/Arch-based systems should be `sudo pacman -S adobe-
 ## Dependencies
 
 For the GitHub download stats counter to work, you need to have Python 3 installed and also the Requests library.
-Install it with `pip install requests`. You also need mpd installed for the modules at the center.
+Install it with `pip install requests`. You also need mpd installed AND running for the modules at the center.
