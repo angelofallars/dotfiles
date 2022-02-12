@@ -9,7 +9,7 @@ edit the [`style.scss`](./_style.scss) and `_colors.scss` files instead. This al
 change the entire color of the bar with just one variable change.
 
 [Install the latest version of Sass](https://github.com/sass/dart-sass/releases)
-and run this in the `waybar/` directory:
+and run this in the `waybar/` directory so that the CSS file will be automatically updated as you edit the Sass files:
 
 ```sass --watch . --no-source-map```
 
