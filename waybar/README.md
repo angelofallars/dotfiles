@@ -25,3 +25,8 @@ By just editing the `$bg` value in [`_colors.scss`](./_colors.scss), you can get
 
 If the River workspace fonts don't show up, you need to download the specific Japanese font, Han Sans JP.
 The command for this on Arch/Arch-based systems should be `sudo pacman -S adobe-source-han-sans-jp-fonts` .
+
+## Dependencies
+
+For the GitHub download stats counter to work, you need to have Python 3 installed and also the Requests library.
+Install it with `pip install requests`. You also need mpd installed for the modules at the center.
