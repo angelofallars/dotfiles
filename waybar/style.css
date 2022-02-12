@@ -6,8 +6,8 @@
   box-shadow: 4px 4px 0 #c2362f;
   margin-bottom: 4px;
   margin-right: 4px;
-  margin-left: 2px;
-  margin-right: 6px;
+  margin-left: 3px;
+  margin-right: 7px;
   padding: 0 10px;
   background: #F47F79;
   border-radius: 0px;
@@ -46,7 +46,7 @@ window#waybar {
 
 #mpd {
   color: #c2362f;
-  margin-left: 4px;
+  margin-left: 5px;
 }
 
 #custom-mpd-song-scroll {
@@ -79,7 +79,7 @@ window#waybar {
 
 #tags button.focused {
   color: #F47F79;
-  background-color: #747E40;
+  background-color: #c2362f;
 }
 
 #tags button.urgent {
