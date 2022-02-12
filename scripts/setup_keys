@@ -1,8 +1,0 @@
-remove Lock = Caps_Lock
-remove Control = Control_L
-keycode 0x42 = Control_L
-keycode 0x25 = grave
-add Lock = Caps_Lock
-add Control = Control_L
-
-keycode 9 = Escape asciitilde Escape
