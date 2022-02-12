@@ -55,12 +55,11 @@ $bar-border-radius: 0px;
   border-radius: $bar-border-radius;
 }
 
-// !! If you add new modules, put their class name in here.
-#backlight,
-#pulseaudio,
-#clock,
-#custom-treefetch-downloads,
-#tags
+// !! If you add new custom modules, put their class name in here.
+#backlight, #battery, #cpu, #disk, #idle_inhibitor, #keyboard-state,
+#pulseaudio, #clock, #tags, #language, #memory, #network, #sndio,
+#mode, #window, #workspaces, #temperature, #taskbar, #workspaces,
+#custom-treefetch-downloads
 {
   @include single-module;
 }

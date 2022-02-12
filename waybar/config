@@ -6,6 +6,8 @@
     "height": 36,
     "spacing": 0,
 
+    // If you're using sway, replace `river/tags` with `sway/workspaces` .
+
     "modules-left": ["river/tags", "custom/treefetch-downloads"],
     "modules-center": ["mpd", "custom/mpd-song-scroll"],
     "modules-right": ["tray", "pulseaudio", "backlight", "clock#date", "clock"],

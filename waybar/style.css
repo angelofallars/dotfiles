@@ -1,8 +1,7 @@
-#backlight,
-#pulseaudio,
-#clock,
-#custom-treefetch-downloads,
-#tags {
+#backlight, #battery, #cpu, #disk, #idle_inhibitor, #keyboard-state,
+#pulseaudio, #clock, #tags, #language, #memory, #network, #sndio,
+#mode, #window, #workspaces, #temperature, #taskbar, #workspaces,
+#custom-treefetch-downloads {
   box-shadow: 4px 4px 0 #c2362f;
   margin-bottom: 4px;
   margin-right: 4px;
