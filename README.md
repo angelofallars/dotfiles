@@ -1,15 +1,15 @@
 <h1 align=center>⛩️🍙 gruvbox - neovim - artix</h1>
 
-<img src="https://user-images.githubusercontent.com/39676098/152069150-00dbfdc5-4b37-494a-9abc-d25c3458a563.png" alt="neofetch, meow.sh, cbonsai, neovim" align=right height=240>
+<img src="https://user-images.githubusercontent.com/39676098/153703184-7c2e8550-3b46-478f-a4b0-1fdce411cff1.png" alt="treefetch, neovim, cava" align=right height=240>
 
-My (messy) dotfiles on Artix Linux. Proudly uses the [Gruvbox Material](https://github.com/sainnhe/gruvbox-material) theme.
+My dotfiles on Artix Linux with the River window manager on Wayland. Proudly uses the [Gruvbox Material](https://github.com/sainnhe/gruvbox-material) theme.
 
-[Wallpaper **(1080p)**](https://media.discordapp.net/attachments/518205487091548314/938212197883052112/sugigata.png)
+[Wallpaper **(1080p)**](https://user-images.githubusercontent.com/39676098/153703460-abef6aa8-3c79-42e5-99e1-db02876f4c68.png)
 
 ## 🍵 Desktop
 
-- **WM** - bspwm
-- **Bar** - Polybar
+- **WM** - River
+- **Bar** - Waybar [(config)](./waybar/)
 
 ## 🍣 Setup
 
@@ -18,7 +18,9 @@ My (messy) dotfiles on Artix Linux. Proudly uses the [Gruvbox Material](https://
 - **Multiplexer** - tmux
 - **Shell** - Zsh
 
-![image](https://media.discordapp.net/attachments/518205487091548314/938210095249104916/unknown.png)
-![image2](https://media.discordapp.net/attachments/518205487091548314/938210410211999884/unknown.png)
-![image3](https://user-images.githubusercontent.com/39676098/152069360-38112ef1-8fd1-4e30-ad52-1c484e0d14de.png)
-![image4](https://user-images.githubusercontent.com/39676098/152069755-a36ba340-53d4-438a-9e94-696407fe2ba5.png)
+### Screenshots
+
+![20220212_15h57m10s_grim](https://user-images.githubusercontent.com/39676098/153703182-505b1afe-f1f1-4124-9e93-f995dd30647e.png)
+![20220212_16h02m52s_grim](https://user-images.githubusercontent.com/39676098/153703186-f0659ccd-7863-46c8-9fd4-ef20cca29544.png)
+![20220212_16h07m42s_grim](https://user-images.githubusercontent.com/39676098/153703192-a1d58add-8e70-4983-a984-7552ce6d610e.png)
+![20220212_16h08m45s_grim](https://user-images.githubusercontent.com/39676098/153703190-03d5e855-0fba-4d08-a1f8-fd086c6f7579.png)
