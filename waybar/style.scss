@@ -1,30 +1,60 @@
-@use 'color-colorful' as *;
+// Angelo's Waybar config
+// https://github.com/angelofallars/dotfiles
 
-$screen-margin: 7px;
-$module-margin: 6px;
+// Use Sass to compile this file down to CSS and restyle my bar.
+// https://sass-lang.com/installhttps://sass-lang.com/install
+// After downloading Sass, run this in this directory
+// to compile your changes:
+// $ sass --watch . --no-source-map
+
+// NOTE: If the Japanese River workspace icons do not show up,
+// you should install the Han Sans JP font.
+// Arch Linux:
+// $ sudo pacman -S adobe-source-han-sans-jp-fonts
+
+@use 'colors' as *;
+
+// Distance of the entire bar from the sides
+$screen-margin: 6px;
+
+// Distance from the top of the screen
+$top-margin: 4px;
+
+// Margin/padding of individual modules
+$module-margin: 2px;
 $module-padding: 10px;
-$bar-border-radius: 0px;
+
+// Font config
 $font: "JetBrains Mono Nerd Font";
 $font-size: 15px;
+$font-weight: 500;
 
-$box-shadow-radius: 4px;
+// How far away should the box shadow effect be diagonally
+$box-shadow-distance: 4px;
+
+// Border radius. Turning this option up will also round the offset shadows.
+$bar-border-radius: 0px;
+
+// -------------------------
+// Actual styling of the bar
+// -------------------------
 
 * {
   min-height: 0;
 }
 
 window#waybar {
-  background: rgba(0, 0, 0, 0);
+  background: transparent;
   color: $fg;
 }
 
 .modules-left, .modules-center, .modules-right {
   background: transparent;
-  margin-top: 4px;
+  margin-top: $top-margin;
   border-radius: $bar-border-radius;
   font-family: $font, monospace;
   font-size: $font-size;
-  font-weight: 500;
+  font-weight: $font-weight;
 }
 
 .modules-center {
@@ -42,51 +72,33 @@ window#waybar {
 }
 
 @mixin square-shadow {
-  box-shadow: $box-shadow-radius $box-shadow-radius 0 $shadow;
-  margin-bottom: 5px;
-  margin-right: 5px;
+  box-shadow: $box-shadow-distance $box-shadow-distance 0 $shadow;
+  margin-bottom: $box-shadow-distance;
+  margin-right: $box-shadow-distance;
 }
 
-#backlight, #pulseaudio {
-  background: $bg;
-}
-
-#backlight {
+@mixin single-module {
   @include square-shadow;
-  background: $bg;
   margin-left: $module-margin;
+  margin-right: $module-margin + $box-shadow-distance;
   padding: 0 $module-padding;
+
+  background: $bg;
   border-radius: $bar-border-radius;
 }
 
-#pulseaudio {
-  @include square-shadow;
-  background: $bg;
-  margin-left: $module-margin;
-  padding: 0 $module-padding;
-  border-radius: $bar-border-radius;
-}
-
-#clock {
-  @include square-shadow;
-  background: $bg;
-  margin-left: $module-margin;
-  padding: 0 $module-padding;
-  border-radius: $bar-border-radius;
-}
-
-#custom-treefetch-downloads {
-  @include square-shadow;
-  background: $bg;
-  margin-left: $module-margin;
-  margin-right: $module-margin;
-  padding: 0 $module-padding;
-  border-radius: $bar-border-radius;
+#backlight,
+#pulseaudio,
+#clock,
+#custom-treefetch-downloads,
+#tags
+{
+  @include single-module;
 }
 
 #mpd {
   color: $accent-color-no-bg;
-  margin-left: $module-margin;
+  margin-left: $module-margin + 2px;
 }
 
 #custom-mpd-song-scroll {
@@ -94,13 +106,6 @@ window#waybar {
 }
 
 // River tags
-#tags {
-  @include square-shadow;
-  background: $bg;
-  padding: 0 9px;
-  border-radius: $bar-border-radius;
-}
-
 #tags button {
   color: $fg-alt;
   font-family: "Source Han Sans JP";
@@ -110,7 +115,6 @@ window#waybar {
   font-size: 17px;
   border-radius: 0;
   border: none;
-  box-shadow: none;
 }
 
 #tags button.occupied {
@@ -118,10 +122,10 @@ window#waybar {
 }
 
 #tags button:hover {
-  box-shadow: none;
-  text-shadow: none;
   background: $fg-alt;
   color: $bg;
+  box-shadow: none;
+  text-shadow: none;
   transition: 0.20s;
 }
 
@@ -129,6 +133,7 @@ window#waybar {
   color: $bg;
   background-color: $accent-color;
 }
+
 #tags button.urgent {
   color: red;
 }
@@ -146,7 +151,7 @@ tooltip {
   background: $bg;
   border-radius: 7px;
   font-family: $font, monospace;
-  font-weight: 500;
+  font-weight: $font-weight;
   font-size: $font-size;
   padding: 5px;
   animation-name: fadein;
@@ -165,8 +170,4 @@ tooltip label {
   color: $fg;
   border-radius: 5px;
   border: 2px solid $fg-alt;
-}
-
-.treefetch {
-  color: $green;
 }

@@ -71,10 +71,10 @@
     },
 
     "custom/treefetch-downloads": {
-        "format": "🌶️ <span underline='single'>treefetch</span> {} downloads",
+        "format": "🌶️ <span underline='single'>Axyl</span> {} downloads",
         "interval": 240,
         "escape": true,
-        "exec":  "~/.config/polybar/scripts/downloads.py angelofallars treefetch"
+        "exec":  "~/.config/polybar/scripts/downloads.py axyl-os axyl-iso"
     }
 }
 

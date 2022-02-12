@@ -1,3 +1,5 @@
+// Gruvbox Material theme
+
 $red:          #ea6962;
 $orange:       #e78a4e;
 $yellow:       #d8a657;
@@ -7,18 +9,24 @@ $blue:         #7daea3;
 $magenta:      #d3869b;
 
 $bg:           #F47F79;
-$fg-opposite:  #d4be98;
-$green-dark:   #747E40;
 $fg:           #534035;
 
-$shadow:              scale-color($bg, $lightness: -34%, $saturation: -28%);
-$fg-alt:              $shadow;
+$fg-opposite:  #d4be98;
+$green-dark:   #747E40;
+
+// Accent color used by the River active tags
 $accent-color:        $green-dark;
 
+// Box shadow of modules automatically calculated from the background color
+$shadow:              scale-color($bg, $lightness: -34%, $saturation: -28%);
+$fg-alt:              $shadow;
+
+// Foreground + accent color for modules w/o backgrounds
 $fg-no-bg:            $fg;
 $accent-color-no-bg:  $shadow;
 
-$dark-theme:   false;
+// Set this to true or false depending if the mpd module is readable
+$dark-theme:          false;
 
 @if $dark-theme {
   $fg-no-bg:             $fg-opposite;
