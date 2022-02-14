@@ -1,0 +1,74 @@
+colors:
+  primary:
+    background: '#f2e5bc'
+    foreground: '#654735'
+  normal:
+    black:   '#654735'
+    red:     '#c14a4a'
+    green:   '#6c782e'
+    yellow:  '#b47109'
+    blue:    '#45707a'
+    magenta: '#945e80'
+    cyan:    '#4c7a5d'
+    white:   '#eee0b7'
+  bright:
+    black:   '#654735'
+    red:     '#c14a4a'
+    green:   '#6c782e'
+    yellow:  '#b47109'
+    blue:    '#45707a'
+    magenta: '#945e80'
+    cyan:    '#4c7a5d'
+    white:   '#eee0b7'
+
+import:
+  - ~/.config/alacritty/fonts.yml
+
+## Set environment variables
+env:
+  TERM: alacritty
+
+## Terminal window settings
+window:
+
+  padding:
+    x: 10
+    y: 8
+
+  decorations: full
+  startup_mode: Windowed
+  dynamic_title: true
+  dynamic_padding: true
+
+## scrolling
+  history: 10000
+  multiplier: 3
+
+## Background opacity
+window.opacity: 1.00
+
+## Cursor
+cursor:
+  style:
+    shape: Beam
+    blinking: always
+
+  unfocused_hollow: false
+
+  thickness: 0.24
+
+## Live config reload
+live_config_reload: true
+
+mouse:
+  # Click settings
+  #
+  # The `double_click` and `triple_click` settings control the time
+  # alacritty should wait for accepting multiple clicks as one double
+  # or triple click.
+  #double_click: { threshold: 300 }
+  #triple_click: { threshold: 300 }
+
+  # If this is `true`, the cursor is temporarily hidden when typing.
+  hide_when_typing: true
+
