@@ -36,7 +36,7 @@
     },
 
     "tray": {
-        // "icon-size": 21,
+        "icon-size": 21,
         "spacing": 10
     },
 
@@ -47,13 +47,13 @@
 
     "clock#date": {
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format": "{:🍅 %a, %b %d}",
+        "format": "{:🍟 %a, %b %d}",
     },
 
     "backlight": {
         "device": "intel-backlight",
         "format": "{icon} {percent}%",
-        "format-icons": [ "🌽" ],
+        "format-icons": [ "🍿" ],
         "on-scroll-up": "xbacklight -inc 5",
         "on-scroll-down": "xbacklight -dec 5",
     },

@@ -1,6 +1,7 @@
 #!/bin/sh
 
 riverctl map normal Super Return spawn 'alacritty -e "$HOME/.config/scripts/new_tmux_terminal.sh"'
+riverctl map normal Super+Shift Return spawn 'alacritty --config-file "$HOME/.config/alacritty/alacritty-light.yml"'
 
 # dmenu replacement with the gruvbox material color, of course
 riverctl map normal Super D spawn "bemenu-run -i -l 10 \
@@ -147,7 +148,7 @@ riverctl float-filter-add app-id float
 riverctl float-filter-add title "popup title with spaces"
 
 waybar &
-swaybg -i ~/.config/wallpapers/gruvbox-stripe-ferris.png &
+swaybg -i ~/Pictures/Wallpapers/ferris-food2.png &
 
 /usr/bin/pipewire &
 /usr/bin/pipewire-pulse &

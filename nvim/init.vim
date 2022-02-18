@@ -12,7 +12,7 @@ Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
 
 " Emmet autocomplete
-Plug 'mattn/emmet-vim', { 'for': 'html' }
+" Plug 'mattn/emmet-vim', { 'for': 'html' }
 
 " Fuzzy finder
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -45,15 +45,9 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 Plug 'rust-lang/rust.vim'
 
-Plug 'mhinz/vim-startify'
+" Plug 'mhinz/vim-startify'
 
-" Prettier format for web dev
-" Plug 'prettier/vim-prettier', {
-  " \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
-
-" Jinja syntax highlighting for flask
-" Plug 'lepture/vim-jinja', { 'for': 'html' }
-
+Plug 'vimwiki/vimwiki'
 
 call plug#end()
 
@@ -306,33 +300,9 @@ let g:netrw_browse_split = 0
 let g:netrw_banner = 0
 let g:netrw_winsize = 25
 
-let g:startify_custom_header = startify#center([
-            \'                   ██          ██                    ',
-            \'                 ██▒▒██      ██▒▒██                  ',
-            \'                 ██▒▒▓▓██████▓▓▒▒██                  ',
-            \'               ██▓▓▒▒▒▒▓▓▓▓▓▓▒▒▒▒▓▓██                ',
-            \'               ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██                ',
-            \'             ██▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓██              ',
-            \'             ██▒▒▒▒██▒▒▒▒██▒▒▒▒██▒▒▒▒██              ',
-            \'             ██▒▒▒▒▒▒▒▒██▒▒██▒▒▒▒▒▒▒▒██              ',
-            \'           ██▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓██            ',
-            \'           ██▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓██            ',
-            \'           ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██            ',
-            \'           ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██            ',
-            \'         ██▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓██          ',
-            \'         ██▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓██          ',
-            \'         ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██    ████  ',
-            \'         ██▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓██  ██▒▒▒▒██',
-            \'         ██▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓██    ██▓▓██',
-            \'         ██▒▒▒▒▒▒██▒▒▒▒▒▒▒▒▒▒▒▒▒▒██▒▒▒▒▒▒██    ██▒▒██',
-            \'         ██▓▓▒▒▒▒██▒▒██▒▒▒▒▒▒██▒▒██▒▒▒▒▓▓██████▒▒▒▒██',
-            \'           ██▓▓▒▒██▒▒██▒▒▒▒▒▒██▒▒██▒▒▓▓██▒▒▒▒▓▓▒▒██  ',
-            \'             ██████▒▒██████████▒▒████████████████    ',
-            \'                 ██████      ██████                  ',
-            \ ])
-highlight StartifyHeader ctermfg=50 guifg=green
-
-let g:startify_lists = []
+set nocompatible
+filetype plugin on
+syntax on
 
 source $HOME/.config/nvim/general/settings.vim
 source $HOME/.config/nvim/keys/mappings.vim
