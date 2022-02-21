@@ -2,13 +2,13 @@
 #pulseaudio, #clock, #tags, #language, #memory, #network, #sndio,
 #mode, #window, #workspaces, #temperature, #taskbar, #workspaces,
 #custom-treefetch-downloads {
-  box-shadow: 4px 4px 0 #c2362f;
+  box-shadow: 4px 4px 0 #9e5a2e;
   margin-bottom: 4px;
   margin-right: 4px;
   margin-left: 3px;
   margin-right: 7px;
   padding: 0 10px;
-  background: #F47F79;
+  background: #e78a4e;
   border-radius: 0px;
 }
 
@@ -44,7 +44,7 @@ window#waybar {
 }
 
 #mpd {
-  color: #c2362f;
+  color: #9e5a2e;
   margin-left: 5px;
 }
 
@@ -54,11 +54,12 @@ window#waybar {
 }
 
 #tags button {
-  color: #c2362f;
+  color: #9e5a2e;
   font-family: "Source Han Sans JP";
   font-weight: 700;
-  padding: 0 6px;
-  margin: 0 4px;
+  padding: 0 7px;
+  margin: 0 1px;
+  min-width: 26px;
   font-size: 17px;
   border-radius: 0;
   border: none;
@@ -69,16 +70,16 @@ window#waybar {
 }
 
 #tags button:hover {
-  color: #F47F79;
-  background: #c2362f;
+  color: #e78a4e;
+  background: #9e5a2e;
   box-shadow: none;
   text-shadow: none;
   transition: 0.2s;
 }
 
 #tags button.focused {
-  color: #F47F79;
-  background-color: #c2362f;
+  color: #e78a4e;
+  background: #9e5a2e;
 }
 
 #tags button.urgent {
@@ -94,7 +95,7 @@ window#waybar {
   }
 }
 tooltip {
-  background: #F47F79;
+  background: #e78a4e;
   border-radius: 7px;
   font-family: "JetBrains Mono Nerd Font", monospace;
   font-weight: 500;
@@ -102,7 +103,7 @@ tooltip {
   padding: 5px;
   animation-name: fadein;
   animation-duration: 0.2s;
-  border: 2px solid #c2362f;
+  border: 2px solid #9e5a2e;
   text-shadow: none;
   color: #534035;
 }
@@ -112,8 +113,8 @@ tooltip label {
 }
 
 #tray menu {
-  background: #F47F79;
+  background: #e78a4e;
   color: #534035;
   border-radius: 5px;
-  border: 2px solid #c2362f;
+  border: 2px solid #9e5a2e;
 }

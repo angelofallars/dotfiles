@@ -137,7 +137,7 @@ riverctl map passthrough Super F11 enter-mode normal
 # Set background and border color
 riverctl background-color 0x002b36
 riverctl border-color-unfocused 0x525252
-riverctl border-color-focused 0xBE443E
+riverctl border-color-focused 0xB56F42
 riverctl border-width 3
 
 # Set keyboard repeat rate
@@ -147,8 +147,8 @@ riverctl set-repeat 50 300
 riverctl float-filter-add app-id float
 riverctl float-filter-add title "popup title with spaces"
 
-waybar &
-swaybg -i ~/Pictures/Wallpapers/ferris-food2.png &
+XDG_CURRENT_DESKTOP=Unity waybar &
+swaybg -i ~/Pictures/Wallpapers/greener-bertholdt-paper.png &
 
 /usr/bin/pipewire &
 /usr/bin/pipewire-pulse &
@@ -156,6 +156,11 @@ swaybg -i ~/Pictures/Wallpapers/ferris-food2.png &
 mpd &
 
 wlsunset -l 14.6 -L 121 &
+
+gnome_schema="org.gnome.desktop.interface"
+gsettings set "$gnome_schema" gtk-theme "Gruvbox-Material-Dark"
+gsettings set "$gnome_schema" icon-theme "Gruvbox-Material-Dark"
+gsettings set "$gnome_schema" font-name "Roboto 11"
 
 # Set and exec into the default layout generator, rivertile.
 # River will send the process group of the init executable SIGTERM on exit.

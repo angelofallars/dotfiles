@@ -111,8 +111,9 @@ window#waybar {
   color: colors.$fg-alt;
   font-family: "Source Han Sans JP";
   font-weight: 700;
-  padding: 0 6px;
-  margin: 0 4px;
+  padding: 0 7px;
+  margin: 0 1px;
+  min-width: 26px;
   font-size: 17px;
   border-radius: 0;
   border: none;
@@ -132,7 +133,7 @@ window#waybar {
 
 #tags button.focused {
   color: colors.$bg;
-  background-color: colors.$accent-color;
+  background: colors.$accent-color;
 }
 
 #tags button.urgent {

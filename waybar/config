@@ -78,10 +78,10 @@
 
     // List the downloads for a specific Github repo
     "custom/treefetch-downloads": {
-        "format": "🌶️ <span underline='single'>Axyl</span> {} downloads",
+        "format": "🌶️ <span underline='single'>treefetch</span> {} downloads",
         "interval": 240,
         "escape": true,
-        "exec":  "~/.config/waybar/scripts/downloads.py axyl-os axyl-iso"
+        "exec":  "~/.config/waybar/scripts/downloads.py angelofallars treefetch"
     }
 }
 
