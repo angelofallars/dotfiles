@@ -57,12 +57,13 @@ window#waybar {
   color: #9e5a2e;
   font-family: "Source Han Sans JP";
   font-weight: 700;
-  padding: 0 7px;
-  margin: 0 1px;
+  padding: 0 6px;
+  margin: 0 2px;
   min-width: 26px;
   font-size: 17px;
   border-radius: 0;
   border: none;
+  transition: none;
 }
 
 #tags button.occupied {
@@ -74,7 +75,7 @@ window#waybar {
   background: #9e5a2e;
   box-shadow: none;
   text-shadow: none;
-  transition: 0.2s;
+  transition: 0;
 }
 
 #tags button.focused {

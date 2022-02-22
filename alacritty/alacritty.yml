@@ -18,12 +18,12 @@ window:
   dynamic_title: true
   dynamic_padding: true
 
-## scrolling
+  ## scrolling
   history: 10000
   multiplier: 3
 
-## Background opacity
-window.opacity: 1.00
+  ## Background opacity
+  opacity: 0.88
 
 ## Cursor
 cursor:

@@ -3,7 +3,7 @@ font:
   # Normal (roman) font face
   normal:
     family: "JetBrains Mono Nerd Font"
-    style: Medium
+    style: "Medium"
 
   # Bold font face
   bold:
@@ -13,7 +13,7 @@ font:
   # Italic font face
   italic:
     family: "JetBrains Mono Nerd Font"
-    style: "Italic"
+    style: "Medium Italic"
 
   # Bold italic font face
   bold_italic:
