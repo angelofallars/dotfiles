@@ -49,7 +49,8 @@ $bar-border-radius: 0px;
   @include square-shadow;
   margin-left: $module-margin;
   margin-right: $module-margin + $box-shadow-distance;
-  padding: 0 $module-padding;
+  padding-left: $module-padding;
+  padding-right: $module-padding;
 
   background: colors.$bg;
   border-radius: $bar-border-radius;

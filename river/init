@@ -148,7 +148,7 @@ riverctl map passthrough Super F11 enter-mode normal &
 
 # Set background and border color
 riverctl border-color-unfocused 0x525252 &
-riverctl border-color-focused 0xB56F42 &
+riverctl border-color-focused 0xBE6C38 &
 riverctl border-width 3 &
 
 riverctl focus-follows-cursor normal &
