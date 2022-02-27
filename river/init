@@ -101,7 +101,7 @@ riverctl map-pointer normal Super BTN_LEFT move-view &
 # Super + Right Mouse Button to resize views
 riverctl map-pointer normal Super BTN_RIGHT resize-view &
 
-for i in $(seq 1 6)
+for i in $(seq 1 5)
 do
     tags=$((1 << ($i - 1)))
 
@@ -168,7 +168,7 @@ gsettings set "$gnome_schema" icon-theme "Gruvbox-Material-Dark" &
 gsettings set "$gnome_schema" font-name "Roboto 11" &
 gsettings set "$gnome_schema" cursor-theme "phinger-cursors" &
 gsettings set "$gnome_schema" cursor-size "32" &
-export XCURSOR_SIZE=40
+
 
 # Set and exec into the default layout generator, rivertile.
 # River will send the process group of the init executable SIGTERM on exit.

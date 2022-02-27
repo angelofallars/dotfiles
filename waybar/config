@@ -13,7 +13,7 @@
     "modules-right": ["tray", "pulseaudio", "backlight", "clock#date", "clock"],
 
     "river/tags": {
-        "num-tags": 6,
+        "num-tags": 5,
         "tag-labels": [
             "一", "二", "三", "四", "五", "六",
            ]
