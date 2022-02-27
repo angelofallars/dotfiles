@@ -1,6 +1,6 @@
 #!/bin/sh
 
-step="10"
+step="5"
 
 notify () {
     volume="$(pamixer --get-volume)"
@@ -17,6 +17,7 @@ notify () {
     if [[ "$muted" == "false" ]]; then
         volume="$(pamixer --get-volume)"
     else
+        icon="🔇"
         volume="0"
     fi
 
@@ -26,10 +27,16 @@ notify () {
 
 if [[ "$1" = "--inc" ]]; then
     pamixer -i "$step" &
+    pamixer -u &
     notify &
 
 elif [[ "$1" == "--dec" ]]; then
     pamixer -d "$step" &
+
+    if [[ "$(expr "$(pamixer --get-volume)" - "10")" -le "0" ]]; then
+        pamixer -m &
+    fi
+
     notify &
 
 elif [[ "$1" == "--mute" ]]; then

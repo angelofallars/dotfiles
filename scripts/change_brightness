@@ -5,18 +5,6 @@ step="10"
 notify () {
     brightness="$2"
 
-    if [[ "$1" == "-inc" ]]; then
-        brightness="$(expr "$brightness" + "$step")"
-    elif [[ "$1" == "-dec" ]]; then
-        brightness="$(expr "$brightness" - "$step")"
-    fi
-
-    if [[ "$brightness" -gt "100" ]]; then
-        brightness="100";
-    elif [[ "$brightness" -lt "0" ]]; then
-        brightness="0";
-    fi
-
     if [[ "$brightness" -gt "80" ]]; then
         icon="🌕"
     elif [[ "$brightness" -gt "60" ]]; then
@@ -34,12 +22,12 @@ notify () {
 }
 
 if [[ "$1" = "--inc" ]]; then
+    xbacklight -inc "$step" -time 0
     notify -inc "$(xbacklight -get)"
-    xbacklight -inc "$step" -time 0 &
 
 elif [[ "$1" == "--dec" ]]; then
+    xbacklight -dec "$step" -time 0
     notify -dec "$(xbacklight -get)"
-    xbacklight -dec "$step" -time 0 &
 
 else
     echo "usage: change_brightness [--inc]/[--dec]"

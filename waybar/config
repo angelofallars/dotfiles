@@ -10,7 +10,7 @@
 
     "modules-left": ["river/tags", "custom/treefetch-downloads"],
     "modules-center": ["mpd", "custom/mpd-song-scroll"],
-    "modules-right": ["tray", "pulseaudio", "backlight", "clock#date", "clock"],
+    "modules-right": ["tray", "clock#date", "clock"],
 
     "river/tags": {
         "num-tags": 5,

@@ -1,16 +1,16 @@
 [global]
 monitor = 0
 follow = mouse
-width = 520
+width = 220
 height = 150
-offset = 20x36
+offset = 20x25
 indicate_hidden = yes
 shrink = no
-separator_height = 4
+separator_height = 3
 separator_color = auto
-padding = 15
-horizontal_padding = 15
-frame_width = 1
+padding = 12
+horizontal_padding = 12
+frame_width = 2
 sort = no
 idle_threshold = 120
 font = JetBrains Mono Nerd Font Medium 13
@@ -42,19 +42,22 @@ history = ctrl+grave
 context = ctrl+shift+period
 
 [urgency_low]
-timeout = 6
+timeout = 5
 background = "#282828"
 foreground = "#dfbf8e"
-frame_color = "#4DD0E1"
+frame_color = "#e78a4e"
+highlight = "#e78a4e"
 
 [urgency_normal]
-timeout = 6
+timeout = 5
 background = "#282828"
 foreground = "#dfbf8e"
-frame_color = "#4DD0E1"
+frame_color = "#e78a4e"
+highlight = "#e78a4e"
 
 [urgency_critical]
 timeout = 0
 background = "#212B30"
 foreground = "#EC407A"
-frame_color = "#EC407A"
+frame_color = "#e78a4e"
+highlight = "#e78a4e"

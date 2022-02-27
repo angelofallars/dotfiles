@@ -16,23 +16,14 @@ riverctl map normal Super Return spawn 'foot $HOME/.config/scripts/new_tmux_term
 riverctl map normal Super+Shift Return spawn 'foot' &
 
 # dmenu replacement with the gruvbox material color, of course
-riverctl map normal Super D spawn "bemenu-run -i -l 10 \
-    --fn 'JetBrains Mono Nerd Font Medium 18px' \
-    --nb '#202020[FF]' --nf '#dfbf8e[FF]' \
-    --tb '#202020[FF]' --tf '#a9b665[FF]' \
-    --fb '#202020[FF]' --ff '#dfbf8e[FF]' \
-    --hb '#323232[FF]' --hf '#a9b665[FF]' \
-    --sb '#202020[FF]' --sf '#dfbf8e[FF]' \
-    " &
+riverctl map normal Super D spawn "dmenu_run_gruv" &
 
 # Audio/backlight controls
-riverctl map normal Shift Insert spawn "pamixer -d 10" &
-riverctl map normal Shift Home spawn "pamixer -i 10" &
-riverctl map normal Shift Delete spawn \
-    "xbacklight -dec 10 -fps 30 -time 200" &
-riverctl map normal Shift End spawn \
-    "xbacklight -inc 10 -fps 30 -time 200" &
-riverctl map normal Shift Pause spawn "pamixer -t" &
+riverctl map normal Shift Insert spawn "change_audio --dec" &
+riverctl map normal Shift Home spawn "change_audio --inc" &
+riverctl map normal Shift Delete spawn "change_brightness --dec" &
+riverctl map normal Shift End spawn "change_brightness --inc" &
+riverctl map normal Shift Pause spawn "change_audio --mute" &
 
 # MPD controls
 riverctl map normal Control Insert spawn "mpc prev" &
@@ -44,7 +35,9 @@ riverctl map normal Control Pause spawn "mpc toggle" &
 
 # Take screenshot with grim + slurp + swappy
 riverctl map normal Super N spawn "~/.config/scripts/takeshot" &
-riverctl map normal Super 0 spawn "export GRIM_DEFAULT_DIR='~/Pictures/screenshots/' grim" &
+riverctl map normal Super m spawn "export GRIM_DEFAULT_DIR='~/Pictures/screenshots/' grim && notify-send 'Screenshot taken'" &
+
+riverctl map normal Super 8 spawn "~/.config/scripts/open_book" &
 
 # Super+Q to close the focused view
 riverctl map normal Super Q close &
