@@ -35,7 +35,7 @@ riverctl map normal Control Pause spawn "mpc toggle" &
 
 # Take screenshot with grim + slurp + swappy
 riverctl map normal Super N spawn "~/.config/scripts/takeshot" &
-riverctl map normal Super m spawn "export GRIM_DEFAULT_DIR='~/Pictures/screenshots/' grim && notify-send 'Screenshot taken'" &
+riverctl map normal Super m spawn "~/.config/scripts/takeshot --full" &
 
 riverctl map normal Super 8 spawn "~/.config/scripts/open_book" &
 

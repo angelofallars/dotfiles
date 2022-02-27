@@ -1,3 +1,8 @@
 #!/bin/sh
 
-grim -g "$(slurp)" - | swappy -f -
+if [[ "$1" == "--full" ]]; then
+    wayshot --stdout | swappy -f -
+    exit
+fi
+
+wayshot --slurp "$(slurp -f '%x %y %w %h')" --stdout | swappy -f -

@@ -42,7 +42,7 @@
 
     "clock": {
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format": "🥑 {:%I:%M %p}",
+        "format": "🍔 {:%I:%M %p}",
     },
 
     "clock#date": {
@@ -78,7 +78,7 @@
 
     // List the downloads for a specific Github repo
     "custom/treefetch-downloads": {
-        "format": "🌶️ <span underline='single'>treefetch</span> {} downloads",
+        "format": "🍕 <span underline='single'>treefetch</span> {} downloads",
         "interval": 240,
         "escape": true,
         "exec":  "~/.config/waybar/scripts/downloads.py angelofallars treefetch"

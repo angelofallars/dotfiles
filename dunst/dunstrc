@@ -1,7 +1,7 @@
 [global]
 monitor = 0
 follow = mouse
-width = 220
+width = 250
 height = 150
 offset = 20x25
 indicate_hidden = yes
@@ -34,6 +34,7 @@ always_run_script = true
 title = Dunst
 class = Dunst
 progress_bar = true
+progress_bar_height = 10
 
 [shortcuts]
 close = ctrl+shift+space
