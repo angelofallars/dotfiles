@@ -26,6 +26,6 @@ My dotfiles on Artix Linux with the River window manager on Wayland. Proudly use
 ![20220212_16h08m45s_grim](https://user-images.githubusercontent.com/39676098/153703190-03d5e855-0fba-4d08-a1f8-fd086c6f7579.png)
 ## [License](./LICENSE)
 
-This dotfiles repository is licensed under WTFPL (*Do What The F\*\*k You Want To Public License.)
+This dotfiles repository is licensed under WTFPL (*Do What The F#$k You Want To Public License*).
 
 In short, do what the *frick* you want with these. 😎
