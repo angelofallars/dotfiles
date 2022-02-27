@@ -1,0 +1,42 @@
+#!/bin/sh
+
+step="10"
+
+notify () {
+    volume="$(pamixer --get-volume)"
+    muted="$(pamixer --get-mute)"
+
+    if [[ "$volume" -ge "80" ]]; then
+        icon="🔊"
+    elif [[ "$volume" -ge "40" ]]; then
+        icon="🔉"
+    else
+        icon="🔈"
+    fi
+
+    if [[ "$muted" == "false" ]]; then
+        volume="$(pamixer --get-volume)"
+    else
+        volume="0"
+    fi
+
+    dunstify -h string:x-dunst-stack-tag:audio -h int:value:"$volume" \
+            -t 2500 "$icon $(pamixer --get-volume-human)"
+}
+
+if [[ "$1" = "--inc" ]]; then
+    pamixer -i "$step" &
+    notify &
+
+elif [[ "$1" == "--dec" ]]; then
+    pamixer -d "$step" &
+    notify &
+
+elif [[ "$1" == "--mute" ]]; then
+    pamixer -t &
+    notify &
+
+else
+    echo "usage: change_audio [--inc]/[--dec]"
+    exit 1
+fi

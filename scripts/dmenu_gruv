@@ -1,0 +1,16 @@
+#!/bin/sh
+
+bemenu_stdin() {
+    source "$HOME/.config/scripts/launcher_look"
+
+    bemenu -i -l 10 \
+        --fn "$launcher_font" \
+        --nb "$launcher_bg[FF]"   --nf "${launcher_fg}[FF]" \
+        --tb "$launcher_bg[FF]"   --tf "${launcher_hifg}[FF]" \
+        --fb "$launcher_bg[FF]"   --ff "${launcher_fg}[FF]" \
+        --hb "$launcher_hibg[FF]" --hf "${launcher_hifg}[FF]" \
+        --sb "$launcher_bg[FF]"   --sf "${launcher_fg}[FF]" \
+        -W "$launcher_width" -p "$1"
+}
+
+bemenu_stdin "$1"

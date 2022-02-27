@@ -1,0 +1,8 @@
+#!/bin/zsh
+
+declare -A mpc_commands=(
+                         ["stop"]="notify-send 1"
+                         ["play"]="notify-send 2"
+                         );
+
+echo $mpc_commands

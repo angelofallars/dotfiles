@@ -1,0 +1,47 @@
+#!/bin/sh
+
+step="10"
+
+notify () {
+    brightness="$2"
+
+    if [[ "$1" == "-inc" ]]; then
+        brightness="$(expr "$brightness" + "$step")"
+    elif [[ "$1" == "-dec" ]]; then
+        brightness="$(expr "$brightness" - "$step")"
+    fi
+
+    if [[ "$brightness" -gt "100" ]]; then
+        brightness="100";
+    elif [[ "$brightness" -lt "0" ]]; then
+        brightness="0";
+    fi
+
+    if [[ "$brightness" -gt "80" ]]; then
+        icon="🌕"
+    elif [[ "$brightness" -gt "60" ]]; then
+        icon="🌖"
+    elif [[ "$brightness" -gt "40" ]]; then
+        icon="🌗"
+    elif [[ "$brightness" -gt "20" ]]; then
+        icon="🌘"
+    else
+        icon="🌑"
+    fi
+
+    dunstify -h string:x-dunst-stack-tag:brightness -h int:value:"$brightness" \
+             -t 2500 "$icon $brightness%"
+}
+
+if [[ "$1" = "--inc" ]]; then
+    notify -inc "$(xbacklight -get)"
+    xbacklight -inc "$step" -time 0 &
+
+elif [[ "$1" == "--dec" ]]; then
+    notify -dec "$(xbacklight -get)"
+    xbacklight -dec "$step" -time 0 &
+
+else
+    echo "usage: change_brightness [--inc]/[--dec]"
+    exit 1
+fi

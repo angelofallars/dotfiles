@@ -7,4 +7,4 @@ then
     exit
 fi
 
-zathura ~/Documents/Books/$book
+zathura "~/Documents/Books/$book"

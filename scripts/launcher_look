@@ -1,0 +1,8 @@
+#!/bin/sh
+
+launcher_font="JetBrains Mono Nerd Font Medium 18px"
+launcher_bg="#202020"
+launcher_fg="#dfbf8e"
+launcher_hibg="#323232"
+launcher_hifg="#e78a4e"
+launcher_width="0.9"
