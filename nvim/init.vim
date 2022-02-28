@@ -1,5 +1,7 @@
 call plug#begin()
 
+Plug 'andweeb/presence.nvim'
+
 " LSP IDE features
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-nvim-lsp'

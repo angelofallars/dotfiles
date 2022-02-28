@@ -83,6 +83,10 @@ NEWLINE=$'\n'
 
 prompt='%B%F{yellow}%~%f%b%  ${vcs_info_msg_0_}$prompt_cat '
 
+if [[ "$TERM" == "linux" ]]; then
+    prompt=' %B%F{yellow}%~%f%b%  ${vcs_info_msg_0_}>> '
+fi
+
 # Convenient Git aliases
 alias ga="git add"
 alias grm="git rm"
