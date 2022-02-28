@@ -24,7 +24,7 @@ window#waybar {
 
 .modules-left, .modules-center, .modules-right {
   background: transparent;
-  margin-top: 4px;
+  margin-top: 0px;
   border-radius: 0px;
   font-family: "JetBrains Mono Nerd Font", monospace;
   font-size: 15px;
@@ -40,8 +40,9 @@ window#waybar {
 }
 
 #mpd, #custom-mpd-song-scroll {
-  font-size: 14px;
-  margin-bottom: 3px;
+  font-size: 12px;
+  font-weight: 700;
+  margin: 0;
 }
 
 #mpd {

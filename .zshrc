@@ -212,6 +212,8 @@ export EXA_COLORS="di=33"
 
 alias river="XKB_DEFAULT_OPTIONS=ctrl:nocaps river"
 
+alias downloads="~/.config/waybar/scripts/downloads.py"
+
 if [ -n "$TMUX" ]; then
     # colorscript random
     treefetch --bonsai

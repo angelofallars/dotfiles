@@ -18,7 +18,7 @@
 $screen-margin: 6px;
 
 // Distance from the top of the screen
-$top-margin: 4px;
+$top-margin: 0px;
 
 // Margin/padding of individual modules
 $module-margin: 3px;
@@ -92,8 +92,9 @@ window#waybar {
 }
 
 #mpd, #custom-mpd-song-scroll {
-  font-size: 14.0px;
-  margin-bottom: 3px;
+  font-size: 12.0px;
+  font-weight: 700;
+  margin: 0;
 }
 
 #mpd {

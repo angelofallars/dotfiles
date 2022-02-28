@@ -2,15 +2,22 @@
 // https://github.com/angelofallars/dotfiles
 
 {
-    "layer": "top",
-    "height": 36,
+    "layer": "bottom",
+    "height": 33,
     "spacing": 0,
+    "margin-top": 4,
 
     // If you're using sway, replace `river/tags` with `sway/workspaces` .
 
-    "modules-left": ["river/tags", "custom/treefetch-downloads"],
-    "modules-center": ["mpd", "custom/mpd-song-scroll"],
+    "modules-left": ["river/tags", "custom/treefetch-downloads", "group/mpd"],
     "modules-right": ["tray", "clock#date", "clock"],
+
+    "group/mpd": {
+        "modules": [
+            "custom/mpd-song-scroll",
+            "mpd",
+        ]
+    },
 
     "river/tags": {
         "num-tags": 5,
@@ -20,19 +27,30 @@
     },
 
     "mpd": {
-        "format": "{stateIcon} {elapsedTime:%M:%S}/{totalTime:%M:%S} ",
+        "format": "{stateIcon} {elapsedTime:%M:%S}/{totalTime:%M:%S} {repeatIcon}{singleIcon}{randomIcon}{consumeIcon}                         ",
         "format-stopped": "",
         "interval": 1,
         "state-icons": {
             "paused": "▶️",
             "playing": "⏸"
         },
-        "tooltip-format": "MPD (connected)",
-        "tooltip-format-disconnected": "MPD (disconnected)",
-        "on-scroll-up": "mpc seek +3",
-        "on-scroll-down": "mpc seek -3",
-        "on-click": "mpc toggle",
-        "on-click-right": "alacritty --command ncmpcpp"
+
+        "consume-icons": {
+            "off": "<span color='#919191'> </span>",
+            "on": " "
+        },
+        "random-icons": {
+            "off": "<span color='#919191'> </span>",
+            "on": " "
+        },
+        "repeat-icons": {
+            "off": "<span color='#919191'> </span>",
+            "on": " "
+        },
+        "single-icons": {
+            "off": "<span color='#919191'>1 </span>",
+            "on": "1 "
+        },
     },
 
     "tray": {
@@ -47,7 +65,7 @@
 
     "clock#date": {
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format": "{:🍟 %a, %b %d}",
+        "format": "{:🍟 %B %d, %A}",
     },
 
     "backlight": {
