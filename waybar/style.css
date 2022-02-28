@@ -1,7 +1,7 @@
 #backlight, #battery, #cpu, #disk, #idle_inhibitor, #keyboard-state,
 #pulseaudio, #clock, #tags, #language, #memory, #network, #sndio,
 #mode, #window, #workspaces, #temperature, #taskbar, #workspaces,
-#custom-treefetch-downloads {
+#custom-treefetch-downloads, #custom-update-count {
   box-shadow: 4px 4px 0 #2e2e2e;
   margin-bottom: 4px;
   margin-right: 4px;
@@ -43,6 +43,7 @@ window#waybar {
   font-size: 12px;
   font-weight: 700;
   margin: 0;
+  padding: 0;
 }
 
 #mpd {

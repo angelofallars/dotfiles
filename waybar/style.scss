@@ -60,7 +60,7 @@ $bar-border-radius: 0px;
 #backlight, #battery, #cpu, #disk, #idle_inhibitor, #keyboard-state,
 #pulseaudio, #clock, #tags, #language, #memory, #network, #sndio,
 #mode, #window, #workspaces, #temperature, #taskbar, #workspaces,
-#custom-treefetch-downloads
+#custom-treefetch-downloads, #custom-update-count
 {
   @include single-module;
 }
@@ -95,6 +95,7 @@ window#waybar {
   font-size: 12.0px;
   font-weight: 700;
   margin: 0;
+  padding: 0;
 }
 
 #mpd {

@@ -1,0 +1,38 @@
+#!/bin/python3
+"""arch_updates: print the number of updates in Arch-based systems
+
+   Requirements: `pacman-contrib` package
+   > sudo pacman -Syu pacman-contrib
+"""
+
+import subprocess
+
+
+def main() -> int:
+    proc = subprocess.run("checkupdates", capture_output=True)
+
+    # Return code of `checkupdates` if no updates is 2
+    if proc.returncode == 2:
+        print("😋 up-to-date")
+        return 0
+
+    if proc.returncode != 0:
+        return 1
+
+    output = proc.stdout
+
+    # Packages to update are separated by newlines
+    update_count = output.count(b'\n')
+
+    if update_count > 1:
+        word = "updates"
+    else:
+        word = "update"
+
+    print(f"🧀 {update_count} {word}")
+
+    return 0
+
+
+if __name__ == "__main__":
+    exit(main())

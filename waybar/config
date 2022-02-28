@@ -10,7 +10,7 @@
     // If you're using sway, replace `river/tags` with `sway/workspaces` .
 
     "modules-left": ["river/tags", "custom/treefetch-downloads", "group/mpd"],
-    "modules-right": ["tray", "clock#date", "clock"],
+    "modules-right": ["tray", "custom/update-count", "clock#date", "clock"],
 
     "group/mpd": {
         "modules": [
@@ -100,6 +100,13 @@
         "interval": 240,
         "escape": true,
         "exec":  "~/.config/waybar/scripts/downloads.py angelofallars treefetch"
-    }
+    },
+
+    "custom/update-count": {
+        "format": "{}",
+        "interval": 60,
+        "escape": true,
+        "exec":  "~/.config/waybar/scripts/arch_updates"
+    },
 }
 

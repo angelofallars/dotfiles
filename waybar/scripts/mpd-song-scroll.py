@@ -10,7 +10,7 @@ SLEEP_INTERVAL = 0.8
 
 
 def print_frame(name: str):
-    print(name.ljust(MAX_LEN), flush=True)
+    print(name.ljust(MAX_LEN)[:MAX_LEN], flush=True)
 
 
 # Scroll through a song's name left and right like a music player
