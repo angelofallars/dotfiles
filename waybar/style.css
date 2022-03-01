@@ -104,7 +104,7 @@ tooltip {
   font-family: "JetBrains Mono Nerd Font", monospace;
   font-weight: 500;
   font-size: 15px;
-  padding: 5px;
+  padding: 10px;
   animation-name: fadein;
   animation-duration: 0.2s;
   border: 2px solid #787878;

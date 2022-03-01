@@ -48,8 +48,8 @@
             "on": " "
         },
         "single-icons": {
-            "off": "<span color='#919191'>1 </span>",
-            "on": "1 "
+            "off": "<span color='#919191'> </span>",
+            "on": " "
         },
     },
 
@@ -106,7 +106,8 @@
         "format": "{}",
         "interval": 60,
         "escape": true,
-        "exec":  "~/.config/waybar/scripts/arch_updates"
+        "exec":  "~/.config/waybar/scripts/arch_updates",
+        "on-click": "~/.config/waybar/scripts/arch_updates_notification"
     },
 }
 

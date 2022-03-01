@@ -22,7 +22,7 @@ notify () {
     fi
 
     dunstify -h string:x-dunst-stack-tag:audio -h int:value:"$volume" \
-            -t 2500 "$icon $(pamixer --get-volume-human)"
+             --appname=mediactl "$icon $(pamixer --get-volume-human)"
 }
 
 if [[ "$1" = "--inc" ]]; then

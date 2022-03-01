@@ -1,22 +1,31 @@
 [global]
 monitor = 0
 follow = mouse
+
 width = 250
 height = 150
+
 offset = 20x25
 indicate_hidden = yes
+
 shrink = no
-separator_height = 3
+
+separator_height = 2
 separator_color = auto
-padding = 12
+
+padding = 14
 horizontal_padding = 12
+
 frame_width = 2
+
+font = JetBrains Mono Nerd Font Medium 12
+
 sort = no
 idle_threshold = 120
-font = JetBrains Mono Nerd Font Medium 13
+
 line_height = 4
 markup = full
-format = "%s %b"
+format = "<b>%s</b>\n %b"
 alignment = left
 vertical_alignment = top
 show_age_threshold = 60
@@ -35,6 +44,7 @@ title = Dunst
 class = Dunst
 progress_bar = true
 progress_bar_height = 10
+corner_radius = 7
 
 [shortcuts]
 close = ctrl+shift+space
@@ -44,14 +54,14 @@ context = ctrl+shift+period
 
 [urgency_low]
 timeout = 5
-background = "#282828"
+background = "#323232"
 foreground = "#dfbf8e"
 frame_color = "#e78a4e"
 highlight = "#e78a4e"
 
 [urgency_normal]
 timeout = 5
-background = "#282828"
+background = "#323232"
 foreground = "#dfbf8e"
 frame_color = "#e78a4e"
 highlight = "#e78a4e"
@@ -62,3 +72,7 @@ background = "#212B30"
 foreground = "#EC407A"
 frame_color = "#e78a4e"
 highlight = "#e78a4e"
+
+[media_controls]
+appname = "mediactl"
+timeout = 2

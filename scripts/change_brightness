@@ -18,7 +18,7 @@ notify () {
     fi
 
     dunstify -h string:x-dunst-stack-tag:brightness -h int:value:"$brightness" \
-             -t 2500 "$icon $brightness%"
+             --appname=mediactl "$icon $brightness%"
 }
 
 if [[ "$1" = "--inc" ]]; then

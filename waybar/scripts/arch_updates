@@ -8,28 +8,34 @@
 import subprocess
 
 
+def format_output(pkg_count: int) -> str:
+    if pkg_count > 1:
+        word = "updates"
+    elif pkg_count == 1:
+        word = "update"
+    else:
+        return "😋 up-to-date"
+
+    return f"🧀 {pkg_count} {word}"
+
+
 def main() -> int:
     proc = subprocess.run("checkupdates", capture_output=True)
 
-    # Return code of `checkupdates` if no updates is 2
-    if proc.returncode == 2:
-        print("😋 up-to-date")
-        return 0
-
-    if proc.returncode != 0:
+    # 2 is the return code for `checkupdates` if everything is up-to-date
+    if proc.returncode not in [0, 2]:
         return 1
 
     output = proc.stdout
 
+    # Write output to tmp file
+    with open("/tmp/arch_updates", "w") as file:
+        file.write(output.decode("utf-8"))
+
     # Packages to update are separated by newlines
     update_count = output.count(b'\n')
 
-    if update_count > 1:
-        word = "updates"
-    else:
-        word = "update"
-
-    print(f"🧀 {update_count} {word}")
+    print(format_output(update_count), flush=True)
 
     return 0
 
