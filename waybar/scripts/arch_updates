@@ -6,6 +6,9 @@
 """
 
 import subprocess
+from os import path
+
+FILE_NAME = "/tmp/arch_updates"
 
 
 def format_output(pkg_count: int) -> str:
@@ -20,22 +23,28 @@ def format_output(pkg_count: int) -> str:
 
 
 def main() -> int:
+    # Print cached value first
+    if path.exists(FILE_NAME):
+        with open(FILE_NAME, "r") as file:
+            pkg_count = file.read().count("\n")
+            print(format_output(pkg_count), flush=True)
+
     proc = subprocess.run("checkupdates", capture_output=True)
 
     # 2 is the return code for `checkupdates` if everything is up-to-date
     if proc.returncode not in [0, 2]:
         return 1
 
-    output = proc.stdout
+    output = proc.stdout.decode("utf_8")
 
     # Write output to tmp file
-    with open("/tmp/arch_updates", "w") as file:
-        file.write(output.decode("utf-8"))
+    with open(FILE_NAME, "w") as file:
+        file.write(output)
 
     # Packages to update are separated by newlines
-    update_count = output.count(b'\n')
+    pkg_count = output.count("\n")
 
-    print(format_output(update_count), flush=True)
+    print(format_output(pkg_count), flush=True)
 
     return 0
 

@@ -54,8 +54,8 @@
     },
 
     "tray": {
-        // "icon-size": 21,
-        // "spacing": 10
+        "icon-size": 21,
+        "spacing": 5
     },
 
     "clock": {
@@ -91,7 +91,7 @@
         "format": "{}",
         "max-length": 80,
         "escape": true,
-        "exec":  "~/.config/waybar/scripts/mpd-song-scroll.py"
+        "exec":  "~/.config/waybar/scripts/mpd_song_scroll"
     },
 
     // List the downloads for a specific Github repo
@@ -99,7 +99,7 @@
         "format": "🍕 <span underline='single'>treefetch</span> {} downloads",
         "interval": 240,
         "escape": true,
-        "exec":  "~/.config/waybar/scripts/downloads.py angelofallars treefetch"
+        "exec":  "~/.config/waybar/scripts/downloads angelofallars treefetch"
     },
 
     "custom/update-count": {
@@ -107,7 +107,7 @@
         "interval": 60,
         "escape": true,
         "exec":  "~/.config/waybar/scripts/arch_updates",
-        "on-click": "~/.config/waybar/scripts/arch_updates_notification"
+        "on-click": "~/.config/waybar/scripts/notify_arch_updates"
     },
 }
 

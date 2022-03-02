@@ -25,7 +25,7 @@ idle_threshold = 120
 
 line_height = 4
 markup = full
-format = "<b>%s</b>\n %b"
+format = "%s\n %b"
 alignment = left
 vertical_alignment = top
 show_age_threshold = 60

@@ -193,13 +193,15 @@ scripton () {
     ln -s $HOME/.config/scripts/$1 $HOME/.local/bin/ && echo "Script $1 activated."
 }
 
+alias pdb="python -m pdb"
+
 # Record video
 alias rec="ffmpeg -video_size 1366x300 -framerate 30 -f x11grab -i :0.0 -pix_fmt yuv420p -c:v libx264 -preset ultrafast -y -v error -stats"
 
 # autosuggestions
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-alias discord="discord --ignore-gpu-blocklist --disable-features=UseOzonePlatform --enable-features=VaapiVideoDecoder --use-gl=desktop --enable-gpu-rasterization --enable-zero-copy > /dev/null 2>&1 & disown"
+alias discord="discord --ignore-gpu-blocklist --enable-features=VaapiVideoDecoder --use-gl=desktop --enable-gpu-rasterization --enable-zero-copy > /dev/null 2>&1 & disown"
 
 export GIT_EDITOR="nvim"
 export PATH=/home/angelo_f/.local/bin:$PATH

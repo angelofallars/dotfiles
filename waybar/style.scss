@@ -176,4 +176,8 @@ tooltip label {
   color: colors.$fg;
   border-radius: 5px;
   border: 2px solid colors.$fg-alt;
+  padding: 4px 0;
+  font-family: $font, monospace;
+  font-weight: $font-weight;
+  font-size: $font-size;
 }

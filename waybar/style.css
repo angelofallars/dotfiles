@@ -121,4 +121,8 @@ tooltip label {
   color: #e78a4e;
   border-radius: 5px;
   border: 2px solid #787878;
+  padding: 4px 0;
+  font-family: "JetBrains Mono Nerd Font", monospace;
+  font-weight: 500;
+  font-size: 15px;
 }

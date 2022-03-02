@@ -2,11 +2,10 @@
 
 import threading
 from time import sleep
-from sys import exit
 from mpd import MPDClient
 
 MAX_LEN = 40
-SLEEP_INTERVAL = 0.8
+SLEEP_INTERVAL = 0.9
 
 
 def print_frame(name: str):

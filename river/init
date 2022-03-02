@@ -162,7 +162,6 @@ gsettings set "$gnome_schema" font-name "Roboto 11" &
 gsettings set "$gnome_schema" cursor-theme "phinger-cursors" &
 gsettings set "$gnome_schema" cursor-size "32" &
 
-
 # Set and exec into the default layout generator, rivertile.
 # River will send the process group of the init executable SIGTERM on exit.
 riverctl default-layout rivertile
