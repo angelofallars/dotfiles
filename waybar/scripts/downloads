@@ -10,7 +10,7 @@ if (len(sys.argv) < 2):
     exit(1)
 
 try:
-   import requests
+    import requests
 except ImportError:
     print("Error: requests is not installed")
     print("Installing Requests is simple with pip:\n  pip install requests")
@@ -55,7 +55,8 @@ if len(sys.argv) == 3:
     full_names.append(sys.argv[1] + "/" + sys.argv[2])
 else:
     buf = StringIO()
-    r = requests.get('https://api.github.com/users/' + sys.argv[1] + '/repos', headers=headers)
+    r = requests.get("https://api.github.com/users/{sys.argv[1]}/repos",
+                     headers=headers)
     myobj = r.json()
 
     for rep in myobj:
@@ -84,7 +85,8 @@ for full_name in full_names:
     buf = StringIO()
     total_count = 0
     try:
-        r = requests.get('https://api.github.com/repos/' + full_name + '/releases', headers=headers)
+        r = requests.get(f"https://api.github.com/repos/{full_name}/releases",
+                         headers=headers)
         myobj = r.json()
 
         for p in myobj:
@@ -102,4 +104,3 @@ for full_name in full_names:
     # Write total_count to temporary file
     with open(TEMP_FILE, "w") as tmp:
         tmp.write(str(total_count))
-

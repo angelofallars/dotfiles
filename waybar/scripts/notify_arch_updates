@@ -1,4 +1,13 @@
 #!/bin/python3
+"""notify_arch_updates: display a notification about packages
+   to update in Arch Linux
+
+   Requirements: `pacman-contrib` package
+   > sudo pacman -Syu pacman-contrib
+
+   You also need `arch_update` script running in your bar
+   or in other programs periodically.
+"""
 
 from os import path
 from subprocess import call
