@@ -9,6 +9,10 @@ SLEEP_INTERVAL = 0.9
 
 
 def print_frame(name: str):
+    if name.strip() == "":
+        print("", flush=True)
+        return
+
     print(name.ljust(MAX_LEN)[:MAX_LEN], flush=True)
 
 

@@ -12,26 +12,26 @@ mpd &
 
 foot --server &
 
-riverctl map normal Super Return spawn 'foot $HOME/.config/scripts/new_tmux_terminal.sh' &
-riverctl map normal Super+Shift Return spawn 'foot' &
+riverctl map normal Super Return spawn 'footclient $HOME/.config/scripts/new_tmux_terminal.sh' &
+riverctl map normal Super+Shift Return spawn 'footclient' &
 
 # dmenu replacement with the gruvbox material color, of course
 riverctl map normal Super D spawn "dmenu_run_gruv" &
 
 # Audio/backlight controls
-riverctl map normal Shift Insert spawn "change_audio --dec" &
-riverctl map normal Shift Home spawn "change_audio --inc" &
-riverctl map normal Shift Delete spawn "change_brightness --dec" &
-riverctl map normal Shift End spawn "change_brightness --inc" &
-riverctl map normal Shift Pause spawn "change_audio --mute" &
+riverctl map normal Super U spawn "change_audio --dec" &
+riverctl map normal Super I spawn "change_audio --inc" &
+riverctl map normal Super O spawn "change_brightness --dec" &
+riverctl map normal Super P spawn "change_brightness --inc" &
+riverctl map normal Super bracketleft spawn "change_audio --mute" &
 
 # MPD controls
-riverctl map normal Control Insert spawn "mpc prev" &
-riverctl map normal Control Home spawn "mpc next" &
-riverctl map normal Control Delete spawn "mpc seekthrough -8" &
-riverctl map normal Control End spawn "mpc seekthrough +8" &
-riverctl map normal Control+Shift Delete spawn "mpc seek 0 && mpc play" &
-riverctl map normal Control Pause spawn "mpc toggle" &
+riverctl map normal Super+Shift U spawn "mpc prev" &
+riverctl map normal Super+Shift I spawn "mpc next" &
+riverctl map normal Super+Shift O spawn "mpc seekthrough -3" &
+riverctl map normal Super+Shift P spawn "mpc seekthrough +3" &
+riverctl map normal Super+Shift bracketleft spawn "mpc toggle" &
+riverctl map normal Super+Shift bracketright spawn "mpc seek 0 && mpc play" &
 
 # Take screenshot with grim + slurp + swappy
 riverctl map normal Super N spawn "~/.config/scripts/takeshot" &
@@ -117,8 +117,10 @@ all_tags=$(((1 << 32) - 1))
 riverctl map normal Super 0 set-focused-tags $all_tags &
 riverctl map normal Super+Shift 0 set-view-tags $all_tags &
 
+riverctl map normal Super semicolon focus-previous-tags &
+
 # Super+Space to toggle float
-riverctl map normal Super Space toggle-float &
+riverctl map normal Super R toggle-float &
 
 # Super+F to toggle fullscreen
 riverctl map normal Super F toggle-fullscreen &
@@ -152,6 +154,7 @@ riverctl set-repeat 50 300 &
 # Make certain views start floating
 riverctl float-filter-add app-id float &
 riverctl float-filter-add title "popup title with spaces" &
+riverctl float-filter-add app-id "Gpick" &
 
 riverctl xcursor-theme "phinger-cursors" 32 &
 
@@ -165,4 +168,4 @@ gsettings set "$gnome_schema" cursor-size "32" &
 # Set and exec into the default layout generator, rivertile.
 # River will send the process group of the init executable SIGTERM on exit.
 riverctl default-layout rivertile
-exec rivertile -view-padding 4 -outer-padding 4 -main-ratio 0.5
+exec rivertile -view-padding 3 -outer-padding 2 -main-ratio 0.5

@@ -3,7 +3,7 @@ monitor = 0
 follow = mouse
 
 width = 250
-height = 150
+height = 650
 
 offset = 20x25
 indicate_hidden = yes

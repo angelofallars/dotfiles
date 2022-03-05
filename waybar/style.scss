@@ -15,7 +15,7 @@
 @use 'colors';
 
 // Distance of the entire bar from the sides
-$screen-margin: 6px;
+$screen-margin: 2px;
 
 // Distance from the top of the screen
 $top-margin: 0px;
@@ -92,7 +92,7 @@ window#waybar {
 }
 
 #mpd, #custom-mpd-song-scroll {
-  font-size: 12.0px;
+  font-size: 11.5px;
   font-weight: 700;
   margin: 0;
   padding: 0;
@@ -104,8 +104,13 @@ window#waybar {
 }
 
 #custom-mpd-song-scroll {
-  color: colors.$fg-no-bg;
+  background: colors.$fg-no-bg;
+  color: colors.$white-text;
   margin-right: 50px;
+  margin-bottom: 1px;
+  border-radius: 3px;
+  padding: 0 5px;
+  min-height: 18px;
 }
 
 // River tags
@@ -159,7 +164,7 @@ tooltip {
   font-family: $font, monospace;
   font-weight: $font-weight;
   font-size: $font-size;
-  padding: 10px;
+  padding: 20px;
   animation-name: fadein;
   animation-duration: 0.2s;
   border: 2px solid colors.$fg-alt;

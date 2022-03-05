@@ -51,6 +51,8 @@ Plug 'rust-lang/rust.vim'
 
 Plug 'vimwiki/vimwiki'
 
+Plug 'waycrate/swhkd-vim'
+
 call plug#end()
 
 if has('termguicolors')
@@ -273,6 +275,10 @@ autocmd FileType jsx setlocal shiftwidth=2 tabstop=2
 autocmd FileType tsx setlocal shiftwidth=2 tabstop=2
 autocmd FileType vue setlocal shiftwidth=2 tabstop=2
 autocmd FileType angular setlocal shiftwidth=2 tabstop=2
+
+autocmd BufNewFile,BufRead *.njk set filetype=html
+autocmd BufNewFile,BufRead *waybar/config set syntax=json
+autocmd BufNewFile,BufRead *dunstrc set filetype=ini
 
 let g:user_emmet_settings = {
 \  'variables': {'lang': 'en'},

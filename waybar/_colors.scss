@@ -9,7 +9,8 @@ $blue:         #7daea3;
 $magenta:      #d3869b;
 
 $bg:           #464646;
-$fg:           $orange;
+$white-text:   #F5DFBA;
+$fg:           $green;
 
 $fg-opposite:  scale-color($fg, $lightness: -25%, $saturation: -15%);
 

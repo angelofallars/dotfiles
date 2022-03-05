@@ -71,7 +71,7 @@ if os.path.exists(TEMP_FILE):
     # Print the temp file contents even if we're
     # going to make another API call
     with open(TEMP_FILE, "r") as tmp_file:
-        print(tmp_file.read())
+        print(tmp_file.read(), flush=True)
 
     modification_date = os.path.getmtime(TEMP_FILE)
     current_time = time()
@@ -99,7 +99,7 @@ for full_name in full_names:
     except:
         pass
 
-    print('%d' % total_count)
+    print('%d' % total_count, flush=True)
 
     # Write total_count to temporary file
     with open(TEMP_FILE, "w") as tmp:

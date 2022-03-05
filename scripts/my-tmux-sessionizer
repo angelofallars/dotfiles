@@ -22,7 +22,7 @@ selected=$(echo "$projects" |
                --color="hl:underline,hl+:underline,hl:magenta,hl+:magenta" \
                --color="info:green" \
                --color="spinner:green,spinner:dim" \
-               --preview="$HOME/.config/scripts/mts-show-project '{}'"
+               --preview="$HOME/.config/scripts/mts-show-project '{}'" \
                --preview-window=border-left,58%)
 
 if [ $? != 0 ]; then exit; fi

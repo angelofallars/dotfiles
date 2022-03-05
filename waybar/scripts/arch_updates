@@ -7,8 +7,9 @@
 
 import subprocess
 from os import path
+from time import time
 
-FILE_NAME = "/tmp/arch_updates"
+TEMP_FILE = "/tmp/arch_updates"
 
 
 def format_output(pkg_count: int) -> str:
@@ -24,10 +25,17 @@ def format_output(pkg_count: int) -> str:
 
 def main() -> int:
     # Print cached value first
-    if path.exists(FILE_NAME):
-        with open(FILE_NAME, "r") as file:
+    if path.exists(TEMP_FILE):
+        with open(TEMP_FILE, "r") as file:
             pkg_count = file.read().count("\n")
             print(format_output(pkg_count), flush=True)
+
+    modification_date = path.getmtime(TEMP_FILE)
+    current_time = time()
+
+    # Check if it's still too early to query the servers
+    if current_time < modification_date + 60:
+        return 0
 
     proc = subprocess.run("checkupdates", capture_output=True)
 
@@ -38,7 +46,7 @@ def main() -> int:
     output = proc.stdout.decode("utf_8")
 
     # Write output to tmp file
-    with open(FILE_NAME, "w") as file:
+    with open(TEMP_FILE, "w") as file:
         file.write(output)
 
     # Packages to update are separated by newlines
