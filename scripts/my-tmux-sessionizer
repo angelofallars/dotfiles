@@ -33,7 +33,7 @@ selected_name=$(basename "$selected" | tr . _)
 if ! tmux has-session -t $selected_name 2> /dev/null; then
 
     tmux new-session -ds $selected_name -c $selected \
-        -x 300 -y 300 "nvim $selected ; zsh"
+        -x 300 -y 300 -n "nvim" "sleep 0.05 ; nvim $selected ; zsh"
 
     tmux new-window -t $selected_name:2 -d -c $selected zsh
 fi

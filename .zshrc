@@ -16,7 +16,7 @@ bindkey -e
 # Color stuff
 alias ls='exa -x --icons --git --group-directories-first'
 alias la='exa -a -x --icons --git --group-directories-first'
-alias cat='source-highlight --failsafe --out-format=esc -o STDOUT -i'
+alias cat='bat --theme gruvbox-dark'
 alias grep='grep --color=auto'
 
 # Enabling and setting git info var to be used in prompt config.
@@ -214,7 +214,7 @@ export EXA_COLORS="di=33"
 
 alias river="XKB_DEFAULT_OPTIONS=ctrl:nocaps river"
 
-alias downloads="~/.config/waybar/scripts/downloads.py"
+alias downloads="~/.config/waybar/scripts/downloads"
 
 if [ -n "$TMUX" ]; then
     # colorscript random

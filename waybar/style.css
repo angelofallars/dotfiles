@@ -2,11 +2,11 @@
 #pulseaudio, #clock, #tags, #language, #memory, #network, #sndio,
 #mode, #window, #workspaces, #temperature, #taskbar, #workspaces,
 #custom-treefetch-downloads, #custom-update-count {
-  box-shadow: 4px 4px 0 #2e2e2e;
-  margin-bottom: 4px;
-  margin-right: 4px;
+  box-shadow: 3px 3px 0 #2a2a2a;
+  margin-bottom: 3px;
+  margin-right: 3px;
   margin-left: 3px;
-  margin-right: 7px;
+  margin-right: 6px;
   padding-left: 10px;
   padding-right: 10px;
   background: #464646;
@@ -19,7 +19,7 @@
 
 window#waybar {
   background: transparent;
-  color: #a9b665;
+  color: #e78a4e;
 }
 
 .modules-left, .modules-center, .modules-right {
@@ -27,32 +27,35 @@ window#waybar {
   margin-top: 0px;
   border-radius: 0px;
   font-family: "JetBrains Mono Nerd Font", monospace;
-  font-size: 15px;
-  font-weight: 500;
+  font-size: 14px;
+  font-weight: 600;
 }
 
 .modules-left {
-  margin-left: 2px;
+  margin-left: 1px;
 }
 
 .modules-right {
-  margin-right: 2px;
+  margin-right: 1px;
 }
 
 #mpd, #custom-mpd-song-scroll {
+  /*
   font-size: 11.5px;
   font-weight: 700;
   margin: 0;
+  */
+  font-size: 12px;
+  margin-top: 7px;
   padding: 0;
 }
 
 #mpd {
   color: #464646;
-  margin-left: 5px;
 }
 
 #custom-mpd-song-scroll {
-  background: #808a4a;
+  background: #ca743d;
   color: #F5DFBA;
   margin-right: 50px;
   margin-bottom: 1px;
@@ -88,7 +91,7 @@ window#waybar {
 
 #tags button.focused {
   color: #464646;
-  background: #a9b665;
+  background: #e78a4e;
 }
 
 #tags button.urgent {
@@ -107,27 +110,27 @@ tooltip {
   background: #464646;
   border-radius: 7px;
   font-family: "JetBrains Mono Nerd Font", monospace;
-  font-weight: 500;
-  font-size: 15px;
+  font-weight: 600;
+  font-size: 14px;
   padding: 20px;
   animation-name: fadein;
   animation-duration: 0.2s;
   border: 2px solid #787878;
   text-shadow: none;
-  color: #a9b665;
+  color: #e78a4e;
 }
 
 tooltip label {
-  color: #a9b665;
+  color: #e78a4e;
 }
 
 #tray menu {
   background: #464646;
-  color: #a9b665;
+  color: #e78a4e;
   border-radius: 5px;
   border: 2px solid #787878;
   padding: 4px 0;
   font-family: "JetBrains Mono Nerd Font", monospace;
-  font-weight: 500;
-  font-size: 15px;
+  font-weight: 600;
+  font-size: 14px;
 }

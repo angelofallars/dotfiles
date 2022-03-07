@@ -3,9 +3,9 @@
 
 {
     "layer": "bottom",
-    "height": 34,
+    "height": 30,
     "spacing": 0,
-    "margin-top": 4,
+    "margin-top": 3,
 
     // If you're using sway, replace `river/tags` with `sway/workspaces` .
 
@@ -14,7 +14,6 @@
 
     "group/mpd": {
         "modules": [
-            "custom/mpd-song-scroll",
             "mpd",
         ]
     },
@@ -27,7 +26,7 @@
     },
 
     "mpd": {
-        "format": "{stateIcon} {elapsedTime:%M:%S}/{totalTime:%M:%S} {repeatIcon}{singleIcon}{randomIcon}{consumeIcon}                         ",
+        "format": "{stateIcon} {elapsedTime:%M:%S}/{totalTime:%M:%S} {repeatIcon}{singleIcon}{randomIcon}{consumeIcon} {title}",
         "format-stopped": "",
         "interval": 1,
         "state-icons": {
@@ -95,8 +94,7 @@
     },
 
     // List the downloads for a specific Github repo
-    "custom/treefetch-downloads": {
-        "format": "🍕 <span underline='single'>treefetch</span> {} downloads",
+        "format": "🍕 treefetch - {} downloads",
         "interval": 240,
         "escape": true,
         "exec":  "~/.config/waybar/scripts/downloads angelofallars treefetch"

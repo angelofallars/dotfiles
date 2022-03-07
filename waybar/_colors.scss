@@ -10,12 +10,12 @@ $magenta:      #d3869b;
 
 $bg:           #464646;
 $white-text:   #F5DFBA;
-$fg:           $green;
+$fg:           $orange;
 
-$fg-opposite:  scale-color($fg, $lightness: -25%, $saturation: -15%);
+$fg-opposite:  scale-color($fg, $lightness: -15%, $saturation: -25%);
 
 // Box shadow of modules automatically calculated from the background color
-$shadow:              scale-color($bg, $lightness: -34%, $saturation: -28%);
+$shadow:              scale-color($bg, $lightness: -40%, $saturation: -28%);
 
 $fg-alt:              $shadow;
 @if lightness($bg) < 50% {

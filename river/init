@@ -2,7 +2,7 @@
 
 riverctl background-color 0xfbf1c7 &
 wlsunset -l 14.6 -L 121 &
-swaybg -i ~/Pictures/Wallpapers/greener-bertholdt-paper.png &
+swaybg -i ~/Pictures/pensive-jean/pensive-jean.png &
 XDG_CURRENT_DESKTOP=Unity waybar &
 
 /usr/bin/pipewire &
@@ -117,7 +117,7 @@ all_tags=$(((1 << 32) - 1))
 riverctl map normal Super 0 set-focused-tags $all_tags &
 riverctl map normal Super+Shift 0 set-view-tags $all_tags &
 
-riverctl map normal Super semicolon focus-previous-tags &
+riverctl map normal Super S focus-previous-tags &
 
 # Super+Space to toggle float
 riverctl map normal Super R toggle-float &
@@ -168,4 +168,4 @@ gsettings set "$gnome_schema" cursor-size "32" &
 # Set and exec into the default layout generator, rivertile.
 # River will send the process group of the init executable SIGTERM on exit.
 riverctl default-layout rivertile
-exec rivertile -view-padding 3 -outer-padding 2 -main-ratio 0.5
+exec rivertile -view-padding 3 -outer-padding 0 -main-ratio 0.5
