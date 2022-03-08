@@ -85,6 +85,7 @@ window#waybar {
 
 .modules-left {
   margin-left: $screen-margin;
+  margin-right: 3px;
 }
 
 .modules-right {
@@ -92,27 +93,19 @@ window#waybar {
 }
 
 #mpd, #custom-mpd-song-scroll {
-  /*
-  font-size: 11.5px;
-  font-weight: 700;
-  margin: 0;
-  */
-  font-size: $font-size - 2px;
-  margin-top: 7px;
+  font-size: $font-size - 2.5px;
+  margin-bottom: 4px;
   padding: 0;
 }
 
 #mpd {
   color: colors.$accent-color-no-bg;
+  margin-right: 2px;
 }
 
 #custom-mpd-song-scroll {
-  background: colors.$fg-no-bg;
   color: colors.$white-text;
-  margin-right: 50px;
-  margin-bottom: 1px;
   border-radius: 3px;
-  padding: 0 5px;
   min-height: 18px;
 }
 

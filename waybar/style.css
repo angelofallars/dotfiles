@@ -33,6 +33,7 @@ window#waybar {
 
 .modules-left {
   margin-left: 1px;
+  margin-right: 3px;
 }
 
 .modules-right {
@@ -40,27 +41,19 @@ window#waybar {
 }
 
 #mpd, #custom-mpd-song-scroll {
-  /*
   font-size: 11.5px;
-  font-weight: 700;
-  margin: 0;
-  */
-  font-size: 12px;
-  margin-top: 7px;
+  margin-bottom: 4px;
   padding: 0;
 }
 
 #mpd {
   color: #464646;
+  margin-right: 2px;
 }
 
 #custom-mpd-song-scroll {
-  background: #ca743d;
   color: #F5DFBA;
-  margin-right: 50px;
-  margin-bottom: 1px;
   border-radius: 3px;
-  padding: 0 5px;
   min-height: 18px;
 }
 

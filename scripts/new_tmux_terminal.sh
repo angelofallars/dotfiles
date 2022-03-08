@@ -2,7 +2,7 @@
 first_tmux_session() {
     tmux \
     new-session -d \
-        ~/.config/sxhkd/zsh-forever.sh ';' \
+        ~/.config/scripts/zsh-forever.sh ';' \
     attach ';'
 }
 

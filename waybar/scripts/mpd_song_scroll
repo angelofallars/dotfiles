@@ -4,7 +4,7 @@ import threading
 from time import sleep
 from mpd import MPDClient
 
-MAX_LEN = 40
+MAX_LEN = 30
 SLEEP_INTERVAL = 0.9
 
 
