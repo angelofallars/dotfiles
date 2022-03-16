@@ -2,7 +2,7 @@
 
 riverctl background-color 0xfbf1c7 &
 wlsunset -l 14.6 -L 121 &
-swaybg -i ~/Pictures/pensive-jean/pensive-jean.png &
+swaybg -i ~/Pictures/pensive-jean/pensive-jean-browner.png &
 XDG_CURRENT_DESKTOP=Unity waybar &
 
 /usr/bin/pipewire &
