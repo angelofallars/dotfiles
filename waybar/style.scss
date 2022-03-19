@@ -21,7 +21,7 @@ $screen-margin: 1px;
 $top-margin: 0px;
 
 // Margin/padding of individual modules
-$module-margin: 3px;
+$module-margin: 2px;
 $module-padding: 10px;
 
 // Font config
@@ -60,7 +60,7 @@ $bar-border-radius: 0px;
 #backlight, #battery, #cpu, #disk, #idle_inhibitor, #keyboard-state,
 #pulseaudio, #clock, #tags, #language, #memory, #network, #sndio,
 #mode, #window, #workspaces, #temperature, #taskbar, #workspaces,
-#custom-treefetch-downloads, #custom-update-count
+#custom-treefetch-downloads, #custom-update-count, #custom-axyl-downloads
 {
   @include single-module;
 }
@@ -170,6 +170,13 @@ tooltip {
 
 tooltip label {
   color: colors.$fg;
+}
+
+#tray {
+  @include single-module;
+  $padding: calc($module-padding / 2);
+  padding-left: $padding;
+  padding-right: $padding;
 }
 
 #tray menu {

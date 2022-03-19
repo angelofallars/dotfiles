@@ -62,13 +62,13 @@ riverctl map normal Super Comma focus-output previous &
 riverctl map normal Super+Shift Period send-to-output next &
 riverctl map normal Super+Shift Comma send-to-output previous &
 
-# Super+H and Super+L to decrease/increase the main ratio of rivertile(1)
-riverctl map normal Super H send-layout-cmd rivertile "main-ratio -0.05" &
-riverctl map normal Super L send-layout-cmd rivertile "main-ratio +0.05" &
+# Super+H and Super+L to decrease/increase the main ratio of rivercarro(1)
+riverctl map normal Super H send-layout-cmd rivercarro "main-ratio -0.05" &
+riverctl map normal Super L send-layout-cmd rivercarro "main-ratio +0.05" &
 
-# Super+Shift+H and Super+Shift+L to increment/decrement the main count of rivertile(1)
-riverctl map normal Super+Shift H send-layout-cmd rivertile "main-count +1" &
-riverctl map normal Super+Shift L send-layout-cmd rivertile "main-count -1" &
+# Super+Shift+H and Super+Shift+L to increment/decrement the main count of rivercarro(1)
+riverctl map normal Super+Shift H send-layout-cmd rivercarro "main-count +1" &
+riverctl map normal Super+Shift L send-layout-cmd rivercarro "main-count -1" &
 
 # Super+Alt+{H,J,K,L} to move views
 riverctl map normal Super+Alt H move left 100 &
@@ -126,10 +126,10 @@ riverctl map normal Super R toggle-float &
 riverctl map normal Super F toggle-fullscreen &
 
 # Super+{Up,Right,Down,Left} to change layout orientation
-riverctl map normal Super Up    send-layout-cmd rivertile "main-location top" &
-riverctl map normal Super Right send-layout-cmd rivertile "main-location right" &
-riverctl map normal Super Down  send-layout-cmd rivertile "main-location bottom" &
-riverctl map normal Super Left  send-layout-cmd rivertile "main-location left" &
+riverctl map normal Super Up    send-layout-cmd rivercarro "main-location top" &
+riverctl map normal Super Right send-layout-cmd rivercarro "main-location right" &
+riverctl map normal Super Down  send-layout-cmd rivercarro "main-location bottom" &
+riverctl map normal Super Left  send-layout-cmd rivercarro "main-location left" &
 
 # Declare a passthrough mode. This mode has only a single mapping to return to
 # normal mode. This makes it useful for testing a nested wayland compositor
@@ -165,7 +165,7 @@ gsettings set "$gnome_schema" font-name "Roboto 11" &
 gsettings set "$gnome_schema" cursor-theme "phinger-cursors" &
 gsettings set "$gnome_schema" cursor-size "32" &
 
-# Set and exec into the default layout generator, rivertile.
+# Set and exec into the default layout generator, rivercarro.
 # River will send the process group of the init executable SIGTERM on exit.
-riverctl default-layout rivertile
-exec rivertile -view-padding 3 -outer-padding 0 -main-ratio 0.5
+riverctl default-layout rivercarro
+exec rivercarro -inner-gaps 3 -outer-gaps 3 -main-ratio 0.5

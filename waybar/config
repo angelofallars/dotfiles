@@ -6,12 +6,13 @@
     "height": 30,
     "spacing": 0,
     "margin-top": 3,
+    "margin-bottom": 2,
 
     // If you're using sway, replace `river/tags` with `sway/workspaces` .
 
-    "modules-left": ["river/tags", "custom/treefetch-downloads"],
+    "modules-left": ["river/tags", "custom/axyl-downloads", "custom/treefetch-downloads"],
     "modules-center": ["mpd", "custom/mpd-song-scroll"],
-    "modules-right": ["tray", "custom/update-count", "clock#date", "clock"],
+    "modules-right": ["custom/update-count", "clock#date", "clock", "tray"],
 
     "group/mpd": {
         "modules": [
@@ -95,8 +96,15 @@
     },
 
     // List the downloads for a specific Github repo
+    "custom/axyl-downloads": {
+        "format": "<span rise=\"-14pt\">🍕 Axyl  {}</span>",
+        "interval": 240,
+        "escape": true,
+        "exec":  "~/.config/waybar/scripts/downloads axyl-os axyl-iso"
+    },
+
     "custom/treefetch-downloads": {
-        "format": "<span rise=\"-14pt\">🍕 treefetch - {} downloads</span>",
+        "format": "<span rise=\"-14pt\">🌭 treefetch  {}</span>",
         "interval": 240,
         "escape": true,
         "exec":  "~/.config/waybar/scripts/downloads angelofallars treefetch"

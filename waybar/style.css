@@ -1,12 +1,12 @@
 #backlight, #battery, #cpu, #disk, #idle_inhibitor, #keyboard-state,
 #pulseaudio, #clock, #tags, #language, #memory, #network, #sndio,
 #mode, #window, #workspaces, #temperature, #taskbar, #workspaces,
-#custom-treefetch-downloads, #custom-update-count {
+#custom-treefetch-downloads, #custom-update-count, #custom-axyl-downloads {
   box-shadow: 3px 3px 0 #2a2a2a;
   margin-bottom: 3px;
   margin-right: 3px;
-  margin-left: 3px;
-  margin-right: 6px;
+  margin-left: 2px;
+  margin-right: 5px;
   padding-left: 10px;
   padding-right: 10px;
   background: #464646;
@@ -115,6 +115,20 @@ tooltip {
 
 tooltip label {
   color: #e78a4e;
+}
+
+#tray {
+  box-shadow: 3px 3px 0 #2a2a2a;
+  margin-bottom: 3px;
+  margin-right: 3px;
+  margin-left: 2px;
+  margin-right: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  background: #464646;
+  border-radius: 0px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 #tray menu {
