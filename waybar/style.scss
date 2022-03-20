@@ -101,6 +101,7 @@ window#waybar {
 #mpd {
   color: colors.$accent-color-no-bg;
   margin-right: 2px;
+  margin-left: $module-margin;
 }
 
 #custom-mpd-song-scroll {

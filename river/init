@@ -168,4 +168,4 @@ gsettings set "$gnome_schema" cursor-size "32" &
 # Set and exec into the default layout generator, rivercarro.
 # River will send the process group of the init executable SIGTERM on exit.
 riverctl default-layout rivercarro
-exec rivercarro -inner-gaps 3 -outer-gaps 3 -main-ratio 0.5
+exec rivercarro -inner-gaps 3 -outer-gaps 3 -main-ratio 0.55

@@ -49,6 +49,7 @@ window#waybar {
 #mpd {
   color: #464646;
   margin-right: 2px;
+  margin-left: 2px;
 }
 
 #custom-mpd-song-scroll {

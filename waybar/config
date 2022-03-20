@@ -6,13 +6,12 @@
     "height": 30,
     "spacing": 0,
     "margin-top": 3,
-    "margin-bottom": 2,
+    "margin-bottom": 3,
 
     // If you're using sway, replace `river/tags` with `sway/workspaces` .
 
-    "modules-left": ["river/tags", "custom/axyl-downloads", "custom/treefetch-downloads"],
-    "modules-center": ["mpd", "custom/mpd-song-scroll"],
-    "modules-right": ["custom/update-count", "clock#date", "clock", "tray"],
+    "modules-left": ["river/tags", "custom/axyl-downloads", "custom/treefetch-downloads", "mpd", "custom/mpd-song-scroll"],
+    "modules-right": ["pulseaudio", "custom/update-count", "clock#date", "clock", "tray"],
 
     "group/mpd": {
         "modules": [
