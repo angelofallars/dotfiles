@@ -15,6 +15,10 @@ foot --server &
 riverctl map normal Super Return spawn 'footclient $HOME/.config/scripts/new_tmux_terminal.sh' &
 riverctl map normal Super+Shift Return spawn 'footclient' &
 
+riverctl map normal Super apostrophe spawn "wayout --toggle DP-1" &
+
+riverctl map normal Super y spawn "$HOME/.config/scripts/toggle-night-mode" &
+
 # dmenu replacement with the gruvbox material color, of course
 riverctl map normal Super D spawn "dmenu_run_gruv" &
 

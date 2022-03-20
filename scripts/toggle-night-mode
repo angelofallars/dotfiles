@@ -1,0 +1,2 @@
+#!/bin/sh
+pidof wlsunset && killall wlsunset || wlsunset -l 14.6 -L 121 &
