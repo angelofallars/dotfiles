@@ -1,0 +1,6 @@
+#!/bin/sh
+
+screenshot_name="screenshot-$(date "+%m-%d-%Y_%I-%M-%S-%p").png"
+image_output=$(wayshot --stdout)
+wayshot --stdout > ~/Pictures/Screenshots/"$screenshot_name" && notify-send "Saved screenshot to $screenshot_name"
+wl-copy < ~/Pictures/Screenshots/"$screenshot_name"

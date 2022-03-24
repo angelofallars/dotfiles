@@ -30,12 +30,12 @@ def main() -> int:
             pkg_count = file.read().count("\n")
             print(format_output(pkg_count), flush=True)
 
-    modification_date = path.getmtime(TEMP_FILE)
-    current_time = time()
+        modification_date = path.getmtime(TEMP_FILE)
+        current_time = time()
 
-    # Check if it's still too early to query the servers
-    if current_time < modification_date + 60:
-        return 0
+        # Check if it's still too early to query the servers
+        if current_time < modification_date + 60:
+            return 0
 
     proc = subprocess.run("checkupdates", capture_output=True)
 

@@ -2,32 +2,41 @@
 
 riverctl background-color 0xfbf1c7 &
 wlsunset -l 14.6 -L 121 &
-swaybg -i ~/Pictures/pensive-jean/pensive-jean-browner.png &
+swaybg -m fill -i ~/Pictures/Wallpapers/alex-tree-mod.png & 
 XDG_CURRENT_DESKTOP=Unity waybar &
 
-/usr/bin/pipewire &
-/usr/bin/pipewire-pulse &
-/usr/bin/wireplumber &
-mpd &
+start_audio () {
+    /usr/bin/pipewire
+    /usr/bin/pipewire-pulse
+    /usr/bin/wireplumber
+    mpd
+
+    # Start NoiseTorch input and set the default microphone to NoiseTorch
+    noisetorch -i
+    sleep 1
+    pactl set-default-source "NoiseTorch Microphone"
+}
+
+start_audio
 
 foot --server &
 
 riverctl map normal Super Return spawn 'footclient $HOME/.config/scripts/new_tmux_terminal.sh' &
 riverctl map normal Super+Shift Return spawn 'footclient' &
 
-riverctl map normal Super apostrophe spawn "wayout --toggle DP-1" &
+riverctl map normal Super apostrophe spawn "wayout --toggle HDMI-A-1" &
 
 riverctl map normal Super y spawn "$HOME/.config/scripts/toggle-night-mode" &
 
 # dmenu replacement with the gruvbox material color, of course
-riverctl map normal Super D spawn "dmenu_run_gruv" &
+riverctl map normal Super D spawn "fuzzel" &
 
 # Audio/backlight controls
-riverctl map normal Super U spawn "change_audio --dec" &
-riverctl map normal Super I spawn "change_audio --inc" &
-riverctl map normal Super O spawn "change_brightness --dec" &
-riverctl map normal Super P spawn "change_brightness --inc" &
-riverctl map normal Super bracketleft spawn "change_audio --mute" &
+riverctl map normal Super U spawn "$HOME/.config/scripts/change_audio --dec" &
+riverctl map normal Super I spawn "$HOME/.config/scripts/change_audio --inc" &
+riverctl map normal Super O spawn "$HOME/.config/scripts/change_brightness --dec" &
+riverctl map normal Super P spawn "$HOME/.config/scripts/change_brightness --inc" &
+riverctl map normal Super bracketleft spawn "$HOME/.config/scripts/change_audio --mute" &
 
 # MPD controls
 riverctl map normal Super+Shift U spawn "mpc prev" &
@@ -38,8 +47,8 @@ riverctl map normal Super+Shift bracketleft spawn "mpc toggle" &
 riverctl map normal Super+Shift bracketright spawn "mpc seek 0 && mpc play" &
 
 # Take screenshot with grim + slurp + swappy
-riverctl map normal Super N spawn "~/.config/scripts/takeshot" &
-riverctl map normal Super m spawn "~/.config/scripts/takeshot --full" &
+riverctl map normal Super N spawn "~/.config/scripts/takeshot-fast" &
+riverctl map normal Super m spawn "~/.config/scripts/takeshot-fast --full" &
 
 riverctl map normal Super 8 spawn "~/.config/scripts/open_book" &
 
@@ -98,7 +107,7 @@ riverctl map-pointer normal Super BTN_LEFT move-view &
 # Super + Right Mouse Button to resize views
 riverctl map-pointer normal Super BTN_RIGHT resize-view &
 
-for i in $(seq 1 5)
+for i in $(seq 1 8)
 do
     tags=$((1 << ($i - 1)))
 
@@ -168,6 +177,7 @@ gsettings set "$gnome_schema" icon-theme "Gruvbox-Material-Dark" &
 gsettings set "$gnome_schema" font-name "Roboto 11" &
 gsettings set "$gnome_schema" cursor-theme "phinger-cursors" &
 gsettings set "$gnome_schema" cursor-size "32" &
+
 
 # Set and exec into the default layout generator, rivercarro.
 # River will send the process group of the init executable SIGTERM on exit.

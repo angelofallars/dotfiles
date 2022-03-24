@@ -1,0 +1,16 @@
+#!/bin/sh
+
+screenshot_name="screenshot-$(date "+%m-%d-%Y_%I-%M-%S-%p").png"
+
+notify_success () {
+    notify-send "Saved screenshot to $screenshot_name"
+}
+
+if [[ "$1" == "--full" ]]; then
+    wayshot --stdout > ~/Pictures/Screenshots/"$screenshot_name" && notify_success
+    wl-copy < ~/Pictures/Screenshots/"$screenshot_name"
+    exit
+fi
+
+wayshot --slurp "$(slurp -f '%x %y %w %h')" --stdout > ~/Pictures/Screenshots/"$screenshot_name" && notify_success
+wl-copy < ~/Pictures/Screenshots/"$screenshot_name"

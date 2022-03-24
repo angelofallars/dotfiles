@@ -62,8 +62,8 @@ window#waybar {
   color: #787878;
   font-family: "Source Han Sans JP";
   font-weight: 700;
-  padding: 0 6px;
-  margin: 0 2px;
+  padding: 0 3px;
+  margin: 0 3px;
   min-width: 26px;
   font-size: 17px;
   border-radius: 0;

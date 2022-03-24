@@ -10,8 +10,8 @@
 
     // If you're using sway, replace `river/tags` with `sway/workspaces` .
 
-    "modules-left": ["river/tags", "custom/axyl-downloads", "custom/treefetch-downloads", "mpd", "custom/mpd-song-scroll"],
-    "modules-right": ["pulseaudio", "custom/update-count", "clock#date", "clock", "tray"],
+    "modules-left": ["river/tags", "custom/axyl-downloads", "custom/treefetch-downloads",  "pulseaudio", "mpd", "custom/mpd-song-scroll"],
+    "modules-right": ["custom/update-count", "cpu", "memory", "clock#date", "clock", "tray"],
 
     "group/mpd": {
         "modules": [
@@ -20,14 +20,15 @@
     },
 
     "river/tags": {
-        "num-tags": 5,
+        "num-tags": 8,
         "tag-labels": [
-            "一", "二", "三", "四", "五", "六",
+            "一", "二", "三", "四", "五", "六", "七", "八", "九", "十"
            ]
     },
 
     "mpd": {
         "format": "{stateIcon} {elapsedTime:%M:%S}/{totalTime:%M:%S} {repeatIcon}{singleIcon}{randomIcon}{consumeIcon}",
+        "format-disconnected": "",
         "format-stopped": "",
         "interval": 1,
         "state-icons": {
@@ -84,6 +85,14 @@
             "default": ["🌮"]
         },
         "on-click": "pamixer -t"
+    },
+
+    "cpu": {
+        "format": "🍝 CPU: {load}%"
+    },
+
+    "memory": {
+        "format": "🥪 RAM: {used:0.1f}G/{total:0.1f}G"
     },
 
     // Need mpd installed for this to work
