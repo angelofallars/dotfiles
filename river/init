@@ -6,18 +6,19 @@ swaybg -m fill -i ~/Pictures/Wallpapers/alex-tree-mod.png &
 XDG_CURRENT_DESKTOP=Unity waybar &
 
 start_audio () {
-    /usr/bin/pipewire
-    /usr/bin/pipewire-pulse
-    /usr/bin/wireplumber
-    mpd
+    /usr/bin/pipewire &
+    /usr/bin/pipewire-pulse &
+    /usr/bin/wireplumber &
+    mpd & 
 
     # Start NoiseTorch input and set the default microphone to NoiseTorch
-    noisetorch -i
+    sleep 1 &
+    noisetorch -i &
     sleep 1
-    pactl set-default-source "NoiseTorch Microphone"
+    pactl set-default-source "NoiseTorch Microphone" &
 }
 
-start_audio
+start_audio &
 
 foot --server &
 
@@ -29,7 +30,7 @@ riverctl map normal Super apostrophe spawn "wayout --toggle HDMI-A-1" &
 riverctl map normal Super y spawn "$HOME/.config/scripts/toggle-night-mode" &
 
 # dmenu replacement with the gruvbox material color, of course
-riverctl map normal Super D spawn "fuzzel" &
+riverctl map normal Super D spawn "$HOME/.config/scripts/fuzzel-themed" &
 
 # Audio/backlight controls
 riverctl map normal Super U spawn "$HOME/.config/scripts/change_audio --dec" &
@@ -155,8 +156,8 @@ riverctl map normal Super F11 enter-mode passthrough &
 riverctl map passthrough Super F11 enter-mode normal &
 
 # Set background and border color
-riverctl border-color-unfocused 0x525252 &
-riverctl border-color-focused 0xBE6C38 &
+riverctl border-color-unfocused 0x3E3E3E &
+riverctl border-color-focused 0x656565 &
 riverctl border-width 3 &
 
 riverctl focus-follows-cursor normal &
@@ -182,4 +183,4 @@ gsettings set "$gnome_schema" cursor-size "32" &
 # Set and exec into the default layout generator, rivercarro.
 # River will send the process group of the init executable SIGTERM on exit.
 riverctl default-layout rivercarro
-exec rivercarro -inner-gaps 3 -outer-gaps 3 -main-ratio 0.55
+exec rivercarro -inner-gaps 5 -outer-gaps 5 -main-ratio 0.55
