@@ -41,15 +41,11 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'alvan/vim-closetag', { 'for': 'html' }
 
 " CSS coloring
-Plug 'ap/vim-css-color', { 'for': ['css', 'sass', 'scss', 'less'] }
+Plug 'RRethy/vim-hexokinase'
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 Plug 'rust-lang/rust.vim'
-
-" Plug 'mhinz/vim-startify'
-
-Plug 'vimwiki/vimwiki'
 
 Plug 'waycrate/swhkd-vim'
 
@@ -186,7 +182,8 @@ capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
 local servers = { 'pylsp', 'pyright', 'bashls', 'clangd',
                   'html', 'cssls', 'jsonls', 'tsserver',
-                  'eslint', 'sqlls', 'vimls', 'rust_analyzer' }
+                  'eslint', 'sqlls', 'vimls', 'rust_analyzer',
+                  'dockerls' }
 
 for _, lsp in pairs(servers) do
   require('lspconfig')[lsp].setup {
@@ -220,6 +217,8 @@ let g:airline#extensions#tabline#show_buffers = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#tabline#buffer_nr_format = '[%s] '
 let g:airline_symbols.linenr = ''
+
+let g:Hexokinase_highlighters = [ 'virtual' ]
 
 function! AirlineInit()
     highlight airline_tabsel gui=none

@@ -8,9 +8,9 @@ $cyan:         #89b482;
 $blue:         #7daea3;
 $magenta:      #d3869b;
 
-$bg:           #464646;
-$white-text:   #F5DFBA;
-$fg:           $orange;
+$bg:           #363636;
+$white-text:   #d4be98;
+$fg:           $white-text;
 
 $fg-opposite:  scale-color($fg, $lightness: -15%, $saturation: -25%);
 

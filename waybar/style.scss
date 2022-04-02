@@ -15,14 +15,13 @@
 @use 'colors';
 
 // Distance of the entire bar from the sides
-$screen-margin: 1px;
+$screen-margin: 4px;
 
-// Distance from the top of the screen
-$top-margin: 0px;
+$vertical-margin: 4px;
 
 // Margin/padding of individual modules
-$module-margin: 2px;
-$module-padding: 10px;
+$module-margin: 3px;
+$module-padding: 12px;
 
 // Font config
 $font: "JetBrains Mono Nerd Font";
@@ -30,10 +29,10 @@ $font-size: 14px;
 $font-weight: 600;
 
 // How far away should the box shadow effect be diagonally
-$box-shadow-distance: 3px;
+$box-shadow-distance: 0px;
 
 // Border radius. Turning this option up will also round the offset shadows.
-$bar-border-radius: 0px;
+$bar-border-radius: 10px;
 
 // -------------------------
 // Actual styling of the bar
@@ -46,7 +45,6 @@ $bar-border-radius: 0px;
 }
 
 @mixin single-module {
-  @include square-shadow;
   margin-left: $module-margin;
   margin-right: $module-margin + $box-shadow-distance;
   padding-left: $module-padding;
@@ -70,17 +68,18 @@ $bar-border-radius: 0px;
 }
 
 window#waybar {
-  background: transparent;
+  background: scale-color(colors.$bg, $alpha: -45%, $lightness: -35%);
   color: colors.$fg;
 }
 
 .modules-left, .modules-center, .modules-right {
   background: transparent;
-  margin-top: $top-margin;
   border-radius: $bar-border-radius;
   font-family: $font, monospace;
   font-size: $font-size;
   font-weight: $font-weight;
+  margin-top: $vertical-margin;
+  margin-bottom: $vertical-margin;
 }
 
 .modules-left {

@@ -216,12 +216,12 @@ alias river="XKB_DEFAULT_OPTIONS=ctrl:nocaps river"
 
 alias downloads="~/.config/waybar/scripts/downloads"
 
-if [ -n "$TMUX" ]; then
-    # colorscript random
-    treefetch --bonsai
-else
-    # A nice lil bonsai shell for Rust lovers.
-    treefetch --bonsai
-fi
+# if [ -n "$TMUX" ]; then
+#     # colorscript random
+#     treefetch --bonsai
+# else
+#     # A nice lil bonsai shell for Rust lovers.
+#     treefetch --bonsai
+# fi
 
 source /home/angelo-f/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

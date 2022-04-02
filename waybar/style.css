@@ -2,15 +2,12 @@
 #pulseaudio, #clock, #tags, #language, #memory, #network, #sndio,
 #mode, #window, #workspaces, #temperature, #taskbar, #workspaces,
 #custom-treefetch-downloads, #custom-update-count, #custom-axyl-downloads {
-  box-shadow: 3px 3px 0 #2a2a2a;
-  margin-bottom: 3px;
+  margin-left: 3px;
   margin-right: 3px;
-  margin-left: 2px;
-  margin-right: 5px;
-  padding-left: 10px;
-  padding-right: 10px;
-  background: #464646;
-  border-radius: 0px;
+  padding-left: 12px;
+  padding-right: 12px;
+  background: #363636;
+  border-radius: 10px;
 }
 
 * {
@@ -18,26 +15,27 @@
 }
 
 window#waybar {
-  background: transparent;
-  color: #e78a4e;
+  background: rgba(35, 35, 35, 0.55);
+  color: #d4be98;
 }
 
 .modules-left, .modules-center, .modules-right {
   background: transparent;
-  margin-top: 0px;
-  border-radius: 0px;
+  border-radius: 10px;
   font-family: "JetBrains Mono Nerd Font", monospace;
   font-size: 14px;
   font-weight: 600;
+  margin-top: 4px;
+  margin-bottom: 4px;
 }
 
 .modules-left {
-  margin-left: 1px;
+  margin-left: 4px;
   margin-right: 3px;
 }
 
 .modules-right {
-  margin-right: 1px;
+  margin-right: 4px;
 }
 
 #mpd, #custom-mpd-song-scroll {
@@ -47,19 +45,19 @@ window#waybar {
 }
 
 #mpd {
-  color: #464646;
+  color: #363636;
   margin-right: 2px;
-  margin-left: 2px;
+  margin-left: 3px;
 }
 
 #custom-mpd-song-scroll {
-  color: #F5DFBA;
+  color: #d4be98;
   border-radius: 3px;
   min-height: 18px;
 }
 
 #tags button {
-  color: #787878;
+  color: #6c6c6c;
   font-family: "Source Han Sans JP";
   font-weight: 700;
   padding: 0 3px;
@@ -76,16 +74,16 @@ window#waybar {
 }
 
 #tags button:hover {
-  color: #464646;
-  background: #787878;
+  color: #363636;
+  background: #6c6c6c;
   box-shadow: none;
   text-shadow: none;
   transition: 0;
 }
 
 #tags button.focused {
-  color: #464646;
-  background: #e78a4e;
+  color: #363636;
+  background: #d4be98;
 }
 
 #tags button.urgent {
@@ -101,7 +99,7 @@ window#waybar {
   }
 }
 tooltip {
-  background: #464646;
+  background: #363636;
   border-radius: 7px;
   font-family: "JetBrains Mono Nerd Font", monospace;
   font-weight: 600;
@@ -109,34 +107,31 @@ tooltip {
   padding: 20px;
   animation-name: fadein;
   animation-duration: 0.2s;
-  border: 2px solid #787878;
+  border: 2px solid #6c6c6c;
   text-shadow: none;
-  color: #e78a4e;
+  color: #d4be98;
 }
 
 tooltip label {
-  color: #e78a4e;
+  color: #d4be98;
 }
 
 #tray {
-  box-shadow: 3px 3px 0 #2a2a2a;
-  margin-bottom: 3px;
+  margin-left: 3px;
   margin-right: 3px;
-  margin-left: 2px;
-  margin-right: 5px;
-  padding-left: 10px;
-  padding-right: 10px;
-  background: #464646;
-  border-radius: 0px;
-  padding-left: 5px;
-  padding-right: 5px;
+  padding-left: 12px;
+  padding-right: 12px;
+  background: #363636;
+  border-radius: 10px;
+  padding-left: 6px;
+  padding-right: 6px;
 }
 
 #tray menu {
-  background: #464646;
-  color: #e78a4e;
+  background: #363636;
+  color: #d4be98;
   border-radius: 5px;
-  border: 2px solid #787878;
+  border: 2px solid #6c6c6c;
   padding: 4px 0;
   font-family: "JetBrains Mono Nerd Font", monospace;
   font-weight: 600;

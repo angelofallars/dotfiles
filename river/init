@@ -1,8 +1,7 @@
 #!/bin/sh
 
-riverctl background-color 0xfbf1c7 &
 wlsunset -l 14.6 -L 121 &
-swaybg -m fill -i ~/Pictures/Wallpapers/alex-tree-mod.png & 
+swaybg -m fill -i ~/Pictures/villages-gruv.png & 
 XDG_CURRENT_DESKTOP=Unity waybar &
 
 start_audio () {
@@ -156,8 +155,8 @@ riverctl map normal Super F11 enter-mode passthrough &
 riverctl map passthrough Super F11 enter-mode normal &
 
 # Set background and border color
-riverctl border-color-unfocused 0x3E3E3E &
-riverctl border-color-focused 0x656565 &
+riverctl border-color-focused 0x494949 &
+riverctl border-color-unfocused 0x656565 &
 riverctl border-width 3 &
 
 riverctl focus-follows-cursor normal &
@@ -179,8 +178,12 @@ gsettings set "$gnome_schema" font-name "Roboto 11" &
 gsettings set "$gnome_schema" cursor-theme "phinger-cursors" &
 gsettings set "$gnome_schema" cursor-size "32" &
 
+VARIABLES="DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_TYPE"
+riverctl spawn "dbus-update-activation-environment ${VARIABLES:- --all}"
+
+swayidle timeout 1200 "sudo zzz" &
 
 # Set and exec into the default layout generator, rivercarro.
 # River will send the process group of the init executable SIGTERM on exit.
 riverctl default-layout rivercarro
-exec rivercarro -inner-gaps 5 -outer-gaps 5 -main-ratio 0.55
+exec rivercarro -inner-gaps 8 -outer-gaps 8 -main-ratio 0.55

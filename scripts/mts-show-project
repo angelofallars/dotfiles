@@ -43,7 +43,7 @@ main () {
 
     file_tree=$(list_files)
     onefetch_output=$(onefetch --output json ~/"$project" |
-                      ~/.local/bin/onefetch-wrapper)
+                      ~/.config/scripts/onefetch-wrapper)
 
     language_emojis=$(echo "$onefetch_output" | sed 1q)
     onefetch_output=$(echo "$onefetch_output" | sed 1d | sed 1d)
