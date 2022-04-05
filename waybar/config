@@ -8,9 +8,9 @@
 
     // If you're using sway, replace `river/tags` with `sway/workspaces` .
 
-    "modules-left": ["river/tags", "custom/axyl-downloads", "custom/treefetch-downloads",  "pulseaudio"],
+    "modules-left": ["river/tags", "custom/axyl-downloads", "custom/treefetch-downloads",  "custom/update-count"],
     "modules-center": ["mpd", "custom/mpd-song-scroll"],
-    "modules-right": ["custom/update-count", "cpu", "memory", "clock#date", "clock", "tray"],
+    "modules-right": ["pulseaudio", "cpu", "memory", "disk", "clock#date", "clock", "tray"],
 
     "group/mpd": {
         "modules": [
@@ -60,12 +60,12 @@
 
     "clock": {
         "tooltip-format": "<span rise=\"-14pt\"><big>{:%Y B}</big>\n<tt><small>{calendar}</small></tt></span>",
-        "format": "🍔 {:%I:%M %p}",
+        "format": "<span color=\"#d3869b\"></span> {:%I:%M %p}",
     },
 
     "clock#date": {
         "tooltip-format": "<span rise=\"-14pt\"><big>{:%Y B}</big>\n<tt><small>{calendar}</small></tt></span>",
-        "format": "{:🍟 %B %d, %A}",
+        "format": "<span color=\"#89b482\"></span>{: %B %d, %A}",
     },
 
     "backlight": {
@@ -78,20 +78,25 @@
 
     "pulseaudio": {
         "scroll-step": 2, // %, can be a float
-        "format": "{icon} audio: {volume}% ",
+        "format": "{icon} {volume}%",
         "format-muted": "🔇 ... ",
         "format-icons": {
-            "default": ["🌮"]
+            "default": ["<span color=\"#7daea3\"></span> "]
         },
         "on-click": "pamixer -t"
     },
 
     "cpu": {
-        "format": "🍝 CPU: {usage}%"
+        "format": "<span color=\"#e78a4e\">力</span> {usage}%"
     },
 
     "memory": {
-        "format": "🥪 RAM: {used:0.1f}G/{total:0.1f}G"
+        "format": "<span color=\"#ea6962\"></span> {used:0.1f}G/{total:0.1f}G"
+    },
+
+    "disk": {
+        "path": "/home/",
+        "format": "<span color=\"#a9b665\">/home/</span> {free} free"
     },
 
     // Need mpd installed for this to work
@@ -104,21 +109,21 @@
 
     // List the downloads for a specific Github repo
     "custom/axyl-downloads": {
-        "format": "<span rise=\"-14pt\">🍕 Axyl  {}</span>",
+        "format": "<span rise=\"-14pt\"><span color=\"#7daea3\"></span>  Axyl  {}</span>",
         "interval": 240,
         "escape": true,
         "exec":  "~/.config/waybar/scripts/downloads axyl-os axyl-iso"
     },
 
     "custom/treefetch-downloads": {
-        "format": "<span rise=\"-14pt\">🌭 treefetch  {}</span>",
+        "format": "<span rise=\"-14pt\"><span color=\"#a9b665\"></span> treefetch  {}</span>",
         "interval": 240,
         "escape": true,
         "exec":  "~/.config/waybar/scripts/downloads angelofallars treefetch"
     },
 
     "custom/update-count": {
-        "format": "<span rise=\"-14pt\">{}</span>",
+        "format": "<span rise=\"-14pt\"><span color=\"#d8a657\"></span> {}</span>",
         "interval": 60,
         "escape": true,
         "exec":  "~/.config/waybar/scripts/arch_updates",

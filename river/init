@@ -1,7 +1,7 @@
 #!/bin/sh
 
-wlsunset -l 14.6 -L 121 &
-swaybg -m fill -i ~/Pictures/villages-gruv.png & 
+# wlsunset -l 14.6 -L 121 &
+swaybg -m fill -i ~/Pictures/skytain-gruv.png & 
 XDG_CURRENT_DESKTOP=Unity waybar &
 
 start_audio () {
@@ -30,6 +30,8 @@ riverctl map normal Super y spawn "$HOME/.config/scripts/toggle-night-mode" &
 
 # dmenu replacement with the gruvbox material color, of course
 riverctl map normal Super D spawn "$HOME/.config/scripts/fuzzel-themed" &
+
+riverctl map normal Super E spawn "emote" &
 
 # Audio/backlight controls
 riverctl map normal Super U spawn "$HOME/.config/scripts/change_audio --dec" &
@@ -181,7 +183,12 @@ gsettings set "$gnome_schema" cursor-size "32" &
 VARIABLES="DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_TYPE"
 riverctl spawn "dbus-update-activation-environment ${VARIABLES:- --all}"
 
-swayidle timeout 1200 "sudo zzz" &
+# swayidle timeout 1200 "sudo zzz" &
+
+# RGB controls
+openrgb --server &
+openrgb --startminimized &
+openrgb --profile gruvbox-green &
 
 # Set and exec into the default layout generator, rivercarro.
 # River will send the process group of the init executable SIGTERM on exit.

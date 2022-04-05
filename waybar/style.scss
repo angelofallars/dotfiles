@@ -125,7 +125,7 @@ window#waybar {
 }
 
 #tags button.occupied {
-  color: inherit;
+  color: colors.$green;
 }
 
 #tags button:hover {
@@ -138,7 +138,7 @@ window#waybar {
 
 #tags button.focused {
   color: colors.$bg;
-  background: colors.$accent-color;
+  background: colors.$green;
 }
 
 #tags button.urgent {

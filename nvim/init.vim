@@ -13,15 +13,15 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
 
-" Emmet autocomplete
-" Plug 'mattn/emmet-vim', { 'for': 'html' }
-
 " Fuzzy finder
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'ThePrimeagen/harpoon'
+
 " Gruvbox baby!
-" Plug 'gruvbox-community/gruvbox'
 Plug 'sainnhe/gruvbox-material'
 
 " Pretty status line
@@ -41,7 +41,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'alvan/vim-closetag', { 'for': 'html' }
 
 " CSS coloring
-Plug 'RRethy/vim-hexokinase'
+Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
@@ -218,7 +218,7 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#tabline#buffer_nr_format = '[%s] '
 let g:airline_symbols.linenr = ''
 
-let g:Hexokinase_highlighters = [ 'virtual' ]
+let g:Hexokinase_highlighters = ['backgroundfull']
 
 function! AirlineInit()
     highlight airline_tabsel gui=none
@@ -251,14 +251,8 @@ let g:airline_skip_empty_sections = 0
 
 let g:airline_theme='gruvbox_material'
 
-"" FZF
-let g:fzf_layout = { 'window': { 'width': 1.0, 'height': 0.6, 'yoffset': 1.0 } }
-let g:fzf_preview_window = ['right:50%', 'ctrl-/']
-
-let $FZF_DEFAULT_OPTS="--preview='source-highlight --failsafe --out-format=esc -o STDOUT -i {}' --layout reverse"
-
 " Change current directory based on current buffer
-autocmd BufEnter * silent! lcd %:p:h
+" autocmd BufEnter * silent! lcd %:p:h
 
 " Indent width on web dev languages
 autocmd FileType html setlocal shiftwidth=2 tabstop=2 textwidth=120
@@ -278,27 +272,6 @@ autocmd FileType angular setlocal shiftwidth=2 tabstop=2
 autocmd BufNewFile,BufRead *.njk set filetype=html
 autocmd BufNewFile,BufRead *waybar/config set syntax=json
 autocmd BufNewFile,BufRead *dunstrc set filetype=ini
-
-let g:user_emmet_settings = {
-\  'variables': {'lang': 'en'},
-\  'html': {
-\    'default_attributes': {
-\      'option': {'value': v:null},
-\      'textarea': {'id': v:null, 'name': v:null, 'cols': 10, 'rows': 10},
-\    },
-\    'snippets': {
-\      'html:5': "<!DOCTYPE html>\n"
-\              ."<html lang=\"${lang}\">\n"
-\              ."<head>\n"
-\              ."\t<meta charset=\"${charset}\">\n"
-\              ."\t<title></title>\n"
-\              ."\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n"
-\              ."</head>\n"
-\              ."<body>\n\t${child}|\n</body>\n"
-\              ."</html>",
-\    },
-\  },
-\}
 
 " Indent width for C (the Unix Way)
 autocmd FileType c setlocal shiftwidth=8 tabstop=8

@@ -20,7 +20,7 @@ def format_output(pkg_count: int) -> str:
     else:
         return "😋 up-to-date"
 
-    return f"🧀 {pkg_count} {word}"
+    return f"{pkg_count} {word}"
 
 
 def main() -> int:
