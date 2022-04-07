@@ -18,7 +18,7 @@ def format_output(pkg_count: int) -> str:
     elif pkg_count == 1:
         word = "update"
     else:
-        return "😋 up-to-date"
+        return "up-to-date"
 
     return f"{pkg_count} {word}"
 

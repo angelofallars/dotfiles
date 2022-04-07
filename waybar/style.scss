@@ -20,7 +20,7 @@ $screen-margin: 4px;
 $vertical-margin: 4px;
 
 // Margin/padding of individual modules
-$module-margin: 3px;
+$module-margin: 2px;
 $module-padding: 12px;
 
 // Font config
@@ -32,7 +32,7 @@ $font-weight: 600;
 $box-shadow-distance: 0px;
 
 // Border radius. Turning this option up will also round the offset shadows.
-$bar-border-radius: 10px;
+$bar-border-radius: 11px;
 
 // -------------------------
 // Actual styling of the bar
@@ -115,10 +115,10 @@ window#waybar {
   color: colors.$fg-alt;
   font-family: "Source Han Sans JP";
   font-weight: 700;
-  padding: 0 3px;
-  margin: 0 3px;
+  padding: 0 0px;
+  margin: 0 2px;
   min-width: 26px;
-  font-size: 17px;
+  font-size: 19px;
   border-radius: 0;
   border: none;
   transition: none;

@@ -193,4 +193,4 @@ openrgb --profile gruvbox-green &
 # Set and exec into the default layout generator, rivercarro.
 # River will send the process group of the init executable SIGTERM on exit.
 riverctl default-layout rivercarro
-exec rivercarro -inner-gaps 8 -outer-gaps 8 -main-ratio 0.55
+exec rivercarro -no-smart-gaps -inner-gaps 6 -outer-gaps 6 -main-ratio 0.55

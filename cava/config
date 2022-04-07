@@ -116,7 +116,7 @@ source = auto
 # if supported, ncurses mode will be forced on if user defined colors are used.
 # default is to keep current terminal color
 background = default
-foreground = green
+foreground = blue
 
 # Gradient mode, only hex defined colors (and thereby ncurses mode) are supported,
 # background must also be defined in hex  or remain commented out. 1 = on, 0 = off.

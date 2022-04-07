@@ -8,9 +8,9 @@
 
     // If you're using sway, replace `river/tags` with `sway/workspaces` .
 
-    "modules-left": ["river/tags", "custom/axyl-downloads", "custom/treefetch-downloads",  "custom/update-count"],
+    "modules-left": ["river/tags", "custom/axyl-downloads", "custom/treefetch-downloads", "disk", "custom/update-count"],
     "modules-center": ["mpd", "custom/mpd-song-scroll"],
-    "modules-right": ["pulseaudio", "cpu", "memory", "disk", "clock#date", "clock", "tray"],
+    "modules-right": ["pulseaudio", "cpu", "memory", "clock#date", "clock", "tray"],
 
     "group/mpd": {
         "modules": [
@@ -21,7 +21,7 @@
     "river/tags": {
         "num-tags": 8,
         "tag-labels": [
-            "一", "二", "三", "四", "五", "六", "七", "八", "九", "十"
+            "", "", "", "", "", "", "", ""
            ]
     },
 
@@ -87,16 +87,16 @@
     },
 
     "cpu": {
-        "format": "<span color=\"#e78a4e\">力</span> {usage}%"
+        "format": "<span color=\"#e78a4e\">力 CPU</span> {usage}%"
     },
 
     "memory": {
-        "format": "<span color=\"#ea6962\"></span> {used:0.1f}G/{total:0.1f}G"
+        "format": "<span color=\"#a9b665\"> RAM</span> {used:0.1f}G/{total:0.1f}G"
     },
 
     "disk": {
-        "path": "/home/",
-        "format": "<span color=\"#a9b665\">/home/</span> {free} free"
+        "path": "/home",
+        "format": "<span color=\"#ea6962\">/home</span> {free} free"
     },
 
     // Need mpd installed for this to work

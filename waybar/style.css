@@ -2,12 +2,12 @@
 #pulseaudio, #clock, #tags, #language, #memory, #network, #sndio,
 #mode, #window, #workspaces, #temperature, #taskbar, #workspaces,
 #custom-treefetch-downloads, #custom-update-count, #custom-axyl-downloads {
-  margin-left: 3px;
-  margin-right: 3px;
+  margin-left: 2px;
+  margin-right: 2px;
   padding-left: 12px;
   padding-right: 12px;
   background: #363636;
-  border-radius: 10px;
+  border-radius: 11px;
 }
 
 * {
@@ -21,7 +21,7 @@ window#waybar {
 
 .modules-left, .modules-center, .modules-right {
   background: transparent;
-  border-radius: 10px;
+  border-radius: 11px;
   font-family: "JetBrains Mono Nerd Font", monospace;
   font-size: 14px;
   font-weight: 600;
@@ -47,7 +47,7 @@ window#waybar {
 #mpd {
   color: #363636;
   margin-right: 2px;
-  margin-left: 3px;
+  margin-left: 2px;
 }
 
 #custom-mpd-song-scroll {
@@ -60,10 +60,10 @@ window#waybar {
   color: #6c6c6c;
   font-family: "Source Han Sans JP";
   font-weight: 700;
-  padding: 0 3px;
-  margin: 0 3px;
+  padding: 0 0px;
+  margin: 0 2px;
   min-width: 26px;
-  font-size: 17px;
+  font-size: 19px;
   border-radius: 0;
   border: none;
   transition: none;
@@ -117,12 +117,12 @@ tooltip label {
 }
 
 #tray {
-  margin-left: 3px;
-  margin-right: 3px;
+  margin-left: 2px;
+  margin-right: 2px;
   padding-left: 12px;
   padding-right: 12px;
   background: #363636;
-  border-radius: 10px;
+  border-radius: 11px;
   padding-left: 6px;
   padding-right: 6px;
 }

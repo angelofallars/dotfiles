@@ -18,7 +18,7 @@ horizontal_padding = 12
 
 frame_width = 2
 
-font = JetBrains Mono Nerd Font Medium 12
+font = JetBrains Mono Nerd Font Medium 11
 
 sort = no
 idle_threshold = 120
