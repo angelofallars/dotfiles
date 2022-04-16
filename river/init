@@ -36,9 +36,9 @@ riverctl map normal Super E spawn "emote" &
 # Audio/backlight controls
 riverctl map normal Super U spawn "$HOME/.config/scripts/change_audio --dec" &
 riverctl map normal Super I spawn "$HOME/.config/scripts/change_audio --inc" &
-riverctl map normal Super O spawn "$HOME/.config/scripts/change_brightness --dec" &
-riverctl map normal Super P spawn "$HOME/.config/scripts/change_brightness --inc" &
-riverctl map normal Super bracketleft spawn "$HOME/.config/scripts/change_audio --mute" &
+# riverctl map normal Super O spawn "$HOME/.config/scripts/change_brightness --dec" &
+# riverctl map normal Super P spawn "$HOME/.config/scripts/change_brightness --inc" &
+riverctl map normal Super O spawn "$HOME/.config/scripts/change_audio --mute" &
 
 # MPD controls
 riverctl map normal Super+Shift U spawn "mpc prev" &

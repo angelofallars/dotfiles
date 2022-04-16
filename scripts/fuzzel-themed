@@ -1,0 +1,17 @@
+#!/bin/sh
+fuzzel \
+    --font "JetBrainsMono Nerd Font:weight=medium:size=13" \
+    --icon-theme "Gruvbox-Material-Dark" \
+    --horizontal-pad 20 \
+    --vertical-pad 12 \
+    --inner-pad 10 \
+    --lines 12 \
+    --line-height "24px" \
+    --background "282828ff" \
+    --text-color "d4be98ff" \
+    --match-color "AB6030ff" \
+    --selection-color "d4be98ff" \
+    --selection-text-color "282828ff" \
+    --border-color "e78a4eff" \
+    --border-width 3 \
+    --border-radius 7 \

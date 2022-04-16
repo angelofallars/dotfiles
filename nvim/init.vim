@@ -293,7 +293,7 @@ let g:netrw_winsize = 25
 let mapleader = " "
 
 " Search for <files> in the git repository
-nnoremap <C-p> :lua require'telescope.builtin'.git_files{show_untracked = false}<cr>
+nnoremap <C-p> :lua require'telescope.builtin'.git_files{show_untracked = true}<cr>
 
 " Get list of buffers with FZF
 nnoremap <leader>f <cmd>Telescope buffers<cr>
@@ -320,3 +320,5 @@ nnoremap <leader>Y "+yg_
 nnoremap <leader>p "+p
 nnoremap <leader>P "+P
 vnoremap <leader>y "+y
+
+autocmd BufEnter * silent! lcd %:p:h

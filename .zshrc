@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/angelo_f/.zshrc'
 
@@ -16,76 +23,15 @@ bindkey -e
 # Color stuff
 alias ls='exa -x --icons --git --group-directories-first'
 alias la='exa -a -x --icons --git --group-directories-first'
+alias ll='exa -l -x --icons --git --group-directories-first'
+alias lla='exa -l -a -x --icons --git --group-directories-first'
 alias cat='bat --theme gruvbox-dark'
 alias grep='grep --color=auto'
 
-# Enabling and setting git info var to be used in prompt config.
-autoload -Uz vcs_info
-zstyle ':vcs_info:*' enable git svn
-# This line obtains information from the vcs.
-zstyle ':vcs_info:git*' formats "%B%F{green}%b%f "
-
-# Just because you can, means you should 😹
-declare -a cat_emojis
-cat_emojis=(
-    "🐱"
-    "😻"
-    "😼"
-    "😺"
-    "😹"
-    "😸"
-    "😾"
-    "🙀"
-    "😽"
-    "😿"
-)
-declare -r cat_emojis
-
-declare -a fruit_emojis
-fruit_emojis=(
-    "🍓"
-    "🍊"
-    "🍉"
-    "🍇"
-    "🍒"
-    "🍍"
-    "🍎"
-    "🍋"
-    "🥝"
-    "🍌"
-    "🍐"
-    "🥭"
-    "🍏"
-    "🥑"
-    "🫐"
-    "🍈"
-    "🥥"
-)
-declare -r fruit_emojis
-
-precmd() {
-    vcs_info
-
-    new_prompt_cat=${cat_emojis[$(( $RANDOM % ${#cat_emojis[@]} + 1 ))]}
-
-    # The next cat should be different from the last cat
-    while [ "$new_prompt_cat" == "$prompt_cat" ]; do
-        new_prompt_cat=${cat_emojis[$(( $RANDOM % ${#cat_emojis[@]} + 1 ))]}
-    done
-
-    prompt_cat=$new_prompt_cat
-}
+alias python='ptpython'
 
 # Enable substitution in the prompt.
 setopt prompt_subst
-
-NEWLINE=$'\n'
-
-prompt='%B%F{yellow}%~%f%b%  ${vcs_info_msg_0_}$prompt_cat '
-
-if [[ "$TERM" == "linux" ]]; then
-    prompt=' %B%F{yellow}%~%f%b%  ${vcs_info_msg_0_}>> '
-fi
 
 # Convenient Git aliases
 alias ga="git add"
@@ -210,7 +156,7 @@ export PATH=/home/angelo_f/.local/bin:$PATH
 # Created by `pipx` on 2021-11-09 19:31:24
 export PATH="$PATH:/home/angelo-f/.local/bin"
 
-export EXA_COLORS="di=33"
+export EXA_COLORS="di=32"
 
 alias river="XKB_DEFAULT_OPTIONS=ctrl:nocaps river"
 
@@ -225,3 +171,7 @@ alias downloads="~/.config/waybar/scripts/downloads"
 # fi
 
 source /home/angelo-f/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
