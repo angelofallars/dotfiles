@@ -5,6 +5,7 @@ My dotfiles on Artix Linux, using KDE Plasma with the [Bismuth](https://github.c
 ## 🍵 Desktop
 
 - **DE** - KDE Plasma
+- **WM** - Bismuth
 
 ## 🍣 Setup
 
