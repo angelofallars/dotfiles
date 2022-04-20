@@ -20,9 +20,15 @@ Plug 'ThePrimeagen/harpoon'
 " Gruvbox baby!
 Plug 'sainnhe/gruvbox-material'
 
+Plug 'catppuccin/nvim', {'as': 'catppuccin'}
+
 " Pretty status line
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+" Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
+
+Plug 'nvim-lualine/lualine.nvim'
+" If you want to have icons in your statusline choose one of these
+Plug 'kyazdani42/nvim-web-devicons'
 
 " Show added, modified and removed lines
 Plug 'airblade/vim-gitgutter'
@@ -68,7 +74,16 @@ let g:gruvbox_material_better_performance = 1
 " Maintain transparency of terminal
 let g:gruvbox_material_transparent_background = 1
 
-colorscheme gruvbox-material
+lua << EOF
+local catppuccin = require("catppuccin")
+
+-- configure it
+catppuccin.setup({
+transparent_background = true,
+}
+)
+EOF
+colorscheme catppuccin
 
 set autochdir
 set expandtab
@@ -203,6 +218,15 @@ for _, lsp in pairs(servers) do
 end
 
 EOF
+
+lua << END
+require('lualine').setup {
+  options = {
+    theme = "catppuccin"
+	-- ... the rest of your lualine config
+  }
+}
+END
 
 " Airline setup
 if !exists('g:airline_symbols')

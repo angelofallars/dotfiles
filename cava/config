@@ -7,7 +7,7 @@
 ; mode = normal
 
 # Accepts only non-negative values.
-; framerate = 60
+framerate = 75
 
 # 'autosens' will attempt to decrease sensitivity if the bars peak. 1 = on, 0 = off
 # new as of 0.6.0 autosens of low values (dynamic range)
@@ -22,7 +22,7 @@
 # The number of bars (0-200). 0 sets it to auto (fill up console).
 # Bars' width and space between bars in number of characters.
 ; bars = 0
-bar_width = 4
+bar_width = 6
 bar_spacing = 1
 
 
@@ -31,12 +31,12 @@ bar_spacing = 1
 # Note: there is a minimum total bandwidth of 43Mhz x number of bars.
 # Cava will automatically increase the higher cutoff if a too low band is specified.
 ; lower_cutoff_freq = 50
-higher_cutoff_freq = 5000
+higher_cutoff_freq = 3000
 
 
 # Seconds with no input before cava goes to sleep mode. Cava will not perform FFT or drawing and
 # only check for input once per second. Cava will wake up once input is detected. 0 = disable.
-; sleep_timer = 0
+sleep_timer = 60
 
 
 [input]
@@ -116,16 +116,16 @@ source = auto
 # if supported, ncurses mode will be forced on if user defined colors are used.
 # default is to keep current terminal color
 background = default
-foreground = red
+foreground = "#e0e0e0"
 
 # Gradient mode, only hex defined colors (and thereby ncurses mode) are supported,
 # background must also be defined in hex  or remain commented out. 1 = on, 0 = off.
 # You can define as many as 8 different colors. They range from bottom to top of screen
 gradient = 0
 gradient_count = 3
-gradient_color_3 = '#a9b665'
-gradient_color_2 = '#d8a657'
-gradient_color_1 = '#e78a4e'
+gradient_color_1 = '#222222'
+gradient_color_2 = '#2a2a2a'
+gradient_color_3 = '#333333'
 
 
 
@@ -133,7 +133,7 @@ gradient_color_1 = '#e78a4e'
 
 # Percentage value for integral smoothing. Takes values from 0 - 100.
 # Higher values means smoother, but less precise. 0 to disable.
-integral = 60
+integral = 55
 
 # Disables or enables the so-called "Monstercat smoothing" with or without "waves". Set to 0 to disable.
 monstercat = 1
