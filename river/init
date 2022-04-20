@@ -190,6 +190,8 @@ openrgb --server &
 openrgb --startminimized &
 openrgb --profile gruvbox-green &
 
+konsole &
+
 # Set and exec into the default layout generator, rivercarro.
 # River will send the process group of the init executable SIGTERM on exit.
 riverctl default-layout rivercarro
