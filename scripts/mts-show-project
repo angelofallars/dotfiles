@@ -1,6 +1,14 @@
 #!/bin/sh
 project="$1"
 
+project=$(echo "$project" \
+          | sed --regexp-extended "s/^🔷 axyl/projects\/axyl/g" \
+          | sed --regexp-extended "s/^🟨 waycrate/projects\/waycrate/g" \
+          | sed --regexp-extended "s/^🟢 /projects\/personal\//g" \
+          | sed --regexp-extended "s/^↔️  forks/forks/g" \
+          | sed --regexp-extended "s/^✏️  study/study/g" \
+         )
+
 print_repo_data() {
     projectname=$(basename "$project")
     commitcount=$(git --git-dir=$gitdir \

@@ -4,14 +4,26 @@ projects=$(\
            find \
                ~/projects \
                ~/projects/axyl \
+               ~/projects/waycrate \
+               ~/projects/personal \
                ~/forks \
                ~/study \
-               -mindepth 1 -maxdepth 1 -type d |
+               -mindepth 1 -maxdepth 1 -type d \
+               -not -name axyl \
+               -not -name waycrate \
+               -not -name personal \
+               |
 
            sed --regexp-extended "s/^\/home\/[^\/]+\///g")
 
 selected=$(echo "$projects" |
 
+           sed --regexp-extended "s/^projects\/axyl/🔷 axyl/g" |
+           sed --regexp-extended "s/^projects\/waycrate/🟨 waycrate/g" |
+           sed --regexp-extended "s/^projects\/personal\//🟢 /g" |
+           sed --regexp-extended "s/^forks/↔️  forks/g" |
+           sed --regexp-extended "s/^study/✏️  study/g" |
+           
            fzf --border=none --reverse --prompt="  ➡️  " --ansi --cycle \
                --header="🚀 tmux-sessionizer" --header-first \
                --pointer="🔥" \
@@ -23,20 +35,35 @@ selected=$(echo "$projects" |
                --color="hl:underline,hl+:underline,hl:magenta,hl+:magenta" \
                --color="info:green" \
                --color="spinner:green,spinner:dim" \
-               --preview="$HOME/.config/scripts/mts-show-project '{}'" \
+               --preview="$HOME/.config/scripts/mts-show-project ''{}''" \
                --preview-window=border-left,58%)
 
 if [ $? != 0 ]; then exit; fi
 
-selected="$HOME/${selected}"
-selected_name=$(basename "$selected" | tr . _)
+selected=$(echo "$selected" \
+          | sed --regexp-extended "s/^🔷 axyl/projects\/axyl/g" \
+          | sed --regexp-extended "s/^🟨 waycrate/projects\/waycrate/g" \
+          | sed --regexp-extended "s/^🟢 /projects\/personal\//g" \
+          | sed --regexp-extended "s/^↔️  forks/forks/g" \
+          | sed --regexp-extended "s/^✏️  study/study/g" \
+         )
+
+selected_dir="$HOME/${selected}"
+
+echo "$selected_dir" | grep "projects/" 
+if [[ "$?" -eq 0 ]]; then
+    # Strip the "projects" directory name for project repos
+    selected_name=$(echo "$selected" | sed -E "s/projects\///" | tr . _)
+else
+    selected_name=$(basename "$selected_dir" | tr . _)
+fi
 
 if ! tmux has-session -t $selected_name 2> /dev/null; then
 
-    tmux new-session -ds $selected_name -c $selected \
-        -x 300 -y 300 -n "nvim" "sleep 0.05 ; nvim $selected ; zsh"
+    tmux new-session -ds $selected_name -c $selected_dir \
+        -x 300 -y 300 -n "nvim" "sleep 0.05 ; nvim $selected_dir ; zsh"
 
-    tmux new-window -t $selected_name:2 -d -c $selected zsh
+    tmux new-window -t $selected_name:2 -d -c $selected_dir zsh
 fi
 
 tmux switch-client -t $selected_name

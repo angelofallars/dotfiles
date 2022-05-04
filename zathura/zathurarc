@@ -10,3 +10,5 @@ set inputbar-fg "#d4be98"
 set guioptions none
 set page-padding 3
 set scroll-step 80
+
+set selection-clipboard clipboard

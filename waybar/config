@@ -8,7 +8,7 @@
 
     // If you're using sway, replace `river/tags` with `sway/workspaces` .
 
-    "modules-left": ["river/tags", "custom/axyl-downloads", "custom/treefetch-downloads", "disk", "custom/update-count"],
+    "modules-left": ["workspaces", "custom/axyl-downloads", "custom/treefetch-downloads", "disk", "custom/update-count"],
     "modules-center": ["mpd", "custom/mpd-song-scroll"],
     "modules-right": ["pulseaudio", "cpu", "memory", "clock#date", "clock", "tray"],
 

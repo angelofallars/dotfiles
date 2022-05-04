@@ -29,6 +29,7 @@ alias cat='bat --theme gruvbox-dark'
 alias grep='grep --color=auto'
 
 alias python='ptpython'
+alias py='python'
 
 # Enable substitution in the prompt.
 setopt prompt_subst

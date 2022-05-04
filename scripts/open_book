@@ -1,10 +1,12 @@
 #!/bin/sh
 
-book=$(ls ~/Documents/Books | dmenu_gruv "📚 Read a Book")
+books=$(ls ~/Documents/Books | sed --regexp-extended "s/\.epub//g")
+books_count=$(echo "$books" | wc -l)
+book="$(echo "$books" | rofi -dmenu -p "龎 Open Book" -i -l "$books_count" -no-show-icons)"
 
 if [ $? != 0 ]
 then
     exit
 fi
 
-zathura "~/Documents/Books/$book"
+zathura "~/Documents/Books/$book.epub"

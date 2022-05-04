@@ -23,12 +23,8 @@ Plug 'sainnhe/gruvbox-material'
 Plug 'catppuccin/nvim', {'as': 'catppuccin'}
 
 " Pretty status line
-" Plug 'vim-airline/vim-airline'
-" Plug 'vim-airline/vim-airline-themes'
-
-Plug 'nvim-lualine/lualine.nvim'
-" If you want to have icons in your statusline choose one of these
-Plug 'kyazdani42/nvim-web-devicons'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 " Show added, modified and removed lines
 Plug 'airblade/vim-gitgutter'
@@ -47,9 +43,12 @@ Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
-Plug 'rust-lang/rust.vim'
-
 Plug 'waycrate/swhkd-vim'
+
+" post install (yarn install | npm install) then load plugin only for editing supported files
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install --frozen-lockfile --production',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
 
 call plug#end()
 
@@ -74,6 +73,9 @@ let g:gruvbox_material_better_performance = 1
 " Maintain transparency of terminal
 let g:gruvbox_material_transparent_background = 1
 
+let g:presence_blacklist = [".config"]
+
+
 lua << EOF
 local catppuccin = require("catppuccin")
 
@@ -83,7 +85,7 @@ transparent_background = true,
 }
 )
 EOF
-colorscheme catppuccin
+colorscheme gruvbox-material
 
 set autochdir
 set expandtab
@@ -219,15 +221,6 @@ end
 
 EOF
 
-lua << END
-require('lualine').setup {
-  options = {
-    theme = "catppuccin"
-	-- ... the rest of your lualine config
-  }
-}
-END
-
 " Airline setup
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
@@ -237,7 +230,6 @@ let g:airline_powerline_fonts = 1
 let g:airline_symbols.colnr = ''
 let g:airline_symbols.maxlinenr = ''
 let g:airline_section_c = airline#section#create(['', '%<', 'path', g:airline_symbols.space, 'readonly', 'lsp_progress'])
-let g:airline_section_x = airline#section#create(['filetype', ' 🐈'])
 let g:airline_section_y = ''
 let g:airline_section_z = airline#section#create(['linenr', 'maxlinenr', 'colnr'])
 
@@ -267,16 +259,6 @@ function! AirlineInit()
 endfunction
 autocmd User AirlineAfterInit call AirlineInit()
 
-" let g:airline_left_sep = ''
-" let g:airline_left_alt_sep = ''
-" let g:airline_right_sep = ''
-" let g:airline_right_alt_sep = ''
-" let g:airline#extensions#tabline#left_sep = ' '
-" let g:airline#extensions#tabline#left_alt_sep = ' '
-" let g:airline#extensions#tabline#right_sep = ' '
-" let g:airline#extensions#tabline#right_alt_sep = ' '
-let g:airline_highlighting_cache = 0
-
 " Do not draw separators for empty sections
 let g:airline_skip_empty_sections = 1
 
@@ -302,6 +284,7 @@ autocmd FileType angular setlocal shiftwidth=2 tabstop=2
 
 autocmd BufNewFile,BufRead *.njk set filetype=html
 autocmd BufNewFile,BufRead *waybar/config set syntax=json
+autocmd BufNewFile,BufRead *.rasi set syntax=css
 autocmd BufNewFile,BufRead *dunstrc set filetype=ini
 
 " Indent width for C (the Unix Way)
