@@ -9,6 +9,7 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
+Plug 'onsails/lspkind-nvim'
 
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
@@ -16,6 +17,8 @@ Plug 'hrsh7th/vim-vsnip'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'ThePrimeagen/harpoon'
+
+Plug 'rafamadriz/friendly-snippets'
 
 " Gruvbox baby!
 Plug 'sainnhe/gruvbox-material'
@@ -44,6 +47,10 @@ Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 Plug 'waycrate/swhkd-vim'
+
+Plug 'mattn/emmet-vim'
+
+Plug 'rust-lang/rust.vim'
 
 " post install (yarn install | npm install) then load plugin only for editing supported files
 Plug 'prettier/vim-prettier', {
@@ -75,17 +82,9 @@ let g:gruvbox_material_transparent_background = 1
 
 let g:presence_blacklist = [".config"]
 
-
-lua << EOF
-local catppuccin = require("catppuccin")
-
--- configure it
-catppuccin.setup({
-transparent_background = true,
-}
-)
-EOF
 colorscheme gruvbox-material
+
+let g:rustfmt_autosave = 1
 
 set autochdir
 set expandtab
@@ -93,7 +92,7 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set noswapfile
-set textwidth=80
+set textwidth=0
 set ai
 set colorcolumn=0
 set updatetime=500
@@ -105,7 +104,7 @@ set smartcase
 " Blinking cursor
 set guicursor+=n-v-c-i:blinkon5
 
-set completeopt=menu,menuone,noselect
+" set completeopt=menu,menuone,noselect
 
 set nocompatible
 filetype plugin on
@@ -146,6 +145,7 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>m', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 end
 
@@ -161,6 +161,8 @@ snippet = {
 mapping = {
   ['<C-d>'] = cmp.mapping.scroll_docs(4),
   ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+  ['<C-n>'] = cmp.mapping.select_next_item(),
+  ['<C-p>'] = cmp.mapping.select_prev_item(),
   ['<C-Space>'] = cmp.mapping.complete(),
   ['<C-e>'] = cmp.mapping.close(),
   ['<CR>'] = cmp.mapping.confirm({ select = true }),
@@ -200,6 +202,22 @@ sources = cmp.config.sources({
 })
 })
 
+local lspkind = require('lspkind')
+cmp.setup {
+  formatting = {
+    format = lspkind.cmp_format({
+      mode = 'symbol_text', -- show only symbol annotations
+      maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+
+      -- The function below will be called before any actual modifications from lspkind
+      -- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
+      before = function (entry, vim_item)
+        return vim_item
+      end
+    })
+  }
+}
+
 -- Setup lspconfig.
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
@@ -233,12 +251,6 @@ let g:airline_section_c = airline#section#create(['', '%<', 'path', g:airline_sy
 let g:airline_section_y = ''
 let g:airline_section_z = airline#section#create(['linenr', 'maxlinenr', 'colnr'])
 
-let g:airline#extensions#tabline#enabled = 0
-let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
-let g:airline#extensions#tabline#buffers_label = '🍀'
-let g:airline#extensions#tabline#show_buffers = 1
-let g:airline#extensions#tabline#buffer_nr_show = 1
-let g:airline#extensions#tabline#buffer_nr_format = '[%s] '
 let g:airline_symbols.linenr = ''
 
 let g:Hexokinase_highlighters = ['backgroundfull']
@@ -263,6 +275,27 @@ autocmd User AirlineAfterInit call AirlineInit()
 let g:airline_skip_empty_sections = 1
 
 let g:airline_theme='gruvbox_material'
+
+let g:user_emmet_settings = {
+\  'variables': {'lang': 'en'},
+\  'html': {
+\    'default_attributes': {
+\      'option': {'value': v:null},
+\      'textarea': {'id': v:null, 'name': v:null, 'cols': 10, 'rows': 10},
+\    },
+\    'snippets': {
+\      '!': "<!DOCTYPE html>\n"
+\              ."<html lang=\"en\">\n"
+\              ."<head>\n"
+\              ."\t<meta charset=\"${charset}\">\n"
+\              ."\t<title></title>\n"
+\              ."\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n"
+\              ."</head>\n"
+\              ."<body>\n\t${child}|\n</body>\n"
+\              ."</html>",
+\    },
+\  },
+\}
 
 " Change current directory based on current buffer
 " autocmd BufEnter * silent! lcd %:p:h
@@ -317,9 +350,6 @@ nnoremap <C-l> :lua require("harpoon.ui").nav_file(4)<CR>
 
 " Close buffer
 nnoremap <C-q> :bd<cr>
-
-" Remap for ctrl+6 (swap buffer)
-" nnoremap <C-l> <C-^>
 
 " System clipboard Mappings
 nnoremap <leader>y "+y
