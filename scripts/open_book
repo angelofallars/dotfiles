@@ -1,6 +1,6 @@
 #!/bin/sh
 
-books=$(ls ~/Documents/Books | sed --regexp-extended "s/\.epub//g")
+books=$(ls ~/Documents/Books)
 books_count=$(echo "$books" | wc -l)
 book="$(echo "$books" | rofi -dmenu -p "龎 Open Book" -i -l "$books_count" -no-show-icons)"
 
@@ -9,4 +9,4 @@ then
     exit
 fi
 
-zathura "~/Documents/Books/$book.epub"
+zathura "~/Documents/Books/$book"

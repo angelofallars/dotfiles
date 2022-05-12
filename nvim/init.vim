@@ -11,12 +11,15 @@ Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'onsails/lspkind-nvim'
 
+Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
+
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
 
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'ThePrimeagen/harpoon'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 
 Plug 'rafamadriz/friendly-snippets'
 
@@ -25,9 +28,9 @@ Plug 'sainnhe/gruvbox-material'
 
 Plug 'catppuccin/nvim', {'as': 'catppuccin'}
 
-" Pretty status line
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'nvim-lualine/lualine.nvim'
+" If you want to have icons in your statusline choose one of these
+Plug 'kyazdani42/nvim-web-devicons'
 
 " Show added, modified and removed lines
 Plug 'airblade/vim-gitgutter'
@@ -57,6 +60,12 @@ Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install --frozen-lockfile --production',
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
 
+Plug 'simrat39/symbols-outline.nvim'
+
+Plug 'Yggdroot/indentLine'
+
+Plug 'junegunn/goyo.vim'
+
 call plug#end()
 
 if has('termguicolors')
@@ -81,6 +90,10 @@ let g:gruvbox_material_better_performance = 1
 let g:gruvbox_material_transparent_background = 1
 
 let g:presence_blacklist = [".config"]
+
+let g:goyo_width = 150
+
+let g:Hexokinase_highlighters = ['backgroundfull']
 
 colorscheme gruvbox-material
 
@@ -165,6 +178,8 @@ mapping = {
   ['<C-p>'] = cmp.mapping.select_prev_item(),
   ['<C-Space>'] = cmp.mapping.complete(),
   ['<C-e>'] = cmp.mapping.close(),
+  ['<C-j>'] = cmp.mapping.confirm({ select = true }),
+  ['<Tab>'] = cmp.mapping.confirm({ select = true }),
   ['<CR>'] = cmp.mapping.confirm({ select = true }),
 },
     sources = cmp.config.sources({
@@ -176,6 +191,7 @@ mapping = {
     }, {
       { name = 'buffer' },
       { name = "path" },
+      { name = 'nvim_lsp_signature_help' }
     })
 })
 
@@ -239,42 +255,40 @@ end
 
 EOF
 
-" Airline setup
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
+lua << END
+require('lualine').setup {
+  options = {
+    icons_enabled = true,
+    theme = 'gruvmat',
+    component_separators = { left = '', right = ''},
+    section_separators = { left = '', right = ''},
+    disabled_filetypes = {},
+    always_divide_middle = true,
+    globalstatus = true,
+  },
+  sections = {
+    lualine_a = {'mode'},
+    lualine_b = {'branch', 'diff', 'diagnostics'},
+    lualine_c = {'filename'},
+    lualine_x = {'filetype'},
+    lualine_y = {'progress'},
+    lualine_z = {'location'}
+  },
+  inactive_sections = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = {'filename'},
+    lualine_x = {'location'},
+    lualine_y = {},
+    lualine_z = {}
+  },
+  tabline = {},
+  extensions = {}
+}
 
-let g:airline_powerline_fonts = 1
-let g:airline_symbols.colnr = ''
-let g:airline_symbols.maxlinenr = ''
-let g:airline_section_c = airline#section#create(['', '%<', 'path', g:airline_symbols.space, 'readonly', 'lsp_progress'])
-let g:airline_section_y = ''
-let g:airline_section_z = airline#section#create(['linenr', 'maxlinenr', 'colnr'])
+require('telescope').load_extension('fzf')
+END
 
-let g:airline_symbols.linenr = ''
-
-let g:Hexokinase_highlighters = ['backgroundfull']
-
-function! AirlineInit()
-    highlight airline_tabsel gui=none
-
-    " Rice the lines
-    " Maintain the original line number colors
-    hi LineNrAbove ctermfg=239 guifg=#5a524c
-    hi LineNrBelow ctermfg=239 guifg=#5a524c
-    " But change the current line number
-    hi LineNr ctermfg=246 guifg=#a89984
-    " Reverse the text colors in visual mode
-    " hi Visual gui=reverse
-    " Hide the tildes on blank lines
-    hi EndOfBuffer guifg=#282828
-endfunction
-autocmd User AirlineAfterInit call AirlineInit()
-
-" Do not draw separators for empty sections
-let g:airline_skip_empty_sections = 1
-
-let g:airline_theme='gruvbox_material'
 
 let g:user_emmet_settings = {
 \  'variables': {'lang': 'en'},
@@ -335,8 +349,10 @@ let mapleader = " "
 " Search for <files> in the git repository
 nnoremap <C-p> :lua require'telescope.builtin'.git_files{show_untracked = true}<cr>
 
-" Get list of buffers with FZF
-nnoremap <leader>f <cmd>Telescope buffers<cr>
+nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep(require('telescope.themes').get_ivy({}))<cr>
+nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
+nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 
 "Harpoon baby!
 nnoremap <leader>a :lua require("harpoon.mark").add_file()<CR>

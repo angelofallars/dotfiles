@@ -51,6 +51,7 @@ selected=$(echo "$selected" \
 selected_dir="$HOME/${selected}"
 
 echo "$selected_dir" | grep "projects/" 
+
 if [[ "$?" -eq 0 ]]; then
     # Strip the "projects" directory name for project repos
     selected_name=$(echo "$selected" | sed -E "s/projects\///" | tr . _)
@@ -61,7 +62,7 @@ fi
 if ! tmux has-session -t $selected_name 2> /dev/null; then
 
     tmux new-session -ds $selected_name -c $selected_dir \
-        -x 300 -y 300 -n "nvim" "sleep 0.05 ; nvim $selected_dir ; zsh"
+        -x 300 -y 300 -n "nvim" "sleep 0.05 ; nvim . -c ':lua require\"telescope.builtin\".find_files{show_untracked = true}'; zsh"
 
     tmux new-window -t $selected_name:2 -d -c $selected_dir zsh
 fi
