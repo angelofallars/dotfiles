@@ -66,6 +66,10 @@ Plug 'Yggdroot/indentLine'
 
 Plug 'junegunn/goyo.vim'
 
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+Plug 'p00f/nvim-ts-rainbow'
+
 call plug#end()
 
 if has('termguicolors')
@@ -241,7 +245,7 @@ capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 local servers = { 'pylsp', 'pyright', 'bashls', 'clangd',
                   'html', 'cssls', 'jsonls', 'tsserver',
                   'eslint', 'sqlls', 'vimls', 'rust_analyzer',
-                  'dockerls' }
+                  'dockerls', 'racket_langserver' }
 
 for _, lsp in pairs(servers) do
   require('lspconfig')[lsp].setup {
@@ -287,6 +291,45 @@ require('lualine').setup {
 }
 
 require('telescope').load_extension('fzf')
+
+require'nvim-treesitter.configs'.setup {
+  -- A list of parser names, or "all"
+  ensure_installed = { "c", "rust", "javascript", "typescript",
+                       "css", "scss", "python", "bash", "lua",
+                       "cpp"},
+
+  -- Install parsers synchronously (only applied to `ensure_installed`)
+  sync_install = false,
+
+  highlight = {
+    -- `false` will disable the whole extension
+    enable = true,
+
+    -- NOTE: these are the names of the parsers and not the filetype. (for example if you want to
+    -- disable highlighting for the `tex` filetype, you need to include `latex` in this list as this is
+    -- the name of the parser)
+    -- list of language that will be disabled
+
+    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = false,
+  },
+
+  indent = {
+      enable = true
+  },
+
+  rainbow = {
+    enable = true,
+    -- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
+    extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
+    max_file_lines = nil, -- Do not enable for files with more than n lines, int
+    -- colors = {}, -- table of hex strings
+    -- termcolors = {} -- table of colour name strings
+  }
+}
 END
 
 
@@ -337,6 +380,8 @@ autocmd BufNewFile,BufRead *dunstrc set filetype=ini
 " Indent width for C (the Unix Way)
 autocmd FileType c setlocal shiftwidth=8 tabstop=8
 
+autocmd FileType scheme set shiftwidth=2 tabstop=2
+
 let g:netrw_browse_split = 0
 let g:netrw_banner = 0
 let g:netrw_winsize = 25
@@ -353,6 +398,8 @@ nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
 nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep(require('telescope.themes').get_ivy({}))<cr>
 nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
 nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
+
+nnoremap <leader>l <cmd>!librewolf %<cr>
 
 "Harpoon baby!
 nnoremap <leader>a :lua require("harpoon.mark").add_file()<CR>

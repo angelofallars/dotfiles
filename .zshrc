@@ -115,6 +115,8 @@ edit () {
 
       "foot")      nvim ~/.config/foot/foot.ini ;;
 
+      "wezterm")      nvim ~/.config/wezterm/wezterm.lua ;;
+
     *)            echo "Can't find dotfile '$1'" ;;
 
     esac

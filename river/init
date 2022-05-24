@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # wlsunset -l 14.6 -L 121 &
-swaybg -m fill -i ~/Pictures/skytain-gruv.png & 
+swaybg -m fill -i ~/Pictures/Wallpapers/redblue-warm-slight.png & 
 XDG_CURRENT_DESKTOP=Unity waybar &
 
 start_audio () {
@@ -17,7 +17,7 @@ start_audio () {
     pactl set-default-source "NoiseTorch Microphone" &
 }
 
-start_audio &
+# start_audio &
 
 foot --server &
 
@@ -170,15 +170,6 @@ riverctl set-repeat 50 300 &
 riverctl float-filter-add app-id float &
 riverctl float-filter-add title "popup title with spaces" &
 riverctl float-filter-add app-id "Gpick" &
-
-riverctl xcursor-theme "phinger-cursors" 32 &
-
-gnome_schema="org.gnome.desktop.interface"
-gsettings set "$gnome_schema" gtk-theme "Gruvbox-Material-Dark" &
-gsettings set "$gnome_schema" icon-theme "Gruvbox-Material-Dark" &
-gsettings set "$gnome_schema" font-name "Roboto 11" &
-gsettings set "$gnome_schema" cursor-theme "phinger-cursors" &
-gsettings set "$gnome_schema" cursor-size "32" &
 
 VARIABLES="DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_TYPE"
 riverctl spawn "dbus-update-activation-environment ${VARIABLES:- --all}"
