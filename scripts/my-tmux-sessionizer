@@ -3,27 +3,30 @@
 projects=$(\
            find \
                ~/projects \
+               ~/projects/sofsafe \
                ~/projects/axyl \
                ~/projects/waycrate \
                ~/projects/personal \
                ~/forks \
                ~/study \
                -mindepth 1 -maxdepth 1 -type d \
+               -not -name personal \
                -not -name axyl \
                -not -name waycrate \
-               -not -name personal \
+               -not -name sofsafe \
                |
 
            sed --regexp-extended "s/^\/home\/[^\/]+\///g")
 
 selected=$(echo "$projects" |
 
+           sed --regexp-extended "s/^projects\/sofsafe/📋 sofsafe/g" |
            sed --regexp-extended "s/^projects\/axyl/🔷 axyl/g" |
            sed --regexp-extended "s/^projects\/waycrate/🟨 waycrate/g" |
            sed --regexp-extended "s/^projects\/personal\//🟢 /g" |
            sed --regexp-extended "s/^forks/↔️  forks/g" |
            sed --regexp-extended "s/^study/✏️  study/g" |
-           
+
            fzf --border=none --reverse --prompt="  ➡️  " --ansi --cycle \
                --header="🚀 tmux-sessionizer" --header-first \
                --pointer="🔥" \
@@ -41,6 +44,7 @@ selected=$(echo "$projects" |
 if [ $? != 0 ]; then exit; fi
 
 selected=$(echo "$selected" \
+          | sed --regexp-extended "s/^📋 sofsafe/projects\/sofsafe/g" \
           | sed --regexp-extended "s/^🔷 axyl/projects\/axyl/g" \
           | sed --regexp-extended "s/^🟨 waycrate/projects\/waycrate/g" \
           | sed --regexp-extended "s/^🟢 /projects\/personal\//g" \
@@ -61,8 +65,10 @@ fi
 
 if ! tmux has-session -t $selected_name 2> /dev/null; then
 
+    nvim_command="sleep 0.05 ; zsh -c \"nvim . \"; zsh"
+
     tmux new-session -ds $selected_name -c $selected_dir \
-        -x 300 -y 300 -n "nvim" "sleep 0.05 ; nvim . -c ':lua require\"telescope.builtin\".find_files{show_untracked = true}'; zsh"
+        -x 300 -y 300 -n "nvim" "$nvim_command"
 
     tmux new-window -t $selected_name:2 -d -c $selected_dir zsh
 fi

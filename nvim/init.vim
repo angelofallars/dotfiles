@@ -1,5 +1,4 @@
 call plug#begin()
-
 Plug 'andweeb/presence.nvim'
 
 " LSP IDE features
@@ -26,8 +25,6 @@ Plug 'rafamadriz/friendly-snippets'
 " Gruvbox baby!
 Plug 'sainnhe/gruvbox-material'
 
-Plug 'catppuccin/nvim', {'as': 'catppuccin'}
-
 Plug 'nvim-lualine/lualine.nvim'
 " If you want to have icons in your statusline choose one of these
 Plug 'kyazdani42/nvim-web-devicons'
@@ -38,6 +35,7 @@ Plug 'airblade/vim-gitgutter'
 " Show git branch and add :Git command
 Plug 'tpope/vim-fugitive'
 
+" ----
 " Autopairs
 Plug 'jiangmiao/auto-pairs'
 
@@ -49,10 +47,9 @@ Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
-Plug 'waycrate/swhkd-vim'
-
 Plug 'mattn/emmet-vim'
 
+" ----
 Plug 'rust-lang/rust.vim'
 
 " post install (yarn install | npm install) then load plugin only for editing supported files
@@ -70,7 +67,45 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 Plug 'p00f/nvim-ts-rainbow'
 
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
+Plug 'linty-org/readline.nvim'
+
+Plug 'rainbowhxch/beacon.nvim'
+
+Plug 'mfussenegger/nvim-dap'
+Plug 'mfussenegger/nvim-dap-python'
+Plug 'leoluz/nvim-dap-go'
+Plug 'rcarriga/nvim-dap-ui'
+Plug 'theHamsta/nvim-dap-virtual-text'
+Plug 'rcarriga/cmp-dap'
+
+Plug 'stevearc/dressing.nvim'
+
 call plug#end()
+
+let g:AutoPairsShortcutBackInsert = ''
+
+lua << END
+local readline = require 'readline'
+vim.keymap.set('!', '<M-f>', readline.forward_word)
+vim.keymap.set('!', '<M-b>', readline.backward_word)
+vim.keymap.set('!', '<C-a>', readline.beginning_of_line)
+vim.keymap.set('!', '<C-e>', readline.end_of_line)
+vim.keymap.set('!', '<M-d>', readline.kill_word)
+vim.keymap.set('!', '<C-w>', readline.backward_kill_word)
+vim.keymap.set('!', '<C-k>', readline.kill_line)
+vim.keymap.set('!', '<C-u>', readline.backward_kill_line)
+
+vim.keymap.set('!', '<C-f>', '<Right>')
+vim.keymap.set('!', '<C-b>', '<Left>')
+vim.keymap.set('!', '<C-n>', '<Down>')  -- next-line
+vim.keymap.set('!', '<C-p>', '<Up>')    -- previous-line
+
+vim.keymap.set('!', '<C-d>', '<Delete>')  -- delete-char
+vim.keymap.set('!', '<C-h>', '<BS>')      -- backward-delete-char
+END
+
 
 if has('termguicolors')
   set termguicolors
@@ -93,13 +128,17 @@ let g:gruvbox_material_better_performance = 1
 " Maintain transparency of terminal
 let g:gruvbox_material_transparent_background = 1
 
-let g:presence_blacklist = [".config"]
+let g:presence_blacklist = [".config", "sofsafe"]
 
 let g:goyo_width = 150
 
 let g:Hexokinase_highlighters = ['backgroundfull']
 
 colorscheme gruvbox-material
+
+" Highlight current line number
+set cursorline
+highlight clear CursorLine
 
 let g:rustfmt_autosave = 1
 
@@ -135,6 +174,33 @@ set number relativenumber               " Line numbers
 set updatetime=300                      " Faster completion
 
 lua <<EOF
+
+vim.cmd [[autocmd! ColorScheme * highlight NormalFloat guibg=#1f2335]]
+vim.cmd [[autocmd! ColorScheme * highlight FloatBorder guifg=white guibg=#1f2335]]
+
+local border = {
+      {"┏", "FloatBorder"},
+      {"━", "FloatBorder"},
+      {"┓", "FloatBorder"},
+      {"┃", "FloatBorder"},
+      {"┛", "FloatBorder"},
+      {"━", "FloatBorder"},
+      {"┗", "FloatBorder"},
+      {"┃", "FloatBorder"},
+}
+
+local handlers =  {
+  ["textDocument/hover"] =  vim.lsp.with(vim.lsp.handlers.hover, {border = border}),
+  ["textDocument/signatureHelp"] =  vim.lsp.with(vim.lsp.handlers.signature_help, {border = border }),
+}
+
+local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+  opts = opts or {}
+  opts.border = opts.border or border
+  return orig_util_open_floating_preview(contents, syntax, opts, ...)
+end
+
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 local opts = { noremap=true, silent=true }
@@ -164,26 +230,70 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>m', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+
+  vim.api.nvim_create_autocmd("CursorHold", {
+  buffer = bufnr,
+  callback = function()
+    local opts = {
+      focusable = false,
+      close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+      border = border,
+      source = 'always',
+      prefix = ' ',
+      scope = 'cursor',
+    }
+    vim.diagnostic.open_float(nil, opts)
+  end
+    })
+
+    vim.cmd [[
+      highlight! DiagnosticLineNrError guifg=#ea6962 gui=bold
+      highlight! DiagnosticLineNrWarn  guifg=#d8a657 gui=bold
+      highlight! DiagnosticLineNrInfo  guifg=#89b482 gui=bold
+      highlight! DiagnosticLineNrHint  guifg=#a9b665 gui=bold
+
+      sign define DiagnosticSignError text= texthl=DiagnosticSignError linehl= numhl=DiagnosticLineNrError
+      sign define DiagnosticSignWarn text= texthl=DiagnosticSignWarn linehl= numhl=DiagnosticLineNrWarn
+      sign define DiagnosticSignInfo text= texthl=DiagnosticSignInfo linehl= numhl=DiagnosticLineNrInfo
+      sign define DiagnosticSignHint text= texthl=DiagnosticSignHint linehl= numhl=DiagnosticLineNrHint
+    ]]
+
+    vim.diagnostic.config({
+      virtual_text = {
+        prefix = '', -- Could be '●', '▎', 'x'
+      }
+    })
 end
 
 -- Setup nvim-cmp.
 local cmp = require'cmp'
 
 cmp.setup({
+window = {
+    completion = {
+        border = { "┏", "━", "┓", "┃", "┛", "━", "┗", "┃", },
+        winhighlight = 'Normal:Normal,FloatBorder:green,CursorLine:Visual,Search:None', 
+        },
+    documentation = {
+        border = { "┏", "━", "┓", "┃", "┛", "━", "┗", "┃", },
+        winhighlight = 'Normal:Normal,FloatBorder:grey,CursorLine:Visual,Search:None', 
+        },
+    },
 snippet = {
   expand = function(args)
     vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
   end,
 },
 mapping = {
-  ['<C-d>'] = cmp.mapping.scroll_docs(4),
   ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+  ['<C-d>'] = cmp.mapping.scroll_docs(4),
+  ['<C-f>'] = cmp.mapping.scroll_docs(10),
+  ['<C-b>'] = cmp.mapping.scroll_docs(-10),
   ['<C-n>'] = cmp.mapping.select_next_item(),
   ['<C-p>'] = cmp.mapping.select_prev_item(),
   ['<C-Space>'] = cmp.mapping.complete(),
   ['<C-e>'] = cmp.mapping.close(),
   ['<C-j>'] = cmp.mapping.confirm({ select = true }),
-  ['<Tab>'] = cmp.mapping.confirm({ select = true }),
   ['<CR>'] = cmp.mapping.confirm({ select = true }),
 },
     sources = cmp.config.sources({
@@ -229,6 +339,15 @@ cmp.setup {
       mode = 'symbol_text', -- show only symbol annotations
       maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
 
+      menu = ({
+          buffer = "[Buffer]",
+          nvim_lsp = "[LSP]",
+          vsnip = "[VSnip]",
+          luasnip = "[LuaSnip]",
+          nvim_lua = "[Lua]",
+          latex_symbols = "[Latex]",
+      }),
+
       -- The function below will be called before any actual modifications from lspkind
       -- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
       before = function (entry, vim_item)
@@ -253,7 +372,7 @@ for _, lsp in pairs(servers) do
     flags = {
       -- This will be the default in neovim 0.7+
       debounce_text_changes = 150,
-    }
+    },
   }
 end
 
@@ -380,6 +499,8 @@ autocmd BufNewFile,BufRead *dunstrc set filetype=ini
 " Indent width for C (the Unix Way)
 autocmd FileType c setlocal shiftwidth=8 tabstop=8
 
+autocmd FileType go setlocal noexpandtab
+
 autocmd FileType scheme set shiftwidth=2 tabstop=2
 
 let g:netrw_browse_split = 0
@@ -411,6 +532,8 @@ nnoremap <C-j> :lua require("harpoon.ui").nav_file(2)<CR>
 nnoremap <C-k> :lua require("harpoon.ui").nav_file(3)<CR>
 nnoremap <C-l> :lua require("harpoon.ui").nav_file(4)<CR>
 
+nnoremap <C-c> :noh<CR>:<Esc>
+
 " Close buffer
 nnoremap <C-q> :bd<cr>
 
@@ -422,3 +545,92 @@ nnoremap <leader>P "+P
 vnoremap <leader>y "+y
 
 autocmd BufEnter * silent! lcd %:p:h
+
+" Debugger stuff
+
+lua <<EOF
+
+local ok, dap = pcall(require, "dap")
+if not ok then return end
+
+require('dap-python').setup('~/.virtualenvs/debugpy/bin/python')
+require('dap-go').setup()
+
+require("dapui").setup({
+  sidebar = {
+    -- You can change the order of elements in the sidebar
+    elements = {
+      -- Provide as ID strings or tables with "id" and "size" keys
+      { id = "stacks", size = 0.25 },
+      {
+        id = "scopes",
+        size = 0.30, -- Can be float or integer > 1
+      },
+      { id = "breakpoints", size = 0.20 },
+      { id = "watches", size = 00.25 },
+    },
+    size = 50,
+    position = "left", -- Can be "left", "right", "top", "bottom"
+  },
+    tray = {
+    elements = { "repl", "console" },
+    size = 12,
+    position = "bottom", -- Can be "left", "right", "top", "bottom"
+  },
+})
+require("nvim-dap-virtual-text").setup()
+
+vim.keymap.set("n", "<M-f>", ":lua require'dap'.continue()<CR>")
+vim.keymap.set("n", "<M-j>", ":lua require'dap'.step_over()<CR>")
+vim.keymap.set("n", "<M-k>", ":lua require'dap'.step_into()<CR>")
+vim.keymap.set("n", "<M-l>", ":lua require'dap'.step_out()<CR>")
+vim.keymap.set("n", "<M-v>", ":lua require'dap'.toggle_breakpoint()<CR>")
+vim.keymap.set("n", "<M-b>", ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>")
+vim.keymap.set("n", "<M-n>", ":lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>")
+vim.keymap.set("n", "<M-d>", ":lua require'dap'.repl.open()<CR>")
+
+vim.keymap.set("n", "<M-t>", ":lua require'dapui'.toggle()<CR>")
+vim.keymap.set("n", "<M-y>", ":lua require'dapui'.toggle('tray')<CR>")
+
+local dap, dapui = require("dap"), require("dapui")
+dap.listeners.after.event_initialized["dapui_config"] = function()
+  dapui.open()
+end
+dap.listeners.before.event_terminated["dapui_config"] = function()
+  dapui.close()
+end
+dap.listeners.before.event_exited["dapui_config"] = function()
+  dapui.close()
+end
+
+EOF
+
+command -nargs=* J    Git <args>
+
+command -nargs=* Ja   Git add <args>
+command -nargs=* Jaa  Git add . <args>
+command -nargs=* Jrm  Git rm <args>
+command -nargs=* Jm   Git commit <args>
+command -nargs=* Jma  Git commit --all <args>
+
+command -nargs=* Jps  Git push <args>
+command -nargs=* Jpl  Git pull <args>
+command -nargs=* Jf   Git fetch <args>
+
+command -nargs=* Jpsu Git push -u origin main <args>
+
+command -nargs=* Jr   Git remote <args>
+command -nargs=* Jrv  Git remote --verbose <args>
+command -nargs=* Jrao Git remote add origin <args>
+command -nargs=* Jrso Git remote set-url origin <args>
+
+command -nargs=* Js   Git status <args>
+command -nargs=* Jl   Git log <args>
+command -nargs=* Jd   Git diff <args>
+command -nargs=* Jds  Git diff --staged <args>
+command -nargs=* Jd1  Git diff diff HEAD~1 <args>
+command -nargs=* Jd2  Git diff diff HEAD~2 <args>
+command -nargs=* Jd3  Git diff diff HEAD~3 <args>
+
+command -nargs=* Jb   Git branch <args>
+command -nargs=* Jc  Git checkout <args>

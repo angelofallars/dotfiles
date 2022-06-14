@@ -22,32 +22,40 @@ bindkey -e
 
 # Color stuff
 alias ls='exa -x --icons --git --group-directories-first'
+alias l='ls'
 alias la='exa -a -x --icons --git --group-directories-first'
 alias ll='exa -l -x --icons --git --group-directories-first'
 alias lla='exa -l -a -x --icons --git --group-directories-first'
 alias cat='bat --theme gruvbox-dark'
 alias grep='grep --color=auto'
 
-alias python='ptpython'
-alias py='python'
+alias py='ptpython'
 
 # Enable substitution in the prompt.
 setopt prompt_subst
 
 # Convenient Git aliases
 alias ga="git add"
+alias gaa="git add ."
 alias grm="git rm"
 alias gm="git commit"
+alias gma="git commit --all"
+
+alias gma="git commit --all"
 
 alias gps="git push"
 alias gpl="git pull"
 alias gf="git fetch"
+
+alias gpsu="git push -u origin main"
 
 alias gin="git init"
 alias gcl="git clone"
 
 alias gr="git remote"
 alias grv="git remote --verbose"
+alias grao="git remote add origin"
+alias grso="git remote set-url origin"
 
 alias gs="git status"
 alias gl="git log"
@@ -57,10 +65,17 @@ alias gd1="git diff HEAD~1"
 alias gd2="git diff HEAD~2"
 alias gd3="git diff HEAD~3"
 
+alias grib1="git rebase -i HEAD~1"
+alias grib2="git rebase -i HEAD~2"
+alias grib3="git rebase -i HEAD~3"
+alias grib4="git rebase -i HEAD~4"
+alias grib5="git rebase -i HEAD~5"
+
 alias gb="git branch"
 alias gc="git checkout"
 
 alias vim="nvim"
+alias v="nvim"
 
 # Edit my config files
 edit () {
@@ -159,6 +174,8 @@ export PATH=/home/angelo_f/.local/bin:$PATH
 # Created by `pipx` on 2021-11-09 19:31:24
 export PATH="$PATH:/home/angelo-f/.local/bin"
 
+export PATH="$PATH:/home/angelo-f/go/bin"
+
 export EXA_COLORS="di=32"
 
 alias river="XKB_DEFAULT_OPTIONS=ctrl:nocaps river"
@@ -174,7 +191,9 @@ alias downloads="~/.config/waybar/scripts/downloads"
 # fi
 
 source /home/angelo-f/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+# source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+eval "$(starship init zsh)"
