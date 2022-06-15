@@ -98,7 +98,7 @@ require('telescope').load_extension('fzf')
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all"
   ensure_installed = { "c", "rust", "javascript", "typescript",
-    "css", "scss", "python", "bash", "lua",
+    "css", "scss", "python", "bash", "lua", "go", "vim",
     "cpp"},
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
