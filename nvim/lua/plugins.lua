@@ -141,6 +141,7 @@ local plugins = function(use)
 
   use {
     'mfussenegger/nvim-dap',
+    config = function() require('plugins.dap') end,
     requires = {
       'rcarriga/nvim-dap-ui',
       'theHamsta/nvim-dap-virtual-text',

@@ -1,5 +1,4 @@
 require('plugins')
 require('options')
 require('keymaps')
-require('debugger')
 require('themes')
