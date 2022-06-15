@@ -74,7 +74,10 @@ local plugins = function(use)
 
   use 'andweeb/presence.nvim'
 
-  use 'sainnhe/gruvbox-material'
+  use {
+    'sainnhe/gruvbox-material',
+    config = function() require('plugins.gruvbox_material') end,
+  }
   use 'kyazdani42/nvim-web-devicons'
   use {
     'nvim-lualine/lualine.nvim',
