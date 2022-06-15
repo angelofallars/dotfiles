@@ -4,11 +4,11 @@ cmp.setup({
   window = {
     completion = {
       border = { "┏", "━", "┓", "┃", "┛", "━", "┗", "┃", },
-      winhighlight = 'Normal:Normal,FloatBorder:green,CursorLine:Visual,Search:None', 
+      winhighlight = 'Normal:Normal,FloatBorder:green,CursorLine:Visual,Search:None',
     },
     documentation = {
       border = { "┌", "─", "┐", "│", "┘", "─", "└", "│", },
-      winhighlight = 'Normal:Normal,FloatBorder:white,CursorLine:Visual,Search:None', 
+      winhighlight = 'Normal:Normal,FloatBorder:white,CursorLine:Visual,Search:None',
     },
   },
   snippet = {
