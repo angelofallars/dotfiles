@@ -1,37 +1,6 @@
-vim.cmd([[
-command -nargs=* J    Git <args>
-
-command -nargs=* Ja   Git add <args>
-command -nargs=* Jaa  Git add . <args>
-command -nargs=* Jrm  Git rm <args>
-command -nargs=* Jm   Git commit <args>
-command -nargs=* Jma  Git commit --all <args>
-
-command -nargs=* Jps  Git push <args>
-command -nargs=* Jpl  Git pull <args>
-command -nargs=* Jf   Git fetch <args>
-
-command -nargs=* Jrs   Git restore args>
-command -nargs=* Jrss  Git restore --staged args>
-
-command -nargs=* Jpsu Git push -u origin main <args>
-
-command -nargs=* Jr   Git remote <args>
-command -nargs=* Jrv  Git remote --verbose <args>
-command -nargs=* Jrao Git remote add origin <args>
-command -nargs=* Jrso Git remote set-url origin <args>
-
-command -nargs=* Js   Git status <args>
-command -nargs=* Jl   Git log <args>
-command -nargs=* Jd   Git diff <args>
-command -nargs=* Jds  Git diff --staged <args>
-command -nargs=* Jd1  Git diff diff HEAD~1 <args>
-command -nargs=* Jd2  Git diff diff HEAD~2 <args>
-command -nargs=* Jd3  Git diff diff HEAD~3 <args>
-
-command -nargs=* Jb   Git branch <args>
-command -nargs=* Jc  Git checkout <args>
-]])
+local function create_command(name, command)
+  vim.api.nvim_create_user_command(name, command, {nargs = '*'})
+end
 
 local function map(mode, shortcut, command)
   vim.keymap.set(mode, shortcut, command)
@@ -106,3 +75,37 @@ vim.keymap.set('!', '<C-p>', '<Up>')    -- previous-line
 
 vim.keymap.set('!', '<C-d>', '<Delete>')  -- delete-char
 vim.keymap.set('!', '<C-h>', '<BS>')      -- backward-delete-char
+
+create_command("J",    "Git <args>")
+
+create_command("Ja",   "Git add <args>")
+create_command("Jaa",  "Git add . <args>")
+create_command("Jrm",  "Git rm <args>")
+create_command("Jm",   "Git commit <args>")
+create_command("Jma",  "Git commit --all <args>")
+
+create_command("Jps",  "Git push <args>")
+create_command("Jpl",  "Git pull <args>")
+create_command("Jf",   "Git fetch <args>")
+
+create_command("Jrs",   "Git restore args>")
+create_command("Jrss",  "Git restore --staged args>")
+
+create_command("Jpsu", "Git push -u origin main <args>")
+
+create_command("Jr",   "Git remote <args>")
+create_command("Jrv",  "Git remote --verbose <args>")
+create_command("Jrao", "Git remote add origin <args>")
+create_command("Jrso", "Git remote set-url origin <args>")
+
+create_command("Js",   "Git status <args>")
+create_command("Jl",   "Git log <args>")
+create_command("Jd",   "Git diff <args>")
+create_command("Jds",  "Git diff --staged <args>")
+create_command("Jd1",  "Git diff diff HEAD~1 <args>")
+create_command("Jd2",  "Git diff diff HEAD~2 <args>")
+create_command("Jd3",  "Git diff diff HEAD~3 <args>")
+
+create_command("Jb",   "Git branch <args>")
+create_command("Jc",  "Git checkout <args>")
+
