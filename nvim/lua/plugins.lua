@@ -87,6 +87,7 @@ local plugins = function(use)
 
   use {
     'nvim-treesitter/nvim-treesitter',
+    config = function() require('plugins.treesitter') end,
     run = ':TSUpdate'
   }
   use 'p00f/nvim-ts-rainbow'
