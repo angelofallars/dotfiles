@@ -57,12 +57,19 @@ local plugins = function(use)
     }
   }
 
-  use 'nvim-lua/plenary.nvim'
-  use 'nvim-telescope/telescope.nvim'
-  use 'ThePrimeagen/harpoon'
+  use {
+    'nvim-telescope/telescope.nvim',
+    requires = { 'nvim-lua/plenary.nvim' }
+  }
+
   use {
     'nvim-telescope/telescope-fzf-native.nvim',
     run = 'make'
+  }
+
+  use {
+    'ThePrimeagen/harpoon',
+    requires = { 'nvim-lua/plenary.nvim' }
   }
 
   use 'andweeb/presence.nvim'
@@ -113,9 +120,9 @@ local plugins = function(use)
   use {
     'nvim-treesitter/nvim-treesitter',
     config = function() require('plugins.treesitter') end,
-    run = ':TSUpdate'
+    run = ':TSUpdate',
+    requires = { 'p00f/nvim-ts-rainbow' }
   }
-  use 'p00f/nvim-ts-rainbow'
 
   use {
     'fatih/vim-go',
@@ -129,13 +136,18 @@ local plugins = function(use)
 
   use 'stevearc/dressing.nvim'
 
-  use 'mfussenegger/nvim-dap'
-  use 'mfussenegger/nvim-dap-python'
-  use 'leoluz/nvim-dap-go'
-  use 'rcarriga/nvim-dap-ui'
-  use 'theHamsta/nvim-dap-virtual-text'
-  use 'rcarriga/cmp-dap'
+  use {
+    'mfussenegger/nvim-dap',
+    requires = {
+      'rcarriga/nvim-dap-ui',
+      'theHamsta/nvim-dap-virtual-text',
 
+      'rcarriga/cmp-dap',
+
+      'mfussenegger/nvim-dap-python',
+      'leoluz/nvim-dap-go',
+    },
+  }
 end
 
 local config = {
