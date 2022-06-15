@@ -41,10 +41,10 @@ autocmd FileType lua          setlocal shiftwidth=2 tabstop=2
 
 autocmd FileType go           setlocal noexpandtab
 
-autocmd BufNewFile,BufRead *.njk          set filetype=html
-autocmd BufNewFile,BufRead *waybar/config set syntax=json
-autocmd BufNewFile,BufRead *.rasi         set syntax=css
-autocmd BufNewFile,BufRead *dunstrc       set filetype=ini
+autocmd BufNewFile,BufRead *.njk          setlocal filetype=html
+autocmd BufNewFile,BufRead *waybar/config setlocal syntax=json
+autocmd BufNewFile,BufRead *.rasi         setlocal syntax=css
+autocmd BufNewFile,BufRead *dunstrc       setlocal filetype=ini
 
 autocmd BufEnter *                        silent! lcd %:p:h
 
