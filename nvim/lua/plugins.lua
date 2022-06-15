@@ -37,18 +37,25 @@ local plugins = function(use)
     'neovim/nvim-lspconfig',
     config = function() require('plugins.lsp') end,
   }
+
   use {
     'hrsh7th/nvim-cmp',
     config = function() require('plugins.cmp') end,
+
+    requires = {
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-cmdline',
+
+      'onsails/lspkind-nvim',
+      'hrsh7th/cmp-nvim-lsp-signature-help',
+
+      'hrsh7th/cmp-vsnip',
+      'hrsh7th/vim-vsnip',
+      'rafamadriz/friendly-snippets',
+    }
   }
-  use 'hrsh7th/cmp-nvim-lsp'
-  use 'hrsh7th/cmp-buffer'
-  use 'hrsh7th/cmp-path'
-  use 'hrsh7th/cmp-cmdline'
-  use 'onsails/lspkind-nvim'
-  use 'hrsh7th/cmp-nvim-lsp-signature-help'
-  use 'hrsh7th/cmp-vsnip'
-  use 'hrsh7th/vim-vsnip'
 
   use 'nvim-lua/plenary.nvim'
   use 'nvim-telescope/telescope.nvim'
@@ -57,8 +64,6 @@ local plugins = function(use)
     'nvim-telescope/telescope-fzf-native.nvim',
     run = 'make'
   }
-
-  use 'rafamadriz/friendly-snippets'
 
   use 'andweeb/presence.nvim'
 
