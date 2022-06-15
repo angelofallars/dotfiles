@@ -71,6 +71,7 @@ vim.keymap.set('!', '<C-d>', '<Delete>')  -- delete-char
 vim.keymap.set('!', '<C-h>', '<BS>')      -- backward-delete-char
 
 nmap("<leader>J", '<cmd>Git<cr>')
+nmap("<leader>jj", '<cmd>Git<cr>')
 
 nmap("<leader>ja", '<cmd>Git add %<cr>')
 nmap("<leader>jm", '<cmd>Git commit<cr>')
