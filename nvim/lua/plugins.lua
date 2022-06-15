@@ -30,7 +30,7 @@ return require('packer').startup(function()
   use 'Yggdroot/indentLine'
 
   -- Show added, modified and removed lines
-  use 'airblade/vim-gitgutter'
+  use 'lewis6991/gitsigns.nvim'
 
   -- Show git branch and add :Git command
   use 'tpope/vim-fugitive'
