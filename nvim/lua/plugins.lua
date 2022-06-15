@@ -159,7 +159,10 @@ local plugins = function(use)
   }
 
   -- Display indent lines
-  use 'Yggdroot/indentLine'
+  use {
+    'lukas-reineke/indent-blankline.nvim',
+    config = function() require('plugins.indent_blankline') end,
+  }
 
   -- Flash cursorline on distanced jumps
   use 'rainbowhxch/beacon.nvim'
