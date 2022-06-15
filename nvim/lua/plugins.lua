@@ -22,6 +22,14 @@ packer.init({
 	},
 })
 
+-- Auto-compile the packer config on every save
+vim.cmd([[
+augroup packer_user_config
+  autocmd!
+  autocmd BufWritePost plugins.lua source <afile> | PackerCompile
+augroup end
+]])
+
 local plugins = function(use)
 
   -- LSP IDE features
@@ -55,7 +63,10 @@ local plugins = function(use)
   use 'Yggdroot/indentLine'
 
   -- Show added, modified and removed lines
-  use 'lewis6991/gitsigns.nvim'
+  use {
+    'lewis6991/gitsigns.nvim',
+    config = function() require('plugins.gitsigns') end,
+  }
 
   -- Show git branch and add :Git command
   use 'tpope/vim-fugitive'
