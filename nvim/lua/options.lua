@@ -68,6 +68,9 @@ vim.opt.wrap=true
 vim.opt.ignorecase=true
 vim.opt.smartcase=true
 
+vim.opt.undofile = true
+vim.opt.completeopt = 'menuone,noselect'
+
 -- Blinking cursor
 vim.opt.guicursor = vim.opt.guicursor + "n-v-c-i:blinkon5"
 
