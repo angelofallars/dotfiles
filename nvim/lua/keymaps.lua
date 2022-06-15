@@ -80,6 +80,12 @@ vim.keymap.set('!', '<C-p>', '<Up>')    -- previous-line
 vim.keymap.set('!', '<C-d>', '<Delete>')  -- delete-char
 vim.keymap.set('!', '<C-h>', '<BS>')      -- backward-delete-char
 
+nmap("<leader>ja", '<cmd>Git add %<cr>')
+nmap("<leader>jm", '<cmd>Git commit<cr>')
+nmap("<leader>js", '<cmd>Git status<cr>')
+nmap("<leader>jl", '<cmd>Git log<cr>')
+nmap("<leader>jd", '<cmd>Git diff %<cr>')
+
 create_command("J",    "Git <args>")
 
 create_command("Ja",   "Git add <args>")
