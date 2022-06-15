@@ -45,7 +45,7 @@ autocmd FileType c setlocal shiftwidth=8 tabstop=8
 
 autocmd FileType go setlocal noexpandtab
 
-autocmd FileType scheme set shiftwidth=2 tabstop=2
+autocmd FileType scheme setlocal shiftwidth=2 tabstop=2
 
 autocmd BufEnter * silent! lcd %:p:h
 
