@@ -43,6 +43,9 @@ alias gma="git commit --all"
 
 alias gma="git commit --all"
 
+alias grs="git restore"
+alias grss="git restore --staged"
+
 alias gps="git push"
 alias gpl="git pull"
 alias gf="git fetch"
