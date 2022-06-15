@@ -33,7 +33,6 @@ augroup end
 local plugins = function(use)
   use 'wbthomason/packer.nvim'
 
-  -- LSP IDE features
   use {
     'neovim/nvim-lspconfig',
     config = function() require('plugins.lsp') end,
@@ -59,6 +58,27 @@ local plugins = function(use)
   }
 
   use {
+    'mfussenegger/nvim-dap',
+    config = function() require('plugins.dap') end,
+    requires = {
+      'rcarriga/nvim-dap-ui',
+      'theHamsta/nvim-dap-virtual-text',
+
+      'rcarriga/cmp-dap',
+
+      'mfussenegger/nvim-dap-python',
+      'leoluz/nvim-dap-go',
+    },
+  }
+
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    config = function() require('plugins.treesitter') end,
+    run = ':TSUpdate',
+    requires = { 'p00f/nvim-ts-rainbow' }
+  }
+
+  use {
     'nvim-telescope/telescope.nvim',
     requires = { 'nvim-lua/plenary.nvim' }
   }
@@ -73,6 +93,49 @@ local plugins = function(use)
     requires = { 'nvim-lua/plenary.nvim' }
   }
 
+  use {
+    'lewis6991/gitsigns.nvim',
+    config = function() require('plugins.gitsigns') end,
+  }
+
+  use 'tpope/vim-fugitive'
+
+  use 'tpope/vim-surround'
+
+  use 'tpope/vim-commentary'
+
+  use 'jiangmiao/auto-pairs'
+
+  use 'linty-org/readline.nvim'
+
+  -- Write distraction-free in Vim
+  use 'junegunn/goyo.vim'
+
+  use 'rust-lang/rust.vim'
+
+  use {
+    'fatih/vim-go',
+    run = ':GoUpdateBinaries'
+  }
+
+  use {
+    'alvan/vim-closetag',
+    ft = 'html'
+  }
+
+  -- emmet for vim: https://emmet.io
+  use 'mattn/emmet-vim'
+
+  use {
+    'prettier/vim-prettier',
+    cmd = 'yarn install --frozen-lockfile --production',
+    ft = {
+      'javascript', 'typescript', 'css', 'less', 'scss', 'json',
+      'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'
+    }
+  }
+
+  -- Show projects and files in Discord status
   use {
     'andweeb/presence.nvim',
     config = function() require('plugins.presence') end,
@@ -89,74 +152,20 @@ local plugins = function(use)
     requires = { 'kyazdani42/nvim-web-devicons' }
   }
 
-  use 'Yggdroot/indentLine'
-
-  -- Show added, modified and removed lines
-  use {
-    'lewis6991/gitsigns.nvim',
-    config = function() require('plugins.gitsigns') end,
-  }
-
-  -- Show git branch and add :Git command
-  use 'tpope/vim-fugitive'
-
-  use 'tpope/vim-surround'
-  use 'tpope/vim-commentary'
-
-  -- Autopairs
-  use 'jiangmiao/auto-pairs'
-
-  -- HTML close tag
-  use {
-    'alvan/vim-closetag',
-    ft = 'html'
-  }
-  -- CSS coloring
+  -- Show colors for color names and hex codes
   use {
     'RRethy/vim-hexokinase',
     run = 'make hexokinase'
   }
-  use 'mattn/emmet-vim'
-  use {
-    'prettier/vim-prettier',
-    cmd = 'yarn install --frozen-lockfile --production',
-    ft = {'javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'}
-  }
 
-  use 'junegunn/goyo.vim'
+  -- Display indent lines
+  use 'Yggdroot/indentLine'
 
-  use {
-    'nvim-treesitter/nvim-treesitter',
-    config = function() require('plugins.treesitter') end,
-    run = ':TSUpdate',
-    requires = { 'p00f/nvim-ts-rainbow' }
-  }
-
-  use {
-    'fatih/vim-go',
-    run = ':GoUpdateBinaries'
-  }
-  use 'rust-lang/rust.vim'
-
-  use 'linty-org/readline.nvim'
-
+  -- Flash cursorline on distanced jumps
   use 'rainbowhxch/beacon.nvim'
 
+  -- Improve default Vim UI interfaces
   use 'stevearc/dressing.nvim'
-
-  use {
-    'mfussenegger/nvim-dap',
-    config = function() require('plugins.dap') end,
-    requires = {
-      'rcarriga/nvim-dap-ui',
-      'theHamsta/nvim-dap-virtual-text',
-
-      'rcarriga/cmp-dap',
-
-      'mfussenegger/nvim-dap-python',
-      'leoluz/nvim-dap-go',
-    },
-  }
 end
 
 local config = {
