@@ -51,45 +51,52 @@ autocmd BufEnter * silent! lcd %:p:h
 
 ]])
 
-vim.opt.autochdir=true
-vim.opt.expandtab=true
-vim.opt.tabstop=4
-vim.opt.softtabstop=4
-vim.opt.shiftwidth=4
-vim.opt.swapfile=false
-vim.opt.textwidth=0
-vim.opt.ai=true
-vim.opt.colorcolumn="0"
-vim.opt.wrap=true
+vim.opt.autochdir         = true
 
-vim.opt.ignorecase=true
-vim.opt.smartcase=true
+vim.opt.expandtab         = true
+vim.opt.tabstop           = 4
+vim.opt.softtabstop       = 4
+vim.opt.shiftwidth        = 4
 
-vim.opt.undofile = true
-vim.opt.completeopt = 'menuone,noselect'
+vim.opt.smartindent       = true
+vim.opt.autoindent        = true
+vim.opt.cindent           = true
+
+vim.opt.wrap              = true
+vim.opt.textwidth         = 0
+vim.opt.colorcolumn       = "0"
+
+vim.opt.number            = true
+vim.opt.relativenumber    = true
+
+vim.opt.ignorecase        = true
+vim.opt.smartcase         = true
+
+vim.opt.swapfile          = false
+vim.opt.undofile          = true
 
 -- Blinking cursor
-vim.opt.guicursor = vim.opt.guicursor + "n-v-c-i:blinkon5"
+vim.opt.guicursor         = vim.opt.guicursor + "n-v-c-i:blinkon5"
 
-vim.opt.compatible=false
-vim.cmd([[filetype plugin on]])
+vim.opt.updatetime        = 250
+vim.opt.completeopt       = 'menuone,noselect'
+vim.opt.showmode          = false
+vim.opt.compatible        = false
 
-vim.cmd([[syntax enable]])
-vim.opt.smartindent=true
-vim.opt.autoindent=true
-vim.opt.cindent=true
-vim.opt.number=true
-vim.opt.relativenumber=true
-vim.opt.updatetime=250
+vim.g.rustfmt_autosave    = 1
+
+vim.g.netrw_browse_split  = 0
+vim.g.netrw_banner        = 0
+vim.g.netrw_winsize       = 25
+
+vim.g.goyo_width          = 150
 
 vim.g.AutoPairsShortcutBackInsert = ''
-vim.g.rustfmt_autosave = 1
 
-vim.g.netrw_browse_split = 0
-vim.g.netrw_banner = 0
-vim.g.netrw_winsize = 25
+vim.g.Hexokinase_highlighters = {'backgroundfull'}
 
-vim.g.goyo_width = 150
+vim.cmd([[filetype plugin on]])
+vim.cmd([[syntax enable]])
 
 require('telescope').load_extension('fzf')
 
@@ -98,7 +105,3 @@ if has('termguicolors')
   set termguicolors
 endif
 ]])
-
-vim.opt.showmode=false
-
-vim.g.Hexokinase_highlighters = {'backgroundfull'}
