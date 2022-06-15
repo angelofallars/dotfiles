@@ -20,7 +20,7 @@ require("dapui").setup({
     size = 50,
     position = "left", -- Can be "left", "right", "top", "bottom"
   },
-    tray = {
+  tray = {
     elements = { "repl", "console" },
     size = 12,
     position = "bottom", -- Can be "left", "right", "top", "bottom"
