@@ -1,5 +1,4 @@
-local ok, dap = pcall(require, "dap")
-if not ok then return end
+local dap, dapui = require("dap"), require("dapui")
 
 require('dap-python').setup('~/.virtualenvs/debugpy/bin/python')
 require('dap-go').setup()
@@ -40,7 +39,6 @@ vim.keymap.set("n", "<M-d>", ":lua require'dap'.repl.open()<CR>")
 vim.keymap.set("n", "<M-t>", ":lua require'dapui'.toggle()<CR>")
 vim.keymap.set("n", "<M-y>", ":lua require'dapui'.toggle('tray')<CR>")
 
-local dap, dapui = require("dap"), require("dapui")
 dap.listeners.after.event_initialized["dapui_config"] = function()
   dapui.open()
 end
