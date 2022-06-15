@@ -66,6 +66,7 @@ autocmd FileType jsx setlocal shiftwidth=2 tabstop=2
 autocmd FileType tsx setlocal shiftwidth=2 tabstop=2
 autocmd FileType vue setlocal shiftwidth=2 tabstop=2
 autocmd FileType angular setlocal shiftwidth=2 tabstop=2
+autocmd FileType lua setlocal shiftwidth=2 tabstop=2
 
 autocmd BufNewFile,BufRead *.njk set filetype=html
 autocmd BufNewFile,BufRead *waybar/config set syntax=json
