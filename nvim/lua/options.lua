@@ -41,6 +41,8 @@ autocmd FileType lua          setlocal shiftwidth=2 tabstop=2
 
 autocmd FileType go           setlocal noexpandtab
 
+autocmd FileType python       setlocal textwidth=80
+
 autocmd BufNewFile,BufRead *.njk          setlocal filetype=html
 autocmd BufNewFile,BufRead *waybar/config setlocal syntax=json
 autocmd BufNewFile,BufRead *.rasi         setlocal syntax=css
