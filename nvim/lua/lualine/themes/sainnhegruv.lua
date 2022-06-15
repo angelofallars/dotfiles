@@ -5,131 +5,31 @@
 -- Email: sainnhe@gmail.com
 -- License: MIT License
 -- =============================================================================
+--
+local colors = {
+  fg1    = '#282828',
+  color2 = '#504945',
+  fg2    = '#ddc7a1',
+  color3 = '#32302f',
+  color4 = '#a89984',
+  color5 = '#7daea3',
+  color6 = '#a9b665',
+  color7 = '#d8a657',
+  color8 = '#d3869b',
+  color9 = '#ea6962',
+}
 
-local background = vim.opt.background:get()
-local configuration = vim.fn['gruvbox_material#get_configuration']()
-local palette = vim.fn['gruvbox_material#get_palette'](background, configuration.palette)
+return {
+  normal = {
+    a = { fg = colors.fg1, bg = colors.color4, gui = 'bold' },
+    b = { fg = colors.fg2, bg = colors.color2 },
+    c = { fg = colors.fg2, bg = colors.color3 },
+  },
+  command = { a = { fg = colors.fg1, bg = colors.color5, gui = 'bold' } },
+  inactive = { a = { fg = colors.fg2, bg = colors.color2 } },
+  insert = { a = { fg = colors.fg1, bg = colors.color6, gui = 'bold' } },
+  replace = { a = { fg = colors.fg1, bg = colors.color7, gui = 'bold' } },
+  terminal = { a = { fg = colors.fg1, bg = colors.color8, gui = 'bold' } },
+  visual = { a = { fg = colors.fg1, bg = colors.color9, gui = 'bold' } },
+}
 
-if configuration.transparent_background == 1 then
-  palette.bg_statusline1 = palette.none
-  palette.bg_statusline2 = palette.none
-end
-
-local theme
-if configuration.statusline_style == 'default' then
-  theme = {
-    normal = {
-      a = {bg = palette.grey2[1], fg = palette.bg0[1], gui = 'bold'},
-      b = {bg = palette.bg_statusline3[1], fg = palette.fg1[1]},
-      c = {bg = palette.bg_statusline1[1], fg = palette.fg1[1]}
-    },
-    insert = {
-      a = {bg = palette.bg_green[1], fg = palette.bg0[1], gui = 'bold'},
-      b = {bg = palette.bg_statusline3[1], fg = palette.fg1[1]},
-      c = {bg = palette.bg_statusline1[1], fg = palette.fg1[1]}
-    },
-    visual = {
-      a = {bg = palette.bg_red[1], fg = palette.bg0[1], gui = 'bold'},
-      b = {bg = palette.bg_statusline3[1], fg = palette.fg1[1]},
-      c = {bg = palette.bg_statusline1[1], fg = palette.fg1[1]}
-    },
-    replace = {
-      a = {bg = palette.bg_yellow[1], fg = palette.bg0[1], gui = 'bold'},
-      b = {bg = palette.bg_statusline3[1], fg = palette.fg1[1]},
-      c = {bg = palette.bg_statusline1[1], fg = palette.fg1[1]}
-    },
-    command = {
-      a = {bg = palette.blue[1], fg = palette.bg0[1], gui = 'bold'},
-      b = {bg = palette.bg_statusline3[1], fg = palette.fg1[1]},
-      c = {bg = palette.bg_statusline1[1], fg = palette.fg1[1]}
-    },
-    terminal = {
-      a = {bg = palette.purple[1], fg = palette.bg0[1], gui = 'bold'},
-      b = {bg = palette.bg_statusline3[1], fg = palette.fg1[1]},
-      c = {bg = palette.bg_statusline1[1], fg = palette.fg1[1]}
-    },
-    inactive = {
-      a = {bg = palette.bg_statusline1[1], fg = palette.grey2[1]},
-      b = {bg = palette.bg_statusline1[1], fg = palette.grey2[1]},
-      c = {bg = palette.bg_statusline1[1], fg = palette.grey2[1]}
-    }
-  }
-elseif configuration.statusline_style == 'mix' then
-  theme = {
-    normal = {
-      a = {bg = palette.grey2[1], fg = palette.bg0[1], gui = 'bold'},
-      b = {bg = palette.bg_statusline3[1], fg = palette.grey2[1]},
-      c = {bg = palette.bg_statusline2[1], fg = palette.grey2[1]}
-    },
-    insert = {
-      a = {bg = palette.bg_green[1], fg = palette.bg0[1], gui = 'bold'},
-      b = {bg = palette.bg_statusline3[1], fg = palette.fg1[1]},
-      c = {bg = palette.bg_statusline2[1], fg = palette.fg1[1]}
-    },
-    visual = {
-      a = {bg = palette.bg_red[1], fg = palette.bg0[1], gui = 'bold'},
-      b = {bg = palette.bg_statusline3[1], fg = palette.fg1[1]},
-      c = {bg = palette.bg_statusline2[1], fg = palette.fg1[1]}
-    },
-    replace = {
-      a = {bg = palette.bg_yellow[1], fg = palette.bg0[1], gui = 'bold'},
-      b = {bg = palette.bg_statusline3[1], fg = palette.fg1[1]},
-      c = {bg = palette.bg_statusline2[1], fg = palette.fg1[1]}
-    },
-    command = {
-      a = {bg = palette.blue[1], fg = palette.bg0[1], gui = 'bold'},
-      b = {bg = palette.bg_statusline3[1], fg = palette.fg1[1]},
-      c = {bg = palette.bg_statusline2[1], fg = palette.fg1[1]}
-    },
-    terminal = {
-      a = {bg = palette.purple[1], fg = palette.bg0[1], gui = 'bold'},
-      b = {bg = palette.bg_statusline3[1], fg = palette.fg1[1]},
-      c = {bg = palette.bg_statusline2[1], fg = palette.fg1[1]}
-    },
-    inactive = {
-      a = {bg = palette.bg_statusline2[1], fg = palette.grey2[1]},
-      b = {bg = palette.bg_statusline2[1], fg = palette.grey2[1]},
-      c = {bg = palette.bg_statusline2[1], fg = palette.grey2[1]}
-    }
-  }
-else
-  theme = {
-    normal = {
-      a = {bg = palette.grey2[1], fg = palette.bg0[1], gui = 'bold'},
-      b = {bg = palette.bg_statusline3[1], fg = palette.grey2[1]},
-      c = {bg = palette.bg_statusline2[1], fg = palette.grey2[1]}
-    },
-    insert = {
-      a = {bg = palette.blue[1], fg = palette.bg0[1], gui = 'bold'},
-      b = {bg = palette.bg_statusline3[1], fg = palette.fg1[1]},
-      c = {bg = palette.bg_statusline3[1], fg = palette.fg1[1]}
-    },
-    visual = {
-      a = {bg = palette.orange[1], fg = palette.bg0[1], gui = 'bold'},
-      b = {bg = palette.bg_statusline3[1], fg = palette.fg1[1]},
-      c = {bg = palette.grey0[1], fg = palette.bg0[1]}
-    },
-    replace = {
-      a = {bg = palette.aqua[1], fg = palette.bg0[1], gui = 'bold'},
-      b = {bg = palette.bg_statusline3[1], fg = palette.fg1[1]},
-      c = {bg = palette.bg_statusline3[1], fg = palette.fg1[1]}
-    },
-    command = {
-      a = {bg = palette.green[1], fg = palette.bg0[1], gui = 'bold'},
-      b = {bg = palette.bg_statusline3[1], fg = palette.fg1[1]},
-      c = {bg = palette.bg_statusline3[1], fg = palette.fg1[1]}
-    },
-    terminal = {
-      a = {bg = palette.purple[1], fg = palette.bg0[1], gui = 'bold'},
-      b = {bg = palette.bg_statusline3[1], fg = palette.fg1[1]},
-      c = {bg = palette.bg_statusline3[1], fg = palette.fg1[1]}
-    },
-    inactive = {
-      a = {bg = palette.bg_statusline2[1], fg = palette.grey2[1]},
-      b = {bg = palette.bg_statusline2[1], fg = palette.grey2[1]},
-      c = {bg = palette.bg_statusline2[1], fg = palette.grey2[1]}
-    }
-  }
-end
-
-return theme
