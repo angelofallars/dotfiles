@@ -44,9 +44,6 @@ nmap("<C-c>", ":noh<CR>:<Esc>")
 
 nmap("<C-w>u", "<C-w>q")
 
--- Close buffer
-nmap("<C-q>", ":bd<cr>")
-
 -- System clipboard Mappings
 nmap("<leader>y", '"+y')
 nmap("<leader>Y", '"+yg_')
