@@ -33,7 +33,10 @@ augroup end
 local plugins = function(use)
 
   -- LSP IDE features
-  use 'neovim/nvim-lspconfig'
+  use {
+    'neovim/nvim-lspconfig',
+    config = function() require('plugins.lsp') end,
+  }
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/cmp-path'
