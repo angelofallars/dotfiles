@@ -60,7 +60,6 @@ vim.opt.swapfile=false
 vim.opt.textwidth=0
 vim.opt.ai=true
 vim.opt.colorcolumn="0"
-vim.opt.updatetime=500
 vim.opt.wrap=true
 
 vim.opt.ignorecase=true
