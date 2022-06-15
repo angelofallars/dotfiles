@@ -39,7 +39,10 @@ local plugins = function(use)
   use 'nvim-lua/plenary.nvim'
   use 'nvim-telescope/telescope.nvim'
   use 'ThePrimeagen/harpoon'
-  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+  use {
+    'nvim-telescope/telescope-fzf-native.nvim',
+    run = 'make'
+  }
 
   use 'rafamadriz/friendly-snippets'
 
@@ -64,20 +67,34 @@ local plugins = function(use)
   use 'jiangmiao/auto-pairs'
 
   -- HTML close tag
-  use {'alvan/vim-closetag',  ft = 'html' }
+  use {
+    'alvan/vim-closetag',
+    ft = 'html'
+  }
   -- CSS coloring
-  use { 'RRethy/vim-hexokinase', run = 'make hexokinase' }
+  use {
+    'RRethy/vim-hexokinase',
+    run = 'make hexokinase'
+  }
   use 'mattn/emmet-vim'
-  use { 'prettier/vim-prettier',
+  use {
+    'prettier/vim-prettier',
     cmd = 'yarn install --frozen-lockfile --production',
-    ft = {'javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'} }
+    ft = {'javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'}
+  }
 
   use 'junegunn/goyo.vim'
 
-  use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate'
+  }
   use 'p00f/nvim-ts-rainbow'
 
-  use {'fatih/vim-go',  run = ':GoUpdateBinaries' }
+  use {
+    'fatih/vim-go',
+    run = ':GoUpdateBinaries'
+  }
   use 'rust-lang/rust.vim'
 
   use 'linty-org/readline.nvim'
