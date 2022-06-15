@@ -21,10 +21,6 @@ vim.opt.cursorline=true
 
 vim.cmd([[highlight clear CursorLine]])
 
-vim.g.presence_blacklist = {".config", "sofsafe"}
-
-vim.g.goyo_width = 150
-
 vim.g.Hexokinase_highlighters = {'backgroundfull'}
 
 require('lualine').setup {

@@ -88,6 +88,10 @@ autocmd BufEnter * silent! lcd %:p:h
 
 ]])
 
+vim.g.presence_blacklist = {".config", "sofsafe"}
+
+vim.g.goyo_width = 150
+
 require('telescope').load_extension('fzf')
 
 require'nvim-treesitter.configs'.setup {
