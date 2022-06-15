@@ -1,6 +1,10 @@
 vim.cmd([[
-autocmd FileType scheme       setlocal shiftwidth=2 tabstop=2
 autocmd FileType c            setlocal shiftwidth=8 tabstop=8
+autocmd FileType scheme       setlocal shiftwidth=2 tabstop=2
+
+autocmd FileType lua          setlocal shiftwidth=2 tabstop=2
+autocmd FileType go           setlocal noexpandtab
+autocmd FileType python       setlocal textwidth=80
 
 autocmd FileType html         setlocal shiftwidth=2 tabstop=2 textwidth=120
 autocmd FileType css          setlocal shiftwidth=2 tabstop=2
@@ -15,11 +19,6 @@ autocmd FileType jsx          setlocal shiftwidth=2 tabstop=2
 autocmd FileType tsx          setlocal shiftwidth=2 tabstop=2
 autocmd FileType vue          setlocal shiftwidth=2 tabstop=2
 autocmd FileType angular      setlocal shiftwidth=2 tabstop=2
-autocmd FileType lua          setlocal shiftwidth=2 tabstop=2
-
-autocmd FileType go           setlocal noexpandtab
-
-autocmd FileType python       setlocal textwidth=80
 
 autocmd BufNewFile,BufRead *.njk          setlocal filetype=html
 autocmd BufNewFile,BufRead *waybar/config setlocal syntax=json
@@ -27,7 +26,6 @@ autocmd BufNewFile,BufRead *.rasi         setlocal syntax=css
 autocmd BufNewFile,BufRead *dunstrc       setlocal filetype=ini
 
 autocmd BufEnter *                        silent! lcd %:p:h
-
 ]])
 
 vim.opt.autochdir         = true
