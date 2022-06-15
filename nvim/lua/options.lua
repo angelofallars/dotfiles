@@ -21,33 +21,32 @@ let g:user_emmet_settings = {
 \  },
 \}
 
-autocmd FileType html setlocal shiftwidth=2 tabstop=2 textwidth=120
-autocmd FileType css setlocal shiftwidth=2 tabstop=2
-autocmd FileType sass setlocal shiftwidth=2 tabstop=2
-autocmd FileType scss setlocal shiftwidth=2 tabstop=2
-autocmd FileType less setlocal shiftwidth=2 tabstop=2
-autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
-autocmd FileType typescript setlocal shiftwidth=2 tabstop=2
-autocmd FileType json setlocal shiftwidth=2 tabstop=2
-autocmd FileType markdown setlocal shiftwidth=2 tabstop=2
-autocmd FileType jsx setlocal shiftwidth=2 tabstop=2
-autocmd FileType tsx setlocal shiftwidth=2 tabstop=2
-autocmd FileType vue setlocal shiftwidth=2 tabstop=2
-autocmd FileType angular setlocal shiftwidth=2 tabstop=2
-autocmd FileType lua setlocal shiftwidth=2 tabstop=2
+autocmd FileType scheme       setlocal shiftwidth=2 tabstop=2
+autocmd FileType c            setlocal shiftwidth=8 tabstop=8
 
-autocmd BufNewFile,BufRead *.njk set filetype=html
+autocmd FileType html         setlocal shiftwidth=2 tabstop=2 textwidth=120
+autocmd FileType css          setlocal shiftwidth=2 tabstop=2
+autocmd FileType sass         setlocal shiftwidth=2 tabstop=2
+autocmd FileType scss         setlocal shiftwidth=2 tabstop=2
+autocmd FileType less         setlocal shiftwidth=2 tabstop=2
+autocmd FileType javascript   setlocal shiftwidth=2 tabstop=2
+autocmd FileType typescript   setlocal shiftwidth=2 tabstop=2
+autocmd FileType json         setlocal shiftwidth=2 tabstop=2
+autocmd FileType markdown     setlocal shiftwidth=2 tabstop=2
+autocmd FileType jsx          setlocal shiftwidth=2 tabstop=2
+autocmd FileType tsx          setlocal shiftwidth=2 tabstop=2
+autocmd FileType vue          setlocal shiftwidth=2 tabstop=2
+autocmd FileType angular      setlocal shiftwidth=2 tabstop=2
+autocmd FileType lua          setlocal shiftwidth=2 tabstop=2
+
+autocmd FileType go           setlocal noexpandtab
+
+autocmd BufNewFile,BufRead *.njk          set filetype=html
 autocmd BufNewFile,BufRead *waybar/config set syntax=json
-autocmd BufNewFile,BufRead *.rasi set syntax=css
-autocmd BufNewFile,BufRead *dunstrc set filetype=ini
+autocmd BufNewFile,BufRead *.rasi         set syntax=css
+autocmd BufNewFile,BufRead *dunstrc       set filetype=ini
 
-autocmd FileType c setlocal shiftwidth=8 tabstop=8
-
-autocmd FileType go setlocal noexpandtab
-
-autocmd FileType scheme setlocal shiftwidth=2 tabstop=2
-
-autocmd BufEnter * silent! lcd %:p:h
+autocmd BufEnter *                        silent! lcd %:p:h
 
 ]])
 
