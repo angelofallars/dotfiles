@@ -84,6 +84,7 @@ create_command("J",    "Git <args>")
 
 create_command("Ja",   "Git add <args>")
 create_command("Jaa",  "Git add . <args>")
+create_command("Jab",  "Git add % <args>")
 create_command("Jrm",  "Git rm <args>")
 create_command("Jm",   "Git commit <args>")
 create_command("Jma",  "Git commit --all <args>")
