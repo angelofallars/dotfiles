@@ -2,14 +2,14 @@ vim.cmd [[autocmd! ColorScheme * highlight NormalFloat guibg=#1f2335]]
 vim.cmd [[autocmd! ColorScheme * highlight FloatBorder guifg=white guibg=#1f2335]]
 
 local border = {
-      {"┏", "FloatBorder"},
-      {"━", "FloatBorder"},
-      {"┓", "FloatBorder"},
-      {"┃", "FloatBorder"},
-      {"┛", "FloatBorder"},
-      {"━", "FloatBorder"},
-      {"┗", "FloatBorder"},
-      {"┃", "FloatBorder"},
+  {"┏", "FloatBorder"},
+  {"━", "FloatBorder"},
+  {"┓", "FloatBorder"},
+  {"┃", "FloatBorder"},
+  {"┛", "FloatBorder"},
+  {"━", "FloatBorder"},
+  {"┗", "FloatBorder"},
+  {"┃", "FloatBorder"},
 }
 
 local handlers =  {
@@ -55,21 +55,21 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>m', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 
   vim.api.nvim_create_autocmd("CursorHold", {
-  buffer = bufnr,
-  callback = function()
-    local opts = {
-      focusable = false,
-      close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-      border = border,
-      source = 'always',
-      prefix = ' ',
-      scope = 'cursor',
-    }
-    vim.diagnostic.open_float(nil, opts)
-  end
-    })
+    buffer = bufnr,
+    callback = function()
+      local opts = {
+        focusable = false,
+        close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+        border = border,
+        source = 'always',
+        prefix = ' ',
+        scope = 'cursor',
+      }
+      vim.diagnostic.open_float(nil, opts)
+    end
+  })
 
-    vim.cmd [[
+  vim.cmd [[
       highlight! DiagnosticLineNrError guifg=#ea6962 gui=bold
       highlight! DiagnosticLineNrWarn  guifg=#d8a657 gui=bold
       highlight! DiagnosticLineNrInfo  guifg=#89b482 gui=bold
@@ -79,53 +79,53 @@ local on_attach = function(client, bufnr)
       sign define DiagnosticSignWarn text= texthl=DiagnosticSignWarn linehl= numhl=DiagnosticLineNrWarn
       sign define DiagnosticSignInfo text= texthl=DiagnosticSignInfo linehl= numhl=DiagnosticLineNrInfo
       sign define DiagnosticSignHint text= texthl=DiagnosticSignHint linehl= numhl=DiagnosticLineNrHint
-    ]]
+      ]]
 
-    vim.diagnostic.config({
-      virtual_text = {
-        prefix = '', -- Could be '●', '▎', 'x'
-      }
-    })
+  vim.diagnostic.config({
+    virtual_text = {
+      prefix = '', -- Could be '●', '▎', 'x'
+    }
+  })
 end
 
 -- Setup nvim-cmp.
 local cmp = require'cmp'
 
 cmp.setup({
-window = {
+  window = {
     completion = {
-        border = { "┏", "━", "┓", "┃", "┛", "━", "┗", "┃", },
-        winhighlight = 'Normal:Normal,FloatBorder:green,CursorLine:Visual,Search:None', 
-        },
-    documentation = {
-        border = { "┌", "─", "┐", "│", "┘", "─", "└", "│", },
-        winhighlight = 'Normal:Normal,FloatBorder:white,CursorLine:Visual,Search:None', 
-        },
+      border = { "┏", "━", "┓", "┃", "┛", "━", "┗", "┃", },
+      winhighlight = 'Normal:Normal,FloatBorder:green,CursorLine:Visual,Search:None', 
     },
-snippet = {
-  expand = function(args)
-    vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-  end,
-},
-mapping = {
-  ['<C-u>'] = cmp.mapping.scroll_docs(-4),
-  ['<C-d>'] = cmp.mapping.scroll_docs(4),
-  ['<C-f>'] = cmp.mapping.scroll_docs(10),
-  ['<C-b>'] = cmp.mapping.scroll_docs(-10),
-  ['<C-n>'] = cmp.mapping.select_next_item(),
-  ['<C-p>'] = cmp.mapping.select_prev_item(),
-  ['<C-Space>'] = cmp.mapping.complete(),
-  ['<C-e>'] = cmp.mapping.close(),
-  ['<C-j>'] = cmp.mapping.confirm({ select = true }),
-  ['<CR>'] = cmp.mapping.confirm({ select = true }),
-},
-    sources = cmp.config.sources({
-      { name = 'nvim_lsp' },
-      { name = 'vsnip' }, -- For vsnip users.
-      -- { name = 'luasnip' }, -- For luasnip users.
-      -- { name = 'ultisnips' }, -- For ultisnips users.
-      -- { name = 'snippy' }, -- For snippy users.
-    }, {
+    documentation = {
+      border = { "┌", "─", "┐", "│", "┘", "─", "└", "│", },
+      winhighlight = 'Normal:Normal,FloatBorder:white,CursorLine:Visual,Search:None', 
+    },
+  },
+  snippet = {
+    expand = function(args)
+      vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+    end,
+  },
+  mapping = {
+    ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-d>'] = cmp.mapping.scroll_docs(4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(10),
+    ['<C-b>'] = cmp.mapping.scroll_docs(-10),
+    ['<C-n>'] = cmp.mapping.select_next_item(),
+    ['<C-p>'] = cmp.mapping.select_prev_item(),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-e>'] = cmp.mapping.close(),
+    ['<C-j>'] = cmp.mapping.confirm({ select = true }),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+  },
+  sources = cmp.config.sources({
+    { name = 'nvim_lsp' },
+    { name = 'vsnip' }, -- For vsnip users.
+    -- { name = 'luasnip' }, -- For luasnip users.
+    -- { name = 'ultisnips' }, -- For ultisnips users.
+    -- { name = 'snippy' }, -- For snippy users.
+  }, {
       { name = 'buffer' },
       { name = "path" },
       { name = 'nvim_lsp_signature_help' }
@@ -134,25 +134,25 @@ mapping = {
 
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline('/', {
-sources = {
-  { name = 'buffer' }
-}
+  sources = {
+    { name = 'buffer' }
+  }
 })
 
 -- Use buffer source for `?`
 cmp.setup.cmdline('?', {
-sources = {
-  { name = 'buffer' }
-}
+  sources = {
+    { name = 'buffer' }
+  }
 })
 
 -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline(':', {
-sources = cmp.config.sources({
-  { name = 'path' }
-}, {
-  { name = 'cmdline' }
-})
+  sources = cmp.config.sources({
+    { name = 'path' }
+  }, {
+      { name = 'cmdline' }
+    })
 })
 
 local lspkind = require('lspkind')
@@ -163,12 +163,12 @@ cmp.setup {
       maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
 
       menu = ({
-          buffer = "[Buffer]",
-          nvim_lsp = "[LSP]",
-          vsnip = "[VSnip]",
-          luasnip = "[LuaSnip]",
-          nvim_lua = "[Lua]",
-          latex_symbols = "[Latex]",
+        buffer = "[Buffer]",
+        nvim_lsp = "[LSP]",
+        vsnip = "[VSnip]",
+        luasnip = "[LuaSnip]",
+        nvim_lua = "[Lua]",
+        latex_symbols = "[Latex]",
       }),
 
       -- The function below will be called before any actual modifications from lspkind
@@ -185,9 +185,9 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
 local servers = { 'pylsp', 'pyright', 'bashls', 'clangd',
-                  'html', 'cssls', 'jsonls', 'tsserver',
-                  'eslint', 'sqlls', 'vimls', 'rust_analyzer',
-                  'dockerls', 'racket_langserver' }
+  'html', 'cssls', 'jsonls', 'tsserver',
+  'eslint', 'sqlls', 'vimls', 'rust_analyzer',
+  'dockerls', 'racket_langserver' }
 
 for _, lsp in pairs(servers) do
   require('lspconfig')[lsp].setup {
