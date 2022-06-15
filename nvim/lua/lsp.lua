@@ -187,7 +187,7 @@ capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 local servers = { 'pylsp', 'pyright', 'bashls', 'clangd',
   'html', 'cssls', 'jsonls', 'tsserver',
   'eslint', 'sqlls', 'vimls', 'rust_analyzer',
-  'dockerls', 'racket_langserver' }
+  'dockerls', 'racket_langserver', 'sumneko_lua'}
 
 for _, lsp in pairs(servers) do
   require('lspconfig')[lsp].setup {
