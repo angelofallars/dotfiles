@@ -95,3 +95,13 @@ vim.g.netrw_winsize = 25
 vim.g.goyo_width = 150
 
 require('telescope').load_extension('fzf')
+
+vim.cmd([[
+if has('termguicolors')
+  set termguicolors
+endif
+]])
+
+vim.opt.showmode=false
+
+vim.g.Hexokinase_highlighters = {'backgroundfull'}
