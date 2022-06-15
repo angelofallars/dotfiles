@@ -37,11 +37,14 @@ local plugins = function(use)
     'neovim/nvim-lspconfig',
     config = function() require('plugins.lsp') end,
   }
+  use {
+    'hrsh7th/nvim-cmp',
+    config = function() require('plugins.cmp') end,
+  }
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/cmp-path'
   use 'hrsh7th/cmp-cmdline'
-  use 'hrsh7th/nvim-cmp'
   use 'onsails/lspkind-nvim'
   use 'hrsh7th/cmp-nvim-lsp-signature-help'
   use 'hrsh7th/cmp-vsnip'
