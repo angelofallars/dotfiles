@@ -24,7 +24,7 @@ vim.g.mapleader = " "
 nmap("<C-p>", ":lua require'telescope.builtin'.git_files{show_untracked = true}<cr>")
 
 vim.api.nvim_create_autocmd('BufRead',
-  { pattern = '*',
+  { pattern = '*/.config/*',
     command = 'nnoremap <C-p> :lua require"telescope.builtin".git_files{show_untracked = false}<cr>' })
 
 nmap("<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<cr>")
