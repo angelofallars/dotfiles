@@ -1,89 +1,87 @@
-vim.cmd ([[
-call plug#begin()
-Plug 'andweeb/presence.nvim'
+vim.cmd ([[packadd packer.nvim]])
 
-" LSP IDE features
-Plug 'neovim/nvim-lspconfig'
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/cmp-path'
-Plug 'hrsh7th/cmp-cmdline'
-Plug 'hrsh7th/nvim-cmp'
-Plug 'onsails/lspkind-nvim'
+return require('packer').startup(function()
 
-Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
+use 'andweeb/presence.nvim'
 
-Plug 'hrsh7th/cmp-vsnip'
-Plug 'hrsh7th/vim-vsnip'
+-- LSP IDE features
+use 'neovim/nvim-lspconfig'
+use 'hrsh7th/cmp-nvim-lsp'
+use 'hrsh7th/cmp-buffer'
+use 'hrsh7th/cmp-path'
+use 'hrsh7th/cmp-cmdline'
+use 'hrsh7th/nvim-cmp'
+use 'onsails/lspkind-nvim'
 
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
-Plug 'ThePrimeagen/harpoon'
-Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+use 'hrsh7th/cmp-nvim-lsp-signature-help'
 
-Plug 'rafamadriz/friendly-snippets'
+use 'hrsh7th/cmp-vsnip'
+use 'hrsh7th/vim-vsnip'
 
-" Gruvbox baby!
-Plug 'sainnhe/gruvbox-material'
+use 'nvim-lua/plenary.nvim'
+use 'nvim-telescope/telescope.nvim'
+use 'ThePrimeagen/harpoon'
+use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
-Plug 'nvim-lualine/lualine.nvim'
-" If you want to have icons in your statusline choose one of these
-Plug 'kyazdani42/nvim-web-devicons'
+use 'rafamadriz/friendly-snippets'
 
-" Show added, modified and removed lines
-Plug 'airblade/vim-gitgutter'
+-- Gruvbox baby!
+use 'sainnhe/gruvbox-material'
 
-" Show git branch and add :Git command
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-commentary'
+use 'nvim-lualine/lualine.nvim'
+-- If you want to have icons in your statusline choose one of these
+use 'kyazdani42/nvim-web-devicons'
 
-" ----
-" Autopairs
-Plug 'jiangmiao/auto-pairs'
+-- Show added, modified and removed lines
+use 'airblade/vim-gitgutter'
 
-" HTML close tag
-Plug 'alvan/vim-closetag', { 'for': 'html' }
+-- Show git branch and add :Git command
+use 'tpope/vim-fugitive'
+use 'tpope/vim-surround'
+use 'tpope/vim-commentary'
 
-" CSS coloring
-Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
+-- ----
+-- Autopairs
+use 'jiangmiao/auto-pairs'
 
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+-- HTML close tag
+use {'alvan/vim-closetag',  ft = 'html' }
 
-Plug 'mattn/emmet-vim'
+-- CSS coloring
+use { 'RRethy/vim-hexokinase', run = 'make hexokinase' }
 
-" ----
-Plug 'rust-lang/rust.vim'
+use 'mattn/emmet-vim'
 
-" post install (yarn install | npm install) then load plugin only for editing supported files
-Plug 'prettier/vim-prettier', {
-  \ 'do': 'yarn install --frozen-lockfile --production',
-  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
+-- ----
+use 'rust-lang/rust.vim'
 
-Plug 'simrat39/symbols-outline.nvim'
+-- post install (yarn install | npm install) then load plugin only for editing supported files
+use { 'prettier/vim-prettier',
+    cmd = 'yarn install --frozen-lockfile --production',
+    ft = {'javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'} }
 
-Plug 'Yggdroot/indentLine'
+use 'simrat39/symbols-outline.nvim'
 
-Plug 'junegunn/goyo.vim'
+use 'Yggdroot/indentLine'
 
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+use 'junegunn/goyo.vim'
 
-Plug 'p00f/nvim-ts-rainbow'
+use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
 
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+use 'p00f/nvim-ts-rainbow'
 
-Plug 'linty-org/readline.nvim'
+use {'fatih/vim-go',  run = ':GoUpdateBinaries' }
 
-Plug 'rainbowhxch/beacon.nvim'
+use 'linty-org/readline.nvim'
 
-Plug 'mfussenegger/nvim-dap'
-Plug 'mfussenegger/nvim-dap-python'
-Plug 'leoluz/nvim-dap-go'
-Plug 'rcarriga/nvim-dap-ui'
-Plug 'theHamsta/nvim-dap-virtual-text'
-Plug 'rcarriga/cmp-dap'
+use 'rainbowhxch/beacon.nvim'
 
-Plug 'stevearc/dressing.nvim'
+use 'mfussenegger/nvim-dap'
+use 'mfussenegger/nvim-dap-python'
+use 'leoluz/nvim-dap-go'
+use 'rcarriga/nvim-dap-ui'
+use 'theHamsta/nvim-dap-virtual-text'
+use 'rcarriga/cmp-dap'
 
-call plug#end()
-]])
+use 'stevearc/dressing.nvim'
+end)
