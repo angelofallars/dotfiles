@@ -2,34 +2,30 @@ vim.cmd([[
 if has('termguicolors')
   set termguicolors
 endif
-
-set noshowmode
-
-let g:gruvbox_material_palette = "material"
-let g:gruvbox_material_enable_bold = 1
-let g:gruvbox_material_enable_italic = 1
-
-let g:gruvbox_material_statusline_style = "material"
-let g:gruvbox_material_diagnostic_text_highlight = 1
-let g:gruvbox_material_diagnostic_line_highlight = 1
-let g:gruvbox_material_diagnostic_virtual_text = 'colored'
-
-let g:gruvbox_material_better_performance = 1
-
-let g:gruvbox_material_transparent_background = 1
-
-let g:presence_blacklist = [".config", "sofsafe"]
-
-colorscheme gruvbox-material
-
-let g:goyo_width = 150
-
-let g:Hexokinase_highlighters = ['backgroundfull']
-
-" Highlight current line number
-set cursorline
-highlight clear CursorLine
 ]])
+
+vim.opt.showmode=false
+
+vim.g.gruvbox_material_palette = "material"
+vim.g.gruvbox_material_enable_bold = 1
+vim.g.gruvbox_material_enable_italic = 1
+vim.g.gruvbox_material_statusline_style = "material"
+vim.g.gruvbox_material_diagnostic_text_highlight = 1
+vim.g.gruvbox_material_diagnostic_line_highlight = 1
+vim.g.gruvbox_material_diagnostic_virtual_text = 'colored'
+vim.g.gruvbox_material_better_performance = 1
+vim.g.gruvbox_material_transparent_background = 1
+
+vim.cmd([[colorscheme gruvbox-material]])
+vim.opt.cursorline=true
+
+vim.cmd([[highlight clear CursorLine]])
+
+vim.g.presence_blacklist = {".config", "sofsafe"}
+
+vim.g.goyo_width = 150
+
+vim.g.Hexokinase_highlighters = {'backgroundfull'}
 
 require('lualine').setup {
   options = {
