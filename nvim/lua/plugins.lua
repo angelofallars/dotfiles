@@ -31,6 +31,7 @@ augroup end
 ]])
 
 local plugins = function(use)
+  use 'wbthomason/packer.nvim'
 
   -- LSP IDE features
   use {
