@@ -1,36 +1,5 @@
 vim.cmd([[
 
-let g:AutoPairsShortcutBackInsert = ''
-let g:rustfmt_autosave = 1
-
-set autochdir
-set expandtab
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set noswapfile
-set textwidth=0
-set ai
-set colorcolumn=0
-set updatetime=500
-set wrap
-
-set ignorecase
-set smartcase
-
-" Blinking cursor
-set guicursor+=n-v-c-i:blinkon5
-
-set nocompatible
-filetype plugin on
-
-syntax enable                           " Enables syntax highlighing
-set smartindent                         " Makes indenting smart
-set autoindent                          " Good auto indent
-set cindent                             " C indentation
-set number relativenumber               " Line numbers
-set updatetime=250                      " Faster completion
-
 let g:user_emmet_settings = {
 \  'variables': {'lang': 'en'},
 \  'html': {
@@ -80,13 +49,45 @@ autocmd FileType go setlocal noexpandtab
 
 autocmd FileType scheme set shiftwidth=2 tabstop=2
 
-let g:netrw_browse_split = 0
-let g:netrw_banner = 0
-let g:netrw_winsize = 25
-
 autocmd BufEnter * silent! lcd %:p:h
 
 ]])
+
+vim.opt.autochdir=true
+vim.opt.expandtab=true
+vim.opt.tabstop=4
+vim.opt.softtabstop=4
+vim.opt.shiftwidth=4
+vim.opt.swapfile=false
+vim.opt.textwidth=0
+vim.opt.ai=true
+vim.opt.colorcolumn="0"
+vim.opt.updatetime=500
+vim.opt.wrap=true
+
+vim.opt.ignorecase=true
+vim.opt.smartcase=true
+
+-- Blinking cursor
+vim.opt.guicursor = vim.opt.guicursor + "n-v-c-i:blinkon5"
+
+vim.opt.compatible=false
+vim.cmd([[filetype plugin on]])
+
+vim.cmd([[syntax enable]])                  -- Enables syntax highlighing
+vim.opt.smartindent=true                    -- Makes indenting smart
+vim.opt.autoindent=true                     -- Good auto indent
+vim.opt.cindent=true                        -- C indentation
+vim.opt.number=true                         -- Line number at current line
+vim.opt.relativenumber=true                 -- Relative line number
+vim.opt.updatetime=250                      -- Faster completion
+
+vim.g.AutoPairsShortcutBackInsert = ''
+vim.g.rustfmt_autosave = 1
+
+vim.g.netrw_browse_split = 0
+vim.g.netrw_banner = 0
+vim.g.netrw_winsize = 25
 
 vim.g.presence_blacklist = {".config", "sofsafe"}
 
