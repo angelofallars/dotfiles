@@ -1,41 +1,4 @@
 vim.cmd([[
-" ============== "
-" ===Mappings=== "
-" ============== "
-let mapleader = " "
-
-" Search for <files> in the git repository
-nnoremap <C-p> :lua require'telescope.builtin'.git_files{show_untracked = true}<cr>
-
-nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
-nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep(require('telescope.themes').get_ivy({}))<cr>
-nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
-nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
-
-nnoremap <leader>l <cmd>!librewolf %<cr>
-
-"Harpoon baby!
-nnoremap <leader>a :lua require("harpoon.mark").add_file()<CR>
-nnoremap <C-e> :lua require("harpoon.ui").toggle_quick_menu()<CR>
-nnoremap <leader>tc :lua require("harpoon.cmd-ui").toggle_quick_menu()<CR>
-
-nnoremap <C-h> :lua require("harpoon.ui").nav_file(1)<CR>
-nnoremap <C-j> :lua require("harpoon.ui").nav_file(2)<CR>
-nnoremap <C-k> :lua require("harpoon.ui").nav_file(3)<CR>
-nnoremap <C-l> :lua require("harpoon.ui").nav_file(4)<CR>
-
-nnoremap <C-c> :noh<CR>:<Esc>
-
-" Close buffer
-nnoremap <C-q> :bd<cr>
-
-" System clipboard Mappings
-nnoremap <leader>y "+y
-nnoremap <leader>Y "+yg_
-nnoremap <leader>p "+p
-nnoremap <leader>P "+P
-vnoremap <leader>y "+y
-
 command -nargs=* J    Git <args>
 
 command -nargs=* Ja   Git add <args>
@@ -69,6 +32,62 @@ command -nargs=* Jd3  Git diff diff HEAD~3 <args>
 command -nargs=* Jb   Git branch <args>
 command -nargs=* Jc  Git checkout <args>
 ]])
+
+local function map(mode, shortcut, command)
+  vim.keymap.set(mode, shortcut, command)
+end
+
+local function nmap(shortcut, command)
+  map('n', shortcut, command)
+end
+
+local function imap(shortcut, command)
+  map('i', shortcut, command)
+end
+
+local function vmap(shortcut, command)
+  map('v', shortcut, command)
+end
+
+vim.g.mapleader = " "
+
+-- Search for <files> in the git repository
+nmap("<C-p>", ":lua require'telescope.builtin'.git_files{show_untracked = true}<cr>")
+
+nmap("<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<cr>")
+nmap("<leader>fg", "<cmd>lua require('telescope.builtin').live_grep(require('telescope.themes').get_ivy({}))<cr>")
+nmap("<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<cr>")
+nmap("<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<cr>")
+
+nmap("<leader>l", "<cmd>!librewolf %<cr>")
+
+-- Harpoon baby!
+nmap("<leader>a", ":lua require('harpoon.mark').add_file()<CR>")
+nmap("<C-e>", ":lua require('harpoon.ui').toggle_quick_menu()<CR>")
+nmap("<leader>tc", ":lua require('harpoon.cmd-ui').toggle_quick_menu()<CR>")
+
+nmap("<C-h>", ":lua require('harpoon.ui').nav_file(1)<CR>")
+nmap("<C-j>", ":lua require('harpoon.ui').nav_file(2)<CR>")
+nmap("<C-k>", ":lua require('harpoon.ui').nav_file(3)<CR>")
+nmap("<C-l>", ":lua require('harpoon.ui').nav_file(4)<CR>")
+
+nmap("<C-c>", ":noh<CR>:<Esc>")
+
+-- Close buffer
+nmap("<C-q>", ":bd<cr>")
+
+-- System clipboard Mappings
+nmap("<leader>y ", "+")
+nmap("<leader>Y ", "+yg_")
+nmap("<leader>p ", "+")
+nmap("<leader>P ", "+")
+vmap("<leader>y ", "+")
+
+nmap("<leader>y", '"+y')
+nmap("<leader>Y", '"+yg_')
+nmap("<leader>p", '"+p')
+nmap("<leader>P", '"+P')
+vmap("<leader>y", '"+y')
 
 local readline = require 'readline'
 vim.keymap.set('!', '<M-f>', readline.forward_word)
