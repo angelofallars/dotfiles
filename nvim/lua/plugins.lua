@@ -72,7 +72,10 @@ local plugins = function(use)
     requires = { 'nvim-lua/plenary.nvim' }
   }
 
-  use 'andweeb/presence.nvim'
+  use {
+    'andweeb/presence.nvim',
+    config = function() require('plugins.presence') end,
+  }
 
   use {
     'sainnhe/gruvbox-material',

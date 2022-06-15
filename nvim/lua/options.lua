@@ -92,8 +92,6 @@ vim.g.netrw_browse_split = 0
 vim.g.netrw_banner = 0
 vim.g.netrw_winsize = 25
 
-vim.g.presence_blacklist = {".config", "sofsafe"}
-
 vim.g.goyo_width = 150
 
 require('telescope').load_extension('fzf')
