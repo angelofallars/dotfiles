@@ -46,12 +46,6 @@ nmap("<C-c>", ":noh<CR>:<Esc>")
 nmap("<C-q>", ":bd<cr>")
 
 -- System clipboard Mappings
-nmap("<leader>y ", "+")
-nmap("<leader>Y ", "+yg_")
-nmap("<leader>p ", "+")
-nmap("<leader>P ", "+")
-vmap("<leader>y ", "+")
-
 nmap("<leader>y", '"+y')
 nmap("<leader>Y", '"+yg_')
 nmap("<leader>p", '"+p')
