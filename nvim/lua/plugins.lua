@@ -1,6 +1,28 @@
-vim.cmd ([[packadd packer.nvim]])
+local fn = vim.fn
+local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+if fn.empty(fn.glob(install_path)) > 0 then
+	local packer_bootstrap = fn.system({
+		"git",
+		"clone",
+		"--depth",
+		"1",
+		"https://github.com/wbthomason/packer.nvim",
+		install_path,
+	})
+	vim.o.runtimepath = vim.fn.stdpath("data") .. "/site/pack/*/start/*," .. vim.o.runtimepath
+end
 
-return require('packer').startup(function()
+local packer_status, packer = pcall(require, "packer")
+if not packer_status then
+	return
+end
+packer.init({
+	git = {
+		clone_timeout = 600,
+	},
+})
+
+local plugins = function(use)
 
   -- LSP IDE features
   use 'neovim/nvim-lspconfig'
@@ -70,4 +92,16 @@ return require('packer').startup(function()
   use 'rcarriga/nvim-dap-ui'
   use 'theHamsta/nvim-dap-virtual-text'
   use 'rcarriga/cmp-dap'
-end)
+
+end
+
+local config = {
+	display = {
+		open_fn = require("packer.util").float,
+	}
+}
+
+return packer.startup({
+	plugins,
+	config = config,
+})
