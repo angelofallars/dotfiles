@@ -42,6 +42,8 @@ nmap("<C-l>", ":lua require('harpoon.ui').nav_file(4)<CR>")
 
 nmap("<C-c>", ":noh<CR>:<Esc>")
 
+nmap("<C-w>u", "<C-w>q")
+
 -- Close buffer
 nmap("<C-q>", ":bd<cr>")
 
