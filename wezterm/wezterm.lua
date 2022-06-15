@@ -1,0 +1,52 @@
+local wezterm = require 'wezterm';
+
+return {
+
+    color_scheme = "gruvbox_material_dark_medium",
+    color_schemes = {
+        ["gruvbox_material_dark_medium"] = {
+            foreground = "#dfbf8e",
+            background = "#282828",
+            cursor_bg = "#dfbf8e",
+            cursor_border = "#dfbf8e",
+            cursor_fg = "#282828",
+            selection_bg = "#dfbf8e" ,
+            selection_fg = "#45403d",
+
+            ansi = {"#282828","#ea6962","#a9b665","#d8a657", "#7daea3","#d3869b", "#89b482","#dfbf8e"},
+            brights = {"#eddeb5","#ea6962","#a9b665","#d8a657", "#7daea3","#d3869b", "#89b482","#dfbf8e"},
+        },
+    },
+
+    font = wezterm.font_with_fallback({
+        {family="JetBrains Mono", weight="Medium"},
+        "Twemoji",
+    }),
+
+    font_size = 11,
+
+    window_padding = {
+        left = 8,
+        right = 8,
+        top = 6,
+        bottom = 6,
+    },
+
+    enable_tab_bar = false,
+
+    warn_about_missing_glyphs = false,
+
+    window_background_gradient = {
+        orientation = "Vertical",
+
+        colors = {
+            "#383534",
+            "#282828",
+            "#1d2021",
+        },
+
+        interpolation = "Linear",
+        blend = "Rgb",
+        noise = 56,
+    },
+}
