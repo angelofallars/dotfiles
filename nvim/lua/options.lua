@@ -21,7 +21,6 @@ let g:user_emmet_settings = {
 \  },
 \}
 
-" Indent width on web dev languages
 autocmd FileType html setlocal shiftwidth=2 tabstop=2 textwidth=120
 autocmd FileType css setlocal shiftwidth=2 tabstop=2
 autocmd FileType sass setlocal shiftwidth=2 tabstop=2
@@ -42,7 +41,6 @@ autocmd BufNewFile,BufRead *waybar/config set syntax=json
 autocmd BufNewFile,BufRead *.rasi set syntax=css
 autocmd BufNewFile,BufRead *dunstrc set filetype=ini
 
-" Indent width for C (the Unix Way)
 autocmd FileType c setlocal shiftwidth=8 tabstop=8
 
 autocmd FileType go setlocal noexpandtab
@@ -77,13 +75,13 @@ vim.opt.guicursor = vim.opt.guicursor + "n-v-c-i:blinkon5"
 vim.opt.compatible=false
 vim.cmd([[filetype plugin on]])
 
-vim.cmd([[syntax enable]])                  -- Enables syntax highlighing
-vim.opt.smartindent=true                    -- Makes indenting smart
-vim.opt.autoindent=true                     -- Good auto indent
-vim.opt.cindent=true                        -- C indentation
-vim.opt.number=true                         -- Line number at current line
-vim.opt.relativenumber=true                 -- Relative line number
-vim.opt.updatetime=250                      -- Faster completion
+vim.cmd([[syntax enable]])
+vim.opt.smartindent=true
+vim.opt.autoindent=true
+vim.opt.cindent=true
+vim.opt.number=true
+vim.opt.relativenumber=true
+vim.opt.updatetime=250
 
 vim.g.AutoPairsShortcutBackInsert = ''
 vim.g.rustfmt_autosave = 1
