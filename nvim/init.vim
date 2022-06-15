@@ -34,6 +34,8 @@ Plug 'airblade/vim-gitgutter'
 
 " Show git branch and add :Git command
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
 
 " ----
 " Autopairs
@@ -275,8 +277,8 @@ window = {
         winhighlight = 'Normal:Normal,FloatBorder:green,CursorLine:Visual,Search:None', 
         },
     documentation = {
-        border = { "┏", "━", "┓", "┃", "┛", "━", "┗", "┃", },
-        winhighlight = 'Normal:Normal,FloatBorder:grey,CursorLine:Visual,Search:None', 
+        border = { "┌", "─", "┐", "│", "┘", "─", "└", "│", },
+        winhighlight = 'Normal:Normal,FloatBorder:white,CursorLine:Visual,Search:None', 
         },
     },
 snippet = {
@@ -616,6 +618,9 @@ command -nargs=* Jma  Git commit --all <args>
 command -nargs=* Jps  Git push <args>
 command -nargs=* Jpl  Git pull <args>
 command -nargs=* Jf   Git fetch <args>
+
+command -nargs=* Jrs   Git restore args>
+command -nargs=* Jrss  Git restore --staged args>
 
 command -nargs=* Jpsu Git push -u origin main <args>
 
