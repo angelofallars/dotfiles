@@ -82,10 +82,11 @@ local plugins = function(use)
     'sainnhe/gruvbox-material',
     config = function() require('plugins.gruvbox_material') end,
   }
-  use 'kyazdani42/nvim-web-devicons'
+
   use {
     'nvim-lualine/lualine.nvim',
     config = function() require('plugins.lualine') end,
+    requires = { 'kyazdani42/nvim-web-devicons' }
   }
 
   use 'Yggdroot/indentLine'
