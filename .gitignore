@@ -1,2 +1,3 @@
 nvim/plugged
 .sass-cache
+/nvim/plugin/packer_compiled.lua
