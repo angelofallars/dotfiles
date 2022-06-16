@@ -144,6 +144,8 @@ local plugins = function(use)
 
   -- Improve startup time for Neovim
   use 'lewis6991/impatient.nvim'
+
+  use 'dstein64/vim-startuptime'
 end
 
 require("core.packer").run(plugins)
