@@ -18,3 +18,6 @@ local function highlight_line_number()
   vim.cmd([[ highlight clear CursorLine ]])
 end
 highlight_line_number()
+
+vim.cmd([[ highlight FloatBorder guibg=NONE ]])
+vim.cmd([[ highlight NormalFloat guibg=NONE ]])
