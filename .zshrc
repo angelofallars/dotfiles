@@ -93,9 +93,9 @@ edit () {
 
    "neofetch")     nvim ~/.config/neofetch/config.conf ;;
 
-     "neovim")     nvim ~/.config/nvim/init.vim ;;
+     "neovim")     nvim ~/.config/nvim/init.lua ;;
 
-       "nvim")     nvim ~/.config/nvim/init.vim ;;
+       "nvim")     nvim ~/.config/nvim/init.lua ;;
 
   "alacritty")     nvim ~/.config/alacritty/alacritty.yml ;;
 
