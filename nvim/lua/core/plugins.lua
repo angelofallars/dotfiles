@@ -139,6 +139,12 @@ local plugins = function(use)
     config = function() require('plugins.indent_blankline') end,
   }
 
+  -- Show LSP progress
+  use {
+    'j-hui/fidget.nvim',
+    config = function() require('plugins.fidget') end,
+  }
+
   -- Flash cursorline on distanced jumps
   use 'rainbowhxch/beacon.nvim'
 
