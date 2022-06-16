@@ -15,8 +15,8 @@ create_command("Jps",  "Git push <args>")
 create_command("Jpl",  "Git pull <args>")
 create_command("Jf",   "Git fetch <args>")
 
-create_command("Jrs",   "Git restore args>")
-create_command("Jrss",  "Git restore --staged args>")
+create_command("Jrs",   "Git restore <args>")
+create_command("Jrss",  "Git restore --staged <args>")
 
 create_command("Jpsu", "Git push -u origin main <args>")
 
