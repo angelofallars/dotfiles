@@ -158,7 +158,10 @@ local plugins = function(use)
   use 'rainbowhxch/beacon.nvim'
 
   -- Improve default Vim UI interfaces
-  use 'stevearc/dressing.nvim'
+  use {
+    'stevearc/dressing.nvim',
+    config = function() require('plugins.dressing') end,
+  }
 
   -- Improve startup time for Neovim
   use 'lewis6991/impatient.nvim'
