@@ -1,4 +1,4 @@
-local custom_gruvbox_material = require'lualine.themes.sainnhegruv'
+local custom_gruvbox_material = require'lualine.themes.gruvbox_material'
 
 require('lualine').setup({
   options = {
