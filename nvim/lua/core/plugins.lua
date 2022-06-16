@@ -72,9 +72,7 @@ local plugins = function(use)
 
   use {
     'numToStr/Comment.nvim',
-    config = function()
-        require('Comment').setup()
-    end
+    config = function() require('Comment').setup() end,
   }
 
   use 'jiangmiao/auto-pairs'
