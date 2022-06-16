@@ -1,10 +1,3 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/angelo_f/.zshrc'
 
@@ -140,39 +133,14 @@ edit () {
     esac
 }
 
-# Download from YouTube
-yt-dl () {
-    for link in "$@"
-    do
-        yt-dlp -x "ytsearch:$link" &
-    done
-}
-
-# Write a quick "spell" to "cast" immediately
-quick () {
-    [ -e /tmp/quickcast.sh ] && rm /tmp/quickcast.sh
-    nvim /tmp/quickcast.sh &&\
-    [ -e /tmp/quickcast.sh ] && source /tmp/quickcast.sh
-}
-
-# Activate the scripts I wrote in .config/scripts
-scripton () {
-    ln -s $HOME/.config/scripts/$1 $HOME/.local/bin/ && echo "Script $1 activated."
-}
-
 alias pdb="python -m pdb"
 
-# Record video
-alias rec="ffmpeg -video_size 1366x300 -framerate 30 -f x11grab -i :0.0 -pix_fmt yuv420p -c:v libx264 -preset ultrafast -y -v error -stats"
-
-# autosuggestions
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 alias discord="discord --ignore-gpu-blocklist --enable-features=VaapiVideoDecoder --use-gl=desktop --enable-gpu-rasterization --enable-zero-copy > /dev/null 2>&1 & disown"
 
 export GIT_EDITOR="nvim"
 export PATH=/home/angelo_f/.local/bin:$PATH
-#. "$HOME/.cargo/env"
 
 # Created by `pipx` on 2021-11-09 19:31:24
 export PATH="$PATH:/home/angelo-f/.local/bin"
@@ -185,18 +153,6 @@ alias river="XKB_DEFAULT_OPTIONS=ctrl:nocaps river"
 
 alias downloads="~/.config/waybar/scripts/downloads"
 
-# if [ -n "$TMUX" ]; then
-#     # colorscript random
-#     treefetch --bonsai
-# else
-#     # A nice lil bonsai shell for Rust lovers.
-#     treefetch --bonsai
-# fi
-
 source /home/angelo-f/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-# source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 eval "$(starship init zsh)"
