@@ -14,7 +14,7 @@ autocmd FileType less         setlocal shiftwidth=2 tabstop=2
 autocmd FileType javascript   setlocal shiftwidth=2 tabstop=2
 autocmd FileType typescript   setlocal shiftwidth=2 tabstop=2
 autocmd FileType json         setlocal shiftwidth=2 tabstop=2
-autocmd FileType markdown     setlocal shiftwidth=2 tabstop=2
+autocmd FileType markdown     setlocal shiftwidth=2 tabstop=2 textwidth=100
 autocmd FileType jsx          setlocal shiftwidth=2 tabstop=2
 autocmd FileType tsx          setlocal shiftwidth=2 tabstop=2
 autocmd FileType vue          setlocal shiftwidth=2 tabstop=2
