@@ -77,3 +77,5 @@ nmap("<leader>jm", '<cmd>Git commit<cr>')
 nmap("<leader>js", '<cmd>Git status<cr>')
 nmap("<leader>jl", '<cmd>Git log<cr>')
 nmap("<leader>jd", '<cmd>Git diff %<cr>')
+
+nmap("<C-n>", ":NvimTreeToggle<cr>")

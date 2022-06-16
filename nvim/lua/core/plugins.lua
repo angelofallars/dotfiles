@@ -53,6 +53,15 @@ local plugins = function(use)
   }
 
   use {
+    'kyazdani42/nvim-tree.lua',
+    config = function() require('plugins.nvim-tree') end,
+    requires = {
+      'kyazdani42/nvim-web-devicons',
+      opt = true
+    },
+  }
+
+  use {
     'nvim-telescope/telescope-fzf-native.nvim',
     run = 'make'
   }
