@@ -72,8 +72,6 @@ vim.opt.termguicolors     = true
 
 vim.g.AutoPairsShortcutBackInsert = ''
 
-vim.g.Hexokinase_highlighters = {'backgroundfull'}
-
 vim.cmd([[filetype plugin on]])
 vim.cmd([[syntax enable]])
 

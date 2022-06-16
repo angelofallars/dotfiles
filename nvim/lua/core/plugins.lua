@@ -126,8 +126,8 @@ local plugins = function(use)
 
   -- Show colors for color names and hex codes
   use {
-    'RRethy/vim-hexokinase',
-    run = 'make hexokinase'
+    'norcalli/nvim-colorizer.lua',
+    config = function() require'colorizer'.setup() end,
   }
 
   -- Display indent lines
