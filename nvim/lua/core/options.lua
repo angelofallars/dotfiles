@@ -77,8 +77,6 @@ vim.g.Hexokinase_highlighters = {'backgroundfull'}
 vim.cmd([[filetype plugin on]])
 vim.cmd([[syntax enable]])
 
-require('telescope').load_extension('fzf')
-
 vim.cmd([[
 let g:user_emmet_settings = {
 \  'variables': {'lang': 'en'},
