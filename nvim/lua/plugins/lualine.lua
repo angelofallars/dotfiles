@@ -1,9 +1,9 @@
-local custom_gruvbox_material = require'lualine.themes.gruvbox_material'
+local gruvbox_material = require'lualine.themes.gruvbox-material'
 
 require('lualine').setup({
   options = {
     icons_enabled = true,
-    theme = custom_gruvbox_material,
+    theme = gruvbox_material,
     component_separators = { left = '', right = ''},
     section_separators = { left = '', right = ''},
     disabled_filetypes = {},
