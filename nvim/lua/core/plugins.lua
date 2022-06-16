@@ -141,6 +141,9 @@ local plugins = function(use)
 
   -- Improve default Vim UI interfaces
   use 'stevearc/dressing.nvim'
+
+  -- Improve startup time for Neovim
+  use 'lewis6991/impatient.nvim'
 end
 
 require("core.packer").run(plugins)
