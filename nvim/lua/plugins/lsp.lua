@@ -88,7 +88,7 @@ local lspconfig = require('lspconfig')
 
 local servers = { 'pylsp', 'pyright', 'bashls', 'clangd',
   'html', 'cssls', 'jsonls', 'tsserver',
-  'eslint', 'sqlls', 'vimls', 'rust_analyzer',
+  'eslint', 'sqlls', 'vimls', 'rust_analyzer', 'gopls',
   'dockerls', 'racket_langserver', 'ltex'}
 
 for _, lsp in pairs(servers) do
