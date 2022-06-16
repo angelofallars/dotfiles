@@ -70,8 +70,6 @@ vim.g.goyo_width          = 150
 
 vim.opt.termguicolors     = true
 
-vim.g.AutoPairsShortcutBackInsert = ''
-
 vim.cmd([[filetype plugin on]])
 vim.cmd([[syntax enable]])
 

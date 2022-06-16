@@ -76,7 +76,10 @@ local plugins = function(use)
     config = function() require('Comment').setup() end,
   }
 
-  use 'jiangmiao/auto-pairs'
+  use {
+    "windwp/nvim-autopairs",
+    config = function() require("nvim-autopairs").setup {} end
+  }
 
   use 'linty-org/readline.nvim'
 
