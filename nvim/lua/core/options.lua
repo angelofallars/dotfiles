@@ -60,6 +60,8 @@ vim.opt.completeopt       = 'menuone,noselect'
 vim.opt.showmode          = false
 vim.opt.compatible        = false
 
+vim.opt.fillchars         = 'eob: '
+
 vim.g.rustfmt_autosave    = 1
 
 vim.g.netrw_browse_split  = 0
