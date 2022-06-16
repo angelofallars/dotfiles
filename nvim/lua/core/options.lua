@@ -71,7 +71,7 @@ vim.g.goyo_width          = 150
 vim.opt.termguicolors     = true
 
 -- Thank you Neovim devs!
-vim.opt.cmdheight         = 0
+vim.opt.cmdheight         = 1
 
 vim.cmd([[filetype plugin on]])
 vim.cmd([[syntax enable]])
