@@ -64,7 +64,7 @@ local on_attach = function(client, bufnr)
   vim.cmd [[
       highlight! DiagnosticLineNrError guifg=#ea6962 gui=bold
       highlight! DiagnosticLineNrWarn  guifg=#d8a657 gui=bold
-      highlight! DiagnosticLineNrInfo  guifg=#89b482 gui=bold
+      highlight! DiagnosticLineNrInfo  guifg=#7daea3 gui=bold
       highlight! DiagnosticLineNrHint  guifg=#a9b665 gui=bold
 
       sign define DiagnosticSignError text= texthl=DiagnosticSignError linehl= numhl=DiagnosticLineNrError
