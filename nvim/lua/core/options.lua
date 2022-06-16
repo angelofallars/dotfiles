@@ -68,6 +68,8 @@ vim.g.netrw_winsize       = 25
 
 vim.g.goyo_width          = 150
 
+vim.g.termguicolors       = true
+
 vim.g.AutoPairsShortcutBackInsert = ''
 
 vim.g.Hexokinase_highlighters = {'backgroundfull'}
@@ -76,12 +78,6 @@ vim.cmd([[filetype plugin on]])
 vim.cmd([[syntax enable]])
 
 require('telescope').load_extension('fzf')
-
-vim.cmd([[
-if has('termguicolors')
-  set termguicolors
-endif
-]])
 
 vim.cmd([[
 let g:user_emmet_settings = {
