@@ -1,35 +1,3 @@
-local fn = vim.fn
-local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-if fn.empty(fn.glob(install_path)) > 0 then
-	local packer_bootstrap = fn.system({
-		"git",
-		"clone",
-		"--depth",
-		"1",
-		"https://github.com/wbthomason/packer.nvim",
-		install_path,
-	})
-	vim.o.runtimepath = vim.fn.stdpath("data") .. "/site/pack/*/start/*," .. vim.o.runtimepath
-end
-
-local packer_status, packer = pcall(require, "packer")
-if not packer_status then
-	return
-end
-packer.init({
-	git = {
-		clone_timeout = 600,
-	},
-})
-
--- Auto-compile the packer config on every save
-vim.cmd([[
-augroup packer_user_config
-  autocmd!
-  autocmd BufWritePost plugins.lua source <afile> | PackerCompile
-augroup end
-]])
-
 local plugins = function(use)
   use 'wbthomason/packer.nvim'
 
@@ -176,13 +144,4 @@ local plugins = function(use)
   use 'stevearc/dressing.nvim'
 end
 
-local config = {
-	display = {
-		open_fn = require("packer.util").float,
-	}
-}
-
-return packer.startup({
-	plugins,
-	config = config,
-})
+require("core.packer").run(plugins)
