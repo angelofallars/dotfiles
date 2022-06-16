@@ -68,7 +68,7 @@ vim.g.netrw_winsize       = 25
 
 vim.g.goyo_width          = 150
 
-vim.g.termguicolors       = true
+vim.opt.termguicolors     = true
 
 vim.g.AutoPairsShortcutBackInsert = ''
 
