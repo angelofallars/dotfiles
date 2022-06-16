@@ -1,8 +1,8 @@
 set font "jetbrains mono 12"
 set recolor
-set recolor-lightcolor "#f9f5d7"
-set recolor-darkcolor "#453024"
-set default-bg "#f2e5bc"
+set recolor-lightcolor "#F9F8EE"
+set recolor-darkcolor "#2F2824"
+set default-bg "#D7D2C1"
 
 set inputbar-bg "#282828"
 set inputbar-fg "#d4be98"
