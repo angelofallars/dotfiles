@@ -75,6 +75,7 @@ local plugins = function(use)
 
   use {
     'ThePrimeagen/harpoon',
+    module = 'harpoon',
     requires = { 'nvim-lua/plenary.nvim' }
   }
 
