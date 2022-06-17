@@ -108,7 +108,10 @@ local plugins = function(use)
   }
 
   -- emmet for vim: https://emmet.io
-  use 'mattn/emmet-vim'
+  use {
+    'mattn/emmet-vim',
+    ft = { 'html' }
+  }
 
   use {
     'prettier/vim-prettier',
