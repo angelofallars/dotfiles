@@ -1,6 +1,4 @@
-local function create_command(name, command)
-  vim.api.nvim_create_user_command(name, command, {nargs = '*'})
-end
+local create_command = require('core.utils').create_command
 
 create_command("J",    "Git <args>")
 
