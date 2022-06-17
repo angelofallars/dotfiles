@@ -46,20 +46,20 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>m', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 
-  vim.api.nvim_create_autocmd("CursorHold", {
-    buffer = bufnr,
-    callback = function()
-      local opts = {
-        focusable = false,
-        close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-        border = border,
-        source = 'always',
-        prefix = ' ',
-        scope = 'cursor',
-      }
-      vim.diagnostic.open_float(nil, opts)
-    end
-  })
+  -- vim.api.nvim_create_autocmd("CursorHold", {
+  --   buffer = bufnr,
+  --   callback = function()
+  --     local opts = {
+  --       focusable = false,
+  --       close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+  --       border = border,
+  --       source = 'always',
+  --       prefix = ' ',
+  --       scope = 'cursor',
+  --     }
+  --     vim.diagnostic.open_float(nil, opts)
+  --   end
+  -- })
 
   vim.cmd [[
       highlight! DiagnosticLineNrError guifg=#ea6962 gui=bold
