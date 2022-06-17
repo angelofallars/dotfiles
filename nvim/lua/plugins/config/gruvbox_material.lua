@@ -24,13 +24,13 @@ vim.cmd([[ highlight NormalFloat guibg=NONE ]])
 
 vim.cmd([[highlight CmpCurrentLine guibg=#a9b665 guifg=#282828]])
 
-vim.cmd([[highlight link CmpNormal normal]])
+vim.cmd([[highlight! link CmpNormal normal]])
 vim.cmd([[highlight CmpBorder guifg=#5a524c]])
 
 vim.cmd([[highlight CmpDocNormal guibg=#242322]])
 vim.cmd([[highlight link CmpDocBorder CmpBorder]])
 
-vim.cmd([[highlight link FloatBorder CmpBorder]])
+vim.cmd([[highlight! link FloatBorder CmpBorder]])
 
 vim.cmd([[highlight VertSplit guifg=#32302f]])
 
