@@ -40,9 +40,9 @@ return {
         orientation = "Vertical",
 
         colors = {
-            "#383534",
-            "#282828",
-            "#1d2021",
+            "#33302F",
+            "#262626",
+            "#1B1E1F",
         },
 
         interpolation = "Linear",
