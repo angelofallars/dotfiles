@@ -89,7 +89,7 @@ local lspconfig = require('lspconfig')
 local servers = { 'pylsp', 'pyright', 'bashls', 'clangd',
   'html', 'cssls', 'jsonls', 'tsserver',
   'eslint', 'sqlls', 'vimls', 'rust_analyzer', 'gopls',
-  'dockerls', 'racket_langserver', 'ltex'}
+  'dockerls', 'racket_langserver'}
 
 for _, lsp in pairs(servers) do
   lspconfig[lsp].setup {
@@ -129,3 +129,10 @@ lspconfig.sumneko_lua.setup {
   },
 }
 
+lspconfig.ltex.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = {
+    "bib", "markdown", "org", "plaintex", "rst", "rnoweb", "tex"
+  }
+}
