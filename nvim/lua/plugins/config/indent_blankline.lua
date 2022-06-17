@@ -11,7 +11,7 @@ require("indent_blankline").setup {
     "TelescopePrompt",
     "TelescopeResults",
     "lsp-installer",
-    "",
+    "NvimTree",
   },
   buftype_exclude = { "terminal" },
   show_trailing_blankline_indent = false,
