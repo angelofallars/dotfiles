@@ -86,7 +86,10 @@ local plugins = function(use)
 
   use 'tpope/vim-fugitive'
 
-  use 'tpope/vim-surround'
+  use {
+    'tpope/vim-surround',
+    keys = { "ds", "cs", "cS", "ys", "yS", "v" }
+  }
 
   use {
     'numToStr/Comment.nvim',
