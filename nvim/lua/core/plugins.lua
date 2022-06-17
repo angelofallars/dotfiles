@@ -3,12 +3,12 @@ local plugins = function(use)
 
   use {
     'neovim/nvim-lspconfig',
-    config = function() require('plugins.lsp') end,
+    config = function() require('plugins.config.lsp') end,
   }
 
   use {
     'hrsh7th/nvim-cmp',
-    config = function() require('plugins.cmp') end,
+    config = function() require('plugins.config.cmp') end,
 
     requires = {
       'hrsh7th/cmp-nvim-lsp',
@@ -27,7 +27,7 @@ local plugins = function(use)
 
   use {
     'mfussenegger/nvim-dap',
-    config = function() require('plugins.dap') end,
+    config = function() require('plugins.config.dap') end,
     requires = {
       'rcarriga/nvim-dap-ui',
       'theHamsta/nvim-dap-virtual-text',
@@ -41,20 +41,20 @@ local plugins = function(use)
 
   use {
     'nvim-treesitter/nvim-treesitter',
-    config = function() require('plugins.treesitter') end,
+    config = function() require('plugins.config.treesitter') end,
     run = ':TSUpdate',
     requires = { 'p00f/nvim-ts-rainbow' }
   }
 
   use {
     'nvim-telescope/telescope.nvim',
-    config = function() require('plugins.telescope') end,
+    config = function() require('plugins.config.telescope') end,
     requires = { 'nvim-lua/plenary.nvim' },
   }
 
   use {
     'kyazdani42/nvim-tree.lua',
-    config = function() require('plugins.nvim-tree') end,
+    config = function() require('plugins.config.nvim-tree') end,
     requires = {
       'kyazdani42/nvim-web-devicons',
       opt = true
@@ -73,7 +73,7 @@ local plugins = function(use)
 
   use {
     'lewis6991/gitsigns.nvim',
-    config = function() require('plugins.gitsigns') end,
+    config = function() require('plugins.config.gitsigns') end,
   }
 
   use 'tpope/vim-fugitive'
@@ -122,17 +122,17 @@ local plugins = function(use)
   -- Show projects and files in Discord status
   use {
     'andweeb/presence.nvim',
-    config = function() require('plugins.presence') end,
+    config = function() require('plugins.config.presence') end,
   }
 
   use {
     'sainnhe/gruvbox-material',
-    config = function() require('plugins.gruvbox_material') end,
+    config = function() require('plugins.config.gruvbox_material') end,
   }
 
   use {
     'nvim-lualine/lualine.nvim',
-    config = function() require('plugins.lualine') end,
+    config = function() require('plugins.config.lualine') end,
     requires = { 'kyazdani42/nvim-web-devicons' }
   }
 
@@ -145,13 +145,13 @@ local plugins = function(use)
   -- Display indent lines
   use {
     'lukas-reineke/indent-blankline.nvim',
-    config = function() require('plugins.indent_blankline') end,
+    config = function() require('plugins.config.indent_blankline') end,
   }
 
   -- Show LSP progress
   use {
     'j-hui/fidget.nvim',
-    config = function() require('plugins.fidget') end,
+    config = function() require('plugins.config.fidget') end,
   }
 
   -- Flash cursorline on distanced jumps
@@ -160,7 +160,7 @@ local plugins = function(use)
   -- Improve default Vim UI interfaces
   use {
     'stevearc/dressing.nvim',
-    config = function() require('plugins.dressing') end,
+    config = function() require('plugins.config.dressing') end,
   }
 
   -- Improve startup time for Neovim
