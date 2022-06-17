@@ -42,22 +42,23 @@ nmap("<leader>P", '"+P')
 vmap("<leader>y", '"+y')
 
 local readline = require 'readline'
-vim.keymap.set('!', '<M-f>', readline.forward_word)
-vim.keymap.set('!', '<M-b>', readline.backward_word)
-vim.keymap.set('!', '<C-a>', readline.beginning_of_line)
-vim.keymap.set('!', '<C-e>', readline.end_of_line)
-vim.keymap.set('!', '<M-d>', readline.kill_word)
-vim.keymap.set('!', '<C-w>', readline.backward_kill_word)
-vim.keymap.set('!', '<C-k>', readline.kill_line)
-vim.keymap.set('!', '<C-u>', readline.backward_kill_line)
 
-vim.keymap.set('!', '<C-f>', '<Right>')
-vim.keymap.set('!', '<C-b>', '<Left>')
-vim.keymap.set('!', '<C-n>', '<Down>')  -- next-line
-vim.keymap.set('!', '<C-p>', '<Up>')    -- previous-line
+map('!', '<M-f>', readline.forward_word)
+map('!', '<M-b>', readline.backward_word)
+map('!', '<C-a>', readline.beginning_of_line)
+map('!', '<C-e>', readline.end_of_line)
+map('!', '<M-d>', readline.kill_word)
+map('!', '<C-w>', readline.backward_kill_word)
+map('!', '<C-k>', readline.kill_line)
+map('!', '<C-u>', readline.backward_kill_line)
 
-vim.keymap.set('!', '<C-d>', '<Delete>')  -- delete-char
-vim.keymap.set('!', '<C-h>', '<BS>')      -- backward-delete-char
+map('!', '<C-f>', '<Right>')
+map('!', '<C-b>', '<Left>')
+map('!', '<C-n>', '<Down>')  -- next-line
+map('!', '<C-p>', '<Up>')    -- previous-line
+
+map('!', '<C-d>', '<Delete>')  -- delete-char
+map('!', '<C-h>', '<BS>')      -- backward-delete-char
 
 nmap("<leader>J", '<cmd>Git<cr>')
 nmap("<leader>jj", '<cmd>Git<cr>')
