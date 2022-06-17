@@ -61,6 +61,10 @@ alias gd1="git diff HEAD~1"
 alias gd2="git diff HEAD~2"
 alias gd3="git diff HEAD~3"
 
+grib() {
+    git rebase -i HEAD~"$1"
+}
+
 alias grib1="git rebase -i HEAD~1"
 alias grib2="git rebase -i HEAD~2"
 alias grib3="git rebase -i HEAD~3"
