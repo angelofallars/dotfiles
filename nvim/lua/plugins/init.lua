@@ -3,7 +3,6 @@ local plugins = function(use)
 
   use {
     'neovim/nvim-lspconfig',
-    module = "lspconfig",
     config = function() require('plugins.config.lsp') end,
   }
 
