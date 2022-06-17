@@ -1,18 +1,8 @@
-local function map(mode, shortcut, command)
-  vim.keymap.set(mode, shortcut, command)
-end
-
-local function nmap(shortcut, command)
-  map('n', shortcut, command)
-end
-
-local function imap(shortcut, command)
-  map('i', shortcut, command)
-end
-
-local function vmap(shortcut, command)
-  map('v', shortcut, command)
-end
+local utils = require('core.utils')
+local map = utils.map
+local nmap = utils.nmap
+local imap = utils.imap
+local vmap = utils.vmap
 
 vim.g.mapleader = " "
 
