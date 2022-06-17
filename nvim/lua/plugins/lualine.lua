@@ -1,5 +1,8 @@
 local gruvbox_material = require'lualine.themes.gruvbox-material'
 
+-- Get Git path of current file
+local filename_custom = require'lualine.custom_component.filename'
+
 require('lualine').setup({
   options = {
     icons_enabled = true,
@@ -13,7 +16,7 @@ require('lualine').setup({
   sections = {
     lualine_a = {'mode'},
     lualine_b = {'branch', 'diff', 'diagnostics'},
-    lualine_c = {'filename'},
+    lualine_c = { filename_custom },
     lualine_x = {'filetype'},
     lualine_y = {'progress'},
     lualine_z = {'location'}
