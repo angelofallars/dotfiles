@@ -60,8 +60,6 @@ vim.opt.completeopt       = 'menuone,noselect'
 vim.opt.showmode          = false
 vim.opt.compatible        = false
 
-vim.opt.fillchars         = 'eob: '
-
 vim.g.rustfmt_autosave    = 1
 
 vim.g.netrw_browse_split  = 0
@@ -74,6 +72,15 @@ vim.opt.termguicolors     = true
 
 -- Thank you Neovim devs!
 vim.opt.cmdheight         = 1
+
+vim.opt.fillchars         = vim.opt.fillchars + 'eob: '
+vim.opt.fillchars         = vim.opt.fillchars + "horiz:━"
+vim.opt.fillchars         = vim.opt.fillchars + "horizup:━"
+vim.opt.fillchars         = vim.opt.fillchars + "horizdown:━"
+vim.opt.fillchars         = vim.opt.fillchars + "vert:▏"
+vim.opt.fillchars         = vim.opt.fillchars + "vertleft:▏"
+vim.opt.fillchars         = vim.opt.fillchars + "vertright:▏"
+vim.opt.fillchars         = vim.opt.fillchars + "verthoriz:▏"
 
 vim.cmd([[filetype plugin on]])
 vim.cmd([[syntax enable]])
