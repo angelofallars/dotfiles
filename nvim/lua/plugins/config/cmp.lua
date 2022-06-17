@@ -17,12 +17,12 @@ require("luasnip.loaders.from_vscode").lazy_load()
 cmp.setup({
   window = {
     completion = {
-      border = { "┏", "━", "┓", "┃", "┛", "━", "┗", "┃", },
-      winhighlight = 'Normal:Normal,FloatBorder:green,CursorLine:CmpCurrentLine,Search:None',
+      border = { "┌", "─", "┐", "│", "┘", "─", "└", "│", },
+      winhighlight = 'Normal:CmpNormal,FloatBorder:CmpBorder,CursorLine:CmpCurrentLine,Search:None',
     },
     documentation = {
       border = { "┌", "─", "┐", "│", "┘", "─", "└", "│", },
-      winhighlight = 'Normal:Normal,FloatBorder:white,CursorLine:Visual,Search:None',
+      winhighlight = 'Normal:CmpDocNormal,FloatBorder:CmpDocBorder,CursorLine:Visual,Search:None',
     },
   },
   snippet = {
