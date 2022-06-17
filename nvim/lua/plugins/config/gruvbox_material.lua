@@ -47,3 +47,5 @@ vim.cmd([[highlight TelescopePromptPrefix guifg=#ea6962]])
 vim.cmd([[highlight TelescopePreviewTitle guibg=#a9b665 guifg=#242322]])
 
 vim.cmd([[highlight TelescopeSelection guibg=#32302f guifg=#E3CCA3]])
+
+vim.cmd([[hi link FloatTitle blue]])
