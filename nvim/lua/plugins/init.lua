@@ -95,11 +95,15 @@ local plugins = function(use)
   -- Write distraction-free in Vim
   use 'junegunn/goyo.vim'
 
-  use 'rust-lang/rust.vim'
+  use {
+    'rust-lang/rust.vim',
+    ft = { 'rust' },
+  }
 
   use {
     'fatih/vim-go',
-    run = ':GoUpdateBinaries'
+    run = ':GoUpdateBinaries',
+    ft = { 'go' },
   }
 
   use {
