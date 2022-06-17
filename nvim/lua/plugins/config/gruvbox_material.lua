@@ -27,3 +27,15 @@ vim.cmd([[highlight CmpCurrentLine guibg=#a9b665 guifg=#282828]])
 vim.cmd([[highlight VertSplit guifg=#32302f]])
 
 vim.cmd([[highlight NvimTreeNormal guibg=#242322]])
+
+vim.cmd([[highlight TelescopeNormal guibg=#242322]])
+vim.cmd([[highlight TelescopeBorder guifg=#242322 guibg=#242322]])
+
+vim.cmd([[highlight TelescopePromptNormal guibg=#32302f]])
+vim.cmd([[highlight TelescopePromptBorder guifg=#32302f guibg=#32302f]])
+vim.cmd([[highlight TelescopePromptTitle  guibg=#ea6962 guifg=#242322]])
+vim.cmd([[highlight TelescopePromptPrefix guifg=#ea6962]])
+
+vim.cmd([[highlight TelescopePreviewTitle guibg=#a9b665 guifg=#242322]])
+
+vim.cmd([[highlight TelescopeSelection guibg=#32302f guifg=#E3CCA3]])
