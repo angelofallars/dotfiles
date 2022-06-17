@@ -12,6 +12,7 @@ require("indent_blankline").setup {
     "TelescopeResults",
     "lsp-installer",
     "NvimTree",
+    "gitcommit",
   },
   buftype_exclude = { "terminal" },
   show_trailing_blankline_indent = false,
