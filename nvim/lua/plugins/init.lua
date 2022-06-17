@@ -91,6 +91,8 @@ local plugins = function(use)
   use {
     'numToStr/Comment.nvim',
     config = function() require('Comment').setup() end,
+    module = "Comment",
+    keys = { "gc", "gb" },
   }
 
   use {
