@@ -106,7 +106,10 @@ local plugins = function(use)
   use 'linty-org/readline.nvim'
 
   -- Write distraction-free in Vim
-  use 'junegunn/goyo.vim'
+  use {
+    'junegunn/goyo.vim',
+    cmd = "Goyo",
+  }
 
   use {
     'rust-lang/rust.vim',
