@@ -22,12 +22,16 @@ require('lualine').setup({
     globalstatus = true,
   },
   sections = {
-    lualine_a = {'mode'},
+    lualine_a = {
+      { 'mode', separator = { left = '', right = '' } },
+    },
     lualine_b = {'branch', 'diff', 'diagnostics'},
     lualine_c = { filename_custom },
     lualine_x = {'filetype'},
     lualine_y = {'progress'},
-    lualine_z = {'location'}
+    lualine_z = {
+      { 'location', separator = { left = '', right = '' } },
+    },
   },
   inactive_sections = {
     lualine_a = {},
