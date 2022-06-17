@@ -36,17 +36,17 @@ return {
 
     warn_about_missing_glyphs = false,
 
-    window_background_gradient = {
-        orientation = "Vertical",
-
-        colors = {
-            "#33302F",
-            "#262626",
-            "#1B1E1F",
-        },
-
-        interpolation = "Linear",
-        blend = "Rgb",
-        noise = 56,
-    },
+    -- window_background_gradient = {
+    --     orientation = "Vertical",
+    --
+    --     colors = {
+    --         "#33302F",
+    --         "#262626",
+    --         "#1B1E1F",
+    --     },
+    --
+    --     interpolation = "Linear",
+    --     blend = "Rgb",
+    --     noise = 56,
+    -- },
 }
