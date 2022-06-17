@@ -174,6 +174,7 @@ local plugins = function(use)
   -- Show LSP progress
   use {
     'j-hui/fidget.nvim',
+    after = 'nvim-lspconfig',
     config = function() require('plugins.config.fidget') end,
   }
 
