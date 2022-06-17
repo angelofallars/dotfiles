@@ -49,6 +49,7 @@ local plugins = function(use)
   use {
     'nvim-telescope/telescope.nvim',
     config = function() require('plugins.config.telescope') end,
+    module = "telescope",
     requires = { 'nvim-lua/plenary.nvim' },
   }
 
