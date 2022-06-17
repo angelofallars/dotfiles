@@ -16,7 +16,7 @@ cmp.setup({
   window = {
     completion = {
       border = { "┏", "━", "┓", "┃", "┛", "━", "┗", "┃", },
-      winhighlight = 'Normal:Normal,FloatBorder:green,CursorLine:Visual,Search:None',
+      winhighlight = 'Normal:Normal,FloatBorder:green,CursorLine:CmpCurrentLine,Search:None',
     },
     documentation = {
       border = { "┌", "─", "┐", "│", "┘", "─", "└", "│", },
