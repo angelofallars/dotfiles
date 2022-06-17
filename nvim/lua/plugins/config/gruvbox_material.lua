@@ -23,3 +23,5 @@ vim.cmd([[ highlight FloatBorder guibg=NONE ]])
 vim.cmd([[ highlight NormalFloat guibg=NONE ]])
 
 vim.cmd([[highlight CmpCurrentLine guibg=#a9b665 guifg=#282828]])
+
+vim.cmd([[highlight NvimTreeNormal guibg=#242322]])
