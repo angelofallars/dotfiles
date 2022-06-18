@@ -181,9 +181,6 @@ local plugins = function(use)
     config = function() require('plugins.config.fidget') end,
   }
 
-  -- Flash cursorline on distanced jumps
-  use 'rainbowhxch/beacon.nvim'
-
   -- Improve default Vim UI interfaces
   use {
     'stevearc/dressing.nvim',
