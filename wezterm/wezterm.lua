@@ -23,7 +23,7 @@ return {
         "Twemoji",
     }),
 
-    font_size = 12.5,
+    font_size = 11.0,
 
     window_padding = {
         left = 8,
