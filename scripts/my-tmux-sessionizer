@@ -65,10 +65,8 @@ fi
 
 if ! tmux has-session -t $selected_name 2> /dev/null; then
 
-    nvim_command="sleep 0.05 ; zsh -c \"nvim . \"; zsh"
-
     tmux new-session -ds $selected_name -c $selected_dir \
-        -x 300 -y 300 -n "nvim" "$nvim_command"
+        -x 300 -y 300 -n "nvim" ~/.config/scripts/tmux-launch-nvim
 
     tmux new-window -t $selected_name:2 -d -c $selected_dir zsh
 fi

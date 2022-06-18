@@ -1,0 +1,4 @@
+#!/usr/bin/env zsh
+
+source ~/.zshrc
+nvim -c 'lua require("telescope.builtin").git_files()'
