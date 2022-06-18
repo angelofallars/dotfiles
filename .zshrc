@@ -30,9 +30,11 @@ setopt prompt_subst
 # Convenient Git aliases
 alias ga="git add"
 alias gaa="git add ."
-alias grm="git rm"
 alias gm="git commit"
 alias gma="git commit --all"
+
+alias grm="git rm"
+alias gmv="git mv"
 
 alias gma="git commit --all"
 
