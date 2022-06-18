@@ -73,6 +73,9 @@ vim.g.goyo_width          = 150
 
 vim.opt.termguicolors     = true
 
+vim.g.go_gopls_enabled    = false
+vim.g.go_fmt_fail_silently = 1
+
 -- Thank you Neovim devs!
 vim.opt.cmdheight         = 1
 
