@@ -3,6 +3,7 @@ local map = utils.map
 local nmap = utils.nmap
 local imap = utils.imap
 local vmap = utils.vmap
+local tmap = utils.tmap
 
 vim.g.mapleader = " "
 
@@ -59,6 +60,62 @@ map('!', '<C-p>', '<Up>')    -- previous-line
 
 map('!', '<C-d>', '<Delete>')  -- delete-char
 map('!', '<C-h>', '<BS>')      -- backward-delete-char
+
+-- local function create_new_terminal()
+--   vim.cmd([[below 12split]])
+--   vim.wo.relativenumber = false
+--   vim.wo.number = false
+--
+--   local win = vim.api.nvim_get_current_win()
+--   local buf = vim.api.nvim_create_buf(false, true)
+--
+--   vim.api.nvim_buf_set_option(buf, "filetype", "terminal")
+--   vim.api.nvim_buf_set_option(buf, "buflisted", false)
+--   vim.api.nvim_win_set_buf(win, buf)
+--
+--   local job_id = vim.fn.termopen(vim.o.shell)
+--   vim.cmd("startinsert")
+-- end
+--
+-- nmap('<M-i>', create_new_terminal)
+--
+-- map('t', '<C-e>', '<C-\\><C-n>')
+
+nmap('<M-r>',
+  function()
+    require("nvterm.terminal").toggle "horizontal"
+  end
+)
+
+tmap('<M-r>',
+  function()
+    require("nvterm.terminal").toggle "horizontal"
+  end
+)
+
+nmap('<M-u>',
+  function()
+    require("nvterm.terminal").toggle "vertical"
+  end
+)
+
+tmap('<M-u>',
+  function()
+    require("nvterm.terminal").toggle "vertical"
+  end
+)
+
+nmap('<M-i>',
+  function()
+    require("nvterm.terminal").toggle "float"
+  end
+)
+
+tmap('<M-i>',
+  function()
+    require("nvterm.terminal").toggle "float"
+  end
+)
 
 nmap("<leader>J", '<cmd>Git<cr>')
 nmap("<leader>jj", '<cmd>Git<cr>')

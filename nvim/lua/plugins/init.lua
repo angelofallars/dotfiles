@@ -101,6 +101,11 @@ local plugins = function(use)
     config = function() require("nvim-autopairs").setup {} end
   }
 
+  use {
+    "NvChad/nvterm",
+    config = function () require("plugins.config.nvterm") end,
+  }
+
   use 'linty-org/readline.nvim'
 
   -- Write distraction-free in Vim

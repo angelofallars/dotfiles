@@ -16,6 +16,10 @@ M.vmap = function(shortcut, command)
   M.map('v', shortcut, command)
 end
 
+M.tmap = function(shortcut, command)
+  M.map('t', shortcut, command)
+end
+
 M.create_command = function(name, command)
   vim.api.nvim_create_user_command(name, command, {nargs = '*'})
 end
