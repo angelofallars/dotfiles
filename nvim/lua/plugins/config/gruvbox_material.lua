@@ -35,6 +35,10 @@ vim.cmd([[highlight! link FloatBorder CmpBorder]])
 vim.cmd([[highlight VertSplit guifg=#32302f]])
 
 vim.cmd([[highlight NvimTreeNormal guibg=#242322]])
+vim.cmd([[highlight NvimTreeWinSeparator guibg=#242322 guifg=#242322]])
+vim.cmd([[highlight NvimTreeCursorLine guibg=#2a2a2a]])
+vim.cmd([[highlight! link NvimTreeFolderIcon green]])
+vim.cmd([[highlight! link NvimTreeFolderName green]])
 
 vim.cmd([[highlight TelescopeNormal guibg=#242322]])
 vim.cmd([[highlight TelescopeBorder guifg=#242322 guibg=#242322]])
