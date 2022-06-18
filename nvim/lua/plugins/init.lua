@@ -186,6 +186,11 @@ local plugins = function(use)
   use 'lewis6991/impatient.nvim'
 
   use 'dstein64/vim-startuptime'
+
+  use {
+    "petertriho/nvim-scrollbar",
+    config = function() require("scrollbar").setup() end,
+  }
 end
 
 require("core.packer").run(plugins)
