@@ -79,7 +79,9 @@ map('!', '<C-h>', '<BS>')      -- backward-delete-char
 --
 -- nmap('<M-i>', create_new_terminal)
 --
--- map('t', '<C-e>', '<C-\\><C-n>')
+
+-- Exit terminal and go to last window
+map('t', '<C-w>', '<C-\\><C-n><C-w>p')
 
 nmap('<M-r>',
   function()
