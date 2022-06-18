@@ -17,7 +17,9 @@ require('lualine').setup({
     theme = gruvbox_material,
     section_separators = { left = '', right = '' },
     component_separators = "",
-    disabled_filetypes = {},
+    disabled_filetypes = {
+      "gitcommit"
+    },
     always_divide_middle = true,
     globalstatus = true,
   },
