@@ -1,4 +1,9 @@
 #!/usr/bin/env zsh
 
 source ~/.zshrc
+
+if [[ -e "./venv/" ]]; then
+    source ./venv/bin/activate
+fi
+
 nvim -c 'lua require("telescope.builtin").git_files()'
