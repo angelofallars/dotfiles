@@ -13,6 +13,11 @@ unsetopt autocd nomatch notify
 bindkey -e
 # End of lines configured by zsh-newuser-install
 
+
+if [[ -n "$TMUX_PYTHON_VENV" ]]; then
+    source "$TMUX_PYTHON_VENV"
+fi
+
 # Color stuff
 alias ls='exa -x --icons --git --group-directories-first'
 alias l='ls'

@@ -65,8 +65,14 @@ fi
 
 if ! tmux has-session -t $selected_name 2> /dev/null; then
 
+    if [[ -e "$selected_dir"/venv/bin/activate ]]; then
+        tmux_python_venv="$selected_dir"/venv/bin/activate
+    fi
+
     tmux new-session -ds $selected_name -c $selected_dir \
-        -x 300 -y 300 -n "nvim" ~/.config/scripts/tmux-launch-nvim
+        -x 300 -y 300 -n "nvim" \
+        -e TMUX_PYTHON_VENV="$tmux_python_venv" \
+        ~/.config/scripts/tmux-launch-nvim
 
     tmux new-window -t $selected_name:2 -d -c $selected_dir zsh
 fi
