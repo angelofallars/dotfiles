@@ -2,4 +2,4 @@
 
 source ~/.zshrc
 
-nvim -c 'lua require("telescope.builtin").git_files()'
+nvim -c 'lua require("core.startup").init()'
