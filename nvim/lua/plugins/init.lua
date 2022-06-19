@@ -85,6 +85,12 @@ local plugins = function(use)
   use 'tpope/vim-fugitive'
 
   use {
+    'TimUntersberger/neogit',
+    requires = 'nvim-lua/plenary.nvim',
+    config = function() require('neogit').setup() end
+  }
+
+  use {
     'numToStr/Comment.nvim',
     config = function() require('Comment').setup() end,
     module = "Comment",
