@@ -158,6 +158,11 @@ export PATH="$PATH:/home/angelo-f/.local/bin"
 
 export PATH="$PATH:/home/angelo-f/go/bin"
 
+export PATH="$PATH:/home/angelo-f/software/couch-porth"
+export PORTH_STD="/home/angelo-f/software/couch-porth/std/"
+
+alias porth="porth -I $PORTH_STD"
+
 export EXA_COLORS="di=32"
 
 alias river="XKB_DEFAULT_OPTIONS=ctrl:nocaps river"
@@ -167,3 +172,7 @@ alias downloads="~/.config/waybar/scripts/downloads"
 source /home/angelo-f/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 eval "$(starship init zsh)"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

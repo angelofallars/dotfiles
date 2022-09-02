@@ -28,7 +28,13 @@ autocmd BufNewFile,BufRead *waybar/config setlocal syntax=json
 autocmd BufNewFile,BufRead *.rasi         setlocal syntax=css
 autocmd BufNewFile,BufRead *dunstrc       setlocal filetype=ini
 
+autocmd BufRead,BufNewFile *.porth set filetype=porth
+
 autocmd BufEnter *                        silent! lcd %:p:h
+
+let g:prettier#autoformat_require_pragma = 0
+let g:prettier#autoformat_config_present = 1
+
 ]])
 
 vim.opt.autochdir         = true
