@@ -1,15 +1,17 @@
 // Gruvbox Material theme
 
-$red:          #ea6962;
-$orange:       #e78a4e;
-$yellow:       #d8a657;
-$green:        #a9b665;
-$cyan:         #89b482;
-$blue:         #7daea3;
-$magenta:      #d3869b;
+$red:          #f38ba8;
+$orange:       #fab387;
+$yellow:       #f9e2af;
+$green:        #a6e3a1;
+$cyan:         #94e2d5;
+$blue:         #74c7ec;
+$magenta:      #cba6f7;
 
-$bg:           #363636;
-$white-text:   #d4be98;
+$bg0:          #1e1e2e;
+$bg:           #1e1e2e;
+$bg1:          #313244;
+$white-text:   #cdd6f4;
 $fg:           $white-text;
 
 $fg-opposite:  scale-color($fg, $lightness: -15%, $saturation: -25%);

@@ -39,11 +39,12 @@ def main() -> int:
         formatted_str += f"  {pkg['old_version']} -> {pkg['new_version']}\n"
 
     if pkg_count != 0:
-        pkg_str = f"📦 packages ({pkg_count})\n{formatted_str}"
+        pkg_str = f"{formatted_str}\n"
     else:
         pkg_str = "Everything up to date.\nEnjoy your day! 😊"
 
     call("dunstify --hints string:x-dunst-stack-tag:arch_updates "
+         f'"packages 📦 ({pkg_count})" '
          f'"{pkg_str}"', shell=True)
 
     return 0

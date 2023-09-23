@@ -2,30 +2,30 @@
 monitor = 0
 follow = mouse
 
-width = 250
+width = 360
 height = 650
 
-offset = 20x25
+offset = 18x18
 indicate_hidden = yes
 
-shrink = no
+shrink = yes
 
 separator_height = 2
 separator_color = auto
 
-padding = 14
+padding = 12
 horizontal_padding = 12
 
-frame_width = 2
+frame_width = 3
 
-font = JetBrains Mono Nerd Font Medium 11
+font = JetBrains Mono Nerd Font Normal 13
 
 sort = no
 idle_threshold = 120
 
 line_height = 4
 markup = full
-format = "%s\n %b"
+format = "<b>%s</b>\n%b"
 alignment = left
 vertical_alignment = top
 show_age_threshold = 60
@@ -33,9 +33,10 @@ word_wrap = yes
 ignore_newline = no
 stack_duplicates = false
 hide_duplicate_count = yes
-show_indicators = no
-icon_position = left
-max_icon_size = 96
+show_indicators = yes
+ellipsize = middle
+icon_position = right
+max_icon_size = 80
 sticky_history = yes
 history_length = 20
 browser = x-www-browser -new-tab
@@ -44,7 +45,7 @@ title = Dunst
 class = Dunst
 progress_bar = true
 progress_bar_height = 10
-corner_radius = 7
+corner_radius = 3
 
 [shortcuts]
 close = ctrl+shift+space
@@ -53,25 +54,25 @@ history = ctrl+grave
 context = ctrl+shift+period
 
 [urgency_low]
-timeout = 5
-background = "#323232"
-foreground = "#dfbf8e"
-frame_color = "#e78a4e"
-highlight = "#e78a4e"
+timeout = 8
+background = "#181825"
+foreground = "#cdd6f4"
+frame_color = "#a6e3a1"
+highlight = "#a6e3a1"
 
 [urgency_normal]
-timeout = 5
-background = "#323232"
-foreground = "#dfbf8e"
-frame_color = "#e78a4e"
-highlight = "#e78a4e"
+timeout = 8
+background = "#181825"
+foreground = "#cdd6f4"
+frame_color = "#a6e3a1"
+highlight = "#a6e3a1"
 
 [urgency_critical]
 timeout = 0
-background = "#212B30"
-foreground = "#EC407A"
-frame_color = "#e78a4e"
-highlight = "#e78a4e"
+background = "#181825"
+foreground = "#f38ba8"
+frame_color = "#a6e3a1"
+highlight = "#a6e3a1"
 
 [media_controls]
 appname = "mediactl"

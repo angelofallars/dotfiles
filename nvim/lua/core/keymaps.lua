@@ -21,15 +21,17 @@ nmap("<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<cr>")
 
 nmap("<leader>l", "<cmd>!librewolf %<cr>")
 
+nmap("<leader>r", '<Plug>RestNvim')
+
 -- Harpoon baby!
-nmap("<leader>a", ":lua require('harpoon.mark').add_file()<CR>")
-nmap("<C-e>", ":lua require('harpoon.ui').toggle_quick_menu()<CR>")
+nmap("<leader>t", ":lua require('harpoon.mark').add_file()<CR>")
+nmap("<C-g>", ":lua require('harpoon.ui').toggle_quick_menu()<CR>")
 nmap("<leader>tc", ":lua require('harpoon.cmd-ui').toggle_quick_menu()<CR>")
 
-nmap("<C-h>", ":lua require('harpoon.ui').nav_file(1)<CR>")
-nmap("<C-j>", ":lua require('harpoon.ui').nav_file(2)<CR>")
-nmap("<C-k>", ":lua require('harpoon.ui').nav_file(3)<CR>")
-nmap("<C-l>", ":lua require('harpoon.ui').nav_file(4)<CR>")
+nmap("<C-t>", ":lua require('harpoon.ui').nav_next()<CR>")
+nmap("<C-n>", ":lua require('harpoon.ui').nav_prev()<CR>")
+nmap("<C-m>", ":lua require('harpoon.ui').nav_file(3)<CR>")
+nmap("<C-k>", ":lua require('harpoon.ui').nav_file(4)<CR>")
 
 nmap("<C-c>", ":noh<CR>:<Esc>")
 
@@ -81,43 +83,43 @@ map('!', '<C-h>', '<BS>')      -- backward-delete-char
 --
 
 -- Exit terminal and go to last window
-map('t', '<C-w>', '<C-\\><C-n><C-w>p')
-
-nmap('<M-r>',
-  function()
-    require("nvterm.terminal").toggle "horizontal"
-  end
-)
-
-tmap('<M-r>',
-  function()
-    require("nvterm.terminal").toggle "horizontal"
-  end
-)
-
-nmap('<M-u>',
-  function()
-    require("nvterm.terminal").toggle "vertical"
-  end
-)
-
-tmap('<M-u>',
-  function()
-    require("nvterm.terminal").toggle "vertical"
-  end
-)
-
-nmap('<M-i>',
-  function()
-    require("nvterm.terminal").toggle "float"
-  end
-)
-
-tmap('<M-i>',
-  function()
-    require("nvterm.terminal").toggle "float"
-  end
-)
+-- map('t', '<C-w>', '<C-\\><C-n><C-w>p')
+--
+-- nmap('<M-r>',
+--   function()
+--     require("nvterm.terminal").toggle "horizontal"
+--   end
+-- )
+--
+-- tmap('<M-r>',
+--   function()
+--     require("nvterm.terminal").toggle "horizontal"
+--   end
+-- )
+--
+-- nmap('<M-u>',
+--   function()
+--     require("nvterm.terminal").toggle "vertical"
+--   end
+-- )
+--
+-- tmap('<M-u>',
+--   function()
+--     require("nvterm.terminal").toggle "vertical"
+--   end
+-- )
+--
+-- nmap('<M-i>',
+--   function()
+--     require("nvterm.terminal").toggle "float"
+--   end
+-- )
+--
+-- tmap('<M-i>',
+--   function()
+--     require("nvterm.terminal").toggle "float"
+--   end
+-- )
 
 nmap("<leader>J", '<cmd>Git<cr>')
 nmap("<leader>jj", '<cmd>Git<cr>')
@@ -128,4 +130,4 @@ nmap("<leader>js", '<cmd>Git status<cr>')
 nmap("<leader>jl", '<cmd>Git log<cr>')
 nmap("<leader>jd", '<cmd>Git diff %<cr>')
 
-nmap("<C-n>", ":NvimTreeToggle<cr>")
+nmap("<C-e>", ":NvimTreeToggle<cr>")

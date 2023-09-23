@@ -1,13 +1,15 @@
 #backlight, #battery, #cpu, #disk, #idle_inhibitor, #keyboard-state,
 #pulseaudio, #clock, #tags, #language, #memory, #network, #sndio,
 #mode, #window, #workspaces, #temperature, #taskbar, #workspaces,
-#custom-treefetch-downloads, #custom-update-count, #custom-axyl-downloads {
-  margin-left: 2px;
-  margin-right: 2px;
-  padding-left: 12px;
-  padding-right: 12px;
-  background: #363636;
-  border-radius: 11px;
+#custom-treefetch-downloads, #custom-update-count, #custom-axyl-downloads,
+#custom-gpu-temp {
+  margin-left: 3px;
+  margin-right: 3px;
+  padding-left: 8px;
+  padding-right: 8px;
+  background: #1e1e2e;
+  color: #cdd6f4;
+  border-radius: 9px;
 }
 
 * {
@@ -15,27 +17,51 @@
 }
 
 window#waybar {
-  background: rgba(35, 35, 35, 0.55);
-  color: #d4be98;
+  background: rgba(20, 20, 30, 0);
+  color: #cdd6f4;
 }
 
 .modules-left, .modules-center, .modules-right {
   background: transparent;
-  border-radius: 11px;
+  border-radius: 9px;
   font-family: "JetBrains Mono Nerd Font", monospace;
   font-size: 14px;
-  font-weight: 600;
-  margin-top: 4px;
-  margin-bottom: 4px;
+  font-weight: 500;
+  margin-top: 3px;
+  margin-bottom: 0px;
+}
+
+window.DP-3 .modules-left, window.DP-3 .modules-center, window.DP-3 .modules-right, window.DP-2 .modules-left, window.DP-2 .modules-center, window.DP-2 .modules-right, window.DP-1 .modules-left, window.DP-1 .modules-center, window.DP-1 .modules-right, window.HDMI-A-1 .modules-left, window.HDMI-A-1 .modules-center, window.HDMI-A-1 .modules-right {
+  font-size: 15px;
+}
+window.DP-3 #backlight, window.DP-3 #battery, window.DP-3 #cpu, window.DP-3 #disk, window.DP-3 #idle_inhibitor, window.DP-3 #keyboard-state,
+window.DP-3 #pulseaudio, window.DP-3 #clock, window.DP-3 #tags, window.DP-3 #language, window.DP-3 #memory, window.DP-3 #network, window.DP-3 #sndio,
+window.DP-3 #mode, window.DP-3 #window, window.DP-3 #temperature, window.DP-3 #taskbar,
+window.DP-3 #custom-treefetch-downloads, window.DP-3 #custom-update-count, window.DP-3 #custom-axyl-downloads, window.DP-2 #backlight, window.DP-2 #battery, window.DP-2 #cpu, window.DP-2 #disk, window.DP-2 #idle_inhibitor, window.DP-2 #keyboard-state,
+window.DP-2 #pulseaudio, window.DP-2 #clock, window.DP-2 #tags, window.DP-2 #language, window.DP-2 #memory, window.DP-2 #network, window.DP-2 #sndio,
+window.DP-2 #mode, window.DP-2 #window, window.DP-2 #temperature, window.DP-2 #taskbar,
+window.DP-2 #custom-treefetch-downloads, window.DP-2 #custom-update-count, window.DP-2 #custom-axyl-downloads, window.DP-1 #backlight, window.DP-1 #battery, window.DP-1 #cpu, window.DP-1 #disk, window.DP-1 #idle_inhibitor, window.DP-1 #keyboard-state,
+window.DP-1 #pulseaudio, window.DP-1 #clock, window.DP-1 #tags, window.DP-1 #language, window.DP-1 #memory, window.DP-1 #network, window.DP-1 #sndio,
+window.DP-1 #mode, window.DP-1 #window, window.DP-1 #temperature, window.DP-1 #taskbar,
+window.DP-1 #custom-treefetch-downloads, window.DP-1 #custom-update-count, window.DP-1 #custom-axyl-downloads, window.HDMI-A-1 #backlight, window.HDMI-A-1 #battery, window.HDMI-A-1 #cpu, window.HDMI-A-1 #disk, window.HDMI-A-1 #idle_inhibitor, window.HDMI-A-1 #keyboard-state,
+window.HDMI-A-1 #pulseaudio, window.HDMI-A-1 #clock, window.HDMI-A-1 #tags, window.HDMI-A-1 #language, window.HDMI-A-1 #memory, window.HDMI-A-1 #network, window.HDMI-A-1 #sndio,
+window.HDMI-A-1 #mode, window.HDMI-A-1 #window, window.HDMI-A-1 #temperature, window.HDMI-A-1 #taskbar,
+window.HDMI-A-1 #custom-treefetch-downloads, window.HDMI-A-1 #custom-update-count, window.HDMI-A-1 #custom-axyl-downloads {
+  padding-left: 15px;
+  padding-right: 16px;
+  border-radius: 11px;
+}
+window.DP-3 #workspaces button, window.DP-3 #tags button, window.DP-2 #workspaces button, window.DP-2 #tags button, window.DP-1 #workspaces button, window.DP-1 #tags button, window.HDMI-A-1 #workspaces button, window.HDMI-A-1 #tags button {
+  font-size: 20px;
+  margin: 0 3px;
 }
 
 .modules-left {
-  margin-left: 4px;
-  margin-right: 3px;
+  margin-left: 12px;
 }
 
 .modules-right {
-  margin-right: 4px;
+  margin-right: 12px;
 }
 
 #mpd, #custom-mpd-song-scroll {
@@ -45,49 +71,62 @@ window#waybar {
 }
 
 #mpd {
-  color: #363636;
+  color: #1e1e2e;
   margin-right: 2px;
-  margin-left: 2px;
+  margin-left: 3px;
+}
+
+#window {
+  background-color: #313244;
+  color: #a6e3a1;
+  font-weight: 900;
 }
 
 #custom-mpd-song-scroll {
-  color: #d4be98;
+  color: #cdd6f4;
   border-radius: 3px;
   min-height: 18px;
 }
 
-#tags button {
-  color: #6c6c6c;
-  font-family: "Source Han Sans JP";
+#workspaces {
+  background: transparent;
+  padding-left: 0;
+  padding-right: 0;
+  box-shadow: none;
+}
+
+#tags button, #workspaces button {
   font-weight: 700;
   padding: 0 0px;
   margin: 0 2px;
   min-width: 26px;
-  font-size: 19px;
-  border-radius: 0;
+  font-size: 18px;
+  border-radius: 9px;
+  color: #1e1e2e;
+  background: #cdd6f4;
   border: none;
   transition: none;
+  box-shadow: rgba(0, 0, 0, 0.5) 2 2 2 0px;
 }
 
-#tags button.occupied {
-  color: #a9b665;
-}
-
-#tags button:hover {
-  color: #363636;
-  background: #6c6c6c;
-  box-shadow: none;
+#workspaces button:hover {
+  color: #cdd6f4;
+  background: #4c4c75;
   text-shadow: none;
   transition: 0;
 }
 
-#tags button.focused {
-  color: #363636;
-  background: #a9b665;
+#workspaces button.active {
+  color: #1e1e2e;
+  background: #fab387;
 }
 
-#tags button.urgent {
-  color: #ea6962;
+#workspaces button.urgent {
+  color: #f38ba8;
+}
+
+#workspaces button.hidden {
+  color: #f38ba8;
 }
 
 @keyframes fadein {
@@ -99,41 +138,45 @@ window#waybar {
   }
 }
 tooltip {
-  background: #363636;
+  background: #1e1e2e;
   border-radius: 7px;
   font-family: "JetBrains Mono Nerd Font", monospace;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 14px;
   padding: 20px;
   animation-name: fadein;
   animation-duration: 0.2s;
-  border: 2px solid #6c6c6c;
+  border: 2px solid #4c4c75;
   text-shadow: none;
-  color: #d4be98;
+  color: #cdd6f4;
 }
 
 tooltip label {
-  color: #d4be98;
+  color: #cdd6f4;
 }
 
 #tray {
-  margin-left: 2px;
-  margin-right: 2px;
-  padding-left: 12px;
-  padding-right: 12px;
-  background: #363636;
-  border-radius: 11px;
-  padding-left: 6px;
-  padding-right: 6px;
+  margin-left: 3px;
+  margin-right: 3px;
+  padding-left: 8px;
+  padding-right: 8px;
+  background: #1e1e2e;
+  color: #cdd6f4;
+  border-radius: 9px;
+  padding-left: 4px;
+  padding-right: 4px;
 }
 
 #tray menu {
-  background: #363636;
-  color: #d4be98;
-  border-radius: 5px;
-  border: 2px solid #6c6c6c;
-  padding: 4px 0;
+  background: #1e1e2e;
+  color: #cdd6f4;
+  border-radius: 9px;
+  padding: 0;
+  padding-top: 4.5px;
+  padding-bottom: 9px;
   font-family: "JetBrains Mono Nerd Font", monospace;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 14px;
 }
+
+/*# sourceMappingURL=style.css.map */

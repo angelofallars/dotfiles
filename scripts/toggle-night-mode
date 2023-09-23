@@ -1,2 +1,2 @@
 #!/bin/sh
-pidof wlsunset && killall wlsunset || wlsunset -l 14.6 -L 121 &
+pidof wlsunset && killall -9 wlsunset || wlsunset -l 14.6 -L 121 &

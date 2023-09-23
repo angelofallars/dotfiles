@@ -16,6 +16,8 @@ local plugins = function(use)
       'hrsh7th/cmp-path',
       'hrsh7th/cmp-cmdline',
 
+      "lukas-reineke/lsp-format.nvim",
+
       'onsails/lspkind-nvim',
       'hrsh7th/cmp-nvim-lsp-signature-help',
 
@@ -115,10 +117,15 @@ local plugins = function(use)
     cmd = "Goyo",
   }
 
-  use {
-    'rust-lang/rust.vim',
-    ft = { 'rust' },
-  }
+  -- use {
+  --   'rust-lang/rust.vim',
+  --   ft = { 'rust' },
+  -- }
+  
+  -- use {
+  --   'alx741/vim-rustfmt'
+  -- --   ft = { 'rust' },
+  -- }
 
   use {
     'fatih/vim-go',
@@ -154,7 +161,6 @@ local plugins = function(use)
 
   use {
     'sainnhe/gruvbox-material',
-    config = function() require('plugins.config.gruvbox_material') end,
   }
 
   use {
@@ -179,7 +185,12 @@ local plugins = function(use)
   use {
     'j-hui/fidget.nvim',
     after = 'nvim-lspconfig',
+    tag = 'legacy',
     config = function() require('plugins.config.fidget') end,
+  }
+
+  use {
+    'simrat39/rust-tools.nvim'
   }
 
   -- Improve default Vim UI interfaces
@@ -192,6 +203,26 @@ local plugins = function(use)
   use 'lewis6991/impatient.nvim'
 
   use 'dstein64/vim-startuptime'
+
+  use 'wuelnerdotexe/vim-astro'
+  
+  use 'averms/black-nvim'
+
+  -- Improve default Vim UI interfaces
+  use {
+    'NTBBloodbath/rest.nvim',
+    config = function() require('plugins.config.rest-nvim') end,
+  }
+
+  use {
+    "catppuccin/nvim", as = "catppuccin",
+    config = function() require('plugins.config.catppuccin') end,
+  }
+
+  use {
+    'samueljoli/hurl.nvim',
+    config = function() require('hurl').setup() end,
+  }
 
   -- use {
   --   "petertriho/nvim-scrollbar",

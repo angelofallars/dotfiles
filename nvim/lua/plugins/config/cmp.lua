@@ -18,11 +18,9 @@ cmp.setup({
   window = {
     completion = {
       border = { "┌", "─", "┐", "│", "┘", "─", "└", "│", },
-      winhighlight = 'Normal:CmpNormal,FloatBorder:CmpBorder,CursorLine:CmpCurrentLine,Search:None',
     },
     documentation = {
       border = { "┌", "─", "┐", "│", "┘", "─", "└", "│", },
-      winhighlight = 'Normal:CmpDocNormal,FloatBorder:CmpDocBorder,CursorLine:Visual,Search:None',
     },
   },
   snippet = {
@@ -37,7 +35,6 @@ cmp.setup({
     ['<C-b>'] = cmp.mapping.scroll_docs(-10),
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.close(),
-    ['<C-j>'] = cmp.mapping.confirm({ select = true }),
     ['<CR>'] = cmp.mapping.confirm({ select = true }),
 
     ["<C-n>"] = cmp.mapping(function(fallback)
@@ -84,6 +81,15 @@ cmp.setup({
       { name = "path" },
       { name = 'nvim_lsp_signature_help' }
     })
+})
+
+-- Set configuration for specific filetype.
+cmp.setup.filetype('gitcommit', {
+  sources = cmp.config.sources({
+    { name = 'git' }, -- You can specify the `git` source if [you were installed it](https://github.com/petertriho/cmp-git).
+  }, {
+    { name = 'buffer' },
+  })
 })
 
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).

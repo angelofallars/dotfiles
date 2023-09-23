@@ -1,16 +1,15 @@
 // Angelo's Waybar config
 // https://github.com/angelofallars/dotfiles
-
+[
 {
-    "layer": "bottom",
-    "height": 34,
+    "layer": "top",
+    "output": "DP-2",
+    "height": 39,
     "spacing": 0,
 
-    // If you're using sway, replace `river/tags` with `sway/workspaces` .
-
-    "modules-left": ["workspaces", "custom/axyl-downloads", "custom/treefetch-downloads", "disk", "custom/update-count"],
-    "modules-center": ["mpd", "custom/mpd-song-scroll"],
-    "modules-right": ["pulseaudio", "cpu", "memory", "clock#date", "clock", "tray"],
+    "modules-left": ["hyprland/workspaces", "disk", "custom/update-count","pulseaudio"],
+    "modules-center": ["hyprland/window"],
+    "modules-right": ["cpu", "memory", "clock#date", "clock", "tray"],
 
     "group/mpd": {
         "modules": [
@@ -18,54 +17,48 @@
         ]
     },
 
-    "river/tags": {
-        "num-tags": 8,
-        "tag-labels": [
-            "", "", "", "", "", "", "", ""
-           ]
+    "hyprland/window": {
+        "separate-outputs": true
     },
 
-    "mpd": {
-        "format": "{stateIcon} {elapsedTime:%M:%S}/{totalTime:%M:%S} {repeatIcon}{singleIcon}{randomIcon}{consumeIcon}",
-        "format-disconnected": "",
-        "format-stopped": "",
-        "interval": 1,
-        "state-icons": {
-            "paused": "▶️",
-            "playing": "⏸"
-        },
-
-        "consume-icons": {
-            "off": "<span color='#919191'> </span>",
-            "on": " "
-        },
-        "random-icons": {
-            "off": "<span color='#919191'> </span>",
-            "on": " "
-        },
-        "repeat-icons": {
-            "off": "<span color='#919191'> </span>",
-            "on": " "
-        },
-        "single-icons": {
-            "off": "<span color='#919191'> </span>",
-            "on": " "
-        },
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "on-click": "activate",
+        "all-outputs": false,
+        "active-only": false,
+        "format-icons": {
+            "11": "1",
+            "12": "2",
+            "13": "3",
+            "14": "4",
+            "15": "5",
+            "16": "6",
+            "17": "7",
+            "21": "5",
+            "22": "4",
+            "23": "3",
+            "24": "2",
+            "25": "1",
+            "26": "6",
+            "31": "1",
+            "32": "2",
+            "33": "3"
+        }
     },
 
     "tray": {
-        "icon-size": 21,
-        "spacing": 5
+        "icon-size": 24,
+        "spacing": 8
     },
 
     "clock": {
         "tooltip-format": "<span rise=\"-14pt\"><big>{:%Y B}</big>\n<tt><small>{calendar}</small></tt></span>",
-        "format": "<span color=\"#d3869b\"></span> {:%I:%M %p}",
+        "format": "<span color=\"#cba6f7\"></span> {:%I:%M %p}"
     },
 
     "clock#date": {
         "tooltip-format": "<span rise=\"-14pt\"><big>{:%Y B}</big>\n<tt><small>{calendar}</small></tt></span>",
-        "format": "<span color=\"#89b482\"></span>{: %B %d, %A}",
+        "format": "<span color=\"#f9e2af\">󰃭</span>{: %B %d, %A}",
     },
 
     "backlight": {
@@ -78,48 +71,129 @@
 
     "pulseaudio": {
         "scroll-step": 2, // %, can be a float
-        "format": "{icon} {volume}%",
+        "format": "{icon} {volume}% {desc}",
         "format-muted": "🔇 ... ",
         "format-icons": {
-            "default": ["<span color=\"#7daea3\"></span> "]
+            "default": ["<span color=\"#74c7ec\"></span> "]
         },
         "on-click": "pamixer -t"
     },
 
     "cpu": {
-        "format": "<span color=\"#e78a4e\">力 CPU</span> {usage}%"
+        "format": "<span color=\"#fab387\"> CPU</span> {usage}%"
     },
 
     "memory": {
-        "format": "<span color=\"#a9b665\"> RAM</span> {used:0.1f}G/{total:0.1f}G"
+        "format": "<span color=\"#a6e3a1\">󰍛 RAM</span> {used:0.1f}G/{total:0.1f}G"
     },
 
     "disk": {
         "path": "/home",
-        "format": "<span color=\"#ea6962\">/home</span> {free} free"
+        "format": "<span color=\"#f38ba8\">/home</span> {free} free"
+    }
+    },
+{
+    "layer": "top",
+    "output": "DP-1",
+    // "margin-right": 80,
+    "height": 33,
+    "spacing": 0,
+
+    "modules-left": ["hyprland/workspaces", "clock#cali", "clock#mdt", "clock#norway", "custom/gpu-temp", "pulseaudio"],
+    "modules-center": ["hyprland/window"],
+    "modules-right": ["cpu", "memory", "clock#date", "clock", "tray"],
+
+    "hyprland/window": {
+        "separate-outputs": true
     },
 
-    // Need mpd installed for this to work
-    "custom/mpd-song-scroll": {
-        "format": "<span color=\"#D08250\"></span><span bgcolor=\"#D08250\"> {} </span><span color=\"#D08250\"></span>",
-        "max-length": 80,
-        "escape": true,
-        "exec":  "~/.config/waybar/scripts/mpd_song_scroll"
+
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "on-click": "activate",
+        "all-outputs": false,
+        "active-only": false,
+        "format-icons": {
+            "11": "1",
+            "12": "2",
+            "13": "3",
+            "14": "4",
+            "15": "5",
+            "21": "6",
+            "22": "7",
+            "23": "8",
+            "24": "9",
+            "25": "10",
+            "31": "1",
+            "32": "2",
+            "33": "3"
+        }
     },
 
-    // List the downloads for a specific Github repo
-    "custom/axyl-downloads": {
-        "format": "<span rise=\"-14pt\"><span color=\"#7daea3\"></span>  Axyl  {}</span>",
-        "interval": 240,
-        "escape": true,
-        "exec":  "~/.config/waybar/scripts/downloads axyl-os axyl-iso"
+
+    "tray": {
+        "icon-size": 24,
+        "spacing": 8
     },
 
-    "custom/treefetch-downloads": {
-        "format": "<span rise=\"-14pt\"><span color=\"#a9b665\"></span> treefetch  {}</span>",
-        "interval": 240,
-        "escape": true,
-        "exec":  "~/.config/waybar/scripts/downloads angelofallars treefetch"
+    "clock": {
+        "tooltip-format": "<span rise=\"-14pt\"><big>{:%Y B}</big>\n<tt><small>{calendar}</small></tt></span>",
+        "format": "<span color=\"#cba6f7\"></span> {:%I:%M %p}"
+    },
+
+    "clock#date": {
+        "tooltip-format": "<span rise=\"-14pt\"><big>{:%Y B}</big>\n<tt><small>{calendar}</small></tt></span>",
+        "format": "<span color=\"#f9e2af\">󰃭</span>{: %B %d, %A}",
+    },
+
+    "backlight": {
+        "device": "intel-backlight",
+        "format": "{icon} {percent}%",
+        "format-icons": [ "🍕" ],
+        "on-scroll-up": "xbacklight -inc 5",
+        "on-scroll-down": "xbacklight -dec 5",
+    },
+
+    "pulseaudio": {
+        "scroll-step": 2, // %, can be a float
+        "format": "{icon} {volume}% {desc}",
+        "format-muted": "🔇 ... ",
+        "format-icons": {
+            "default": ["<span color=\"#74c7ec\"></span> "]
+        },
+        "on-click": "pamixer -t"
+    },
+
+
+    "cpu": {
+        "format": "<span color=\"#fab387\"> CPU</span> {usage}%"
+    },
+
+    "memory": {
+        "format": "<span color=\"#a6e3a1\">󰍛 RAM</span> {used:0.1f}G/{total:0.1f}G"
+    },
+
+    "disk": {
+        "path": "/home",
+        "format": "<span color=\"#f38ba8\">/home</span> {free} free"
+    },
+
+    "clock#cali": {
+        "tooltip-format": "<span rise=\"-14pt\"><big>{:%Y B}</big>\n<tt><small>{calendar}</small></tt></span>",
+        "format": "<span color=\"#b4befe\"> CA/CDA</span> {:%I:%M %p, %b %d}",
+        "timezone": "US/Pacific"
+    },
+
+    "clock#mdt": {
+        "tooltip-format": "<span rise=\"-14pt\"><big>{:%Y B}</big>\n<tt><small>{calendar}</small></tt></span>",
+        "format": "<span color=\"#f2cdcd\"> NM</span> {:%I:%M %p, %b %d}",
+        "timezone": "America/Boise"
+    },
+
+    "clock#norway": {
+        "tooltip-format": "<span rise=\"-14pt\"><big>{:%Y B}</big>\n<tt><small>{calendar}</small></tt></span>",
+        "format": "<span color=\"#89b4fa\"> NO</span> {:%I:%M %p, %b %d}",
+        "timezone": "Europe/Oslo"
     },
 
     "custom/update-count": {
@@ -129,4 +203,13 @@
         "exec":  "~/.config/waybar/scripts/arch_updates",
         "on-click": "~/.config/waybar/scripts/notify_arch_updates"
     },
-}
+
+    "custom/gpu-temp": {
+        "format": "<span color=\"#f38ba8\">RX  </span>{}°C",
+        "interval": 1,
+        "escape": true,
+        "exec": "/usr/bin/bash -c 'echo $(($(cat /sys/class/drm/card0/device/hwmon/hwmon1/temp1_input) / 1000))'"
+    }
+
+
+}]

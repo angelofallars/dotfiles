@@ -1,8 +1,7 @@
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/angelo_f/.zshrc'
 
-autoload -Uz compinit
-compinit
+autoload -Uz compinit && compinit
 # End of lines added by compinstall
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
@@ -24,7 +23,7 @@ alias l='ls'
 alias la='exa -a -x --icons --git --group-directories-first'
 alias ll='exa -l -x --icons --git --group-directories-first'
 alias lla='exa -l -a -x --icons --git --group-directories-first'
-alias cat='bat --theme gruvbox-dark'
+alias cat='bat --theme="Catppuccin-mocha"'
 alias grep='grep --color=auto'
 
 alias py='ptpython'
@@ -62,6 +61,7 @@ alias grso="git remote set-url origin"
 
 alias gs="git status"
 alias gl="git log"
+alias gli="git log --oneline"
 alias gd="git diff"
 alias gds="git diff --staged"
 alias gd1="git diff HEAD~1"
@@ -69,16 +69,19 @@ alias gd2="git diff HEAD~2"
 alias gd3="git diff HEAD~3"
 
 grib() {
-    git rebase -i HEAD~"$1"
+    if [[ -n "$1" ]]; then
+        git rebase -i HEAD~"$1"
+    else
+        git rebase -i --root
+    fi
 }
 
-alias grib1="git rebase -i HEAD~1"
-alias grib2="git rebase -i HEAD~2"
-alias grib3="git rebase -i HEAD~3"
-alias grib4="git rebase -i HEAD~4"
-alias grib5="git rebase -i HEAD~5"
+gll() {
+    git log -L"$2",+1:"$1"
+}
 
 alias gb="git branch"
+alias gbr="git branch --remote"
 alias gc="git checkout"
 
 alias vim="nvim"
@@ -137,11 +140,20 @@ edit () {
 
       "foot")      nvim ~/.config/foot/foot.ini ;;
 
+      "openmw")      nvim ~/.config/openmw/openmw.cfg ;;
+
       "wezterm")      nvim ~/.config/wezterm/wezterm.lua ;;
+
+      "hypr")      nvim ~/.config/hypr/hyprland.conf ;;
 
     *)            echo "Can't find dotfile '$1'" ;;
 
     esac
+}
+
+installgame() {
+    export WINEPREFIX=~/Games/"$1"
+    winecfg
 }
 
 alias pdb="python -m pdb"
@@ -169,6 +181,8 @@ alias river="XKB_DEFAULT_OPTIONS=ctrl:nocaps river"
 
 alias downloads="~/.config/waybar/scripts/downloads"
 
+alias smth="env MOZ_ENABLE_WAYLAND=1 /usr/lib/librewolf/librewolf -p 'Something' %u 2>&1 & disown"
+
 source /home/angelo-f/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 eval "$(starship init zsh)"
@@ -176,3 +190,9 @@ eval "$(starship init zsh)"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/angelo-f/google-cloud-sdk/path.zsh.inc' ]; then . '/home/angelo-f/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/angelo-f/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/angelo-f/google-cloud-sdk/completion.zsh.inc'; fi

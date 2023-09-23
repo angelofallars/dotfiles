@@ -36,7 +36,7 @@
 ### Display the current GPU information
 gpu_stats
 gpu_temp
-gpu_core_clock
+# gpu_core_clock
 # gpu_mem_clock
 gpu_power
 gpu_text=RX 6750 XT
@@ -45,15 +45,12 @@ gpu_text=RX 6750 XT
 # gpu_load_color=39F900,FDFD09,B22222
 
 ### Display system vram / ram / swap space usage
-ram
-swap
 vram
 
 ### Display the current CPU information
 cpu_stats
 cpu_temp
-cpu_text=R7 5700G
-# cpu_power
+cpu_power
 # cpu_mhz
 # cpu_load_change
 # cpu_load_value=60,90
@@ -90,7 +87,7 @@ frametime
 # engine_version
 # gpu_name
 # vulkan_driver
-# wine
+wine
 
 ### Display loaded MangoHud architecture
 # arch
@@ -122,7 +119,7 @@ frame_timing
 # media_player_format=Track:;{title};By:;{artist};From:;{album}
 
 ### Change the hud font size
-font_size=28
+font_size=25
 # font_scale=1.0
 # font_size_text=24
 # font_scale_media_player=0.55
@@ -144,14 +141,14 @@ font_file=/usr/share/fonts/TTF/JetBrains Mono Bold Nerd Font Complete.ttf
 position=top-right
 
 ### Change the corner roundness
-round_corners=8
+round_corners=12
 
 ### Disable / hide the hud by default
 # no_display
 
 ### Hud position offset
-offset_x=-20
-offset_y=20
+# offset_x=
+# offset_y=
 
 ### Hud dimensions
 # width=
@@ -160,8 +157,8 @@ offset_y=20
 # cellpadding_y=
 
 ### Hud transparency / alpha
-background_alpha=0.75
-alpha=0.85
+background_alpha=0.5
+# alpha=
 
 ### Color customization
 text_color=e2cca9

@@ -4,17 +4,17 @@ local gruvbox_material = require'lualine.themes.gruvbox-material'
 local filename_custom = require'lualine.custom_component.filename'
 
 -- Change color of diagnostics
-vim.cmd([[
-highlight! DiagnosticError guifg=#ea6962 gui=bold
-highlight! DiagnosticWarn  guifg=#d8a657 gui=bold
-highlight! DiagnosticInfo  guifg=#7daea3 gui=bold
-highlight! DiagnosticHint  guifg=#a9b665 gui=bold
-]])
+-- vim.cmd([[
+-- highlight! DiagnosticError guifg=#ea6962 gui=bold
+-- highlight! DiagnosticWarn  guifg=#d8a657 gui=bold
+-- highlight! DiagnosticInfo  guifg=#7daea3 gui=bold
+-- highlight! DiagnosticHint  guifg=#a9b665 gui=bold
+-- ]])
 
 require('lualine').setup({
   options = {
     icons_enabled = true,
-    theme = gruvbox_material,
+    theme = "catppuccin",
     section_separators = { left = '', right = '' },
     component_separators = "",
     disabled_filetypes = {

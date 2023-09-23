@@ -1,4 +1,4 @@
-vim.g.gruvbox_material_palette                   = "material"
+vim.g.gruvbox_material_foreground                = "material"
 vim.g.gruvbox_material_statusline_style          = "material"
 
 vim.g.gruvbox_material_enable_bold               = 1

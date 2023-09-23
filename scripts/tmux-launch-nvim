@@ -3,3 +3,5 @@
 source ~/.zshrc
 
 nvim -c 'lua require("core.startup").init()'
+
+zsh

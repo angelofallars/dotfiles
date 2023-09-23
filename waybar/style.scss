@@ -15,24 +15,25 @@
 @use 'colors';
 
 // Distance of the entire bar from the sides
-$screen-margin: 4px;
+$screen-margin: 12px;
 
-$vertical-margin: 4px;
+$vertical-margin-top: 3px;
+$vertical-margin-bottom: 0px;
 
 // Margin/padding of individual modules
-$module-margin: 2px;
-$module-padding: 12px;
+$module-margin: 3px;
+$module-padding: 8px;
 
 // Font config
 $font: "JetBrains Mono Nerd Font";
 $font-size: 14px;
-$font-weight: 600;
+$font-weight: 500;
 
 // How far away should the box shadow effect be diagonally
 $box-shadow-distance: 0px;
 
 // Border radius. Turning this option up will also round the offset shadows.
-$bar-border-radius: 11px;
+$bar-border-radius: 9px;
 
 // -------------------------
 // Actual styling of the bar
@@ -51,6 +52,7 @@ $bar-border-radius: 11px;
   padding-right: $module-padding;
 
   background: colors.$bg;
+  color: colors.$fg;
   border-radius: $bar-border-radius;
 }
 
@@ -58,7 +60,8 @@ $bar-border-radius: 11px;
 #backlight, #battery, #cpu, #disk, #idle_inhibitor, #keyboard-state,
 #pulseaudio, #clock, #tags, #language, #memory, #network, #sndio,
 #mode, #window, #workspaces, #temperature, #taskbar, #workspaces,
-#custom-treefetch-downloads, #custom-update-count, #custom-axyl-downloads
+#custom-treefetch-downloads, #custom-update-count, #custom-axyl-downloads,
+#custom-gpu-temp
 {
   @include single-module;
 }
@@ -68,7 +71,7 @@ $bar-border-radius: 11px;
 }
 
 window#waybar {
-  background: scale-color(colors.$bg, $alpha: -45%, $lightness: -35%);
+  background: scale-color(colors.$bg, $alpha: -100%, $lightness: -35%);
   color: colors.$fg;
 }
 
@@ -78,13 +81,34 @@ window#waybar {
   font-family: $font, monospace;
   font-size: $font-size;
   font-weight: $font-weight;
-  margin-top: $vertical-margin;
-  margin-bottom: $vertical-margin;
+  margin-top: $vertical-margin-top;
+  margin-bottom: $vertical-margin-bottom;
+}
+
+window.DP-3, window.DP-2, window.DP-1, window.HDMI-A-1 {
+  .modules-left, .modules-center, .modules-right {
+    font-size: 15px;
+  }
+
+  #backlight, #battery, #cpu, #disk, #idle_inhibitor, #keyboard-state,
+  #pulseaudio, #clock, #tags, #language, #memory, #network, #sndio,
+  #mode, #window, #temperature, #taskbar,
+  #custom-treefetch-downloads, #custom-update-count, #custom-axyl-downloads
+  {
+    padding-left: 15px;
+    padding-right: 16px;
+
+    border-radius: 11px;
+  }
+
+  #workspaces button, #tags button {
+    font-size: 20px;
+    margin: 0 3px;
+  }
 }
 
 .modules-left {
   margin-left: $screen-margin;
-  margin-right: 3px;
 }
 
 .modules-right {
@@ -103,6 +127,12 @@ window#waybar {
   margin-left: $module-margin;
 }
 
+#window {
+  background-color: colors.$bg1;
+  color: colors.$green;
+  font-weight: 900;
+}
+
 #custom-mpd-song-scroll {
   color: colors.$white-text;
   border-radius: 3px;
@@ -111,37 +141,44 @@ window#waybar {
 
 // River tags
 
-#tags button {
-  color: colors.$fg-alt;
-  font-family: "Source Han Sans JP";
+#workspaces {
+  background: transparent;
+  padding-left: 0;
+  padding-right: 0;
+  box-shadow: none;
+}
+
+#tags button, #workspaces button {
   font-weight: 700;
   padding: 0 0px;
   margin: 0 2px;
   min-width: 26px;
-  font-size: 19px;
-  border-radius: 0;
+  font-size: 18px;
+  border-radius: $bar-border-radius;
+  color: colors.$bg;
+  background: colors.$fg;
   border: none;
   transition: none;
+  box-shadow: rgba(0, 0, 0, 0.5) 2 2 2 0px;
 }
 
-#tags button.occupied {
-  color: colors.$green;
-}
-
-#tags button:hover {
-  color: colors.$bg;
+#workspaces button:hover  {
+  color: colors.$fg;
   background: colors.$fg-alt;
-  box-shadow: none;
   text-shadow: none;
   transition: 0;
 }
 
-#tags button.focused {
+#workspaces button.active {
   color: colors.$bg;
-  background: colors.$green;
+  background: colors.$orange;
 }
 
-#tags button.urgent {
+#workspaces button.urgent {
+  color: colors.$red;
+}
+
+#workspaces button.hidden {
   color: colors.$red;
 }
 
@@ -180,11 +217,12 @@ tooltip label {
 }
 
 #tray menu {
-  background: colors.$bg;
+  background: colors.$bg0;
   color: colors.$fg;
-  border-radius: 5px;
-  border: 2px solid colors.$fg-alt;
-  padding: 4px 0;
+  border-radius: $bar-border-radius;
+  padding: 0;
+  padding-top: $bar-border-radius / 2;
+  padding-bottom: $bar-border-radius;
   font-family: $font, monospace;
   font-weight: $font-weight;
   font-size: $font-size;

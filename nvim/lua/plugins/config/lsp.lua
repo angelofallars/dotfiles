@@ -24,9 +24,15 @@ vim.api.nvim_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', op
 vim.api.nvim_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
 vim.api.nvim_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
 
+require("lsp-format").setup {
+  exclude={pylsp = true, pyright = true},
+}
+
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
+  require("lsp-format").on_attach(client, bufnr)
+
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
@@ -61,17 +67,17 @@ local on_attach = function(client, bufnr)
   --   end
   -- })
 
-  vim.cmd [[
-      highlight! DiagnosticLineNrError guifg=#ea6962 gui=bold
-      highlight! DiagnosticLineNrWarn  guifg=#d8a657 gui=bold
-      highlight! DiagnosticLineNrInfo  guifg=#7daea3 gui=bold
-      highlight! DiagnosticLineNrHint  guifg=#a9b665 gui=bold
-
-      sign define DiagnosticSignError text= texthl=DiagnosticSignError linehl= numhl=DiagnosticLineNrError
-      sign define DiagnosticSignWarn text= texthl=DiagnosticSignWarn linehl= numhl=DiagnosticLineNrWarn
-      sign define DiagnosticSignInfo text= texthl=DiagnosticSignInfo linehl= numhl=DiagnosticLineNrInfo
-      sign define DiagnosticSignHint text= texthl=DiagnosticSignHint linehl= numhl=DiagnosticLineNrHint
-      ]]
+  -- vim.cmd [[
+  --     highlight! DiagnosticLineNrError guifg=#f38ba8 gui=bold
+  --     highlight! DiagnosticLineNrWarn  guifg=#fab387 gui=bold
+  --     highlight! DiagnosticLineNrInfo  guifg=#94e2d5 gui=bold
+  --     highlight! DiagnosticLineNrHint  guifg=#a6e3a1 gui=bold
+  --
+  --     sign define DiagnosticSignError text= texthl=DiagnosticSignError linehl= numhl=DiagnosticLineNrError
+  --     sign define DiagnosticSignWarn text= texthl=DiagnosticSignWarn linehl= numhl=DiagnosticLineNrWarn
+  --     sign define DiagnosticSignInfo text= texthl=DiagnosticSignInfo linehl= numhl=DiagnosticLineNrInfo
+  --     sign define DiagnosticSignHint text= texthl=DiagnosticSignHint linehl= numhl=DiagnosticLineNrHint
+  --     ]]
 
   vim.diagnostic.config({
     virtual_text = {
@@ -82,14 +88,14 @@ end
 
 -- Setup lspconfig.
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 local lspconfig = require('lspconfig')
 
-local servers = { 'pylsp', 'pyright', 'bashls', 'clangd',
+local servers = { 'pyright', 'bashls', 'clangd',
   'html', 'cssls', 'jsonls', 'tsserver',
   'eslint', 'sqlls', 'vimls', 'rust_analyzer', 'gopls',
-  'dockerls', 'racket_langserver', 'zls'}
+  'dockerls', 'racket_langserver', 'zls', 'astro', 'vuels', 'ruff_lsp'}
 
 for _, lsp in pairs(servers) do
   lspconfig[lsp].setup {
@@ -102,32 +108,48 @@ for _, lsp in pairs(servers) do
   }
 end
 
-lspconfig.sumneko_lua.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  settings = {
-    Lua = {
-      runtime = {
-        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-        version = 'LuaJIT',
-        -- Setup your lua path
-        path = runtime_path,
-      },
-      diagnostics = {
-        -- Get the language server to recognize the `vim` global
-        globals = { 'vim' },
-      },
-      workspace = {
-        -- Make the server aware of Neovim runtime files
-        library = vim.api.nvim_get_runtime_file('', true),
-      },
-      -- Do not send telemetry data containing a randomized but unique identifier
-      telemetry = {
-        enable = false,
-      },
-    },
+-- lspconfig["pylsp"].setup {
+--     on_attach = on_attach,
+--     flags = {
+--       -- This will be the default in neovim 0.7+
+--       debounce_text_changes = 150,
+--     },
+-- }
+
+local rt = require("rust-tools")
+
+rt.setup({
+  server = {
+    on_attach = on_attach
   },
-}
+})
+
+-- lspconfig.sumneko_lua.setup {
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+--   settings = {
+--     Lua = {
+--       runtime = {
+--         -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+--         version = 'LuaJIT',
+--         -- Setup your lua path
+--         path = runtime_path,
+--       },
+--       diagnostics = {
+--         -- Get the language server to recognize the `vim` global
+--         globals = { 'vim' },
+--       },
+--       workspace = {
+--         -- Make the server aware of Neovim runtime files
+--         library = vim.api.nvim_get_runtime_file('', true),
+--       },
+--       -- Do not send telemetry data containing a randomized but unique identifier
+--       telemetry = {
+--         enable = false,
+--       },
+--     },
+--   },
+-- }
 
 lspconfig.ltex.setup {
   on_attach = on_attach,

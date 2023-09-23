@@ -35,6 +35,9 @@ autocmd BufEnter *                        silent! lcd %:p:h
 let g:prettier#autoformat_require_pragma = 0
 let g:prettier#autoformat_config_present = 1
 
+let g:python3_host_prog = $HOME . '/.local/venv/nvim/bin/python'
+
+autocmd BufWritePre *.py call BlackSync()
 ]])
 
 vim.opt.autochdir         = true

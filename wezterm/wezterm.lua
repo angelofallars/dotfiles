@@ -2,28 +2,16 @@ local wezterm = require 'wezterm';
 
 return {
 
-    color_scheme = "gruvbox_material_dark_medium",
-    color_schemes = {
-        ["gruvbox_material_dark_medium"] = {
-            foreground = "#dfbf8e",
-            background = "#282828",
-            cursor_bg = "#dfbf8e",
-            cursor_border = "#dfbf8e",
-            cursor_fg = "#282828",
-            selection_bg = "#dfbf8e" ,
-            selection_fg = "#45403d",
+    color_scheme = "Catppuccin Mocha",
 
-            ansi = {"#282828","#ea6962","#a9b665","#d8a657", "#7daea3","#d3869b", "#89b482","#dfbf8e"},
-            brights = {"#eddeb5","#ea6962","#a9b665","#d8a657", "#7daea3","#d3869b", "#89b482","#dfbf8e"},
-        },
-    },
+    window_background_opacity = 1,
 
     font = wezterm.font_with_fallback({
         {family="JetBrains Mono", weight="Medium"},
         "Twemoji",
     }),
 
-    font_size = 11.0,
+    font_size = 14.5,
 
     window_padding = {
         left = 8,
@@ -36,17 +24,59 @@ return {
 
     warn_about_missing_glyphs = false,
 
-    -- window_background_gradient = {
-    --     orientation = "Vertical",
-    --
-    --     colors = {
-    --         "#33302F",
-    --         "#262626",
-    --         "#1B1E1F",
-    --     },
-    --
-    --     interpolation = "Linear",
-    --     blend = "Rgb",
-    --     noise = 56,
-    -- },
+    animation_fps = 165,
+    default_cursor_style = 'SteadyBlock',
+    cursor_blink_ease_in = 'Ease',
+    cursor_blink_ease_out = 'Ease',
+
+    window_background_gradient = {
+      orientation = {
+        Radial = {
+          -- Specifies the x coordinate of the center of the circle,
+          -- in the range 0.0 through 1.0.  The default is 0.5 which
+          -- is centered in the X dimension.
+          cx = 0.75,
+
+          -- Specifies the y coordinate of the center of the circle,
+          -- in the range 0.0 through 1.0.  The default is 0.5 which
+          -- is centered in the Y dimension.
+          cy = 0.20,
+
+          -- Specifies the radius of the notional circle.
+          -- The default is 0.5, which combined with the default cx
+          -- and cy values places the circle in the center of the
+          -- window, with the edges touching the window edges.
+          -- Values larger than 1 are possible.
+          radius = 1.5,
+        },
+      },
+
+
+        colors = {
+            "#575c7a",
+            "#313244",
+            "#1e1e2e",
+            "#1e1e2e",
+            "#181825",
+            "#11111b",
+        },
+
+        interpolation = "Basis",
+        blend = "Hsv",
+        noise = 25,
+    },
+
+    keys = {
+    -- Turn off the default CMD-m Hide action, allowing CMD-m to
+    -- be potentially recognized and handled by the tab
+      { key = 'w', mods = 'SUPER', action = 'DisableDefaultAssignment' },
+    },
+
+    mouse_bindings = {
+    -- Ctrl-click will open the link under the mouse cursor
+    {
+      event = { Up = { streak = 1, button = 'Left' } },
+      action = wezterm.action.OpenLinkAtMouseCursor,
+    },
+}
 }
