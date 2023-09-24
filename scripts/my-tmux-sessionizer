@@ -2,11 +2,11 @@
 
 projects=$(\
            find \
-               ~/projects \
                ~/projects/sofsafe \
+               ~/projects/personal \
                ~/projects/axyl \
                ~/projects/waycrate \
-               ~/projects/personal \
+               ~/projects/silver \
                ~/forks \
                ~/study \
                -mindepth 1 -maxdepth 1 -type d \
@@ -24,6 +24,7 @@ selected=$(echo "$projects" |
            sed --regexp-extended "s/^projects\/axyl/🔷 axyl/g" |
            sed --regexp-extended "s/^projects\/waycrate/🟨 waycrate/g" |
            sed --regexp-extended "s/^projects\/personal\//🟢 /g" |
+           sed --regexp-extended "s/^projects\/silver/💿 silver/g" |
            sed --regexp-extended "s/^forks/↔️  forks/g" |
            sed --regexp-extended "s/^study/✏️  study/g" |
 
@@ -48,6 +49,7 @@ selected=$(echo "$selected" \
           | sed --regexp-extended "s/^🔷 axyl/projects\/axyl/g" \
           | sed --regexp-extended "s/^🟨 waycrate/projects\/waycrate/g" \
           | sed --regexp-extended "s/^🟢 /projects\/personal\//g" \
+          | sed --regexp-extended "s/^💿 silver/projects\/silver\//g" \
           | sed --regexp-extended "s/^↔️  forks/forks/g" \
           | sed --regexp-extended "s/^✏️  study/study/g" \
          )
