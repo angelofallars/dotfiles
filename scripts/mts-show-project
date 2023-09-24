@@ -40,12 +40,13 @@ display_output() {
     echo -e "$language_emojis\n"
 
     echo "$1"
+    echo "$2"
 
     sleep "$sleep_interval"
 }
 
 main () {
-    sleep_interval="5"
+    sleep_interval="8"
 
     repo_data=$(print_repo_data)
     echo "$repo_data"
@@ -54,14 +55,13 @@ main () {
     onefetch_output=$(onefetch --output json ~/"$project" |
                       ~/.config/scripts/onefetch-wrapper)
 
+    onefetch_plain_output=$(onefetch ~/"$project")
+
     language_emojis=$(echo "$onefetch_output" | sed 1q)
     onefetch_output=$(echo "$onefetch_output" | sed 1d | sed 1d)
 
-    display_output "$file_tree"
-
     while true; do
-        display_output "$onefetch_output"
-        display_output "$file_tree"
+        display_output "$onefetch_plain_output" "$file_tree"
     done
 }
 
