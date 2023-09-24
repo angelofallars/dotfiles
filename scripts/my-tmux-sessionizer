@@ -10,11 +10,12 @@ projects=$(\
                ~/forks \
                ~/study \
                -mindepth 1 -maxdepth 1 -type d \
-               -not -name personal \
-               -not -name axyl \
-               -not -name waycrate \
-               -not -name sofsafe \
+               -printf "%T@ %p\n" \
                |
+
+           sort -n -r |
+        
+           sed --regexp-extended "s/\w*.\\w* //" |
 
            sed --regexp-extended "s/^\/home\/[^\/]+\///g")
 
