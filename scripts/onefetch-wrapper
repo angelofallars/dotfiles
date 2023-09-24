@@ -60,37 +60,37 @@ for line in fileinput.input():
     output += str(line)
 repo_json = json.loads(output)
 
-languages: list[str] = repo_json['languages']
-language_format = ""
-for language in languages:
-    language_format += f"{language}, "
-language_format = language_format[:-2]
-
-# Determine the color of the field names
-if len(languages) > 1 and languages[0] in language_colors:
-    output_color = language_colors[languages[0]]
-else:
-    output_color = YELLOW
-
-# Format the onefetch output
-format = ""
-format += f"{output_color}{BOLD}Project:{RESET} {repo_json['repoName']}"
-if repo_json['numberOfBranches'] > 0:
-    format += f" ({repo_json['numberOfBranches']} \
-{'branches' if repo_json['numberOfBranches'] > 1 else 'branch'})"
-format += f"\n{output_color}{BOLD}Created:{RESET} {repo_json['creationDate']}\n"
-format += f"{output_color}{BOLD}Language:{RESET} {language_format}\n"
-format += f"{output_color}{BOLD}Last change:{RESET} {repo_json['lastChange']}\n"
-format += f"{output_color}{BOLD}Lines of code:{RESET} {repo_json['linesOfCode']}\n"
-format += f"{output_color}{BOLD}Size:{RESET} {repo_json['repoSize']}\n"
-if repo_json['license']:
-    format += f"{output_color}{BOLD}License:{RESET} {repo_json['license']}\n"
-
-# Print emojis
-for language in languages:
-    if language in language_emojis:
-        print(language_emojis[language], end=" ")
-print()
-print()
-
-print(format)
+# languages: list[str] = repo_json['languages']
+# language_format = ""
+# for language in languages:
+#     language_format += f"{language}, "
+# language_format = language_format[:-2]
+#
+# # Determine the color of the field names
+# if len(languages) > 1 and languages[0] in language_colors:
+#     output_color = language_colors[languages[0]]
+# else:
+#     output_color = YELLOW
+#
+# # Format the onefetch output
+# format = ""
+# format += f"{output_color}{BOLD}Project:{RESET} {repo_json['repoName']}"
+# if repo_json['numberOfBranches'] > 0:
+#     format += f" ({repo_json['numberOfBranches']} \
+# {'branches' if repo_json['numberOfBranches'] > 1 else 'branch'})"
+# format += f"\n{output_color}{BOLD}Created:{RESET} {repo_json['creationDate']}\n"
+# format += f"{output_color}{BOLD}Language:{RESET} {language_format}\n"
+# format += f"{output_color}{BOLD}Last change:{RESET} {repo_json['lastChange']}\n"
+# format += f"{output_color}{BOLD}Lines of code:{RESET} {repo_json['linesOfCode']}\n"
+# format += f"{output_color}{BOLD}Size:{RESET} {repo_json['repoSize']}\n"
+# if repo_json['license']:
+#     format += f"{output_color}{BOLD}License:{RESET} {repo_json['license']}\n"
+#
+# # Print emojis
+# for language in languages:
+#     if language in language_emojis:
+#         print(language_emojis[language], end=" ")
+# print()
+# print()
+#
+# print(format)
