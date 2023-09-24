@@ -31,7 +31,7 @@ selected=$(echo "$projects" |
 
            fzf --border=none --reverse --prompt="  ➡️  " --ansi --cycle \
                --header="🚀 tmux-sessionizer" --header-first \
-               --pointer="🔥" \
+               --pointer="🐱" \
                --no-mouse \
                --no-info \
                --padding 0,1 --margin 0 \
