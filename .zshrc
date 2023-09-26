@@ -12,17 +12,16 @@ unsetopt autocd nomatch notify
 bindkey -e
 # End of lines configured by zsh-newuser-install
 
-
 if [[ -n "$TMUX_PYTHON_VENV" ]]; then
     source "$TMUX_PYTHON_VENV"
 fi
 
 # Color stuff
-alias ls='exa -x --icons --git --group-directories-first'
+alias ls='eza -x --icons --git --group-directories-first'
 alias l='ls'
-alias la='exa -a -x --icons --git --group-directories-first'
-alias ll='exa -l -x --icons --git --group-directories-first'
-alias lla='exa -l -a -x --icons --git --group-directories-first'
+alias la='eza -a -x --icons --git --group-directories-first --no-user'
+alias ll='eza -l -x --icons --git --group-directories-first --no-user'
+alias lla='eza -l -a -x --icons --git --group-directories-first --no-user'
 alias cat='bat --theme="Catppuccin-mocha"'
 alias grep='grep --color=auto'
 
@@ -83,6 +82,49 @@ gll() {
 alias gb="git branch"
 alias gbr="git branch --remote"
 alias gc="git checkout"
+
+alias pm="pacman"
+alias pmh="pacman -H"
+
+alias pmv="sudo pacman --version"
+alias pmd="sudo pacman --database"
+alias pmf="sudo pacman --files"
+
+alias pms="sudo pacman --sync"
+alias pmsy="sudo pacman --sync --refresh"
+alias pmsyu="sudo pacman -Syu"
+alias pmup="pmsyu"
+alias pmss="pacman --sync --search"
+
+alias pmq="pacman --query"
+alias pmqi="pacman --query --info"
+alias pmql="pacman --query --list"
+
+alias pmr="sudo pacman --remove"
+alias pmt="pacman --deptest"
+alias pmu="sudo pacman --upgrade"
+
+
+# No pr because it conflicts with GNU pr
+alias prh="paru -H"
+
+alias prv="sudo paru --version"
+alias prd="sudo paru --database"
+alias prf="sudo paru --files"
+
+alias prs="sudo paru --sync"
+alias prsy="sudo paru --sync --refresh"
+alias prsyu="sudo paru -Syu"
+alias prup="prsyu"
+alias prss="paru --sync --search"
+
+alias prq="paru --query"
+alias prqi="paru --query --info"
+alias prql="paru --query --list"
+
+alias prr="sudo paru --remove"
+alias prt="paru --deptest"
+alias pru="sudo paru --upgrade"
 
 alias vim="nvim"
 alias v="nvim"
@@ -156,6 +198,8 @@ installgame() {
     winecfg
 }
 
+source ~/software/fzf-zsh-plugin/fzf-zsh-plugin.plugin.zsh
+
 alias pdb="python -m pdb"
 
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -172,10 +216,11 @@ export PATH="$PATH:/home/angelo-f/go/bin"
 
 export PATH="$PATH:/home/angelo-f/software/couch-porth"
 export PORTH_STD="/home/angelo-f/software/couch-porth/std/"
+export PATH="$PATH:/home/angelo-f/software/fzf-zsh-plugin/bin"
 
 alias porth="porth -I $PORTH_STD"
 
-export EXA_COLORS="di=32"
+export EZA_COLORS="di=32"
 
 alias river="XKB_DEFAULT_OPTIONS=ctrl:nocaps river"
 
