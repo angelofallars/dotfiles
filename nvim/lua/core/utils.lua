@@ -1,27 +1,27 @@
 local M = {}
 
-M.map = function(mode, shortcut, command)
-  vim.keymap.set(mode, shortcut, command)
+M.map = function(mode, shortcut, command, opts)
+	vim.keymap.set(mode, shortcut, command, opts)
 end
 
-M.nmap = function(shortcut, command)
-  M.map('n', shortcut, command)
+M.nmap = function(shortcut, command, opts)
+	M.map("n", shortcut, command, opts)
 end
 
-M.imap = function(shortcut, command)
-  M.map('i', shortcut, command)
+M.imap = function(shortcut, command, opts)
+	M.map("i", shortcut, command, opts)
 end
 
-M.vmap = function(shortcut, command)
-  M.map('v', shortcut, command)
+M.vmap = function(shortcut, command, opts)
+	M.map("v", shortcut, command, opts)
 end
 
-M.tmap = function(shortcut, command)
-  M.map('t', shortcut, command)
+M.tmap = function(shortcut, command, opts)
+	M.map("t", shortcut, command, opts)
 end
 
 M.create_command = function(name, command)
-  vim.api.nvim_create_user_command(name, command, {nargs = '*'})
+	vim.api.nvim_create_user_command(name, command, { nargs = "*" })
 end
 
 return M

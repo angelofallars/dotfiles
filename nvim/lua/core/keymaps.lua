@@ -1,4 +1,4 @@
-local utils = require('core.utils')
+local utils = require("core.utils")
 local map = utils.map
 local nmap = utils.nmap
 local imap = utils.imap
@@ -10,9 +10,12 @@ vim.g.mapleader = " "
 -- Search for <files> in the git repository
 nmap("<C-p>", ":lua require'telescope.builtin'.git_files{show_untracked = true}<cr>")
 
-vim.api.nvim_create_autocmd('BufRead',
-  { pattern = '*/.config/*',
-    command = 'nnoremap <C-p> :lua require"telescope.builtin".git_files{show_untracked = false}<cr>' })
+nmap("<C-f>", ":lua require'telescope.builtin'.live_grep()<cr>")
+
+vim.api.nvim_create_autocmd("BufRead", {
+	pattern = "*/.config/*",
+	command = 'nnoremap <C-p> :lua require"telescope.builtin".git_files{show_untracked = false}<cr>',
+})
 
 nmap("<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<cr>")
 nmap("<leader>fg", "<cmd>lua require('telescope.builtin').live_grep(require('telescope.themes').get_ivy({}))<cr>")
@@ -21,17 +24,17 @@ nmap("<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<cr>")
 
 nmap("<leader>l", "<cmd>!librewolf %<cr>")
 
-nmap("<leader>r", '<Plug>RestNvim')
+nmap("<leader>r", "<Plug>RestNvim")
 
 -- Harpoon baby!
-nmap("<leader>t", ":lua require('harpoon.mark').add_file()<CR>")
-nmap("<C-g>", ":lua require('harpoon.ui').toggle_quick_menu()<CR>")
-nmap("<leader>tc", ":lua require('harpoon.cmd-ui').toggle_quick_menu()<CR>")
+-- nmap("<leader>t", ":lua require('harpoon.mark').add_file()<CR>")
+-- nmap("<C-g>", ":lua require('harpoon.ui').toggle_quick_menu()<CR>")
+-- nmap("<leader>tc", ":lua require('harpoon.cmd-ui').toggle_quick_menu()<CR>")
 
-nmap("<C-t>", ":lua require('harpoon.ui').nav_next()<CR>")
-nmap("<C-n>", ":lua require('harpoon.ui').nav_prev()<CR>")
-nmap("<C-m>", ":lua require('harpoon.ui').nav_file(3)<CR>")
-nmap("<C-k>", ":lua require('harpoon.ui').nav_file(4)<CR>")
+-- nmap("<C-t>", ":lua require('harpoon.ui').nav_next()<CR>")
+-- nmap("<C-n>", ":lua require('harpoon.ui').nav_prev()<CR>")
+-- nmap("<C-m>", ":lua require('harpoon.ui').nav_file(3)<CR>")
+-- nmap("<C-k>", ":lua require('harpoon.ui').nav_file(4)<CR>")
 
 nmap("<C-c>", ":noh<CR>:<Esc>")
 
@@ -44,24 +47,24 @@ nmap("<leader>p", '"+p')
 nmap("<leader>P", '"+P')
 vmap("<leader>y", '"+y')
 
-local readline = require 'readline'
+local readline = require("readline")
 
-map('!', '<M-f>', readline.forward_word)
-map('!', '<M-b>', readline.backward_word)
-map('!', '<C-a>', readline.beginning_of_line)
-map('!', '<C-e>', readline.end_of_line)
-map('!', '<M-d>', readline.kill_word)
-map('!', '<C-w>', readline.backward_kill_word)
-map('!', '<C-k>', readline.kill_line)
-map('!', '<C-u>', readline.backward_kill_line)
+map("!", "<M-f>", readline.forward_word)
+map("!", "<M-b>", readline.backward_word)
+map("!", "<C-a>", readline.beginning_of_line)
+map("!", "<C-e>", readline.end_of_line)
+map("!", "<M-d>", readline.kill_word)
+map("!", "<C-w>", readline.backward_kill_word)
+map("!", "<C-k>", readline.kill_line)
+map("!", "<C-u>", readline.backward_kill_line)
 
-map('!', '<C-f>', '<Right>')
-map('!', '<C-b>', '<Left>')
-map('!', '<C-n>', '<Down>')  -- next-line
-map('!', '<C-p>', '<Up>')    -- previous-line
+map("!", "<C-f>", "<Right>")
+map("!", "<C-b>", "<Left>")
+map("!", "<C-n>", "<Down>") -- next-line
+map("!", "<C-p>", "<Up>") -- previous-line
 
-map('!', '<C-d>', '<Delete>')  -- delete-char
-map('!', '<C-h>', '<BS>')      -- backward-delete-char
+map("!", "<C-d>", "<Delete>") -- delete-char
+map("!", "<C-h>", "<BS>") -- backward-delete-char
 
 -- local function create_new_terminal()
 --   vim.cmd([[below 12split]])
@@ -121,13 +124,27 @@ map('!', '<C-h>', '<BS>')      -- backward-delete-char
 --   end
 -- )
 
-nmap("<leader>J", '<cmd>Git<cr>')
-nmap("<leader>jj", '<cmd>Git<cr>')
+nmap("<leader>J", "<cmd>Git<cr>")
+nmap("<leader>jj", "<cmd>Git<cr>")
 
-nmap("<leader>ja", '<cmd>Git add %<cr>')
-nmap("<leader>jm", '<cmd>Git commit<cr>')
-nmap("<leader>js", '<cmd>Git status<cr>')
-nmap("<leader>jl", '<cmd>Git log<cr>')
-nmap("<leader>jd", '<cmd>Git diff %<cr>')
+nmap("<leader>ja", "<cmd>Git add %<cr>")
+nmap("<leader>jm", "<cmd>Git commit<cr>")
+nmap("<leader>js", "<cmd>Git status<cr>")
+nmap("<leader>jl", "<cmd>Git log<cr>")
+nmap("<leader>jd", "<cmd>Git diff %<cr>")
 
-nmap("<C-e>", ":NvimTreeToggle<cr>")
+local function toggle_git_dir()
+	local is_inside_git_repo = vim.fn.system("git rev-parse --is-inside-work-tree") == "true\n"
+
+	local path
+	if is_inside_git_repo then
+		local git_root_dir = vim.fn.system("git rev-parse --show-toplevel")
+		path = git_root_dir
+	else
+		path = "."
+	end
+
+	vim.cmd("NvimTreeFindFileToggle " .. path)
+end
+
+vim.keymap.set("n", "<C-n>", toggle_git_dir)

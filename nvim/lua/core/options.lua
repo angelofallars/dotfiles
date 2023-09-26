@@ -37,68 +37,67 @@ let g:prettier#autoformat_config_present = 1
 
 let g:python3_host_prog = $HOME . '/.local/venv/nvim/bin/python'
 
-autocmd BufWritePre *.py call BlackSync()
+" autocmd BufWritePre *.py call BlackSync()
 ]])
 
-vim.opt.autochdir         = true
+vim.opt.autochdir = true
 
-vim.opt.expandtab         = true
-vim.opt.tabstop           = 4
-vim.opt.softtabstop       = 4
-vim.opt.shiftwidth        = 4
+vim.opt.expandtab = true
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
 
-vim.opt.smartindent       = true
-vim.opt.autoindent        = true
-vim.opt.cindent           = true
+vim.opt.smartindent = true
+vim.opt.autoindent = true
+vim.opt.cindent = true
 
-vim.opt.wrap              = true
-vim.opt.textwidth         = 0
-vim.opt.colorcolumn       = "0"
+vim.opt.wrap = true
+vim.opt.textwidth = 0
+vim.opt.colorcolumn = "0"
 
-vim.opt.number            = true
-vim.opt.relativenumber    = true
+vim.opt.number = true
+vim.opt.relativenumber = true
 
-vim.opt.ignorecase        = true
-vim.opt.smartcase         = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
 
-vim.opt.swapfile          = false
-vim.opt.undofile          = true
+vim.opt.swapfile = false
+vim.opt.undofile = true
 
 -- Blinking cursor
-vim.opt.guicursor         = vim.opt.guicursor + "n-v-c-i:blinkon5"
+vim.opt.guicursor = vim.opt.guicursor + "n-v-c-i:blinkon5"
 
-vim.opt.updatetime        = 250
-vim.opt.completeopt       = 'menuone,noselect'
-vim.opt.showmode          = false
-vim.opt.compatible        = false
+vim.opt.updatetime = 250
+vim.opt.completeopt = "menuone,noselect"
+vim.opt.showmode = false
+vim.opt.compatible = false
 
-vim.g.rustfmt_autosave    = 1
+vim.g.netrw_browse_split = 0
+vim.g.netrw_banner = 0
+vim.g.netrw_winsize = 25
 
-vim.g.netrw_browse_split  = 0
-vim.g.netrw_banner        = 0
-vim.g.netrw_winsize       = 25
+vim.g.goyo_width = 150
 
-vim.g.goyo_width          = 150
+vim.opt.termguicolors = true
 
-vim.opt.termguicolors     = true
-
-vim.g.go_gopls_enabled    = false
+vim.g.go_gopls_enabled = false
 vim.g.go_fmt_fail_silently = 1
 
 -- Thank you Neovim devs!
-vim.opt.cmdheight         = 1
+vim.opt.cmdheight = 1
 
-vim.opt.fillchars         = vim.opt.fillchars + 'eob: '
-vim.opt.fillchars         = vim.opt.fillchars + "horiz:━"
-vim.opt.fillchars         = vim.opt.fillchars + "horizup:━"
-vim.opt.fillchars         = vim.opt.fillchars + "horizdown:━"
-vim.opt.fillchars         = vim.opt.fillchars + "vert:▏"
-vim.opt.fillchars         = vim.opt.fillchars + "vertleft:▏"
-vim.opt.fillchars         = vim.opt.fillchars + "vertright:▏"
-vim.opt.fillchars         = vim.opt.fillchars + "verthoriz:▏"
+vim.opt.fillchars = vim.opt.fillchars + "eob: "
+vim.opt.fillchars = vim.opt.fillchars + "horiz:━"
+vim.opt.fillchars = vim.opt.fillchars + "horizup:━"
+vim.opt.fillchars = vim.opt.fillchars + "horizdown:━"
+vim.opt.fillchars = vim.opt.fillchars + "vert:▏"
+vim.opt.fillchars = vim.opt.fillchars + "vertleft:▏"
+vim.opt.fillchars = vim.opt.fillchars + "vertright:▏"
+vim.opt.fillchars = vim.opt.fillchars + "verthoriz:▏"
 
 vim.cmd([[filetype plugin on]])
 vim.cmd([[syntax enable]])
+vim.opt.filetype.plugin = true
 
 vim.cmd([[
 let g:user_emmet_settings = {
