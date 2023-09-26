@@ -1,0 +1,22 @@
+#!/bin/zsh
+
+if [[ "$1" == "kill" ]]; then
+    tmux kill-window
+fi
+
+IFS=$'\n' arr=($(tmux list-windows -F "#I"))
+
+new_index=1
+for ((i = 1; i <= $#arr; i++)); do
+    pane_count=$(tmux list-panes -t ":$arr[i]" | wc -l)
+
+    current_window_index=$(tmux display-message -p '#I')
+
+    if [[ $current_window_index -eq $arr[i] ]]; then
+        tmux move-window -s ":$arr[i]" -t "$new_index"
+    else
+        tmux move-window -d -s ":$arr[i]" -t "$new_index"
+    fi
+
+    new_index=$(("$new_index" + "$pane_count"))
+done

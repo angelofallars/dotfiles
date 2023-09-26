@@ -1,64 +1,126 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 export FZF_DEFAULT_OPTS=" \
 --color=bg+:#313244,spinner:#f5e0dc,hl:#f38ba8 \
 --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
 --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
 
+lavender="#b4befe"
+maroon="#eba0ac"
+peach="#fab387"
+subtext0="#a6adc8"
+overlay2="#9399b2"
+overlay0="#6c7086"
+surface2="#585b70"
+surface1="#45475a"
+surface0="#313244"
+base_minus_1="#262637"
+base="#1e1e2e"
+mantle="#181825"
+
 projects=$(\
-           find \
-               ~/projects/sofsafe \
-               ~/projects/personal \
-               ~/projects/axyl \
-               ~/projects/waycrate \
-               ~/projects/silver \
-               ~/forks \
-               ~/study \
-               -mindepth 1 -maxdepth 1 -type d \
-               -printf "%T@ %p\n" \
-               |
+   find \
+       ~/projects/* \
+       ~/forks \
+       ~/study \
+       \
+       -mindepth 1 -maxdepth 1 \
+       -follow \
+       -type d \
+       -printf "%T@ %p\n" \
+       |
 
-           sort -n -r |
-        
-           sed --regexp-extended "s/\w*.\\w* //" |
+    # Sort by date
+   sort --numeric-sort --reverse |
 
-           sed --regexp-extended "s/^\/home\/[^\/]+\///g")
+   # Strip floating number at the start used for sorting
+   sed --regexp-extended "s/\w*\.\w* //" |
+
+   # Strip home dir
+   sed --regexp-extended "s/^\/home\/[^\/]+\///g" |
+
+   sed --regexp-extended "s/^projects\/work/📋 work/g" |
+   sed --regexp-extended "s/^projects\/axyl/🔷 axyl/g" |
+   sed --regexp-extended "s/^projects\/waycrate/🟨 waycrate/g" |
+   sed --regexp-extended "s/^projects\/personal\//🟢 /g" |
+   sed --regexp-extended "s/^projects\/silver/💿 silver/g" |
+   sed --regexp-extended "s/^projects\/(\S*)/🔲 \1/g" |
+   sed --regexp-extended "s/^forks/↔️  forks/g" |
+   sed --regexp-extended "s/^study/✏️  study/g" |
+
+   tee
+)
 
 selected=$(echo "$projects" |
 
-           sed --regexp-extended "s/^projects\/sofsafe/📋 sofsafe/g" |
-           sed --regexp-extended "s/^projects\/axyl/🔷 axyl/g" |
-           sed --regexp-extended "s/^projects\/waycrate/🟨 waycrate/g" |
-           sed --regexp-extended "s/^projects\/personal\//🟢 /g" |
-           sed --regexp-extended "s/^projects\/silver/💿 silver/g" |
-           sed --regexp-extended "s/^forks/↔️  forks/g" |
-           sed --regexp-extended "s/^study/✏️  study/g" |
-
-           fzf --border=none --reverse --prompt="  ➡️  " --ansi --cycle \
-               --header="🚀 tmux-sessionizer" --header-first \
-               --pointer="🐱" \
-               --no-mouse \
-               --no-info \
-               --padding 0,1 --margin 0 \
-               --color="prompt:blue,prompt:bold,border:green,border:dim" \
-               --color="fg+:yellow" \
-               --color="hl:underline,hl+:underline,hl:magenta,hl+:magenta" \
-               --color="info:green" \
-               --color="spinner:green,spinner:dim" \
-               --preview="$HOME/.config/scripts/mts-show-project ''{}''" \
-               --preview-window=border-left,58%)
+   fzf \
+       --border=none \
+       --prompt="    "   \
+       --header="🔥 BLAZINGLY FAST!"\
+       --header-first \
+       --pointer="" \
+       --scrollbar="┃" \
+       --layout=reverse \
+       --ansi \
+       --cycle \
+       --tiebreak="begin,index" \
+       \
+       --scheme="path" \
+       --no-mouse \
+       --padding 0,0,0,1 \
+       --margin 0 \
+       --info=inline-right \
+       --separator="r" \
+       \
+       --color="border:$surface0" \
+       --color="header:$maroon" \
+       --color="header:bold" \
+       --color="prompt:$peach" \
+       --color="query:" \
+       --color="info:$surface1" \
+       \
+       --color="fg:$subtext0" \
+       \
+       --color="bg+:$base_minus_1" \
+       --color="pointer:$lavender" \
+       --color="fg+:$lavender" \
+       --color="fg+:bold" \
+       \
+       --color="preview-bg:$base" \
+       --color="preview-fg:$overlay2" \
+       \
+       --color="hl:green" \
+       --color="hl:bold" \
+       --color="hl:underline" \
+       --color="hl+:green" \
+       --color="hl+:bold" \
+       --color="hl+:underline" \
+       --color="gutter:$mantle" \
+       \
+       --color="scrollbar:green" \
+       --color="scrollbar:bold" \
+       \
+       --color="spinner:green" \
+       --color="spinner:dim" \
+       \
+       \
+       \
+       --preview="$HOME/.config/scripts/mts-show-project ''{}''" \
+       --preview-window=border-left,60% \
+       --preview-window=border-sharp \
+)
 
 if [ $? != 0 ]; then exit; fi
 
-selected=$(echo "$selected" \
-          | sed --regexp-extended "s/^📋 sofsafe/projects\/sofsafe/g" \
-          | sed --regexp-extended "s/^🔷 axyl/projects\/axyl/g" \
-          | sed --regexp-extended "s/^🟨 waycrate/projects\/waycrate/g" \
-          | sed --regexp-extended "s/^🟢 /projects\/personal\//g" \
-          | sed --regexp-extended "s/^💿 silver/projects\/silver\//g" \
-          | sed --regexp-extended "s/^↔️  forks/forks/g" \
-          | sed --regexp-extended "s/^✏️  study/study/g" \
-         )
+selected=$(\
+    echo "$selected" |\
+          sed --regexp-extended "s/^.{1,2} (\S+)\//projects\/\1\//g" |\
+          \
+          sed --regexp-extended "s/^🟢 /projects\/personal\//g" |\
+          sed --regexp-extended "s/^.{1,2}  forks/forks/g" |\
+          sed --regexp-extended "s/^.{1,2}  study/study/g" |\
+          tee \
+)
 
 selected_dir="$HOME/${selected}"
 
@@ -73,8 +135,8 @@ fi
 
 if ! tmux has-session -t $selected_name 2> /dev/null; then
 
-    if [[ -e "$selected_dir"/venv/bin/activate ]]; then
-        tmux_python_venv="$selected_dir"/venv/bin/activate
+    if [[ -e "$selected_dir"/.venv/bin/activate ]]; then
+        tmux_python_venv="$selected_dir"/.venv/bin/activate
     fi
 
     tmux new-session -ds $selected_name -c $selected_dir \

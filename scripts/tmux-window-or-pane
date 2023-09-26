@@ -1,0 +1,29 @@
+#!/bin/sh
+
+if [[ "$1" == "right" ]]; then
+    direction="right"
+elif [[ "$1" == "left" ]]; then 
+    direction="left"
+else
+    exit 1
+fi
+
+if [[ "$direction" == "right" ]]; then
+    if [[ $(tmux list-panes -f "#{pane_at_right}" | grep "(active)") ]]; then
+        tmux next-window
+    else
+        tmux select-pane -t ".{right}"
+    fi
+
+    exit 0
+fi
+
+if [[ "$direction" == "left" ]]; then
+    if [[ $(tmux list-panes -f "#{pane_at_left}" | grep "(active)") ]]; then
+        tmux previous-window
+    else
+        tmux select-pane -t ".{left}"
+    fi
+
+    exit 0
+fi

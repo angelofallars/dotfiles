@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+IFS=$'\n' arr=($(tmux list-windows -F "#I"))
+last_window_index=$arr[-1]
+pane_count=$(tmux list-panes -t ":$last_window_index" | wc -l)
+
+tmux new-window -c "#{pane_current_path}" -t ":$(("$last_window_index" + "$pane_count"))" -a

@@ -1,0 +1,7 @@
+#!/usr/bin/sh
+
+if [[ $(tmux list-panes | wc -l) -eq 1 ]]; then 
+    tmux join-pane -s ":{next}" -t +0 -hd \; select-pane -t "{right}" \; resize-pane -x "35%"
+else
+    tmux break-pane -s ":+0.{right}" -d
+fi
