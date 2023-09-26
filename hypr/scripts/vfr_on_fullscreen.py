@@ -1,10 +1,10 @@
 #!/bin/python3
 
-import sys
 import json
 import subprocess
-from enum import Enum
+import sys
 from dataclasses import dataclass
+from enum import Enum
 from typing import Dict, Final, List, Union
 
 
