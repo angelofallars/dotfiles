@@ -102,15 +102,15 @@ window.DP-3 #workspaces button, window.DP-3 #tags button, window.DP-2 #workspace
   min-width: 26px;
   font-size: 18px;
   border-radius: 9px;
-  color: #1e1e2e;
-  background: #cdd6f4;
+  color: #cba6f7;
+  background: #313244;
   border: none;
   transition: none;
   box-shadow: rgba(0, 0, 0, 0.5) 2 2 2 0px;
 }
 
 #workspaces button:hover {
-  color: #cdd6f4;
+  color: #f5c2e7;
   background: #4c4c75;
   text-shadow: none;
   transition: 0;
@@ -118,7 +118,7 @@ window.DP-3 #workspaces button, window.DP-3 #tags button, window.DP-2 #workspace
 
 #workspaces button.active {
   color: #1e1e2e;
-  background: #fab387;
+  background: #cba6f7;
 }
 
 #workspaces button.urgent {

@@ -155,15 +155,15 @@ window.DP-3, window.DP-2, window.DP-1, window.HDMI-A-1 {
   min-width: 26px;
   font-size: 18px;
   border-radius: $bar-border-radius;
-  color: colors.$bg;
-  background: colors.$fg;
+  color: colors.$magenta;
+  background: colors.$bg1;
   border: none;
   transition: none;
   box-shadow: rgba(0, 0, 0, 0.5) 2 2 2 0px;
 }
 
 #workspaces button:hover  {
-  color: colors.$fg;
+  color: colors.$pink;
   background: colors.$fg-alt;
   text-shadow: none;
   transition: 0;
@@ -171,7 +171,7 @@ window.DP-3, window.DP-2, window.DP-1, window.HDMI-A-1 {
 
 #workspaces button.active {
   color: colors.$bg;
-  background: colors.$orange;
+  background: colors.$magenta;
 }
 
 #workspaces button.urgent {
