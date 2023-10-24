@@ -1,0 +1,131 @@
+{
+  "custom/window-prefix": {
+    "format": "<span color='#bac2de'> </span>",
+    "tooltip": false,
+  },
+  "hyprland/window": {
+    "format": "{title}",
+    "separate-outputs": true,
+  },
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "on-click": "activate",
+    "on-scroll-up": "hyprctl dispatch workspace e+1",
+    "on-scroll-down": "hyprctl dispatch workspace e-1",
+    "all-outputs": false,
+    "active-only": false,
+    "show-special": true,
+    "format-icons": {
+      "11": "1",
+      "12": "2",
+      "13": "3",
+      "14": "4",
+      "15": "5",
+      "21": "6",
+      "22": "7",
+      "23": "8",
+      "24": "9",
+      "25": "10",
+      "31": "1",
+      "32": "2",
+      "33": "3",
+    }
+  },
+  "tray": {
+    "icon-size": 26,
+    "spacing": 7,
+    "reverse-direction": true,
+  },
+  "pulseaudio": {
+    "scroll-step": 2, // %, can be a float
+    "format": "{icon}{volume}%",
+    "format-muted": "<span color=\"#b4befe\">󰝟 </span>...",
+    "format-icons": {
+      "default": [
+        "<span color=\"#89b4fa\"> </span>"
+      ],
+      "headphone": [
+        "<span color=\"#89b4fa\">󰋋 </span>"
+      ]
+    },
+    "on-click": "pamixer -t"
+  },
+  "group/cpu-memory": {
+    "orientation": "inherit",
+    "modules": [
+      "cpu",
+      "memory"
+    ]
+  },
+  "cpu": {
+    "format": "<span color=\"#fab387\"> CPU</span> {usage}% "
+  },
+  "memory": {
+    "format": "<span color=\"#a6e3a1\"> RAM</span> {used:0.1f}G/{total:0.1f}G"
+  },
+  "disk": {
+    "path": "/home",
+    "format": "<span color=\"#f38ba8\">/home</span> {free} free"
+  },
+  "clock": {
+    "format": "<span color=\"#cba6f7\"></span> {:%a %b %d    %I:%M %p %Z}",
+    "timezones": [
+      "Asia/Manila",
+      "America/Boise",
+      "US/Pacific",
+      "Europe/Oslo"
+    ],
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "mode": "month",
+      "mode-mon-col": 3,
+      "on-scroll": 1,
+      "format": {
+        "months": "<span color='#a6e3a1'><b>{}</b></span>",
+        "days": "<span color='#cdd6f4'>{}</span>",
+        "weeks": "<span color='#74c7ec'><b>W{}</b></span>",
+        "weekdays": "<span color='#f9e2af'><b>{}</b></span>",
+        "today": "<span background='#f38ba8' color='#1e1e2e'><b>{}</b></span>"
+      }
+    },
+    "actions": {
+      "on-click": "tz_up",
+      "on-click-right": "tz_down",
+      "on-click-forward": "shift_up",
+      "on-click-backward": "shift_down",
+      "on-click-middle": "mode",
+    }
+  },
+  "custom/update-count": {
+    "format": "<span rise=\"-14pt\"><span color=\"#d8a657\"></span> {}</span>",
+    "interval": 60,
+    "escape": true,
+    "exec": "~/.config/waybar/scripts/arch_updates",
+    "on-click": "~/.config/waybar/scripts/notify_arch_updates"
+  },
+  "custom/gpu-temp": {
+    "format": "<span color=\"#f38ba8\">RX  </span>{}°C",
+    "interval": 1,
+    "escape": true,
+    "exec": "/usr/bin/bash -c 'echo $(($(cat /sys/class/drm/card0/device/hwmon/hwmon1/temp1_input) / 1000))'"
+  },
+  "custom/artix": {
+    "format": "",
+    "tooltip": false,
+  },
+  "cava": {
+    "framerate": 165,
+  },
+  "custom/spotify": {
+    "format": "{}",
+    "escape": true,
+    "return-type": "json",
+    "max-length": 40,
+    "on-click": "playerctl -p spotify play-pause",
+    "smooth-scrolling-threshold": 5, // This value was tested using a trackpad, it should be lowered if using a mouse.
+    "on-scroll-up": "playerctl -p spotify next",
+    "on-scroll-down": "playerctl -p spotify previous",
+    "exec": "~/.config/waybar/scripts/mediaplayer.py 2> /dev/null", // Script in resources/custom_modules folder
+    "exec-if": "pgrep spotify"
+  }
+}

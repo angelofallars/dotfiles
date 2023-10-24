@@ -2,14 +2,63 @@
 #pulseaudio, #clock, #tags, #language, #memory, #network, #sndio,
 #mode, #window, #workspaces, #temperature, #taskbar, #workspaces,
 #custom-treefetch-downloads, #custom-update-count, #custom-axyl-downloads,
-#custom-gpu-temp {
-  margin-left: 3px;
-  margin-right: 3px;
+#custom-gpu-temp, #custom-artix {
+  margin-left: 4.5px;
+  margin-right: 4.5px;
   padding-left: 8px;
   padding-right: 8px;
   background: #1e1e2e;
   color: #cdd6f4;
-  border-radius: 9px;
+  border-radius: 4px;
+  border: 1px solid #313244;
+  border-top-color: #45475a;
+  border-bottom-color: #181825;
+  border-bottom-width: 2px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  box-shadow: 0 0 0px 1px rgba(5, 5, 15, 0.9);
+  padding-left: 7px;
+  padding-right: 7px;
+}
+
+#window {
+  background-color: transparent;
+  margin-right: 10px;
+  border: 0;
+  box-shadow: none;
+  color: #89b4fa;
+  font-weight: 900;
+  text-shadow: 0 0 6px rgba(137, 180, 250, 0.75), 0 0 2px rgba(17, 17, 27, 0.95);
+  animation-name: rainbow;
+  animation-timing-function: ease-in-out;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+}
+
+#window.empty {
+  color: red;
+}
+
+#foreign-time, #cpu-memory, #group-clock {
+  margin-left: 4.5px;
+  margin-right: 4.5px;
+  padding-left: 8px;
+  padding-right: 8px;
+  background: #1e1e2e;
+  color: #cdd6f4;
+  border-radius: 4px;
+  border: 1px solid #313244;
+  border-top-color: #45475a;
+  border-bottom-color: #181825;
+  border-bottom-width: 2px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  box-shadow: 0 0 0px 1px rgba(5, 5, 15, 0.9);
+}
+#foreign-time *, #cpu-memory *, #group-clock * {
+  border: 0;
+  padding: 0;
+  box-shadow: none;
 }
 
 * {
@@ -17,55 +66,30 @@
 }
 
 window#waybar {
-  background: rgba(20, 20, 30, 0);
+  background: rgba(17, 17, 27, 0.4);
   color: #cdd6f4;
 }
 
 .modules-left, .modules-center, .modules-right {
   background: transparent;
-  border-radius: 9px;
+  border-radius: 2px;
   font-family: "JetBrains Mono Nerd Font", monospace;
-  font-size: 14px;
+  font-size: 17px;
   font-weight: 500;
-  margin-top: 3px;
-  margin-bottom: 0px;
-}
-
-window.DP-3 .modules-left, window.DP-3 .modules-center, window.DP-3 .modules-right, window.DP-2 .modules-left, window.DP-2 .modules-center, window.DP-2 .modules-right, window.DP-1 .modules-left, window.DP-1 .modules-center, window.DP-1 .modules-right, window.HDMI-A-1 .modules-left, window.HDMI-A-1 .modules-center, window.HDMI-A-1 .modules-right {
-  font-size: 15px;
-}
-window.DP-3 #backlight, window.DP-3 #battery, window.DP-3 #cpu, window.DP-3 #disk, window.DP-3 #idle_inhibitor, window.DP-3 #keyboard-state,
-window.DP-3 #pulseaudio, window.DP-3 #clock, window.DP-3 #tags, window.DP-3 #language, window.DP-3 #memory, window.DP-3 #network, window.DP-3 #sndio,
-window.DP-3 #mode, window.DP-3 #window, window.DP-3 #temperature, window.DP-3 #taskbar,
-window.DP-3 #custom-treefetch-downloads, window.DP-3 #custom-update-count, window.DP-3 #custom-axyl-downloads, window.DP-2 #backlight, window.DP-2 #battery, window.DP-2 #cpu, window.DP-2 #disk, window.DP-2 #idle_inhibitor, window.DP-2 #keyboard-state,
-window.DP-2 #pulseaudio, window.DP-2 #clock, window.DP-2 #tags, window.DP-2 #language, window.DP-2 #memory, window.DP-2 #network, window.DP-2 #sndio,
-window.DP-2 #mode, window.DP-2 #window, window.DP-2 #temperature, window.DP-2 #taskbar,
-window.DP-2 #custom-treefetch-downloads, window.DP-2 #custom-update-count, window.DP-2 #custom-axyl-downloads, window.DP-1 #backlight, window.DP-1 #battery, window.DP-1 #cpu, window.DP-1 #disk, window.DP-1 #idle_inhibitor, window.DP-1 #keyboard-state,
-window.DP-1 #pulseaudio, window.DP-1 #clock, window.DP-1 #tags, window.DP-1 #language, window.DP-1 #memory, window.DP-1 #network, window.DP-1 #sndio,
-window.DP-1 #mode, window.DP-1 #window, window.DP-1 #temperature, window.DP-1 #taskbar,
-window.DP-1 #custom-treefetch-downloads, window.DP-1 #custom-update-count, window.DP-1 #custom-axyl-downloads, window.HDMI-A-1 #backlight, window.HDMI-A-1 #battery, window.HDMI-A-1 #cpu, window.HDMI-A-1 #disk, window.HDMI-A-1 #idle_inhibitor, window.HDMI-A-1 #keyboard-state,
-window.HDMI-A-1 #pulseaudio, window.HDMI-A-1 #clock, window.HDMI-A-1 #tags, window.HDMI-A-1 #language, window.HDMI-A-1 #memory, window.HDMI-A-1 #network, window.HDMI-A-1 #sndio,
-window.HDMI-A-1 #mode, window.HDMI-A-1 #window, window.HDMI-A-1 #temperature, window.HDMI-A-1 #taskbar,
-window.HDMI-A-1 #custom-treefetch-downloads, window.HDMI-A-1 #custom-update-count, window.HDMI-A-1 #custom-axyl-downloads {
-  padding-left: 15px;
-  padding-right: 16px;
-  border-radius: 11px;
-}
-window.DP-3 #workspaces button, window.DP-3 #tags button, window.DP-2 #workspaces button, window.DP-2 #tags button, window.DP-1 #workspaces button, window.DP-1 #tags button, window.HDMI-A-1 #workspaces button, window.HDMI-A-1 #tags button {
-  font-size: 20px;
-  margin: 0 3px;
+  margin-top: 4px;
+  margin-bottom: 4px;
 }
 
 .modules-left {
-  margin-left: 12px;
+  margin-left: 7px;
 }
 
 .modules-right {
-  margin-right: 12px;
+  margin-right: 7px;
 }
 
 #mpd, #custom-mpd-song-scroll {
-  font-size: 11.5px;
+  font-size: 14.5px;
   margin-bottom: 4px;
   padding: 0;
 }
@@ -73,13 +97,7 @@ window.DP-3 #workspaces button, window.DP-3 #tags button, window.DP-2 #workspace
 #mpd {
   color: #1e1e2e;
   margin-right: 2px;
-  margin-left: 3px;
-}
-
-#window {
-  background-color: #313244;
-  color: #a6e3a1;
-  font-weight: 900;
+  margin-left: 4.5px;
 }
 
 #custom-mpd-song-scroll {
@@ -93,32 +111,87 @@ window.DP-3 #workspaces button, window.DP-3 #tags button, window.DP-2 #workspace
   padding-left: 0;
   padding-right: 0;
   box-shadow: none;
+  border: none;
 }
 
-#tags button, #workspaces button {
-  font-weight: 700;
+@keyframes new-button {
+  from {
+    opacity: 0;
+    min-width: 0px;
+    padding: 0;
+    margin: 0;
+    border: 0;
+  }
+  to {
+    opacity: 100;
+  }
+}
+#workspaces button {
+  font-weight: 600;
   padding: 0 0px;
   margin: 0 2px;
-  min-width: 26px;
-  font-size: 18px;
-  border-radius: 9px;
+  min-width: 31px;
+  font-size: 22px;
+  border-radius: 50%;
   color: #cba6f7;
-  background: #313244;
-  border: none;
-  transition: none;
-  box-shadow: rgba(0, 0, 0, 0.5) 2 2 2 0px;
+  background: #1e1e2e;
+  border: 1px solid #313244;
+  border-bottom-width: 2px;
+  outline: red solid 1px;
+  box-shadow: 0 0 0px 1px rgb(5, 5, 15);
+  transition: all 0.25s, background 0.15s, color 0s;
+  transition-timing-function: ease-out;
+  animation-name: new-button;
+  animation-duration: 0.22s;
 }
 
 #workspaces button:hover {
-  color: #f5c2e7;
-  background: #4c4c75;
+  background: #45475a;
+  border-color: #585b70;
   text-shadow: none;
-  transition: 0;
+  border-radius: 9px;
+  transition: all 0.07s;
 }
 
+@keyframes active-button {
+  0% {
+    background: radial-gradient(ellipse farthest-corner at 12px -24px, #f38ba8, #fab387, #f9e2af, #a6e3a1, #89b4fa, #cba6f7);
+  }
+  16% {
+    background: radial-gradient(ellipse farthest-corner at 12px -24px, #cba6f7, #f38ba8, #fab387, #f9e2af, #a6e3a1, #89b4fa);
+  }
+  33% {
+    background: radial-gradient(ellipse farthest-corner at 12px -24px, #89b4fa, #cba6f7, #f38ba8, #fab387, #f9e2af, #a6e3a1);
+  }
+  50% {
+    background: radial-gradient(ellipse farthest-corner at 12px -24px, #a6e3a1, #89b4fa, #cba6f7, #f38ba8, #fab387, #f9e2af);
+  }
+  66% {
+    background: radial-gradient(ellipse farthest-corner at 12px -24px, #f9e2af, #a6e3a1, #89b4fa, #cba6f7, #f38ba8, #fab387);
+  }
+  83% {
+    background: radial-gradient(ellipse farthest-corner at 12px -24px, #fab387, #f9e2af, #a6e3a1, #89b4fa, #cba6f7, #f38ba8);
+  }
+  100% {
+    background: radial-gradient(ellipse farthest-corner at 12px -24px, #f38ba8, #fab387, #f9e2af, #a6e3a1, #89b4fa, #cba6f7);
+  }
+}
 #workspaces button.active {
   color: #1e1e2e;
-  background: #cba6f7;
+  font-weight: 700;
+  background: radial-gradient(ellipse farthest-corner at 12px -24px, #f38ba8, #fab387, #f9e2af, #a6e3a1, #89b4fa, #cba6f7);
+  border: none;
+  box-shadow: 0 0 0px 1px rgba(5, 5, 15, 0.15);
+  border-radius: 9px;
+  min-width: 45px;
+  transition: all 0.25s, color 0s, border 0s, font-weight 0s, background 0.15s;
+  animation-name: active-button;
+  animation-direction: reverse;
+  animation-duration: 3s;
+  animation-delay: 0.15s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-fill-mode: both;
 }
 
 #workspaces button.urgent {
@@ -127,6 +200,95 @@ window.DP-3 #workspaces button, window.DP-3 #tags button, window.DP-2 #workspace
 
 #workspaces button.hidden {
   color: #f38ba8;
+}
+
+@keyframes rainbow {
+  0% {
+    color: #f38ba8;
+    text-shadow: 0 0 8px #f38ba8, 0 0 4px #11111b;
+  }
+  16% {
+    color: #fab387;
+    text-shadow: 0 0 8px #fab387, 0 0 4px #11111b;
+  }
+  33% {
+    color: #f9e2af;
+    text-shadow: 0 0 8px #f9e2af, 0 0 4px #11111b;
+  }
+  50% {
+    color: #a6e3a1;
+    text-shadow: 0 0 8px #a6e3a1, 0 0 4px #11111b;
+  }
+  66% {
+    color: #89b4fa;
+    text-shadow: 0 0 8px #89b4fa, 0 0 4px #11111b;
+  }
+  83% {
+    color: #cba6f7;
+    text-shadow: 0 0 8px #cba6f7, 0 0 4px #11111b;
+  }
+  100% {
+    color: #f38ba8;
+    text-shadow: 0 0 8px #f38ba8, 0 0 4px #11111b;
+  }
+}
+#custom-artix {
+  color: #f38ba8;
+  text-shadow: 0 0 8px #f38ba8, 0 0 4px #11111b;
+  border: none;
+  box-shadow: none;
+  margin: 0;
+  background-color: transparent;
+  font-size: 26px;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 5px;
+  margin-right: 14px;
+  padding: 0;
+  animation-name: rainbow;
+  animation-duration: 9s;
+  animation-timing-function: ease-in-out;
+  animation-delay: 4s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes fadeglow {
+  0% {
+    text-shadow: 0 0 0px rgba(205, 214, 244, 0.75), 0 0 2px rgba(17, 17, 27, 0.95);
+    color: #cdd6f4;
+  }
+  50% {
+    text-shadow: 0 0 0px rgba(205, 214, 244, 0.75), 0 0 2px rgba(17, 17, 27, 0.95);
+    color: #cdd6f4;
+  }
+  100% {
+    text-shadow: 0 0 7px rgba(166, 227, 161, 0.75), 0 0 2px rgba(17, 17, 27, 0.95);
+  }
+}
+#custom-spotify {
+  margin-left: 4.5px;
+  margin-right: 4.5px;
+  padding-left: 8px;
+  padding-right: 8px;
+  background: #1e1e2e;
+  color: #cdd6f4;
+  border-radius: 4px;
+  border: 1px solid #313244;
+  border-top-color: #45475a;
+  border-bottom-color: #181825;
+  border-bottom-width: 2px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  box-shadow: 0 0 0px 1px rgba(5, 5, 15, 0.9);
+  color: #a6e3a1;
+  font-weight: 700;
+  text-shadow: 0 0 6px rgba(166, 227, 161, 0.75), 0 0 2px rgba(17, 17, 27, 0.95);
+  animation-name: rainbow;
+  animation-duration: 8.5s;
+  animation-timing-function: ease-in-out;
+  animation-delay: 3s;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
 }
 
 @keyframes fadein {
@@ -138,45 +300,52 @@ window.DP-3 #workspaces button, window.DP-3 #tags button, window.DP-2 #workspace
   }
 }
 tooltip {
-  background: #1e1e2e;
-  border-radius: 7px;
-  font-family: "JetBrains Mono Nerd Font", monospace;
   font-weight: 500;
-  font-size: 14px;
-  padding: 20px;
-  animation-name: fadein;
-  animation-duration: 0.2s;
-  border: 2px solid #4c4c75;
+  color: #cdd6f4;
+  background: #1e1e2e;
+  border: 1px solid #313244;
+  border-top-color: #45475a;
+  border-bottom-color: #181825;
+  border-bottom-width: 2px;
+  box-shadow: 0 0 0px 1px rgb(5, 5, 15);
   text-shadow: none;
-  color: #cdd6f4;
-}
-
-tooltip label {
-  color: #cdd6f4;
+  font-family: "JetBrains Mono Nerd Font", monospace;
+  font-size: 17px;
+  padding: 20px;
+  margin: 10px;
+  animation-name: fadein;
+  animation-duration: 0.05s;
 }
 
 #tray {
-  margin-left: 3px;
-  margin-right: 3px;
+  margin-left: 4.5px;
+  margin-right: 4.5px;
   padding-left: 8px;
   padding-right: 8px;
   background: #1e1e2e;
   color: #cdd6f4;
-  border-radius: 9px;
-  padding-left: 4px;
-  padding-right: 4px;
+  border-radius: 4px;
+  border: 1px solid #313244;
+  border-top-color: #45475a;
+  border-bottom-color: #181825;
+  border-bottom-width: 2px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  box-shadow: 0 0 0px 1px rgba(5, 5, 15, 0.9);
+  padding-left: 9px;
+  padding-right: 9px;
 }
 
 #tray menu {
   background: #1e1e2e;
   color: #cdd6f4;
-  border-radius: 9px;
-  padding: 0;
-  padding-top: 4.5px;
-  padding-bottom: 9px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
   font-family: "JetBrains Mono Nerd Font", monospace;
+  font-size: 17px;
   font-weight: 500;
-  font-size: 14px;
 }
 
 /*# sourceMappingURL=style.css.map */

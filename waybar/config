@@ -1,215 +1,30 @@
 // Angelo's Waybar config
 // https://github.com/angelofallars/dotfiles
 [
-{
-    "layer": "top",
-    "output": "DP-2",
-    "height": 39,
-    "spacing": 0,
+    {
+        "layer": "top",
+        "output": "DP-1",
+        // "margin-right": 80,
+        "height": 43,
+        "spacing": 0,
+        "include": [
+            "~/.config/waybar/default-modules.json",
+        ],
 
-    "modules-left": ["hyprland/workspaces", "disk", "custom/update-count","pulseaudio"],
-    "modules-center": ["hyprland/window"],
-    "modules-right": ["cpu", "memory", "clock#date", "clock", "tray"],
-
-    "group/mpd": {
-        "modules": [
-            "mpd"
-        ]
-    },
-
-    "hyprland/window": {
-        "separate-outputs": true
-    },
-
-    "hyprland/workspaces": {
-        "format": "{icon}",
-        "on-click": "activate",
-        "all-outputs": false,
-        "active-only": false,
-        "format-icons": {
-            "11": "1",
-            "12": "2",
-            "13": "3",
-            "14": "4",
-            "15": "5",
-            "16": "6",
-            "17": "7",
-            "21": "5",
-            "22": "4",
-            "23": "3",
-            "24": "2",
-            "25": "1",
-            "26": "6",
-            "31": "1",
-            "32": "2",
-            "33": "3"
-        }
-    },
-
-    "tray": {
-        "icon-size": 24,
-        "spacing": 8
-    },
-
-    "clock": {
-        "tooltip-format": "<span rise=\"-14pt\"><big>{:%Y B}</big>\n<tt><small>{calendar}</small></tt></span>",
-        "format": "<span color=\"#cba6f7\"></span> {:%I:%M %p}"
-    },
-
-    "clock#date": {
-        "tooltip-format": "<span rise=\"-14pt\"><big>{:%Y B}</big>\n<tt><small>{calendar}</small></tt></span>",
-        "format": "<span color=\"#f9e2af\">󰃭</span>{: %B %d, %A}",
-    },
-
-    "backlight": {
-        "device": "intel-backlight",
-        "format": "{icon} {percent}%",
-        "format-icons": [ "🍕" ],
-        "on-scroll-up": "xbacklight -inc 5",
-        "on-scroll-down": "xbacklight -dec 5",
-    },
-
-    "pulseaudio": {
-        "scroll-step": 2, // %, can be a float
-        "format": "{icon} {volume}% {desc}",
-        "format-muted": "🔇 ... ",
-        "format-icons": {
-            "default": ["<span color=\"#74c7ec\"></span> "]
-        },
-        "on-click": "pamixer -t"
-    },
-
-    "cpu": {
-        "format": "<span color=\"#fab387\"> CPU</span> {usage}%"
-    },
-
-    "memory": {
-        "format": "<span color=\"#a6e3a1\">󰍛 RAM</span> {used:0.1f}G/{total:0.1f}G"
-    },
-
-    "disk": {
-        "path": "/home",
-        "format": "<span color=\"#f38ba8\">/home</span> {free} free"
+        "modules-left": [
+            "custom/artix",
+            "hyprland/workspaces",
+            "disk",
+            "group/cpu-memory",
+            "pulseaudio",
+        ],
+        "modules-center": [
+            "hyprland/window",
+        ],
+        "modules-right": [
+            "custom/spotify",
+            "tray",
+            "clock",
+        ],
     }
-    },
-{
-    "layer": "top",
-    "output": "DP-1",
-    // "margin-right": 80,
-    "height": 33,
-    "spacing": 0,
-
-    "modules-left": ["hyprland/workspaces", "clock#cali", "clock#mdt", "clock#norway", "custom/gpu-temp", "pulseaudio"],
-    "modules-center": ["hyprland/window"],
-    "modules-right": ["cpu", "memory", "clock#date", "clock", "tray"],
-
-    "hyprland/window": {
-        "separate-outputs": true
-    },
-
-
-    "hyprland/workspaces": {
-        "format": "{icon}",
-        "on-click": "activate",
-        "all-outputs": false,
-        "active-only": false,
-        "format-icons": {
-            "11": "1",
-            "12": "2",
-            "13": "3",
-            "14": "4",
-            "15": "5",
-            "21": "6",
-            "22": "7",
-            "23": "8",
-            "24": "9",
-            "25": "10",
-            "31": "1",
-            "32": "2",
-            "33": "3"
-        }
-    },
-
-
-    "tray": {
-        "icon-size": 24,
-        "spacing": 8
-    },
-
-    "clock": {
-        "tooltip-format": "<span rise=\"-14pt\"><big>{:%Y B}</big>\n<tt><small>{calendar}</small></tt></span>",
-        "format": "<span color=\"#cba6f7\"></span> {:%I:%M %p}"
-    },
-
-    "clock#date": {
-        "tooltip-format": "<span rise=\"-14pt\"><big>{:%Y B}</big>\n<tt><small>{calendar}</small></tt></span>",
-        "format": "<span color=\"#f9e2af\">󰃭</span>{: %B %d, %A}",
-    },
-
-    "backlight": {
-        "device": "intel-backlight",
-        "format": "{icon} {percent}%",
-        "format-icons": [ "🍕" ],
-        "on-scroll-up": "xbacklight -inc 5",
-        "on-scroll-down": "xbacklight -dec 5",
-    },
-
-    "pulseaudio": {
-        "scroll-step": 2, // %, can be a float
-        "format": "{icon} {volume}% {desc}",
-        "format-muted": "🔇 ... ",
-        "format-icons": {
-            "default": ["<span color=\"#74c7ec\"></span> "]
-        },
-        "on-click": "pamixer -t"
-    },
-
-
-    "cpu": {
-        "format": "<span color=\"#fab387\"> CPU</span> {usage}%"
-    },
-
-    "memory": {
-        "format": "<span color=\"#a6e3a1\">󰍛 RAM</span> {used:0.1f}G/{total:0.1f}G"
-    },
-
-    "disk": {
-        "path": "/home",
-        "format": "<span color=\"#f38ba8\">/home</span> {free} free"
-    },
-
-    "clock#cali": {
-        "tooltip-format": "<span rise=\"-14pt\"><big>{:%Y B}</big>\n<tt><small>{calendar}</small></tt></span>",
-        "format": "<span color=\"#b4befe\"> CA/CDA</span> {:%I:%M %p, %b %d}",
-        "timezone": "US/Pacific"
-    },
-
-    "clock#mdt": {
-        "tooltip-format": "<span rise=\"-14pt\"><big>{:%Y B}</big>\n<tt><small>{calendar}</small></tt></span>",
-        "format": "<span color=\"#f2cdcd\"> NM</span> {:%I:%M %p, %b %d}",
-        "timezone": "America/Boise"
-    },
-
-    "clock#norway": {
-        "tooltip-format": "<span rise=\"-14pt\"><big>{:%Y B}</big>\n<tt><small>{calendar}</small></tt></span>",
-        "format": "<span color=\"#89b4fa\"> NO</span> {:%I:%M %p, %b %d}",
-        "timezone": "Europe/Oslo"
-    },
-
-    "custom/update-count": {
-        "format": "<span rise=\"-14pt\"><span color=\"#d8a657\"></span> {}</span>",
-        "interval": 60,
-        "escape": true,
-        "exec":  "~/.config/waybar/scripts/arch_updates",
-        "on-click": "~/.config/waybar/scripts/notify_arch_updates"
-    },
-
-    "custom/gpu-temp": {
-        "format": "<span color=\"#f38ba8\">RX  </span>{}°C",
-        "interval": 1,
-        "escape": true,
-        "exec": "/usr/bin/bash -c 'echo $(($(cat /sys/class/drm/card0/device/hwmon/hwmon1/temp1_input) / 1000))'"
-    }
-
-
-}]
+]
