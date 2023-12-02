@@ -1,23 +1,43 @@
 -- vim.opt.list = true
--- vim.opt.listchars:append "eol:↴"
--- vim.opt.termguicolors = true
+-- vim.opt.listchars:append("eol:↴")
+--
+-- vim.cmd([[
+-- set listchars=tab: ,space:
+-- ]])
+vim.opt.list = true
+vim.opt.listchars:append("space: ")
+vim.opt.listchars:append("tab:\\x20\\x20")
+vim.opt.listchars:append("eol:↴")
 
-require("indent_blankline").setup({
-	use_treesitter = true,
-	char = "▏",
-	filetype_exclude = {
-		"help",
-		"terminal",
-		"packer",
-		"lspinfo",
-		"TelescopePrompt",
-		"TelescopeResults",
-		"lsp-installer",
-		"NvimTree",
-		"gitcommit",
+require("ibl").setup({
+	scope = {
+		enabled = true,
+		show_start = false,
+		show_end = false,
+		priority = 512,
 	},
-	buftype_exclude = { "terminal" },
-	space_char_blankline = " ",
-	show_trailing_blankline_indent = false,
-	show_first_indent_level = false,
+	indent = {
+		tab_char = "▏",
+		char = "▏",
+	},
+	whitespace = {
+		remove_blankline_trail = true,
+	},
+	exclude = {
+		buftypes = {
+			"help",
+			"terminal",
+			"packer",
+			"lspinfo",
+			"TelescopePrompt",
+			"TelescopeResults",
+			"lsp-installer",
+			"NvimTree",
+			"gitcommit",
+		},
+	},
 })
+
+-- local hooks = require("ibl.hooks")
+-- hooks.register(hooks.type.WHITESPACE, hooks.builtin.hide_first_tab_indent_level)
+-- hooks.register(hooks.type.WHITESPACE, hooks.builtin.hide_first_space_indent_level)

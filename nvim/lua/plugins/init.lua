@@ -20,7 +20,7 @@ local plugins = function(use)
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-cmdline",
 
-			"lukas-reineke/lsp-format.nvim",
+			-- "lukas-reineke/lsp-format.nvim",
 
 			"onsails/lspkind-nvim",
 			"hrsh7th/cmp-nvim-lsp-signature-help",
@@ -29,6 +29,10 @@ local plugins = function(use)
 			"saadparwaiz1/cmp_luasnip",
 			"rafamadriz/friendly-snippets",
 		},
+	})
+
+	use({
+		"ThePrimeagen/htmx-lsp",
 	})
 
 	use({
@@ -57,6 +61,10 @@ local plugins = function(use)
 		end,
 		run = ":TSUpdate",
 		requires = { "p00f/nvim-ts-rainbow" },
+	})
+
+	use({
+		"vrischmann/tree-sitter-templ",
 	})
 
 	use({
@@ -141,11 +149,11 @@ local plugins = function(use)
 		cmd = "Goyo",
 	})
 
-	use({
-		"fatih/vim-go",
-		run = ":GoUpdateBinaries",
-		ft = { "go" },
-	})
+	-- use({
+	-- 	"fatih/vim-go",
+	-- 	run = ":GoUpdateBinaries",
+	-- 	ft = { "go" },
+	-- })
 
 	use({
 		"alvan/vim-closetag",
@@ -282,18 +290,20 @@ local plugins = function(use)
 		end,
 	})
 
-	-- use({
-	-- 	"mhartington/formatter.nvim",
-	-- 	config = function()
-	-- 		require("plugins.config.formatter-nvim")
-	-- 	end,
-	-- })
-
 	use({
 		"stevearc/conform.nvim",
 		config = function()
 			require("plugins.config.conform")
 		end,
+	})
+
+	use({
+		"iamcco/markdown-preview.nvim",
+		run = "cd app && npm install",
+		setup = function()
+			vim.g.mkdp_filetypes = { "markdown" }
+		end,
+		ft = { "markdown" },
 	})
 end
 

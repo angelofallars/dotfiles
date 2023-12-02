@@ -5,12 +5,16 @@ require("conform").setup({
 		-- Conform will run multiple formatters sequentially
 		python = { "ruff_isort", "black" },
 
+		go = { "gofumpt" },
+
 		-- Use a sub-list to run only the first available formatter
-		javascript = { { "prettierd", "prettier" } },
+		-- javascript = { { "prettierd", "prettier" } },
+
+		rust = { "rustfmt" },
 	},
 	format_after_save = {
 		-- These options will be passed to conform.format()
-		lsp_fallback = true,
+		lsp_fallback = false,
 	},
 
 	formatters = {

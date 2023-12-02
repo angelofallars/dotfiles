@@ -24,7 +24,7 @@ nmap("<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<cr>")
 
 nmap("<leader>l", "<cmd>!librewolf %<cr>")
 
-nmap("<leader>r", "<Plug>RestNvim")
+-- nmap("<leader>r", "<Plug>RestNvim")
 
 -- Harpoon baby!
 -- nmap("<leader>t", ":lua require('harpoon.mark').add_file()<CR>")

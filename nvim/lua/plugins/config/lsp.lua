@@ -24,16 +24,19 @@ vim.api.nvim_set_keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", op
 vim.api.nvim_set_keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
 vim.api.nvim_set_keymap("n", "<space>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
 
-require("lsp-format").setup({
-	python = {
-		exclude = {
-			"pylsp",
-		},
-	},
-	lua = {
-		exclude = { "lua_ls" },
-	},
-})
+-- require("lsp-format").setup({
+-- 	python = {
+-- 		exclude = {
+-- 			"pylsp",
+-- 		},
+-- 	},
+-- 	lua = {
+-- 		exclude = { "lua_ls" },
+-- 	},
+-- 	rust = {
+-- 		exclude = { "rust_analyzer" },
+-- 	},
+-- })
 
 local navic = require("nvim-navic")
 
@@ -48,7 +51,7 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.s
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
-	require("lsp-format").on_attach(client, bufnr)
+	-- require("lsp-format").on_attach(client, bufnr)
 
 	if client.server_capabilities.documentSymbolProvider then
 		navic.attach(client, bufnr)
@@ -88,6 +91,9 @@ local on_attach = function(client, bufnr)
 			prefix = "", -- Could be '●', '▎', 'x'
 		},
 		severity_sort = true,
+		float = {
+			border = { "┏", "━", "┓", "┃", "┛", "━", "┗", "┃" },
+		},
 	})
 
 	vim.api.nvim_create_autocmd("CursorHold", {
@@ -96,7 +102,7 @@ local on_attach = function(client, bufnr)
 			local options = {
 				focusable = false,
 				close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-				border = "rounded",
+				border = { "┏", "━", "┓", "┃", "┛", "━", "┗", "┃" },
 				source = "always",
 				prefix = " ",
 				scope = "cursor",
@@ -136,6 +142,7 @@ local servers = {
 	"bashls",
 	"clangd",
 	"html",
+	"htmx",
 	"cssls",
 	"jsonls",
 	"tsserver",
@@ -144,9 +151,12 @@ local servers = {
 	"vimls",
 	"rust_analyzer",
 	"gopls",
+	"golangci_lint_ls",
+	"templ",
 	"dockerls",
 	"racket_langserver",
-	"zls",
+	-- "zls",
+	"tailwindcss",
 	"astro",
 	"vuels",
 }
@@ -161,6 +171,45 @@ for _, lsp in pairs(servers) do
 		capabilities = capabilities,
 	})
 end
+
+-- Format current buffer using LSP.
+vim.api.nvim_create_autocmd({
+	-- 'BufWritePre' event triggers just before a buffer is written to file.
+	"BufWritePre",
+}, {
+	pattern = { "*.templ" },
+	callback = function()
+		-- Format the current buffer using Neovim's built-in LSP (Language Server Protocol).
+		vim.lsp.buf.format()
+	end,
+})
+
+require("lspconfig").tailwindcss.setup({
+	filetypes = {
+		"templ",
+		-- include any other filetypes where you need tailwindcss
+	},
+	init_options = {
+		userLanguages = {
+			templ = "html",
+		},
+	},
+})
+
+require("lspconfig").htmx.setup({
+	filetypes = {
+		"templ",
+		-- include any other filetypes where you need tailwindcss
+	},
+})
+
+require("lspconfig").gopls.setup({
+	settings = {
+		gopls = {
+			gofumpt = true,
+		},
+	},
+})
 
 local lspconfig_util = require("lspconfig").util
 

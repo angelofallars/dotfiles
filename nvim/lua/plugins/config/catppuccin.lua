@@ -51,6 +51,9 @@ require("catppuccin").setup({
 
 			LineNr = { fg = colors.surface1 },
 
+			NonText = { fg = colors.surface1 },
+			IblScope = { fg = colors.surface2 },
+
 			GitSignsAddNr = { fg = "#587270" },
 			GitSignsChangeNr = { fg = "#66735f" },
 			GitSignsDeleteNr = { fg = "#705a75" },
@@ -114,9 +117,9 @@ require("catppuccin").setup({
 			CmpDocBorderTitle = { fg = colors.green, bg = colors.mantle, style = { "bold" } },
 			CmpDocSelect = { bg = colors.base },
 
-			LspReferenceRead = { bg = colors.surface0 },
-			LspReferenceText = { bg = colors.surface0 },
-			LspReferenceWrite = { bg = colors.surface0 },
+			LspReferenceRead = { bg = colors.surface1 },
+			LspReferenceText = { bg = colors.surface1 },
+			LspReferenceWrite = { bg = colors.surface1 },
 		}
 	end,
 
