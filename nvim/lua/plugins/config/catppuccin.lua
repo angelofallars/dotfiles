@@ -21,7 +21,9 @@ require("catppuccin").setup({
 	no_italic = false, -- Force no italic
 	no_bold = false, -- Force no bold
 	styles = {
-		comments = {},
+		comments = {
+			"italic",
+		},
 		conditionals = {
 			-- "italic"
 		},
@@ -29,7 +31,7 @@ require("catppuccin").setup({
 			-- "italic"
 		},
 		functions = {
-			"bold",
+			"italic",
 		},
 		keywords = {
 			-- "italic"
@@ -46,13 +48,13 @@ require("catppuccin").setup({
 		return {
 			WinSeparator = { fg = colors.surface1, style = { "bold" } },
 
-			CursorLineNR = { fg = colors.lavender },
-			CursorLine = { bg = base_minus_1 },
+			CursorLineNR = { fg = colors.mauve },
+			CursorLine = { bg = colors.base },
 
-			LineNr = { fg = colors.surface1 },
+			LineNr = { fg = colors.surface2 },
 
-			NonText = { fg = colors.surface1 },
-			IblScope = { fg = colors.surface2 },
+			NonText = { fg = colors.surface0 },
+			IblScope = { fg = colors.surface1 },
 
 			GitSignsAddNr = { fg = "#587270" },
 			GitSignsChangeNr = { fg = "#66735f" },
