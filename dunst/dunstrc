@@ -16,7 +16,7 @@ separator_color = auto
 padding = 12
 horizontal_padding = 12
 
-frame_width = 3
+frame_width = 2
 
 font = JetBrains Mono Nerd Font Normal 13
 
