@@ -18,6 +18,7 @@ fi
 
 # Color stuff
 alias ls='eza -x --icons --git --group-directories-first'
+alias lst='eza -x --icons --git --group-directories-first -T'
 alias l='ls'
 alias la='eza -a -x --icons --git --group-directories-first --no-user'
 alias ll='eza -l -x --icons --git --group-directories-first --no-user'
@@ -61,6 +62,7 @@ alias grso="git remote set-url origin"
 alias gs="git status"
 alias gl="git log"
 alias gli="git log --oneline"
+alias glif="git log --pretty=format:"%s%n%b" --reverse"
 alias gd="git diff"
 alias gds="git diff --staged"
 alias gd1="git diff HEAD~1"
@@ -128,6 +130,10 @@ alias pru="sudo paru --upgrade"
 
 alias vim="nvim"
 alias v="nvim"
+
+alias lw="librewolf"
+
+alias gdc="go doc -all -cmd"
 
 # Edit my config files
 edit () {
