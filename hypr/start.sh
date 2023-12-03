@@ -10,11 +10,11 @@ start_pipewire () {
 
 start_audio () {
     start_pipewire
-    sleep 5
+    sleep 2
     XDG_CURRENT_DESKTOP=Unity waybar &
     nm-applet --indicator &
     blueman-applet &
-    sleep 5
+    sleep 2
     bluetoothctl connect 78:2B:64:38:36:17 &
 }
 
