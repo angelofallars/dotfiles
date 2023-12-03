@@ -26,10 +26,9 @@
   margin-right: 10px;
   border: 0;
   box-shadow: none;
-  color: #89b4fa;
-  font-weight: 900;
-  text-shadow: 0 0 6px rgba(137, 180, 250, 0.75), 0 0 2px rgba(17, 17, 27, 0.95);
-  animation-name: rainbow;
+  color: #cdd6f4;
+  font-weight: 700;
+  text-shadow: 0 0 3px #11111b;
   animation-timing-function: ease-in-out;
   animation-duration: 10s;
   animation-iteration-count: infinite;

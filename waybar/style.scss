@@ -80,7 +80,7 @@ $bar-border-radius: 2px;
 
 }
 
-$accent-color: colors.$blue;
+$accent-color: colors.$fg;
 
 #window {
   background-color: transparent;
@@ -88,9 +88,9 @@ $accent-color: colors.$blue;
   border: 0;
   box-shadow: none;
   color: $accent-color;
-  font-weight: 900;
-  text-shadow: 0 0 6px scale-color($accent-color, $alpha: -25%), 0 0 2px scale-color(colors.$crust, $alpha: -5%);
-  animation-name: rainbow;
+  font-weight: 700;
+  text-shadow: 0 0 3px scale-color(colors.$crust, $alpha: 100%);
+  // animation-name: rainbow;
   animation-timing-function: ease-in-out;
   animation-duration: 10s;
   animation-iteration-count:  infinite;
