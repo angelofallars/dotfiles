@@ -11,6 +11,7 @@ require("conform").setup({
 		-- javascript = { { "prettierd", "prettier" } },
 
 		rust = { "rustfmt" },
+		zig = { "zigfmt" },
 	},
 	format_after_save = {
 		-- These options will be passed to conform.format()
