@@ -155,7 +155,7 @@ local servers = {
 	"templ",
 	"dockerls",
 	"racket_langserver",
-	-- "zls",
+	"zls",
 	"tailwindcss",
 	"astro",
 	"vuels",
