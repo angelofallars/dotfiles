@@ -35,6 +35,7 @@ setopt prompt_subst
 alias ga="git add"
 alias gaa="git add ."
 alias gm="git commit"
+alias gmm="git commit --message"
 alias gma="git commit --all"
 
 alias grm="git rm"
