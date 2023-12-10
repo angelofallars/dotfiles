@@ -20,8 +20,6 @@ local plugins = function(use)
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-cmdline",
 
-			-- "lukas-reineke/lsp-format.nvim",
-
 			"onsails/lspkind-nvim",
 			"hrsh7th/cmp-nvim-lsp-signature-help",
 
@@ -33,25 +31,6 @@ local plugins = function(use)
 
 	use({
 		"ThePrimeagen/htmx-lsp",
-	})
-
-	use({
-		"mfussenegger/nvim-dap",
-		config = function()
-			require("plugins.config.dap")
-		end,
-
-		module = "dap",
-
-		requires = {
-			"rcarriga/nvim-dap-ui",
-			"theHamsta/nvim-dap-virtual-text",
-
-			"rcarriga/cmp-dap",
-
-			"mfussenegger/nvim-dap-python",
-			"leoluz/nvim-dap-go",
-		},
 	})
 
 	use({
@@ -98,23 +77,9 @@ local plugins = function(use)
 	})
 
 	use({
-		"ThePrimeagen/harpoon",
-		module = "harpoon",
-		requires = { "nvim-lua/plenary.nvim" },
-	})
-
-	use({
 		"lewis6991/gitsigns.nvim",
 		config = function()
 			require("plugins.config.gitsigns")
-		end,
-	})
-
-	use({
-		"TimUntersberger/neogit",
-		requires = "nvim-lua/plenary.nvim",
-		config = function()
-			require("neogit").setup()
 		end,
 	})
 
@@ -133,27 +98,7 @@ local plugins = function(use)
 			require("nvim-autopairs").setup({})
 		end,
 	})
-
-	use({
-		"NvChad/nvterm",
-		config = function()
-			require("plugins.config.nvterm")
-		end,
-	})
-
 	use("linty-org/readline.nvim")
-
-	-- Write distraction-free in Vim
-	use({
-		"junegunn/goyo.vim",
-		cmd = "Goyo",
-	})
-
-	-- use({
-	-- 	"fatih/vim-go",
-	-- 	run = ":GoUpdateBinaries",
-	-- 	ft = { "go" },
-	-- })
 
 	use({
 		"alvan/vim-closetag",
@@ -164,25 +109,6 @@ local plugins = function(use)
 	use({
 		"mattn/emmet-vim",
 		ft = { "html" },
-	})
-
-	use({
-		"prettier/vim-prettier",
-		run = "yarn install --frozen-lockfile --production",
-		ft = {
-			"javascript",
-			"typescript",
-			"css",
-			"less",
-			"scss",
-			"json",
-			"graphql",
-			"markdown",
-			"vue",
-			"svelte",
-			"yaml",
-			"html",
-		},
 	})
 
 	-- Show projects and files in Discord status
@@ -246,16 +172,6 @@ local plugins = function(use)
 
 	use("wuelnerdotexe/vim-astro")
 
-	use("averms/black-nvim")
-
-	-- Improve default Vim UI interfaces
-	use({
-		"NTBBloodbath/rest.nvim",
-		config = function()
-			require("plugins.config.rest-nvim")
-		end,
-	})
-
 	use({
 		"samueljoli/hurl.nvim",
 		config = function()
@@ -272,13 +188,6 @@ local plugins = function(use)
 		},
 		config = function()
 			require("plugins.config.barbecue")
-		end,
-	})
-
-	use({
-		"folke/which-key.nvim",
-		config = function()
-			require("plugins.config.which-key")
 		end,
 	})
 
