@@ -9,11 +9,11 @@ return {
 	window_background_opacity = 1,
 
 	font = wezterm.font_with_fallback({
-		{ family = "JetBrains Mono", weight = "Medium" },
+		{ family = "JetBrains Mono", weight = "Regular" },
 		"Twemoji",
 	}),
 
-	font_size = 15,
+	font_size = 15.5,
 
 	window_padding = {
 		left = 8,
