@@ -22,7 +22,7 @@ require("catppuccin").setup({
 	no_bold = false, -- Force no bold
 	styles = {
 		comments = {
-			"italic",
+			-- "italic",
 		},
 		conditionals = {
 			-- "italic"
@@ -31,7 +31,7 @@ require("catppuccin").setup({
 			-- "italic"
 		},
 		functions = {
-			"italic",
+			-- "italic",
 		},
 		keywords = {
 			-- "italic"
