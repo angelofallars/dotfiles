@@ -134,26 +134,27 @@ capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 local lspconfig = require("lspconfig")
 
 local servers = {
+	"astro",
 	"bashls",
 	"clangd",
+	"cssls",
+	"dockerls",
+	"eslint",
 	"html",
 	"htmx",
-	"cssls",
+	"golangci_lint_ls",
+	"gopls",
 	"jsonls",
+	"marksman",
+	"rust_analyzer",
+	"tailwindcss",
+	"templ",
 	"tsserver",
-	"eslint",
+	"racket_langserver",
 	"sqlls",
 	"vimls",
-	"rust_analyzer",
-	"gopls",
-	"golangci_lint_ls",
-	"templ",
-	"dockerls",
-	"racket_langserver",
-	"zls",
-	"tailwindcss",
-	"astro",
 	"vuels",
+	"zls",
 }
 
 for _, lsp in pairs(servers) do
@@ -275,20 +276,6 @@ lspconfig.lua_ls.setup({
 		debounce_text_changes = 150,
 	},
 	capabilities = capabilities,
-})
-
-lspconfig.ltex.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-	filetypes = {
-		"bib",
-		"markdown",
-		"org",
-		"plaintex",
-		"rst",
-		"rnoweb",
-		"tex",
-	},
 })
 
 local function lspSymbol(name, icon)
