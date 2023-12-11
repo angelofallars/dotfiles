@@ -47,24 +47,24 @@ nmap("<leader>p", '"+p')
 nmap("<leader>P", '"+P')
 vmap("<leader>y", '"+y')
 
-local readline = require("readline")
-
-map("!", "<M-f>", readline.forward_word)
-map("!", "<M-b>", readline.backward_word)
-map("!", "<C-a>", readline.beginning_of_line)
-map("!", "<C-e>", readline.end_of_line)
-map("!", "<M-d>", readline.kill_word)
-map("!", "<C-w>", readline.backward_kill_word)
-map("!", "<C-k>", readline.kill_line)
-map("!", "<C-u>", readline.backward_kill_line)
-
-map("!", "<C-f>", "<Right>")
-map("!", "<C-b>", "<Left>")
-map("!", "<C-n>", "<Down>") -- next-line
-map("!", "<C-p>", "<Up>") -- previous-line
-
-map("!", "<C-d>", "<Delete>") -- delete-char
-map("!", "<C-h>", "<BS>") -- backward-delete-char
+-- local readline = require("readline")
+-- 
+-- map("!", "<M-f>", readline.forward_word)
+-- map("!", "<M-b>", readline.backward_word)
+-- map("!", "<C-a>", readline.beginning_of_line)
+-- map("!", "<C-e>", readline.end_of_line)
+-- map("!", "<M-d>", readline.kill_word)
+-- map("!", "<C-w>", readline.backward_kill_word)
+-- map("!", "<C-k>", readline.kill_line)
+-- map("!", "<C-u>", readline.backward_kill_line)
+-- 
+-- map("!", "<C-f>", "<Right>")
+-- map("!", "<C-b>", "<Left>")
+-- map("!", "<C-n>", "<Down>") -- next-line
+-- map("!", "<C-p>", "<Up>") -- previous-line
+-- 
+-- map("!", "<C-d>", "<Delete>") -- delete-char
+-- map("!", "<C-h>", "<BS>") -- backward-delete-char
 
 -- local function create_new_terminal()
 --   vim.cmd([[below 12split]])

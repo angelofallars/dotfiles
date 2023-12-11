@@ -16,11 +16,17 @@ require("luasnip.loaders.from_vscode").lazy_load()
 
 cmp.setup({
 	window = {
+		performance = {
+			debounce = 500,
+			throttle = 550,
+			fetching_timeout = 80,
+		},
 		completion = {
 			border = { "", "", "", "", "", "", "", "" },
 			-- border = { "┌", "─", "┐", "│", "┘", "─", "└", "│", },
 			winhighlight = "Normal:CmpNormal,FloatBorder:CmpBorder,FloatTitle:CmpBorderTitle,CursorLine:CmpSelect",
 			side_padding = 1,
+			keyword_length = 3,
 		},
 		documentation = {
 			-- border = { "┌", " ", " ", " ", " ", " ", "└", "│", },
@@ -44,7 +50,7 @@ cmp.setup({
 
 		["<C-n>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
-				cmp.select_next_item()
+				cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
 			elseif has_words_before() then
 				cmp.complete()
 			else
@@ -54,7 +60,7 @@ cmp.setup({
 
 		["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
-				cmp.select_next_item()
+				cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
 			elseif has_words_before() then
 				cmp.complete()
 			else
@@ -64,13 +70,13 @@ cmp.setup({
 
 		["<S-Tab>"] = cmp.mapping(function()
 			if cmp.visible() then
-				cmp.select_prev_item()
+				cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
 			end
 		end, { "i", "s" }),
 
 		["<C-p>"] = cmp.mapping(function()
 			if cmp.visible() then
-				cmp.select_prev_item()
+				cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
 			end
 		end, { "i", "s" }),
 	},
@@ -85,6 +91,9 @@ cmp.setup({
 		{ name = "path" },
 		{ name = "nvim_lsp_signature_help" },
 	}),
+	experimental = {
+		ghost_text = true,
+	},
 })
 
 -- Set configuration for specific filetype.
@@ -108,6 +117,15 @@ cmp.setup.cmdline("?", {
 	sources = {
 		{ name = "buffer" },
 	},
+})
+
+cmp.setup.cmdline(":", {
+	mapping = cmp.mapping.preset.cmdline(),
+	sources = cmp.config.sources({
+		{ name = "path" },
+	}, {
+		{ name = "cmdline" },
+	}),
 })
 
 local lspkind = require("lspkind")

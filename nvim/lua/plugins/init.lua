@@ -1,20 +1,30 @@
-local plugins = function(use)
-	use("wbthomason/packer.nvim")
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable", -- latest stable release
+		lazypath,
+	})
+end
+vim.opt.rtp:prepend(lazypath)
 
-	use({
+require("lazy").setup({
+	{
 		"neovim/nvim-lspconfig",
 		config = function()
 			require("plugins.config.lsp")
 		end,
-	})
-
-	use({
+	},
+	{
 		"hrsh7th/nvim-cmp",
 		config = function()
 			require("plugins.config.cmp")
 		end,
 
-		requires = {
+		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
@@ -27,193 +37,180 @@ local plugins = function(use)
 			"saadparwaiz1/cmp_luasnip",
 			"rafamadriz/friendly-snippets",
 		},
-	})
+		lazy = true,
+	},
+	{
+		"hrsh7th/cmp-cmdline",
+		event = "CmdLineEnter",
+		lazy = true,
+	},
 
-	use({
-		"ThePrimeagen/htmx-lsp",
-	})
-
-	use({
+	{
 		"nvim-treesitter/nvim-treesitter",
 		config = function()
 			require("plugins.config.treesitter")
 		end,
-		run = ":TSUpdate",
-		requires = { "p00f/nvim-ts-rainbow" },
-	})
-
-	use({
+		build = ":TSUpdate",
+		dependencies = { "p00f/nvim-ts-rainbow" },
+	},
+	{
 		"vrischmann/tree-sitter-templ",
-	})
-
-	use({
+		ft = "templ",
+		lazy = true,
+	},
+	{
 		"nvim-telescope/telescope.nvim",
 		config = function()
 			require("plugins.config.telescope")
 		end,
-		module = "telescope",
-		requires = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope-fzf-native.nvim" },
-	})
-
-	use({
-		"kyazdani42/nvim-web-devicons",
-	})
-
-	use({
-		"kyazdani42/nvim-tree.lua",
+		dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope-fzf-native.nvim" },
+		lazy = true,
+	},
+	{
+		"nvim-tree/nvim-web-devicons",
+		lazy = true,
+	},
+	{
+		"nvim-tree/nvim-tree.lua",
 		config = function()
 			require("plugins.config.nvim-tree")
 		end,
 		cmd = { "NvimTreeToggle", "NvimTreeFocus", "NvimTreeFindFileToggle" },
-		requires = {
-			"kyazdani42/nvim-web-devicons",
-			opt = true,
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+			lazy = true,
 		},
-	})
-
-	use({
+		lazy = true,
+	},
+	{
 		"nvim-telescope/telescope-fzf-native.nvim",
-		run = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
-	})
-
-	use({
+		build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+		lazy = true,
+	},
+	{
 		"lewis6991/gitsigns.nvim",
 		config = function()
 			require("plugins.config.gitsigns")
 		end,
-	})
-
-	use({
+	},
+	{
 		"numToStr/Comment.nvim",
-		config = function()
-			require("Comment").setup()
-		end,
-		module = "Comment",
-		keys = { "gc", "gb" },
-	})
-
-	use({
+		opts = {},
+		lazy = true,
+	},
+	{
 		"windwp/nvim-autopairs",
 		config = function()
 			require("nvim-autopairs").setup({})
 		end,
-	})
-	use("linty-org/readline.nvim")
-
-	use({
+	},
+	{
 		"alvan/vim-closetag",
 		ft = "html",
-	})
-
-	-- emmet for vim: https://emmet.io
-	use({
+		lazy = true,
+	},
+	{
 		"mattn/emmet-vim",
 		ft = { "html" },
-	})
-
-	-- Show projects and files in Discord status
-	use({
+		lazy = true,
+	},
+	{
 		"andweeb/presence.nvim",
 		config = function()
 			require("plugins.config.presence")
 		end,
-	})
-
-	use({
+	},
+	{
 		"nvim-lualine/lualine.nvim",
 		config = function()
 			require("plugins.config.lualine")
 		end,
-		requires = { "kyazdani42/nvim-web-devicons", "catppuccin/nvim" },
-	})
-
-	-- Show colors for color names and hex codes
-	use({
+		dependencies = { "nvim-tree/nvim-web-devicons", "catppuccin/nvim" },
+	},
+	{
 		"norcalli/nvim-colorizer.lua",
 		config = function()
 			require("colorizer").setup()
 		end,
-	})
-
-	-- Display indent lines
-	use({
+	},
+	{
 		"lukas-reineke/indent-blankline.nvim",
 		config = function()
 			require("plugins.config.indent_blankline")
 		end,
-	})
-
-	-- Show LSP progress
-	use({
+	},
+	-- TODO: fix config for fidget.nvim
+	{
 		"j-hui/fidget.nvim",
-		after = "nvim-lspconfig",
 		tag = "legacy",
 		config = function()
 			require("plugins.config.fidget")
 		end,
-	})
-
-	use({
+		enabled = true,
+	},
+	{
 		"simrat39/rust-tools.nvim",
-	})
-
-	-- Improve default Vim UI interfaces
-	use({
+		ft = "rust",
+		lazy = true,
+	},
+	{
 		"stevearc/dressing.nvim",
 		config = function()
 			require("plugins.config.dressing")
 		end,
-	})
+	},
 
-	-- Improve startup time for Neovim
-	use("lewis6991/impatient.nvim")
+	{
+		"wuelnerdotexe/vim-astro",
+		ft = "astro",
+		lazy = true,
+	},
 
-	use("dstein64/vim-startuptime")
-
-	use("wuelnerdotexe/vim-astro")
-
-	use({
+	{
 		"samueljoli/hurl.nvim",
 		config = function()
 			require("hurl").setup()
 		end,
-	})
+		ft = "hurl",
+		lazy = true,
+	},
 
-	use({
+	{
 		"utilyre/barbecue.nvim",
-		tag = "*",
-		requires = {
+		version = "*",
+		dependencies = {
 			"SmiteshP/nvim-navic",
 			"nvim-tree/nvim-web-devicons", -- optional dependency
 		},
 		config = function()
 			require("plugins.config.barbecue")
 		end,
-	})
+	},
 
-	use({
+	{
 		"catppuccin/nvim",
 		as = "catppuccin",
 		config = function()
 			require("plugins.config.catppuccin")
 		end,
-	})
+	},
 
-	use({
+	{
 		"stevearc/conform.nvim",
 		config = function()
 			require("plugins.config.conform")
 		end,
-	})
+		lazy = true,
+		event = "BufWritePre",
+	},
 
-	use({
+	{
 		"iamcco/markdown-preview.nvim",
-		run = "cd app && npm install",
-		setup = function()
+		build = "cd app && npm install",
+		init = function()
 			vim.g.mkdp_filetypes = { "markdown" }
 		end,
 		ft = { "markdown" },
-	})
-end
-
-require("core.packer").run(plugins)
+		lazy = true,
+	},
+})
