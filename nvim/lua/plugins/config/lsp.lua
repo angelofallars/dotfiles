@@ -26,20 +26,6 @@ vim.api.nvim_set_keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", op
 vim.api.nvim_set_keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
 vim.api.nvim_set_keymap("n", "<space>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
 
--- require("lsp-format").setup({
--- 	python = {
--- 		exclude = {
--- 			"pylsp",
--- 		},
--- 	},
--- 	lua = {
--- 		exclude = { "lua_ls" },
--- 	},
--- 	rust = {
--- 		exclude = { "rust_analyzer" },
--- 	},
--- })
-
 local navic = require("nvim-navic")
 
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
@@ -101,6 +87,13 @@ local on_attach = function(client, bufnr)
 	vim.api.nvim_create_autocmd("CursorHold", {
 		buffer = bufnr,
 		callback = function()
+			-- Do not overwrite existing floating diagnostic
+			for _, winid in pairs(vim.api.nvim_tabpage_list_wins(0)) do
+				if vim.api.nvim_win_get_config(winid).zindex then
+					return
+				end
+			end
+
 			local options = {
 				focusable = false,
 				close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
@@ -173,18 +166,6 @@ for _, lsp in pairs(servers) do
 		capabilities = capabilities,
 	})
 end
-
--- Format current buffer using LSP.
-vim.api.nvim_create_autocmd({
-	-- 'BufWritePre' event triggers just before a buffer is written to file.
-	"BufWritePre",
-}, {
-	pattern = { "*.templ" },
-	callback = function()
-		-- Format the current buffer using Neovim's built-in LSP (Language Server Protocol).
-		vim.lsp.buf.format()
-	end,
-})
 
 require("lspconfig").tailwindcss.setup({
 	filetypes = {
