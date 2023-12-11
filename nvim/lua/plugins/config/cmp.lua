@@ -23,13 +23,11 @@ cmp.setup({
 		},
 		completion = {
 			border = { "", "", "", "", "", "", "", "" },
-			-- border = { "┌", "─", "┐", "│", "┘", "─", "└", "│", },
 			winhighlight = "Normal:CmpNormal,FloatBorder:CmpBorder,FloatTitle:CmpBorderTitle,CursorLine:CmpSelect",
 			side_padding = 1,
 			keyword_length = 3,
 		},
 		documentation = {
-			-- border = { "┌", " ", " ", " ", " ", " ", "└", "│", },
 			border = { "┏", "━", "┓", "┃", "┛", "━", "┗", "┃" },
 			winhighlight = "Normal:CmpDocNormal,FloatBorder:CmpDocBorder,FloatTitle:CmpDocBorderTitle,CursorLine:CmpDocSelect",
 		},
@@ -81,15 +79,12 @@ cmp.setup({
 		end, { "i", "s" }),
 	},
 	sources = cmp.config.sources({
-		{ name = "nvim_lsp" },
-		-- { name = 'vsnip' }, -- For vsnip users.
-		{ name = "luasnip" }, -- For luasnip users.
-		-- { name = 'ultisnips' }, -- For ultisnips users.
-		-- { name = 'snippy' }, -- For snippy users.
-	}, {
-		{ name = "buffer" },
-		{ name = "path" },
+		{ name = "nvim_lsp", keyword_length = 1 },
 		{ name = "nvim_lsp_signature_help" },
+		{ name = "luasnip" }, -- For luasnip users.
+		{ name = "path" },
+		{ name = "buffer" },
+		{ name = "nvim_lua" },
 	}),
 	experimental = {
 		ghost_text = true,
