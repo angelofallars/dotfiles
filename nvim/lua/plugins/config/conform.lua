@@ -7,8 +7,6 @@ require("conform").setup({
 
 		go = { "gofumpt" },
 
-		-- Use a sub-list to run only the first available formatter
-		-- javascript = { { "prettierd", "prettier" } },
 		templ = { "templ" },
 
 		markdown = { "markdownlint-cli2" },
@@ -20,7 +18,12 @@ require("conform").setup({
 		rust = { "rustfmt" },
 		zig = { "zigfmt" },
 
-		["*"] = { "typos" },
+		-- Use a sub-list to run only the first available formatter
+		html = { { "prettierd", "prettier" } },
+		css = { { "prettierd", "prettier" } },
+		scss = { { "prettierd", "prettier" } },
+		javascript = { { "prettierd", "prettier" } },
+
 		["_"] = { "trim_whitespace", "trim_newlines" },
 	},
 	format_after_save = {

@@ -206,6 +206,14 @@ require("lazy").setup({
 	},
 
 	{
+		"mfussenegger/nvim-lint",
+		config = function()
+			require("plugins.config.nvim-lint")
+		end,
+		lazy = false,
+	},
+
+	{
 		"iamcco/markdown-preview.nvim",
 		build = "cd app && npm install",
 		init = function()

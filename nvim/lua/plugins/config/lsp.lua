@@ -1,7 +1,7 @@
 local M = {}
 
 local border = {
-	{ "r", "FloatBorder" },
+	{ " ", "FloatBorder" },
 	{ " ", "FloatBorder" },
 	{ " ", "FloatBorder" },
 	{ " ", "FloatBorder" },
@@ -172,10 +172,11 @@ local servers = {
 	"tsserver",
 	"racket_langserver",
 	"sqlls",
+	"typos_lsp",
+	"vale_ls",
 	"vimls",
 	"vuels",
 	"zls",
-	"typos_lsp",
 }
 
 for _, lsp in pairs(servers) do
@@ -189,7 +190,7 @@ for _, lsp in pairs(servers) do
 	})
 end
 
-require("lspconfig").tailwindcss.setup({
+lspconfig.tailwindcss.setup({
 	filetypes = {
 		"templ",
 		-- include any other filetypes where you need tailwindcss
@@ -201,14 +202,14 @@ require("lspconfig").tailwindcss.setup({
 	},
 })
 
-require("lspconfig").htmx.setup({
+lspconfig.htmx.setup({
 	filetypes = {
 		"templ",
 		-- include any other filetypes where you need tailwindcss
 	},
 })
 
-require("lspconfig").gopls.setup({
+lspconfig.gopls.setup({
 	settings = {
 		gopls = {
 			gofumpt = true,
