@@ -5,6 +5,7 @@ require("lazy").setup({
 			require("plugins.config.lsp")
 		end,
 	},
+
 	{
 		"hrsh7th/nvim-cmp",
 		config = function()
@@ -26,6 +27,7 @@ require("lazy").setup({
 		},
 		lazy = true,
 	},
+
 	{
 		"hrsh7th/cmp-cmdline",
 		event = "CmdLineEnter",
@@ -40,11 +42,13 @@ require("lazy").setup({
 		build = ":TSUpdate",
 		dependencies = { "p00f/nvim-ts-rainbow" },
 	},
+
 	{
 		"vrischmann/tree-sitter-templ",
 		ft = "templ",
 		lazy = true,
 	},
+
 	{
 		"nvim-telescope/telescope.nvim",
 		config = function()
@@ -53,10 +57,12 @@ require("lazy").setup({
 		dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope-fzf-native.nvim" },
 		lazy = true,
 	},
+
 	{
 		"nvim-tree/nvim-web-devicons",
 		lazy = true,
 	},
+
 	{
 		"nvim-tree/nvim-tree.lua",
 		config = function()
@@ -69,44 +75,52 @@ require("lazy").setup({
 		},
 		lazy = true,
 	},
+
 	{
 		"nvim-telescope/telescope-fzf-native.nvim",
 		build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
 		lazy = true,
 	},
+
 	{
 		"lewis6991/gitsigns.nvim",
 		config = function()
 			require("plugins.config.gitsigns")
 		end,
 	},
+
 	{
 		"numToStr/Comment.nvim",
 		opts = {},
 		lazy = false,
 	},
+
 	{
 		"windwp/nvim-autopairs",
 		config = function()
 			require("nvim-autopairs").setup({})
 		end,
 	},
+
 	{
 		"alvan/vim-closetag",
 		ft = "html",
 		lazy = true,
 	},
+
 	{
 		"mattn/emmet-vim",
 		ft = { "html" },
 		lazy = true,
 	},
+
 	{
 		"andweeb/presence.nvim",
 		config = function()
 			require("plugins.config.presence")
 		end,
 	},
+
 	{
 		"nvim-lualine/lualine.nvim",
 		config = function()
@@ -114,18 +128,21 @@ require("lazy").setup({
 		end,
 		dependencies = { "nvim-tree/nvim-web-devicons", "catppuccin/nvim" },
 	},
+
 	{
 		"norcalli/nvim-colorizer.lua",
 		config = function()
 			require("colorizer").setup()
 		end,
 	},
+
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		config = function()
 			require("plugins.config.indent_blankline")
 		end,
 	},
+
 	-- TODO: fix config for fidget.nvim
 	{
 		"j-hui/fidget.nvim",
@@ -135,6 +152,7 @@ require("lazy").setup({
 		end,
 		enabled = true,
 	},
+
 	{
 		"simrat39/rust-tools.nvim",
 		ft = "rust",
@@ -143,6 +161,7 @@ require("lazy").setup({
 		end,
 		lazy = true,
 	},
+
 	{
 		"stevearc/dressing.nvim",
 		config = function()
