@@ -1,9 +1,3 @@
--- vim.opt.list = true
--- vim.opt.listchars:append("eol:↴")
---
--- vim.cmd([[
--- set listchars=tab: ,space:
--- ]])
 vim.opt.list = true
 vim.opt.listchars:append("space: ")
 vim.opt.listchars:append("tab:\\x20\\x20")

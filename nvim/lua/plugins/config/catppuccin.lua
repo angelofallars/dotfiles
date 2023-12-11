@@ -189,17 +189,32 @@ vim.cmd.colorscheme("catppuccin")
 
 vim.opt.cursorline = true
 
-vim.cmd([[
-hi NormalFloat blend=4
-hi FloatBorder blend=4
+--- Updates a highlight group while preserving its existing highlight definitions.
+---
+--- @param name string Highlight group name, e.g. "ErrorMsg"
+--- @param val vim.api.keyset.highlight Highlight definition map
+local function update_hl(name, val)
+	local hi = vim.api.nvim_get_hl(0, { name = name })
+	for key, value in pairs(val) do
+		hi[key] = value
+	end
+	vim.api.nvim_set_hl(0, name, hi)
+end
 
-hi CmpNormal blend=5
-hi CmpBorder blend=5
-hi CmpBorderTitle blend=5
-hi CmpSelect blend=5
+local transparent_his = {
+	"NormalFloat",
+	"FloatBorder",
+	"FloatBorder",
+	"CmpNormal",
+	"CmpBorder",
+	"CmpBorderTitle",
+	"CmpSelect",
+	"CmpDocNormal",
+	"CmpDocBorder",
+	"CmpDocBorderTitle",
+	"CmpDocSelect",
+}
 
-hi CmpDocNormal blend=5
-hi CmpDocBorder blend=5
-hi CmpDocBorderTitle blend=5
-hi CmpDocSelect blend=5
-]])
+for _, hi in ipairs(transparent_his) do
+	update_hl(hi, { blend = 5 })
+end

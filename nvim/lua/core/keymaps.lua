@@ -55,7 +55,7 @@ local function toggle_git_dir()
 		path = "."
 	end
 
-	vim.cmd("NvimTreeFindFileToggle " .. path)
+	require("nvim-tree.api").tree.toggle()
 end
 
 vim.keymap.set("n", "<C-n>", toggle_git_dir)
