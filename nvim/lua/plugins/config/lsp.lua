@@ -173,7 +173,7 @@ local servers = {
 	"racket_langserver",
 	"sqlls",
 	"typos_lsp",
-	"vale_ls",
+	-- "vale_ls",
 	"vimls",
 	"vuels",
 	"zls",

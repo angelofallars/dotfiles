@@ -6,8 +6,13 @@ markdownlint.args = {
 	vim.env.HOME .. "/.config/nvim/lua/plugins/config/formatter/.markdownlint-cli2.jsonc",
 }
 
+local vale = lint.linters.vale
+vale.args = {
+	"--config='" .. vim.env.HOME .. "/.config/nvim/lua/plugins/config/formatter/.vale.ini'",
+}
+
 lint.linters_by_ft = {
-	markdown = { "markdownlint" },
+	markdown = { "markdownlint", "vale" },
 	zsh = { "zsh" },
 }
 

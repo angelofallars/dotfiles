@@ -9,7 +9,7 @@ require("conform").setup({
 
 		templ = { "templ" },
 
-		markdown = { "markdownlint-cli2" },
+		markdown = { "markdownlint-cli2", "cbfmt" },
 
 		json = { "fixjson" },
 		json5 = { "fixjson" },
@@ -36,6 +36,12 @@ require("conform").setup({
 			prepend_args = {
 				"--config",
 				vim.env.HOME .. "/.config/nvim/lua/plugins/config/formatter/.markdownlint-cli2.jsonc",
+			},
+		},
+		cbfmt = {
+			prepend_args = {
+				"--config",
+				vim.env.HOME .. "/.config/nvim/lua/plugins/config/formatter/.cbfmt.toml",
 			},
 		},
 		ruff_isort = {
