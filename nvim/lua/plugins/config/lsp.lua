@@ -48,26 +48,32 @@ local on_attach = function(client, bufnr)
 	-- Enable completion triggered by <c-x><c-o>
 	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
+	local ts_opts = { fname_width = 20, trim_text = true, reuse_win = true }
+
 	-- Mappings.
 	-- See `:help vim.lsp.*` for documentation on any of the below functions
 	vim.keymap.set("n", "gd", function()
-		require("telescope.builtin").lsp_definitions()
+		require("telescope.builtin").lsp_definitions(ts_opts)
 	end, { buffer = bufnr })
 
 	vim.keymap.set("n", "gD", function()
-		require("telescope.builtin").lsp_type_definitions()
+		require("telescope.builtin").lsp_type_definitions(ts_opts)
 	end, { buffer = bufnr })
 
 	vim.keymap.set("n", "gr", function()
-		require("telescope.builtin").lsp_references({ fname_width = 20, trim_text = true })
+		require("telescope.builtin").lsp_references(ts_opts)
 	end, { buffer = bufnr })
 
 	vim.keymap.set("n", "gs", function()
-		require("telescope.builtin").lsp_dynamic_workspace_symbols({ fname_width = 15, symbol_width = 20 })
+		require("telescope.builtin").lsp_dynamic_workspace_symbols({
+			fname_width = 15,
+			symbol_width = 20,
+			reuse_win = true,
+		})
 	end, { buffer = bufnr })
 
 	vim.keymap.set("n", "gi", function()
-		require("telescope.builtin").lsp_implementations()
+		require("telescope.builtin").lsp_implementations(ts_opts)
 	end, { buffer = bufnr })
 
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
