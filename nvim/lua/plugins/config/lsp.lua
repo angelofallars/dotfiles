@@ -24,7 +24,9 @@ local opts = { noremap = true, silent = true }
 vim.api.nvim_set_keymap("n", "<space>e", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
 vim.api.nvim_set_keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
 vim.api.nvim_set_keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
-vim.api.nvim_set_keymap("n", "<space>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
+vim.keymap.set("n", "<space>r", function()
+	require("telescope.builtin").diagnostics()
+end)
 
 local navic = require("nvim-navic")
 
@@ -39,8 +41,6 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.s
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
-	-- require("lsp-format").on_attach(client, bufnr)
-
 	if client.server_capabilities.documentSymbolProvider then
 		navic.attach(client, bufnr)
 	end
@@ -50,11 +50,27 @@ local on_attach = function(client, bufnr)
 
 	-- Mappings.
 	-- See `:help vim.lsp.*` for documentation on any of the below functions
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
+	vim.keymap.set("n", "gd", function()
+		require("telescope.builtin").lsp_definitions()
+	end, { buffer = bufnr })
+
+	vim.keymap.set("n", "gD", function()
+		require("telescope.builtin").lsp_type_definitions()
+	end, { buffer = bufnr })
+
+	vim.keymap.set("n", "gr", function()
+		require("telescope.builtin").lsp_references({ fname_width = 20, trim_text = true })
+	end, { buffer = bufnr })
+
+	vim.keymap.set("n", "gs", function()
+		require("telescope.builtin").lsp_dynamic_workspace_symbols({ fname_width = 15, symbol_width = 20 })
+	end, { buffer = bufnr })
+
+	vim.keymap.set("n", "gi", function()
+		require("telescope.builtin").lsp_implementations()
+	end, { buffer = bufnr })
+
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "<space>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "<space>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
 	vim.api.nvim_buf_set_keymap(
@@ -64,10 +80,8 @@ local on_attach = function(client, bufnr)
 		"<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>",
 		opts
 	)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "<space>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "<space>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "<space>n", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "<space>m", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 
 	vim.api.nvim_buf_set_keymap(bufnr, "i", "<C-h>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
 	vim.keymap.set("i", "<C-h>", function()

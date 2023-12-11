@@ -151,6 +151,9 @@ require("lazy").setup({
 	{
 		"simrat39/rust-tools.nvim",
 		ft = "rust",
+		config = function()
+			require("plugins.config.rust-tools")
+		end,
 		lazy = true,
 	},
 	{
