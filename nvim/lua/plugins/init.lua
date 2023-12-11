@@ -136,13 +136,6 @@ require("lazy").setup({
 		end,
 	},
 
-	{
-		"lukas-reineke/indent-blankline.nvim",
-		config = function()
-			require("plugins.config.indent_blankline")
-		end,
-	},
-
 	-- TODO: fix config for fidget.nvim
 	{
 		"j-hui/fidget.nvim",
@@ -221,5 +214,18 @@ require("lazy").setup({
 		end,
 		ft = { "markdown" },
 		lazy = true,
+	},
+
+	{
+		"echasnovski/mini.indentscope",
+		version = "*",
+		config = function()
+			require("mini.indentscope").setup({
+				draw = {
+					animation = require("mini.indentscope").gen_animation.quartic({ duration = 16 }),
+				},
+				symbol = "▏",
+			})
+		end,
 	},
 })
