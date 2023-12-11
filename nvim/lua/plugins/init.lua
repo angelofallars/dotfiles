@@ -30,7 +30,6 @@ require("lazy").setup({
 
 	{
 		"hrsh7th/cmp-cmdline",
-		event = "CmdLineEnter",
 		lazy = true,
 	},
 
