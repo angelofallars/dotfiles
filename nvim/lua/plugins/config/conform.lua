@@ -9,9 +9,19 @@ require("conform").setup({
 
 		-- Use a sub-list to run only the first available formatter
 		-- javascript = { { "prettierd", "prettier" } },
+		templ = { "templ" },
+
+		markdown = { "markdownlint-cli2" },
+
+		json = { "fixjson" },
+		json5 = { "fixjson" },
+		jsonc = { "fixjson" },
 
 		rust = { "rustfmt" },
 		zig = { "zigfmt" },
+
+		["*"] = { "typos" },
+		["_"] = { "trim_whitespace", "trim_newlines" },
 	},
 	format_after_save = {
 		-- These options will be passed to conform.format()
@@ -19,6 +29,12 @@ require("conform").setup({
 	},
 
 	formatters = {
+		["markdownlint-cli2"] = {
+			prepend_args = {
+				"--config",
+				vim.env.HOME .. "/.config/nvim/lua/plugins/config/formatter/.markdownlint-cli2.jsonc",
+			},
+		},
 		ruff_isort = {
 			-- This can be a string or a function that returns a string
 			command = "ruff",

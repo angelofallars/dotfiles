@@ -1,0 +1,12 @@
+{
+  "default": false,
+  "eee": 2,
+  "MD010": {
+    "code_blocks": false,
+    "ignore_code_languages": [
+      "go",
+      "golang"
+    ],
+    "spaces_per_tab": 4
+  }
+}
