@@ -24,7 +24,7 @@ autocmd FileType git          setlocal nonumber norelativenumber
 autocmd FileType gitcommit    setlocal nonumber norelativenumber
 
 autocmd BufNewFile,BufRead *.njk          setlocal filetype=html
-autocmd BufNewFile,BufRead *waybar/config setlocal syntax=json
+autocmd BufNewFile,BufRead *waybar/config setlocal syntax=json5
 autocmd BufNewFile,BufRead *.rasi         setlocal syntax=css
 autocmd BufNewFile,BufRead *dunstrc       setlocal filetype=ini
 
@@ -81,5 +81,4 @@ vim.opt.fillchars = vim.opt.fillchars + "vertright:▏"
 vim.opt.fillchars = vim.opt.fillchars + "verthoriz:▏"
 
 vim.cmd([[filetype plugin on]])
-vim.cmd([[syntax enable]])
 vim.opt.filetype.plugin = true
