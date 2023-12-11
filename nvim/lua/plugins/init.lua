@@ -215,12 +215,23 @@ require("lazy").setup({
 
 	{
 		"iamcco/markdown-preview.nvim",
+		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
 		build = "cd app && npm install",
 		init = function()
 			vim.g.mkdp_filetypes = { "markdown" }
+			vim.cmd([[
+      let g:mkdp_auto_close = 1
+      let g:mkdp_theme = 'dark'
+      ]])
 		end,
 		ft = { "markdown" },
 		lazy = true,
+	},
+
+	{
+		"lukas-reineke/headlines.nvim",
+		dependencies = "nvim-treesitter/nvim-treesitter",
+		config = true, -- or `opts = {}`
 	},
 
 	{
@@ -243,6 +254,78 @@ require("lazy").setup({
 				},
 				symbol = symbol,
 			})
+		end,
+	},
+
+	{
+		"m4xshen/hardtime.nvim",
+		dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+		opts = {
+			disabled_keys = {
+				-- My split keyboard with the colemak-dh layout has a layer
+				-- that maps the arrow keys to the original HJKL positions
+				["<Up>"] = {},
+				["<Down>"] = {},
+				["<Left>"] = {},
+				["<Right>"] = {},
+			},
+			restricted_keys = {
+				["<Up>"] = { "n", "x" },
+				["<Down>"] = { "n", "x" },
+				["<Left>"] = { "n", "x" },
+				["<Right>"] = { "n", "x" },
+				["<C-N>"] = {},
+				["<C-P>"] = {},
+			},
+		},
+	},
+	{
+		"nvim-focus/focus.nvim",
+		config = function()
+			require("focus").setup({
+				ui = {},
+			})
+		end,
+	},
+
+	{
+		"stevearc/oil.nvim",
+		opts = {},
+		-- Optional dependencies
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		config = function()
+			local HEIGHT_RATIO = 0.4 -- You can change this
+			local WIDTH_RATIO = 0.20 -- You can change this too
+			local screen_w = vim.opt.columns:get()
+			local screen_h = vim.opt.lines:get() - vim.opt.cmdheight:get()
+			local window_w = screen_w * WIDTH_RATIO
+			local window_h = screen_h * HEIGHT_RATIO
+			local window_w_int = math.max(35, math.floor(window_w))
+			local window_h_int = math.max(20, math.floor(window_h))
+
+			vim.cmd([[
+      autocmd FileType oil setlocal nonumber norelativenumber
+      ]])
+
+			require("oil").setup({
+				float = {
+					padding = 10,
+					border = { " ", " ", " ", " ", " ", " ", " ", " " },
+					max_width = window_w_int,
+					max_height = window_h_int,
+				},
+				keymaps = {
+					["<CR>"] = "actions.parent",
+					["<C-e>"] = "k",
+					["<C-n>"] = "j",
+					["<C-i>"] = "actions.select",
+					["<C-o>"] = "actions.select_vsplit",
+					["<C-u>"] = "actions.close",
+				},
+			})
+			vim.keymap.set("n", "<C-n>", function()
+				require("oil").toggle_float(".")
+			end)
 		end,
 	},
 })

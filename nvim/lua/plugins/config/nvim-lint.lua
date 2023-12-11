@@ -7,9 +7,6 @@ markdownlint.args = {
 }
 
 local vale = lint.linters.vale
-vale.args = {
-	"--config='" .. vim.env.HOME .. "/.config/nvim/lua/plugins/config/formatter/.vale.ini'",
-}
 
 lint.linters_by_ft = {
 	markdown = { "markdownlint", "vale" },

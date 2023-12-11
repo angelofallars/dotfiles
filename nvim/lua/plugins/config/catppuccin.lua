@@ -68,6 +68,7 @@ require("catppuccin").setup({
 
 			NormalFloat = { bg = colors.mantle, fg = colors.subtext1 },
 			FloatBorder = { bg = colors.mantle, fg = base_minus_1, style = { "bold" } },
+			FloatTitle = { bg = colors.mantle, fg = colors.green, style = { "bold" } },
 
 			TelescopeNormal = { bg = colors.mantle },
 			TelescopeBorder = { bg = colors.mantle, fg = colors.mantle },
@@ -147,6 +148,7 @@ require("catppuccin").setup({
 		notify = false,
 		mini = false,
 		fidget = true,
+		headlines = true,
 		which_key = true,
 		noice = true,
 		markdown = true,
@@ -205,6 +207,7 @@ end
 
 local transparent_his = {
 	"NormalFloat",
+	"FloatTitle",
 	"FloatBorder",
 	"FloatBorder",
 	"CmpNormal",

@@ -23,6 +23,9 @@ autocmd FileType angular      setlocal shiftwidth=2 tabstop=2
 autocmd FileType git          setlocal nonumber norelativenumber
 autocmd FileType gitcommit    setlocal nonumber norelativenumber
 
+autocmd FileType markdown     setlocal foldcolumn=2
+autocmd FileType markdown     setlocal signcolumn=yes:2
+
 autocmd BufNewFile,BufRead *.njk          setlocal filetype=html
 autocmd BufNewFile,BufRead *waybar/config setlocal syntax=json5
 autocmd BufNewFile,BufRead *.rasi         setlocal syntax=css
