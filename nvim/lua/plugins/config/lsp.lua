@@ -155,6 +155,7 @@ local servers = {
 	"vimls",
 	"vuels",
 	"zls",
+	"typos_lsp",
 }
 
 for _, lsp in pairs(servers) do
