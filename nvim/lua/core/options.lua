@@ -29,8 +29,6 @@ autocmd BufNewFile,BufRead *.rasi         setlocal syntax=css
 autocmd BufNewFile,BufRead *dunstrc       setlocal filetype=ini
 
 autocmd BufEnter *                        silent! lcd %:p:h
-
-let g:python3_host_prog = $HOME . '/.local/venv/nvim/bin/python'
 ]])
 
 vim.opt.autochdir = true
@@ -79,6 +77,13 @@ vim.opt.fillchars = vim.opt.fillchars + "vert:▏"
 vim.opt.fillchars = vim.opt.fillchars + "vertleft:▏"
 vim.opt.fillchars = vim.opt.fillchars + "vertright:▏"
 vim.opt.fillchars = vim.opt.fillchars + "verthoriz:▏"
+
+vim.opt.list = true
+
+vim.opt.listchars = {
+	leadmultispace = "| ",
+	tab = "| ",
+}
 
 vim.cmd([[filetype plugin on]])
 vim.opt.filetype.plugin = true

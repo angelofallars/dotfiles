@@ -53,7 +53,7 @@ require("catppuccin").setup({
 
 			LineNr = { fg = colors.surface2 },
 
-			MiniIndentscopeSymbol = { fg = colors.surface1, style = { "bold" } },
+			MiniIndentscopeSymbol = { fg = colors.surface2, style = { "bold" } },
 
 			NonText = { fg = colors.surface0 },
 			IblScope = { fg = colors.surface1 },

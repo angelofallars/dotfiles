@@ -219,11 +219,21 @@ require("lazy").setup({
 		"echasnovski/mini.indentscope",
 		version = "*",
 		config = function()
+			vim.opt.list = true
+
+			local symbol = "▏"
+
+			vim.opt.listchars = {
+				leadmultispace = symbol .. " ",
+				tab = symbol .. " ",
+				eol = "↴",
+			}
+
 			require("mini.indentscope").setup({
 				draw = {
-					animation = require("mini.indentscope").gen_animation.quartic({ duration = 16 }),
+					animation = require("mini.indentscope").gen_animation.none(),
 				},
-				symbol = "▏",
+				symbol = symbol,
 			})
 		end,
 	},
