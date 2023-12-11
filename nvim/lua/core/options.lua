@@ -28,16 +28,9 @@ autocmd BufNewFile,BufRead *waybar/config setlocal syntax=json
 autocmd BufNewFile,BufRead *.rasi         setlocal syntax=css
 autocmd BufNewFile,BufRead *dunstrc       setlocal filetype=ini
 
-autocmd BufRead,BufNewFile *.porth set filetype=porth
-
 autocmd BufEnter *                        silent! lcd %:p:h
 
-let g:prettier#autoformat_require_pragma = 0
-let g:prettier#autoformat_config_present = 1
-
 let g:python3_host_prog = $HOME . '/.local/venv/nvim/bin/python'
-
-" autocmd BufWritePre *.py call BlackSync()
 ]])
 
 vim.opt.autochdir = true
@@ -76,15 +69,7 @@ vim.g.netrw_browse_split = 0
 vim.g.netrw_banner = 0
 vim.g.netrw_winsize = 25
 
-vim.g.goyo_width = 150
-
 vim.opt.termguicolors = true
-
-vim.g.go_gopls_enabled = false
-vim.g.go_fmt_fail_silently = 1
-
--- Thank you Neovim devs!
-vim.opt.cmdheight = 1
 
 vim.opt.fillchars = vim.opt.fillchars + "eob: "
 vim.opt.fillchars = vim.opt.fillchars + "horiz:━"
@@ -98,26 +83,3 @@ vim.opt.fillchars = vim.opt.fillchars + "verthoriz:▏"
 vim.cmd([[filetype plugin on]])
 vim.cmd([[syntax enable]])
 vim.opt.filetype.plugin = true
-
-vim.cmd([[
-let g:user_emmet_settings = {
-\  'variables': {'lang': 'en'},
-\  'html': {
-\    'default_attributes': {
-\      'option': {'value': v:null},
-\      'textarea': {'id': v:null, 'name': v:null, 'cols': 10, 'rows': 10},
-\    },
-\    'snippets': {
-\      '!': "<!DOCTYPE html>\n"
-\              ."<html lang=\"en\">\n"
-\              ."<head>\n"
-\              ."\t<meta charset=\"${charset}\">\n"
-\              ."\t<title></title>\n"
-\              ."\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n"
-\              ."</head>\n"
-\              ."<body>\n\t${child}|\n</body>\n"
-\              ."</html>",
-\    },
-\  },
-\}
-]])

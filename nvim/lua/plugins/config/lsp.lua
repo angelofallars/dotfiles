@@ -1,3 +1,5 @@
+local M = {}
+
 local border = {
 	{ "r", "FloatBorder" },
 	{ " ", "FloatBorder" },
@@ -294,14 +296,6 @@ lspconfig.lua_ls.setup({
 	capabilities = capabilities,
 })
 
-local rt = require("rust-tools")
-
-rt.setup({
-	server = {
-		on_attach = on_attach,
-	},
-})
-
 lspconfig.ltex.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
@@ -325,3 +319,7 @@ lspSymbol("Hint", "󰌶")
 lspSymbol("Info", "")
 lspSymbol("Warn", "󰀪")
 lspSymbol("Warn", "󰀪")
+
+M.on_attach = on_attach
+
+return M
