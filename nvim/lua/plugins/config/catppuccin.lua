@@ -125,6 +125,8 @@ require("catppuccin").setup({
 			LspReferenceRead = { bg = colors.surface1 },
 			LspReferenceText = { bg = colors.surface1 },
 			LspReferenceWrite = { bg = colors.surface1 },
+
+			LspInlayHint = { style = { "italic" } },
 		}
 	end,
 
@@ -151,7 +153,6 @@ require("catppuccin").setup({
 		headlines = true,
 		which_key = true,
 		noice = true,
-		markdown = true,
 		indent_blankline = {
 			enabled = true,
 			colored_indent_levels = false,
@@ -183,6 +184,9 @@ require("catppuccin").setup({
 			bold_basename = true,
 			dim_context = true,
 			alt_background = false,
+		},
+		markdown = {
+			false,
 		},
 		-- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
 	},
@@ -218,6 +222,7 @@ local transparent_his = {
 	"CmpDocBorder",
 	"CmpDocBorderTitle",
 	"CmpDocSelect",
+	"TelescopePrompt",
 }
 
 for _, hi in ipairs(transparent_his) do

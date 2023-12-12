@@ -126,6 +126,10 @@ local on_attach = function(client, bufnr)
 		end,
 	})
 
+	if vim.lsp.inlay_hint then
+		vim.lsp.inlay_hint.enable(bufnr, true)
+	end
+
 	if client.server_capabilities.documentHighlightProvider then
 		vim.api.nvim_create_augroup("lsp_document_highlight", {
 			clear = false,
@@ -213,6 +217,15 @@ lspconfig.gopls.setup({
 	settings = {
 		gopls = {
 			gofumpt = true,
+			hints = {
+				assignVariableTypes = true,
+				compositeLiteralFields = true,
+				compositeLiteralTypes = false,
+				constantValues = true,
+				functionTypeParameters = true,
+				parameterNames = false,
+				rangeVariableTypes = true,
+			},
 		},
 	},
 })

@@ -4,6 +4,9 @@ require("lazy").setup({
 		config = function()
 			require("plugins.config.lsp")
 		end,
+		opts = {
+			inlay_hints = { enabled = true },
+		},
 	},
 
 	{
@@ -326,6 +329,14 @@ require("lazy").setup({
 			vim.keymap.set("n", "<C-n>", function()
 				require("oil").toggle_float(".")
 			end)
+		end,
+	},
+
+	{
+		"echasnovski/mini.files",
+		version = false,
+		config = function()
+			require("mini.files").setup()
 		end,
 	},
 })
