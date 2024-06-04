@@ -42,7 +42,7 @@ require("lazy").setup({
 			require("plugins.config.treesitter")
 		end,
 		build = ":TSUpdate",
-		dependencies = { "p00f/nvim-ts-rainbow" },
+		dependencies = { "HiPhish/rainbow-delimiters.nvim" },
 	},
 
 	{
@@ -154,7 +154,7 @@ require("lazy").setup({
 		config = function()
 			require("plugins.config.rust-tools")
 		end,
-		lazy = true,
+		event = "VeryLazy",
 	},
 
 	{
@@ -232,64 +232,56 @@ require("lazy").setup({
 	},
 
 	{
-		"lukas-reineke/headlines.nvim",
-		dependencies = "nvim-treesitter/nvim-treesitter",
-		config = true, -- or `opts = {}`
-	},
-
-	{
 		"echasnovski/mini.indentscope",
 		version = "*",
 		config = function()
-			vim.opt.list = true
-
 			local symbol = "▏"
-
-			vim.opt.listchars = {
-				leadmultispace = symbol .. " ",
-				tab = symbol .. " ",
-				eol = "↴",
-			}
-
 			require("mini.indentscope").setup({
 				draw = {
+					delay = 0,
 					animation = require("mini.indentscope").gen_animation.none(),
 				},
 				symbol = symbol,
+				options = {
+					try_as_border = true,
+				},
 			})
 		end,
 	},
 
-	{
-		"m4xshen/hardtime.nvim",
-		dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
-		opts = {
-			disabled_keys = {
-				-- My split keyboard with the colemak-dh layout has a layer
-				-- that maps the arrow keys to the original HJKL positions
-				["<Up>"] = {},
-				["<Down>"] = {},
-				["<Left>"] = {},
-				["<Right>"] = {},
-			},
-			restricted_keys = {
-				["<Up>"] = { "n", "x" },
-				["<Down>"] = { "n", "x" },
-				["<Left>"] = { "n", "x" },
-				["<Right>"] = { "n", "x" },
-				["<C-N>"] = {},
-				["<C-P>"] = {},
-			},
-		},
-	},
-	{
-		"nvim-focus/focus.nvim",
-		config = function()
-			require("focus").setup({
-				ui = {},
-			})
-		end,
-	},
+	-- {
+	-- 	"m4xshen/hardtime.nvim",
+	-- 	dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+	-- 	opts = {
+	-- 		disabled_keys = {
+	-- 			-- My split keyboard with the colemak-dh layout has a layer
+	-- 			-- that maps the arrow keys to the original HJKL positions
+	-- 			["<Up>"] = {},
+	-- 			["<Down>"] = {},
+	-- 			["<Left>"] = {},
+	-- 			["<Right>"] = {},
+	-- 		},
+	-- 		restricted_keys = {
+	-- 			["<Up>"] = { "n", "x" },
+	-- 			["<Down>"] = { "n", "x" },
+	-- 			["<Left>"] = { "n", "x" },
+	-- 			["<Right>"] = { "n", "x" },
+	-- 			["1j"] = { "n", "x" },
+	-- 			["1k"] = { "n", "x" },
+	-- 			["<C-N>"] = {},
+	-- 			["<C-P>"] = {},
+	-- 		},
+	-- 	},
+	-- },
+
+	-- {
+	-- 	"nvim-focus/focus.nvim",
+	-- 	config = function()
+	-- 		require("focus").setup({
+	-- 			ui = {},
+	-- 		})
+	-- 	end,
+	-- },
 
 	{
 		"stevearc/oil.nvim",
@@ -318,17 +310,15 @@ require("lazy").setup({
 					max_height = window_h_int,
 				},
 				keymaps = {
-					["<CR>"] = "actions.parent",
-					["<C-e>"] = "k",
+					["<C-i>"] = "actions.parent",
+					["<C-p>"] = "k",
 					["<C-n>"] = "j",
-					["<C-i>"] = "actions.select",
 					["<C-o>"] = "actions.select_vsplit",
-					["<C-u>"] = "actions.close",
 				},
 			})
-			vim.keymap.set("n", "<C-n>", function()
-				require("oil").toggle_float(".")
-			end)
+			-- vim.keymap.set("n", "<C-n>", function()
+			-- 	require("oil").toggle_float(".")
+			-- end)
 		end,
 	},
 
@@ -339,4 +329,42 @@ require("lazy").setup({
 			require("mini.files").setup()
 		end,
 	},
+
+	{
+		"rcarriga/nvim-notify",
+		config = function()
+			require("notify").setup({
+				background_color = "#000000",
+				level = 0,
+				render = "wrapped-compact",
+				minimum_width = 40,
+				fps = 165,
+			})
+			vim.notify = require("notify")
+		end,
+	},
+
+	-- {
+	-- 	"chrisgrieser/nvim-early-retirement",
+	-- 	config = true,
+	-- 	event = "VeryLazy",
+	-- 	opts = {
+	-- 		-- Show notification on closing. Works with nvim-notify or noice.nvim
+	-- 		notificationOnAutoClose = true,
+	--
+	-- 		-- when a file is deleted, for example via an external program, delete the
+	-- 		-- associated buffer as well
+	-- 		deleteBufferWhenFileDeleted = false,
+	-- 	},
+	-- },
+	--
+
+	{
+		"windwp/nvim-ts-autotag",
+		config = function()
+			require("nvim-ts-autotag").setup()
+		end,
+	},
+
+	{ "rescript-lang/vim-rescript", tag = "v2.1.0" },
 })

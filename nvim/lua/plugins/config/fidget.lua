@@ -16,7 +16,6 @@ require("fidget").setup({
 	},
 	window = {
 		relative = "editor", -- where to anchor, either "win" or "editor"
-		blend = 0, -- &winblend for the window
 		zindex = nil, -- the zindex value for the window
 	},
 	fmt = {

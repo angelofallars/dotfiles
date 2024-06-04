@@ -10,7 +10,7 @@ require("catppuccin").setup({
 		light = "latte",
 		dark = "mocha",
 	},
-	transparent_background = true,
+	transparent_background = false, -- set to false to prevent black bg in nvim-notify
 	show_end_of_buffer = false, -- show the '~' characters after the end of buffers
 	term_colors = false,
 	dim_inactive = {
@@ -126,7 +126,9 @@ require("catppuccin").setup({
 			LspReferenceText = { bg = colors.surface1 },
 			LspReferenceWrite = { bg = colors.surface1 },
 
-			LspInlayHint = { style = { "italic" } },
+			LspInlayHint = { style = { "italic" }, bg = colors.base },
+
+			NotifyBackground = { bg = colors.base },
 		}
 	end,
 
@@ -147,7 +149,7 @@ require("catppuccin").setup({
 		treesitter = true,
 		-- treesitter_context = true,
 		harpoon = true,
-		notify = false,
+		notify = true,
 		mini = false,
 		fidget = true,
 		headlines = true,
@@ -223,6 +225,7 @@ local transparent_his = {
 	"CmpDocBorderTitle",
 	"CmpDocSelect",
 	"TelescopePrompt",
+	"NotifyBackground",
 }
 
 for _, hi in ipairs(transparent_his) do

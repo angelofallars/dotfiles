@@ -160,21 +160,21 @@ local lspconfig = require("lspconfig")
 local servers = {
 	"astro",
 	"bashls",
+	"biome",
 	"clangd",
 	"cssls",
 	"dockerls",
-	"eslint",
-	"html",
+	"gleam",
 	"htmx",
 	"golangci_lint_ls",
 	"gopls",
 	"jsonls",
 	"marksman",
 	"rust_analyzer",
-	"tailwindcss",
 	"templ",
 	"tsserver",
 	"racket_langserver",
+	"rescriptls",
 	"sqlls",
 	"typos_lsp",
 	-- "vale_ls",
@@ -194,9 +194,31 @@ for _, lsp in pairs(servers) do
 	})
 end
 
+lspconfig.biome.setup({
+	filetypes = {
+		"javascript",
+		"javascriptreact",
+		"json",
+		"jsonc",
+		"typescript",
+		"typescript.tsx",
+		"typescriptreact",
+		"astro",
+		"vue",
+	},
+})
+
+lspconfig.html.setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+	filetypes = { "html", "templ" },
+})
+
 lspconfig.tailwindcss.setup({
 	filetypes = {
 		"templ",
+		"astro",
+		"html",
 		-- include any other filetypes where you need tailwindcss
 	},
 	init_options = {

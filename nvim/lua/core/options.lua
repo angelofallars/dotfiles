@@ -2,8 +2,9 @@ vim.cmd([[
 autocmd FileType c            setlocal shiftwidth=8 tabstop=8
 autocmd FileType scheme       setlocal shiftwidth=2 tabstop=2
 
-autocmd FileType lua          setlocal shiftwidth=2 tabstop=2
-autocmd FileType go           setlocal noexpandtab
+autocmd FileType lua          setlocal shiftwidth=3 tabstop=3
+autocmd FileType go           setlocal shiftwidth=2 tabstop=2 noexpandtab
+autocmd FileType templ        setlocal shiftwidth=2 tabstop=2 noexpandtab
 autocmd FileType python       setlocal textwidth=80
 
 autocmd FileType html         setlocal shiftwidth=2 tabstop=2 textwidth=120
@@ -11,14 +12,18 @@ autocmd FileType css          setlocal shiftwidth=2 tabstop=2
 autocmd FileType sass         setlocal shiftwidth=2 tabstop=2
 autocmd FileType scss         setlocal shiftwidth=2 tabstop=2
 autocmd FileType less         setlocal shiftwidth=2 tabstop=2
+autocmd FileType astro        setlocal shiftwidth=2 tabstop=2
 autocmd FileType javascript   setlocal shiftwidth=2 tabstop=2
 autocmd FileType typescript   setlocal shiftwidth=2 tabstop=2
+autocmd FileType rescript     setlocal shiftwidth=2 tabstop=2
 autocmd FileType json         setlocal shiftwidth=2 tabstop=2
 autocmd FileType markdown     setlocal shiftwidth=2 tabstop=2 textwidth=100
 autocmd FileType jsx          setlocal shiftwidth=2 tabstop=2
 autocmd FileType tsx          setlocal shiftwidth=2 tabstop=2
 autocmd FileType vue          setlocal shiftwidth=2 tabstop=2
 autocmd FileType angular      setlocal shiftwidth=2 tabstop=2
+
+autocmd FileType gleam        setlocal shiftwidth=2 tabstop=2
 
 autocmd FileType git          setlocal nonumber norelativenumber
 autocmd FileType gitcommit    setlocal nonumber norelativenumber
@@ -32,6 +37,8 @@ autocmd BufNewFile,BufRead *.rasi         setlocal syntax=css
 autocmd BufNewFile,BufRead *dunstrc       setlocal filetype=ini
 
 autocmd BufEnter *                        silent! lcd %:p:h
+
+autocmd BufNewFile,BufRead *.litok        setlocal shiftwidth=3 tabstop=3 syntax=kotlin filetype=kotlin
 ]])
 
 vim.opt.autochdir = true
@@ -59,7 +66,7 @@ vim.opt.swapfile = false
 vim.opt.undofile = true
 
 -- Blinking cursor
-vim.opt.guicursor = vim.opt.guicursor + "n-v-c-i:blinkon5"
+vim.opt.guicursor = vim.opt.guicursor + "a:blinkon2,i-c:ver75"
 
 vim.opt.updatetime = 250
 vim.opt.completeopt = "menuone,noselect"
@@ -81,12 +88,14 @@ vim.opt.fillchars = vim.opt.fillchars + "vertleft:▏"
 vim.opt.fillchars = vim.opt.fillchars + "vertright:▏"
 vim.opt.fillchars = vim.opt.fillchars + "verthoriz:▏"
 
-vim.opt.list = true
+vim.opt.cmdheight = 1
 
-vim.opt.listchars = {
-	leadmultispace = "| ",
-	tab = "| ",
-}
+-- vim.opt.list = true
+--
+-- vim.opt.listchars = {
+-- 	leadmultispace = "| ",
+-- 	tab = "| ",
+-- }
 
 vim.cmd([[filetype plugin on]])
 vim.opt.filetype.plugin = true

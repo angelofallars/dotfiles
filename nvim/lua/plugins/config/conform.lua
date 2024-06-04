@@ -3,13 +3,15 @@ require("conform").setup({
 		lua = { "stylua" },
 
 		-- Conform will run multiple formatters sequentially
-		python = { "ruff_isort", "black" },
+		-- python = { "ruff_isort", "ruff_format" },
 
 		go = { "gofumpt" },
 
 		templ = { "templ" },
 
-		markdown = { "markdownlint-cli2", "cbfmt" },
+		gleam = { "gleam" },
+
+		-- markdown = { "markdownlint-cli2", "cbfmt" },
 
 		json = { "fixjson" },
 		json5 = { "fixjson" },
@@ -19,10 +21,16 @@ require("conform").setup({
 		zig = { "zigfmt" },
 
 		-- Use a sub-list to run only the first available formatter
-		html = { { "prettierd", "prettier" } },
-		css = { { "prettierd", "prettier" } },
-		scss = { { "prettierd", "prettier" } },
-		javascript = { { "prettierd", "prettier" } },
+		astro = { "prettier" },
+		html = { "biome" },
+		css = { "biome" },
+		scss = { "biome" },
+		-- javascript = { "biome" },
+		typescript = { "biome" },
+		javascriptreact = { "biome" },
+		typescriptreact = { "biome" },
+
+		rescript = { "rescript-format" },
 
 		["_"] = { "trim_whitespace", "trim_newlines" },
 	},
@@ -44,6 +52,7 @@ require("conform").setup({
 				vim.env.HOME .. "/.config/nvim/lua/plugins/config/formatter/.cbfmt.toml",
 			},
 		},
+
 		ruff_isort = {
 			-- This can be a string or a function that returns a string
 			command = "ruff",
@@ -67,5 +76,17 @@ require("conform").setup({
 			-- Exit codes that indicate success (default {0})
 			exit_codes = { 0, 1 },
 		},
+
+		-- rescriptfmt = {
+		-- 	command = "bun",
+		--
+		-- 	args = { "x", "rescript", "format", "-stdin", ".res" },
+		--
+		-- 	-- A function that calculates the directory to run the command in
+		-- 	cwd = require("conform.util").root_file({ "rescript.json" }),
+		--
+		-- 	-- When cwd is not found, don't run the formatter (default false)
+		-- 	require_cwd = false,
+		-- },
 	},
 })
