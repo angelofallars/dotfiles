@@ -2,7 +2,7 @@
 // https://github.com/angelofallars/dotfiles
 [
     {
-        "layer": "top",
+        "layer": "bottom",
         "output": "DP-1",
         // "margin-right": 80,
         "height": 43,

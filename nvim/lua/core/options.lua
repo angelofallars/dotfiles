@@ -35,6 +35,7 @@ autocmd BufNewFile,BufRead *.njk          setlocal filetype=html
 autocmd BufNewFile,BufRead *waybar/config setlocal syntax=json5
 autocmd BufNewFile,BufRead *.rasi         setlocal syntax=css
 autocmd BufNewFile,BufRead *dunstrc       setlocal filetype=ini
+autocmd BufNewFile,BufRead *.xaml         setlocal filetype=xml
 
 autocmd BufEnter *                        silent! lcd %:p:h
 
@@ -66,7 +67,7 @@ vim.opt.swapfile = false
 vim.opt.undofile = true
 
 -- Blinking cursor
-vim.opt.guicursor = vim.opt.guicursor + "a:blinkon2,i-c:ver75"
+-- vim.opt.guicursor = vim.opt.guicursor + "a:blinkon2,i-c:ver75"
 
 vim.opt.updatetime = 250
 vim.opt.completeopt = "menuone,noselect"

@@ -5,8 +5,8 @@ autoload -Uz compinit && compinit
 # End of lines added by compinstall
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=1000000000
+SAVEHIST=1000000000
 setopt beep extendedglob
 unsetopt autocd nomatch notify
 bindkey -e
@@ -33,9 +33,18 @@ setopt prompt_subst
 
 # Convenient Git aliases
 alias ga="git add"
+gas() {
+    git add "*$1*"
+}
 alias gaa="git add ."
 alias gm="git commit"
-alias gmm="git commit --message"
+
+gms () {
+    git commit --message "$*"
+}
+alias gmc="git commit --message \"Commit - No Title\""
+alias upo="git add Plugins.txt && git commit --message \"Commit - No Title\""
+
 alias gma="git commit --all"
 
 alias grm="git rm"
@@ -47,16 +56,19 @@ alias grs="git restore"
 alias grss="git restore --staged"
 
 alias gps="git push"
+alias gpu="git push --set-upstream"
+alias gpf="git push --set-upstream fork \$(git rev-parse --abbrev-ref HEAD)"
 alias gpl="git pull"
 alias gf="git fetch"
 
-alias gpsu="git push -u origin main"
+alias gmo="git fetch origin && git merge origin/master"
 
 alias gin="git init"
 alias gcl="git clone"
 
 alias gr="git remote"
 alias grv="git remote --verbose"
+alias gra="git remote add"
 alias grao="git remote add origin"
 alias grso="git remote set-url origin"
 
@@ -66,6 +78,7 @@ alias gli="git log --oneline"
 alias glif="git log --pretty=format:"%s%n%b" --reverse"
 alias gd="git diff"
 alias gds="git diff --staged"
+alias gdm="git diff master"
 alias gd1="git diff HEAD~1"
 alias gd2="git diff HEAD~2"
 alias gd3="git diff HEAD~3"
@@ -85,6 +98,19 @@ gll() {
 alias gb="git branch"
 alias gbr="git branch --remote"
 alias gc="git checkout"
+alias gcb="git checkout -b"
+
+alias gp="git cherry-pick"
+alias gpa="git cherry-pick --abort"
+alias gu="git stash"
+gum() {
+    git stash push --message "$*"
+}
+alias gul="git stash list"
+alias gua="git stash apply"
+alias gup="git stash pop"
+
+alias gbl="git blame"
 
 alias pm="pacman"
 alias pmh="pacman -H"
@@ -233,7 +259,9 @@ alias river="XKB_DEFAULT_OPTIONS=ctrl:nocaps river"
 
 alias downloads="~/.config/waybar/scripts/downloads"
 
-alias smth="env MOZ_ENABLE_WAYLAND=1 /usr/lib/librewolf/librewolf -p 'Something' %u 2>&1 & disown"
+ras() {
+    rye add $@ && ( echo Running "rye sync" ; rye sync )
+}
 
 source /home/angelo-f/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
@@ -248,8 +276,30 @@ export FZF_DEFAULT_OPTS=" \
 --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
 --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
 
+source ~/.extra.sh
+
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/home/angelo-f/google-cloud-sdk/path.zsh.inc' ]; then . '/home/angelo-f/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/angelo-f/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/angelo-f/google-cloud-sdk/completion.zsh.inc'; fi
+
+export HISTFILESIZE=1000000000
+setopt INC_APPEND_HISTORY
+setopt SHARE_HISTORY
+
+# bun completions
+[ -s "/home/angelo-f/.bun/_bun" ] && source "/home/angelo-f/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+export GOPATH=$HOME/go
+export GOBIN=$HOME/go/bin
+
+[[ -s "/home/angelo-f/.gvm/scripts/gvm" ]] && source "/home/angelo-f/.gvm/scripts/gvm"
+
+source "$HOME/.rye/env"
+
+export PATH="$PATH:/home/angelo-f/.dotnet/tools"

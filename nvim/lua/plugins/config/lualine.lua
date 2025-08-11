@@ -13,10 +13,10 @@ custom_catppuccin.terminal.b.bg = "#313244"
 custom_catppuccin.command.b.bg = "#313244"
 custom_catppuccin.command.b.bg = "#313244"
 
-custom_catppuccin.normal.c.bg = "NONE"
-custom_catppuccin.inactive.a.bg = "NONE"
-custom_catppuccin.inactive.b.bg = "NONE"
-custom_catppuccin.inactive.c.bg = "NONE"
+custom_catppuccin.normal.c.bg = ""
+custom_catppuccin.inactive.a.bg = ""
+custom_catppuccin.inactive.b.bg = ""
+custom_catppuccin.inactive.c.bg = ""
 
 require("lualine").setup({
 	options = {
@@ -24,7 +24,6 @@ require("lualine").setup({
 		theme = custom_catppuccin,
 		component_separators = { left = "", right = "" },
 		section_separators = { left = "", right = "" },
-		component_separators = "󰇙",
 		disabled_filetypes = {
 			"gitcommit",
 		},

@@ -115,7 +115,7 @@ $accent-color: colors.$fg;
 }
 
 window#waybar {
-  background: scale-color(colors.$crust, $alpha: -60%);
+  background: scale-color(colors.$crust, $alpha: -30%);
   color: colors.$fg;
 }
 
@@ -321,53 +321,55 @@ $radial-pos: ellipse farthest-corner at 12px -24px;
   color: colors.$red;
 }
 
+$glow-amount: 4px;
+
 @keyframes rainbow {
   0% {
     color: colors.$red;
     text-shadow:
-    0 0 8px colors.$red,
+    0 0 $glow-amount colors.$red,
     0 0 4px colors.$crust,
     ;
   }
   16% {
     color: colors.$peach;
     text-shadow:
-    0 0 8px colors.$peach,
+    0 0 $glow-amount colors.$peach,
     0 0 4px colors.$crust,
     ;
   }
   33% {
     color: colors.$yellow;
     text-shadow:
-    0 0 8px colors.$yellow,
+    0 0 $glow-amount colors.$yellow,
     0 0 4px colors.$crust,
     ;
   }
   50% {
     color: colors.$green;
     text-shadow:
-    0 0 8px colors.$green,
+    0 0 $glow-amount colors.$green,
     0 0 4px colors.$crust,
     ;
   }
   66% {
     color: colors.$blue;
     text-shadow:
-    0 0 8px colors.$blue,
+    0 0 $glow-amount colors.$blue,
     0 0 4px colors.$crust,
     ;
   }
   83% {
     color: colors.$magenta;
     text-shadow:
-    0 0 8px colors.$magenta,
+    0 0 $glow-amount colors.$magenta,
     0 0 4px colors.$crust,
     ;
   }
   100% {
     color: colors.$red;
     text-shadow:
-    0 0 8px colors.$red,
+    0 0 $glow-amount colors.$red,
     0 0 4px colors.$crust,
     ;
   }
@@ -376,7 +378,7 @@ $radial-pos: ellipse farthest-corner at 12px -24px;
 #custom-artix {
   color: colors.$red;
   text-shadow:
-  0 0 8px colors.$red,
+  0 0 $glow-amount colors.$red,
   0 0 4px colors.$crust,
   ;
 

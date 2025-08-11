@@ -1,11 +1,11 @@
 {
   "custom/window-prefix": {
     "format": "<span color='#bac2de'> </span>",
-    "tooltip": false,
+    "tooltip": false
   },
   "hyprland/window": {
     "format": "{title}",
-    "separate-outputs": true,
+    "separate-outputs": true
   },
   "hyprland/workspaces": {
     "format": "{icon}",
@@ -21,23 +21,18 @@
       "13": "3",
       "14": "4",
       "15": "5",
-      "21": "6",
-      "22": "7",
-      "23": "8",
-      "24": "9",
-      "25": "10",
-      "31": "1",
-      "32": "2",
-      "33": "3",
+      "16": "6",
+      "17": "7",
+      "18": "8"
     }
   },
   "tray": {
     "icon-size": 26,
     "spacing": 7,
-    "reverse-direction": true,
+    "reverse-direction": true
   },
   "pulseaudio": {
-    "scroll-step": 2, // %, can be a float
+    "scroll-step": 2,
     "format": "{icon}{volume}%",
     "format-muted": "<span color=\"#b4befe\">󰝟 </span>...",
     "format-icons": {
@@ -68,12 +63,12 @@
     "format": "<span color=\"#f38ba8\">/home</span> {free} free"
   },
   "clock": {
-    "format": "<span color=\"#cba6f7\"></span> {:%a %b %d    %I:%M %p %Z}",
+    "format": "{:%a %b %d    %I:%M %p %Z}",
     "timezones": [
       "Asia/Manila",
       "America/Boise",
-      "US/Pacific",
-      "Europe/Oslo"
+      "Europe/London",
+      "US/Pacific"
     ],
     "tooltip-format": "<tt><small>{calendar}</small></tt>",
     "calendar": {
@@ -93,7 +88,7 @@
       "on-click-right": "tz_down",
       "on-click-forward": "shift_up",
       "on-click-backward": "shift_down",
-      "on-click-middle": "mode",
+      "on-click-middle": "mode"
     }
   },
   "custom/update-count": {
@@ -111,10 +106,10 @@
   },
   "custom/artix": {
     "format": "",
-    "tooltip": false,
+    "tooltip": false
   },
   "cava": {
-    "framerate": 165,
+    "framerate": 165
   },
   "custom/spotify": {
     "format": "{}",
@@ -122,10 +117,10 @@
     "return-type": "json",
     "max-length": 40,
     "on-click": "playerctl -p spotify play-pause",
-    "smooth-scrolling-threshold": 5, // This value was tested using a trackpad, it should be lowered if using a mouse.
+    "smooth-scrolling-threshold": 5,
     "on-scroll-up": "playerctl -p spotify next",
     "on-scroll-down": "playerctl -p spotify previous",
-    "exec": "~/.config/waybar/scripts/mediaplayer.py 2> /dev/null", // Script in resources/custom_modules folder
+    "exec": "~/.config/waybar/scripts/mediaplayer.py 2> /dev/null",
     "exec-if": "pgrep spotify"
   }
 }

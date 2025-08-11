@@ -5,21 +5,23 @@ local act = wezterm.action
 return {
 
 	color_scheme = "Catppuccin Mocha",
+	enable_wayland = false,
 
-	window_background_opacity = 1,
+	window_background_opacity = 0.8,
 
 	font = wezterm.font_with_fallback({
 		{ family = "JetBrains Mono", weight = "Regular" },
 		"Twemoji",
 	}),
 
-	font_size = 15.5,
+	-- font_size = 15.5,
+	font_size = 18.0,
 
 	window_padding = {
-		left = 8,
-		right = 8,
-		top = 6,
-		bottom = 6,
+		left = 9,
+		right = 9,
+		top = 9,
+		bottom = 9,
 	},
 
 	enable_tab_bar = false,
@@ -27,10 +29,11 @@ return {
 	warn_about_missing_glyphs = false,
 
 	animation_fps = 165,
-	default_cursor_style = "SteadyBlock",
+	default_cursor_style = "BlinkingBar",
 
-	cursor_blink_ease_in = "Ease",
-	cursor_blink_ease_out = "Ease",
+	cursor_blink_ease_in = "EaseOut",
+	cursor_blink_ease_out = "EaseOut",
+	cursor_blink_rate = 550,
 
 	window_background_gradient = {
 		orientation = {

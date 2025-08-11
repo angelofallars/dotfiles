@@ -65,7 +65,7 @@
 }
 
 window#waybar {
-  background: rgba(17, 17, 27, 0.4);
+  background: rgba(17, 17, 27, 0.7);
   color: #cdd6f4;
 }
 
@@ -204,36 +204,36 @@ window#waybar {
 @keyframes rainbow {
   0% {
     color: #f38ba8;
-    text-shadow: 0 0 8px #f38ba8, 0 0 4px #11111b;
+    text-shadow: 0 0 4px #f38ba8, 0 0 4px #11111b;
   }
   16% {
     color: #fab387;
-    text-shadow: 0 0 8px #fab387, 0 0 4px #11111b;
+    text-shadow: 0 0 4px #fab387, 0 0 4px #11111b;
   }
   33% {
     color: #f9e2af;
-    text-shadow: 0 0 8px #f9e2af, 0 0 4px #11111b;
+    text-shadow: 0 0 4px #f9e2af, 0 0 4px #11111b;
   }
   50% {
     color: #a6e3a1;
-    text-shadow: 0 0 8px #a6e3a1, 0 0 4px #11111b;
+    text-shadow: 0 0 4px #a6e3a1, 0 0 4px #11111b;
   }
   66% {
     color: #89b4fa;
-    text-shadow: 0 0 8px #89b4fa, 0 0 4px #11111b;
+    text-shadow: 0 0 4px #89b4fa, 0 0 4px #11111b;
   }
   83% {
     color: #cba6f7;
-    text-shadow: 0 0 8px #cba6f7, 0 0 4px #11111b;
+    text-shadow: 0 0 4px #cba6f7, 0 0 4px #11111b;
   }
   100% {
     color: #f38ba8;
-    text-shadow: 0 0 8px #f38ba8, 0 0 4px #11111b;
+    text-shadow: 0 0 4px #f38ba8, 0 0 4px #11111b;
   }
 }
 #custom-artix {
   color: #f38ba8;
-  text-shadow: 0 0 8px #f38ba8, 0 0 4px #11111b;
+  text-shadow: 0 0 4px #f38ba8, 0 0 4px #11111b;
   border: none;
   box-shadow: none;
   margin: 0;

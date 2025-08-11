@@ -54,6 +54,8 @@ set highlight-active-color	  "#F5C2E7"
 
 set recolor
 
+map c scroll down
+map d scroll up
 map n scroll down
 map e scroll up
 map i scroll right

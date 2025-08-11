@@ -127,7 +127,7 @@ local on_attach = function(client, bufnr)
 	})
 
 	if vim.lsp.inlay_hint then
-		vim.lsp.inlay_hint.enable(bufnr, true)
+		vim.lsp.inlay_hint.enable(vim.lsp.inlay_hint.is_enabled())
 	end
 
 	if client.server_capabilities.documentHighlightProvider then
@@ -172,7 +172,7 @@ local servers = {
 	"marksman",
 	"rust_analyzer",
 	"templ",
-	"tsserver",
+	"ts_ls",
 	"racket_langserver",
 	"rescriptls",
 	"sqlls",
@@ -193,6 +193,29 @@ for _, lsp in pairs(servers) do
 		capabilities = capabilities,
 	})
 end
+
+lspconfig.omnisharp.setup({
+   cmd = { "/usr/bin/OmniSharp" },
+   handlers = {
+      ["textDocument/definition"] = function(...)
+         return require("omnisharp_extended").handler(...)
+      end,
+   },
+   keys = {
+      {
+         "gd",
+         function()
+            require("omnisharp_extended").telescope_lsp_definitions()
+         end,
+         desc = "Goto Definition",
+      },
+   },
+   enable_roslyn_analyzers = true,
+   organize_imports_on_format = true,
+   enable_import_completion = true,
+	on_attach = on_attach,
+	capabilities = capabilities,
+})
 
 lspconfig.biome.setup({
 	filetypes = {
@@ -290,7 +313,7 @@ local ruff_on_attach = function(client, bufnr)
 	on_attach(client, bufnr)
 end
 
-require("lspconfig").ruff_lsp.setup({
+require("lspconfig").ruff.setup({
 	on_attach = ruff_on_attach,
 	capabilities = capabilities,
 	init_options = {},

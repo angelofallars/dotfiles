@@ -9,18 +9,18 @@ fi
 
 out="$(slurp)"
 
-if [ $? != 0 ]; then 
+if [ $? != 0 ]; then
     exit
 fi
 
 filename="$HOME/Videos/screenrec/video-$(date +%F_%R).mp4"
 
-wl-screenrec -g "$out" -f "$filename" &
+wl-screenrec -g "$out" -f "$filename" --audio --audio-device bluez_output.78_2B_64_38_36_17.1.monitor &
 
-if [ $? != 0 ]; then 
+if [ $? != 0 ]; then
     notify-send "Error starting recording"
     exit 1
 fi
 
-notify-send "Started recording at $filename"
+notify-send "Started recording" -t 100
 exit 0
