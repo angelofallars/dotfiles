@@ -1,6 +1,8 @@
 <h1 align=center>⛩️🍙 neovim - artix - hyprland</h1>
 
-My dotfiles on Artix Linux.
+<img width="2560" height="1440" alt="image" src="https://github.com/user-attachments/assets/3d7ac69a-fe91-4cc7-9539-73455ab00ce8" />
+
+My dotfiles on Artix Linux. Pardon for the mess; just copy-paste the snippets you'd like to incorporate into your setup.
 
 ## 🍵 Desktop
 
