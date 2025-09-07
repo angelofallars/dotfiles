@@ -5,25 +5,33 @@
   },
   "hyprland/window": {
     "format": "{title}",
-    "separate-outputs": true
+    "rewrite": {
+        "(.*) — Ablaze Floorp": "$1",
+        "(.*) - Discord": "$1"
+    },
+    "separate-outputs": true,
+    "icon": true
   },
   "hyprland/workspaces": {
     "format": "{icon}",
-    "on-click": "activate",
-    "on-scroll-up": "hyprctl dispatch workspace e+1",
-    "on-scroll-down": "hyprctl dispatch workspace e-1",
+    "on-click": "",
     "all-outputs": false,
     "active-only": false,
     "show-special": true,
+    "persistent-workspaces": {
+        "*": [11, 12, 13, 14, 15, 16, 17, 18]
+    },
     "format-icons": {
-      "11": "1",
-      "12": "2",
-      "13": "3",
-      "14": "4",
-      "15": "5",
-      "16": "6",
-      "17": "7",
-      "18": "8"
+      "11": "一",
+      "12": "二",
+      "13": "三",
+      "14": "四",
+      "15": "五",
+      "16": "六",
+      "17": "七",
+      "18": "八",
+      "19": "九",
+      "20": "十"
     }
   },
   "tray": {
@@ -52,23 +60,36 @@
       "memory"
     ]
   },
-  "cpu": {
-    "format": "<span color=\"#fab387\"> CPU</span> {usage}% "
-  },
-  "memory": {
-    "format": "<span color=\"#a6e3a1\"> RAM</span> {used:0.1f}G/{total:0.1f}G"
+  "custom/pacman": {
+    "format": "{icon}{0}",
+    "return-type": "json",
+    "format-icons": {
+      "pending-updates": "<span color=\"#f38ba8\"> </span>",
+      "updated": "<span color=\"#f5c2e7\"></span>"
+    },
+    "exec-if": "which waybar-updates",
+    "exec": "waybar-updates"
   },
   "disk": {
+    "interval": 5,
     "path": "/home",
-    "format": "<span color=\"#f38ba8\">/home</span> {free} free"
+    "format": "<span color=\"#fab387\"></span> {free} free"
+  },
+  "cpu": {
+    "interval": 1,
+    "format": "<span color=\"#f9e2af\"> </span>{usage}%  "
+  },
+  "memory": {
+    "interval": 1,
+    "format": "<span color=\"#a6e3a1\"> </span>{used:0.1f}G/{total:0.1f}G RAM"
   },
   "clock": {
     "format": "{:%a %b %d    %I:%M %p %Z}",
     "timezones": [
       "Asia/Manila",
-      "America/Boise",
-      "Europe/London",
-      "US/Pacific"
+      "America/Denver",
+      "US/Pacific",
+      "Europe/Oslo"
     ],
     "tooltip-format": "<tt><small>{calendar}</small></tt>",
     "calendar": {
@@ -91,13 +112,6 @@
       "on-click-middle": "mode"
     }
   },
-  "custom/update-count": {
-    "format": "<span rise=\"-14pt\"><span color=\"#d8a657\"></span> {}</span>",
-    "interval": 60,
-    "escape": true,
-    "exec": "~/.config/waybar/scripts/arch_updates",
-    "on-click": "~/.config/waybar/scripts/notify_arch_updates"
-  },
   "custom/gpu-temp": {
     "format": "<span color=\"#f38ba8\">RX  </span>{}°C",
     "interval": 1,
@@ -109,7 +123,32 @@
     "tooltip": false
   },
   "cava": {
-    "framerate": 165
+    "framerate": 165,
+    "autosens": 1,
+    "sensitivity": 3,
+    "bars": 30,
+    "lower_cutoff_freq": 50,
+    "higher_cutoff_freq": 14000,
+    "method": "pulse",
+    "stereo": false,
+    "reverse": false,
+    "bar_delimiter": 0,
+    "monstercat": false,
+    "waves": true,
+    "noise_reduction": 0.33,
+    "input_delay": 2,
+    "hide_on_silence": false,
+    "sleep_timer": 5,
+    "format-icons": [" ",
+      "▁", "▁", "▁", "▁", "▁", "▁", "▁", "▁",
+      "▂", "▂", "▂", "▂", "▂", "▂", "▂", "▂",
+      "▃", "▃", "▃", "▃", "▃", "▃", "▃", "▃",
+      "▄", "▄", "▄", "▄", "▄", "▄", "▄", "▄",
+      "▅", "▅", "▅", "▅", "▅", "▅", "▅", "▅",
+      "▆", "▆", "▆", "▆", "▆", "▆", "▆", "▆",
+      "▇", "▇", "▇", "▇", "▇", "▇", "▇", "▇",
+      "█", "█", "█", "█", "█", "█", "█", "█"
+    ]
   },
   "custom/spotify": {
     "format": "{}",

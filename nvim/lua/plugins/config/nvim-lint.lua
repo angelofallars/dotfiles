@@ -9,7 +9,7 @@ markdownlint.args = {
 local vale = lint.linters.vale
 
 lint.linters_by_ft = {
-	markdown = { "markdownlint", "vale" },
+	markdown = { "markdownlint" },
 	zsh = { "zsh" },
 }
 

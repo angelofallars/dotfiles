@@ -10,7 +10,7 @@ require("catppuccin").setup({
 		light = "latte",
 		dark = "mocha",
 	},
-	transparent_background = false, -- set to false to prevent black bg in nvim-notify
+	transparent_background = true, -- set to false to prevent black bg in nvim-notify
 	show_end_of_buffer = false, -- show the '~' characters after the end of buffers
 	term_colors = false,
 	dim_inactive = {

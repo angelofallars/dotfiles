@@ -44,9 +44,10 @@ projects=$(\
    sed --regexp-extended "s/^projects\/waycrate/🟨 waycrate/g" |
    sed --regexp-extended "s/^projects\/personal\//🟢 /g" |
    sed --regexp-extended "s/^projects\/silver/💿 silver/g" |
+   sed --regexp-extended "s/^projects\/boot.dev/🥾 boot.dev/g" |
    sed --regexp-extended "s/^projects\/(\S*)/🔲 \1/g" |
-   sed --regexp-extended "s/^forks/↔️  forks/g" |
-   sed --regexp-extended "s/^study/✏️  study/g" |
+   sed --regexp-extended "s/^forks/forks/g" |
+   sed --regexp-extended "s/^study/study/g" |
 
    tee
 )
@@ -70,7 +71,7 @@ selected=$(echo "$projects" |
        --padding 0,0,0,1 \
        --margin 0 \
        --info=inline-right \
-       --separator="r" \
+       --separator=" " \
        \
        --color="border:$surface0" \
        --color="header:$maroon" \

@@ -22,5 +22,4 @@ if [ $? != 0 ]; then
     exit 1
 fi
 
-notify-send "Started recording" -t 100
 exit 0

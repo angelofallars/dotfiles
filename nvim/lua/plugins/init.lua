@@ -9,6 +9,25 @@ require("lazy").setup({
 		},
 	},
 
+   {
+      "L3MON4D3/LuaSnip",
+      -- follow latest release.
+      version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+      -- install jsregexp (optional!).
+      build = "make install_jsregexp",
+      config = function()
+         local ls = require("luasnip")
+         local s = ls.snippet
+         local t = ls.text_node
+
+         ls.add_snippets("python",
+           s("bp", {
+             t("breakpoint()"),
+           })
+         )
+      end,
+   },
+
 	{
 		"hrsh7th/nvim-cmp",
 		config = function()
@@ -132,7 +151,7 @@ require("lazy").setup({
 	},
 
 	{
-		"norcalli/nvim-colorizer.lua",
+		"catgoose/nvim-colorizer.lua",
 		config = function()
 			require("colorizer").setup()
 		end,
@@ -199,14 +218,14 @@ require("lazy").setup({
 		end,
 	},
 
-	-- {
-	-- 	"stevearc/conform.nvim",
-	-- 	config = function()
-	-- 		require("plugins.config.conform")
-	-- 	end,
-	-- 	lazy = true,
-	-- 	event = "BufWritePre",
-	-- },
+	{
+		"stevearc/conform.nvim",
+		config = function()
+			require("plugins.config.conform")
+		end,
+		lazy = true,
+		event = "BufWritePre",
+	},
 
 	{
 		"mfussenegger/nvim-lint",
@@ -332,14 +351,24 @@ require("lazy").setup({
 
 	{
 		"rcarriga/nvim-notify",
+      dependencies = { "catppuccin/nvim" },
 		config = function()
 			require("notify").setup({
-				background_color = "#000000",
 				level = 0,
 				render = "wrapped-compact",
 				minimum_width = 40,
 				fps = 165,
 			})
+
+         vim.cmd([[
+            highlight link NotifyBackground Normal
+            highlight link NotifyERRORBody Normal
+            highlight link NotifyWARNBody Normal
+            highlight link NotifyINFOBody Normal
+            highlight link NotifyDEBUGBody Normal
+            highlight link NotifyTRACEBody Normal
+         ]])
+
 			vim.notify = require("notify")
 		end,
 	},
@@ -373,6 +402,20 @@ require("lazy").setup({
    { "ccraciun/vim-dreammaker" },
 
    { "Hoffs/omnisharp-extended-lsp.nvim", lazy = true },
+
+   {
+       "mason-org/mason.nvim",
+       opts = {}
+   },
+
+   {
+       "mason-org/mason-lspconfig.nvim",
+       opts = {},
+       dependencies = {
+           { "mason-org/mason.nvim", opts = {} },
+           "neovim/nvim-lspconfig",
+       },
+   }
 
    -- {
    --    "iabdelkareem/csharp.nvim",

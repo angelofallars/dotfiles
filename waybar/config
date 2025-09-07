@@ -11,20 +11,23 @@
             "~/.config/waybar/default-modules.json",
         ],
 
+        "reload_style_on_change": true,
+
         "modules-left": [
             "custom/artix",
             "hyprland/workspaces",
-            "disk",
-            "group/cpu-memory",
             "pulseaudio",
+            "custom/pacman",
+            "disk",
+            "group/cpu-memory"
         ],
         "modules-center": [
-            "hyprland/window",
+            "hyprland/window"
         ],
         "modules-right": [
-            "custom/spotify",
+            "cava",
             "tray",
-            "clock",
-        ],
+            "clock"
+        ]
     }
 ]

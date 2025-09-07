@@ -7,13 +7,12 @@
 ; mode = normal
 
 # Accepts only non-negative values.
-framerate = 75
+framerate = 165
 
 # 'autosens' will attempt to decrease sensitivity if the bars peak. 1 = on, 0 = off
 # new as of 0.6.0 autosens of low values (dynamic range)
 # 'overshoot' allows bars to overshoot (in % of terminal height) without initiating autosens. DEPRECATED as of 0.6.0
-; autosens = 1
-; overshoot = 20
+autosens = 1
 
 # Manual sensitivity in %. If autosens is enabled, this will only be the initial value.
 # 200 means double height. Accepts only non-negative values.
@@ -22,8 +21,8 @@ framerate = 75
 # The number of bars (0-200). 0 sets it to auto (fill up console).
 # Bars' width and space between bars in number of characters.
 ; bars = 0
-bar_width = 6
-bar_spacing = 1
+bar_width = 1
+bar_spacing = 0
 
 
 # Lower and higher cutoff frequencies for lowest and highest bars
@@ -86,7 +85,7 @@ source = auto
 # 'stereo' mirrors both channels with low frequencies in center.
 # 'mono' outputs left to right lowest to highest frequencies.
 # 'mono_option' set mono to either take input from 'left', 'right' or 'average'.
-; channels = stereo
+channels = mono
 ; mono_option = average
 
 # Raw output target. A fifo will be created if target does not exist.
@@ -121,11 +120,16 @@ foreground = green
 # Gradient mode, only hex defined colors (and thereby ncurses mode) are supported,
 # background must also be defined in hex  or remain commented out. 1 = on, 0 = off.
 # You can define as many as 8 different colors. They range from bottom to top of screen
-gradient = 0
-gradient_count = 3
-gradient_color_1 = '#222222'
-gradient_color_2 = '#2a2a2a'
-gradient_color_3 = '#333333'
+gradient = 1
+
+gradient_color_1 = '#94e2d5'
+gradient_color_2 = '#89dceb'
+gradient_color_3 = '#74c7ec'
+gradient_color_4 = '#89b4fa'
+gradient_color_5 = '#cba6f7'
+gradient_color_6 = '#f5c2e7'
+gradient_color_7 = '#eba0ac'
+gradient_color_8 = '#f38ba8'
 
 
 
@@ -136,8 +140,8 @@ gradient_color_3 = '#333333'
 integral = 55
 
 # Disables or enables the so-called "Monstercat smoothing" with or without "waves". Set to 0 to disable.
-monstercat = 1
-waves = 0
+monstercat = 0
+waves = 1
 
 # Set gravity percentage for "drop off". Higher values means bars will drop faster.
 # Accepts only non-negative values. 50 means half gravity, 200 means double. Set to 0 to disable "drop off".

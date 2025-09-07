@@ -31,58 +31,104 @@ alias py='ptpython'
 # Enable substitution in the prompt.
 setopt prompt_subst
 
+alias ..="cd .."
+alias ...="cd ../../"
+alias ....="cd ../../../"
+alias .....="cd ../../../../"
+
 # Convenient Git aliases
-alias ga="git add"
-gas() {
-    git add "*$1*"
+alias g="git"
+
+alias gin="git init"
+gincd() {
+    git init "$1" && cd "$1"
 }
-alias gaa="git add ."
+
+alias gcl="git clone"
+
+alias ga="git add"
+alias gau="git add -u"
+
 alias gm="git commit"
 
-gms () {
-    git commit --message "$*"
+alias gps="git push"
+alias gpo="git push --set-upstream origin \$(git rev-parse --abbrev-ref HEAD)"
+alias gpu="git push --set-upstream"
+alias gpf="git push --force"
+
+alias gpl="git pull"
+alias gplo="git pull --set-upstream origin \$(git rev-parse --abbrev-ref HEAD)"
+alias gplu="git pull --set-upstream"
+
+# alias gaming
+alias gmps="git commit && git push"
+alias gmpo="git commit && git push --set-upstream origin \$(git rev-parse --abbrev-ref HEAD)"
+
+alias gma="git commit --amend"
+# The right man in the wrong place can make all the difference in the world.
+alias gman="git commit --amend --no-edit"
+
+gam() {
+    git add "$@" && git commit
 }
-alias gmc="git commit --message \"Commit - No Title\""
-alias upo="git add Plugins.txt && git commit --message \"Commit - No Title\""
+gama() {
+    git add "$@" && git commit --amend
+}
+gaman() {
+    git add "$@" && git commit --amend --no-edit
+}
+gampo() {
+    git add "$@" && git commit && git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)
+}
 
-alias gma="git commit --all"
+alias ga.="git add ."
+alias ga.m="git add . && git commit"
+alias ga.ma="git add . && git commit --amend"
+alias ga.man="git add . && git commit --amend --no-edit"
+alias ga.mps="git add . && git commit && git push"
+alias ga.mpo="git add . && git commit && git push --set-upstream origin \$(git rev-parse --abbrev-ref HEAD)"
 
-alias grm="git rm"
-alias gmv="git mv"
+alias gar='git add "$(git rev-parse --show-toplevel)/"'
+alias garm='git add "$(git rev-parse --show-toplevel)/" && git commit'
+alias garma='git add "$(git rev-parse --show-toplevel)/" && git commit --amend'
+alias garman='git add "$(git rev-parse --show-toplevel)/" && git commit --amend --no-edit'
+alias garmps='git add "$(git rev-parse --show-toplevel)/" && git commit && git push'
+alias garmpo='git add "$(git rev-parse --show-toplevel)/" && git commit && git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)'
 
-alias gma="git commit --all"
+alias gs="git status"
+
+alias gl="git log"
+alias glo="git log --oneline"
+alias gls="git log -n 1"
+alias glg="git log --graph"
+alias glog="git log --oneline --graph"
+alias gloga="git log --oneline --graph --all"
 
 alias grs="git restore"
 alias grss="git restore --staged"
 
-alias gps="git push"
-alias gpu="git push --set-upstream"
-alias gpf="git push --set-upstream fork \$(git rev-parse --abbrev-ref HEAD)"
-alias gpl="git pull"
-alias gf="git fetch"
+alias grs.="git restore ."
+alias grss.="git restore --staged ."
 
-alias gmo="git fetch origin && git merge origin/master"
+alias grsr='git restore "$(git rev-parse --show-toplevel)/"'
+alias grssr='git restore --staged "$(git rev-parse --show-toplevel)/"'
 
-alias gin="git init"
-alias gcl="git clone"
-
-alias gr="git remote"
-alias grv="git remote --verbose"
-alias gra="git remote add"
-alias grao="git remote add origin"
-alias grso="git remote set-url origin"
-
-alias gs="git status"
-alias gl="git log"
-alias gli="git log --oneline"
-alias glif="git log --pretty=format:"%s%n%b" --reverse"
 alias gd="git diff"
 alias gds="git diff --staged"
-alias gdm="git diff master"
+alias gdm="git diff main"
 alias gd1="git diff HEAD~1"
 alias gd2="git diff HEAD~2"
 alias gd3="git diff HEAD~3"
+alias gd4="git diff HEAD~4"
+alias gd5="git diff HEAD~5"
 
+alias gsh="git stash"
+alias gshl="git stash list"
+alias gsha="git stash apply"
+alias gshp="git stash pop"
+
+alias gmr="git merge"
+alias grb="git rebase"
 grib() {
     if [[ -n "$1" ]]; then
         git rebase -i HEAD~"$1"
@@ -91,26 +137,43 @@ grib() {
     fi
 }
 
-gll() {
-    git log -L"$2",+1:"$1"
-}
+alias gmv="git mv"
+
+alias grm="git rm"
+alias grmc="git rm --cached"
+
+alias gk="git cherry-pick"
+alias gka="git cherry-pick --abort"
+
+alias gf="git fetch"
+
+alias gr="git remote"
+alias grv="git remote --verbose"
+alias gra="git remote add"
+alias grao="git remote add origin"
+alias grso="git remote set-url origin"
 
 alias gb="git branch"
 alias gbr="git branch --remote"
+alias gbd="git branch --delete"
+
+alias gw="git switch"
+alias gwc="git switch -c"
+
 alias gc="git checkout"
 alias gcb="git checkout -b"
 
-alias gp="git cherry-pick"
-alias gpa="git cherry-pick --abort"
-alias gu="git stash"
-gum() {
-    git stash push --message "$*"
-}
-alias gul="git stash list"
-alias gua="git stash apply"
-alias gup="git stash pop"
-
 alias gbl="git blame"
+
+alias gcn="git config"
+
+alias grr="git revert"
+
+alias grt="git reset"
+alias grts="git reset --soft"
+alias grth="git reset --hard"
+
+alias wcl="wc -l"
 
 alias pm="pacman"
 alias pmh="pacman -H"
@@ -219,6 +282,8 @@ edit () {
 
       "wezterm")      nvim ~/.config/wezterm/wezterm.lua ;;
 
+      "ghostty")      nvim ~/.config/ghostty/config ;;
+
       "hypr")      nvim ~/.config/hypr/hyprland.conf ;;
 
     *)            echo "Can't find dotfile '$1'" ;;
@@ -303,3 +368,8 @@ export GOBIN=$HOME/go/bin
 source "$HOME/.rye/env"
 
 export PATH="$PATH:/home/angelo-f/.dotnet/tools"
+
+export PATH="$PATH:/home/angelo-f/projects/personal/worldbanc/private/bin"
+
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"

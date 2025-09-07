@@ -169,7 +169,6 @@ local servers = {
 	"golangci_lint_ls",
 	"gopls",
 	"jsonls",
-	"marksman",
 	"rust_analyzer",
 	"templ",
 	"ts_ls",
@@ -289,11 +288,11 @@ local function find_ancestor(fileNames)
 	end
 end
 
-require("lspconfig").pyright.setup({
+require("lspconfig").basedpyright.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
 	settings = {
-		pyright = {
+		basedpyright = {
 			disableLanguageServices = false,
 			disableOrganizeImports = true,
 		},
@@ -307,18 +306,38 @@ require("lspconfig").pyright.setup({
 	},
 })
 
-local ruff_on_attach = function(client, bufnr)
-	-- Disable hover in favor of Pyright
-	client.server_capabilities.hoverProvider = false
-	on_attach(client, bufnr)
-end
+
+-- ChatGPT gave me this.
+-- local util = require("vim.lsp.util")
+--
+-- local old_apply_workspace_edit = util.apply_workspace_edit
+-- util.apply_workspace_edit = function(workspace_edit, offset_encoding)
+--   -- only patch if the client is Pyright
+--   local active_client = vim.lsp.get_active_clients({ name = "pyright" })[1]
+--   if active_client and workspace_edit.documentChanges then
+--     for _, change in ipairs(workspace_edit.documentChanges) do
+--       if change.edits then
+--         for _, edit in ipairs(change.edits) do
+--           -- Pyright sometimes sends annotationId without changeAnnotations
+--           if edit.annotationId and not workspace_edit.changeAnnotations then
+--             edit.annotationId = nil
+--           end
+--         end
+--       end
+--     end
+--   end
+--
+--   return old_apply_workspace_edit(workspace_edit, offset_encoding)
+-- end
 
 require("lspconfig").ruff.setup({
-	on_attach = ruff_on_attach,
-	capabilities = capabilities,
-	init_options = {},
-	root_dir = find_ancestor({ "ruff.toml", "pyproject.toml" }),
-	-- root_dir = require("lspconfig").util.find_git_ancestor,
+   init_options = {
+     settings = {
+       args = {},
+       organizeImports = true,
+       fixAll = true,
+     }
+   }
 })
 
 lspconfig.lua_ls.setup({

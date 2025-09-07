@@ -67,11 +67,11 @@ $bar-border-radius: 2px;
 }
 
 // !! If you add new custom modules, put their class name in here.
-#backlight, #battery, #cpu, #disk, #idle_inhibitor, #keyboard-state,
-#pulseaudio, #clock, #tags, #language, #memory, #network, #sndio,
+#backlight, #battery, #disk, #idle_inhibitor, #keyboard-state,
+#pulseaudio, #clock, #tags, #language, #network, #sndio,
 #mode, #window, #workspaces, #temperature, #taskbar, #workspaces,
 #custom-treefetch-downloads, #custom-update-count, #custom-axyl-downloads,
-#custom-gpu-temp, #custom-artix
+#custom-gpu-temp, #custom-artix, #custom-pacman
 {
   @include single-module;
 
@@ -155,6 +155,32 @@ window#waybar {
   min-height: 18px;
 }
 
+@mixin glow-gradient($name, $glow-amount, $colors) {
+  @keyframes #{$name} {
+    @for $i from 1 through length($colors) {
+      $color: nth($colors, $i);
+      $percent: (100% / length($colors)) * ($i - 1);
+
+      #{$percent} {
+        color: $color;
+        text-shadow:
+          0 0 #{$glow-amount} $color,
+          0 0 4px colors.$crust;
+      }
+    }
+
+    // wrap back to first color at 100%
+    100% {
+      $first-color: nth($colors, 1);
+      color: $first-color;
+      text-shadow:
+        0 0 #{$glow-amount} $first-color,
+        0 0 4px colors.$crust;
+    }
+  }
+}
+
+
 // River tags
 
 #workspaces {
@@ -179,38 +205,96 @@ window#waybar {
 }
 
 #workspaces button {
-  font-weight: 600;
+  font-weight: 700;
   padding: 0 0px;
   margin: 0 2px;
-  min-width: 31px;
-  font-size: 22px;
-  border-radius: 50%;
-  color: colors.$magenta;
+  min-width: 35px;
+  font-size: 20px;
+  border-radius: $bar-border-radius + 8px;
+  color: colors.$pink;
 
   background: colors.$base;
   border: 1px solid colors.$surface0;
+  border-top-color: colors.$surface1;
+  border-bottom-color: colors.$mantle;
   border-bottom-width: 2px;
   outline: red solid 1px;
   box-shadow: 0 0 0px 1px rgba(5,5,15,1);
 
-  transition: all 0.25s, background 0.15s, color 0s;
+  transition: all 0.25s, background 0.15s, width 0s, color 0s, font-weight 0s;
   transition-timing-function: ease-out;
 
-  animation-name: new-button;
-  animation-duration: 0.22s;
+  @include glow-gradient(rainbow-light, 4px, (
+    colors.$red,
+    colors.$maroon,
+    colors.$peach,
+    colors.$yellow,
+    colors.$green,
+    colors.$teal,
+    colors.$sky,
+    colors.$sapphire,
+    colors.$blue,
+    colors.$lavender,
+    colors.$mauve,
+    colors.$flamingo,
+    colors.$pink,
+  ));
+
+  animation: rainbow-light 8s linear infinite;
+}
+
+#workspaces button.empty:not(.active) {
+  font-weight: 600;
+  background: colors.$mantle;
+  color: colors.$fg;
+  opacity: 0.5;
+  animation: none;
 }
 
 #workspaces button:hover  {
   background: colors.$surface1;
   border-color: colors.$surface2;
+  border-top-color: colors.$overlay0;
+  border-bottom-color: colors.$surface0;
   text-shadow: none;
   border-radius: 9px;
-  transition: all 0.07s;
+  transition: all 0.0s;
+}
+
+#workspaces button:hover.empty:not(.active)  {
+  background: colors.$surface1;
 }
 
 $gradient-degree: 155deg;
 
 $radial-pos: ellipse farthest-corner at 12px -24px;
+
+#workspaces button.active {
+  color: colors.$bg;
+  font-weight: 700;
+  background: radial-gradient($radial-pos,
+    colors.$red,
+    colors.$peach,
+    colors.$yellow,
+    colors.$green,
+    colors.$blue,
+    colors.$mauve,
+  );
+
+  border: 1px solid transparent;
+  /* box-shadow: 0 0 0px 1px rgba(5,5,15,0.15); */
+  border-radius: $bar-border-radius + 8px;
+  min-width: 35px;
+
+  transition: all 0.20s, width 0s, color 0s, border 0s, font-weight 0s, background 0.15s;
+
+  animation-name: active-button;
+  animation-direction: reverse;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-fill-mode: both;
+}
 
 @keyframes active-button {
   0% {
@@ -285,32 +369,115 @@ $radial-pos: ellipse farthest-corner at 12px -24px;
   }
 }
 
-#workspaces button.active {
-  color: colors.$bg;
-  font-weight: 700;
-  background: radial-gradient($radial-pos,
-    colors.$red,
-    colors.$peach,
-    colors.$yellow,
-    colors.$green,
-    colors.$blue,
-    colors.$mauve,
-  );
-
-  border: none;
-  box-shadow: 0 0 0px 1px rgba(5,5,15,0.15);
-  border-radius: 9px;
-  min-width: 45px;
-
-  transition: all 0.25s, color 0s, border 0s, font-weight 0s, background 0.15s;
-
-  animation-name: active-button;
-  animation-direction: reverse;
-  animation-duration: 3s;
-  animation-delay: 0.15s;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-  animation-fill-mode: both;
+@keyframes active-button-gayflag {
+  0% {
+    background: linear-gradient(90deg,
+      colors.$gayflag0,
+      colors.$gayflag1,
+      colors.$gayflag2,
+      colors.$gayflag3,
+      colors.$gayflag4,
+      colors.$gayflag5,
+      colors.$gayflag6,
+      colors.$gayflag7,
+    );
+  }
+  12.5% {
+    background: linear-gradient(90deg,
+      colors.$gayflag7,
+      colors.$gayflag0,
+      colors.$gayflag1,
+      colors.$gayflag2,
+      colors.$gayflag3,
+      colors.$gayflag4,
+      colors.$gayflag5,
+      colors.$gayflag6,
+    );
+  }
+  25% {
+    background: linear-gradient(90deg,
+      colors.$gayflag6,
+      colors.$gayflag7,
+      colors.$gayflag0,
+      colors.$gayflag1,
+      colors.$gayflag2,
+      colors.$gayflag3,
+      colors.$gayflag4,
+      colors.$gayflag5,
+    );
+  }
+  37.5% {
+    background: linear-gradient(90deg,
+      colors.$gayflag5,
+      colors.$gayflag6,
+      colors.$gayflag7,
+      colors.$gayflag0,
+      colors.$gayflag1,
+      colors.$gayflag2,
+      colors.$gayflag3,
+      colors.$gayflag4,
+    );
+  }
+  50% {
+    background: linear-gradient(90deg,
+      colors.$gayflag4,
+      colors.$gayflag5,
+      colors.$gayflag6,
+      colors.$gayflag7,
+      colors.$gayflag0,
+      colors.$gayflag1,
+      colors.$gayflag2,
+      colors.$gayflag3,
+    );
+  }
+  62.5% {
+    background: linear-gradient(90deg,
+      colors.$gayflag3,
+      colors.$gayflag4,
+      colors.$gayflag5,
+      colors.$gayflag6,
+      colors.$gayflag7,
+      colors.$gayflag0,
+      colors.$gayflag1,
+      colors.$gayflag2,
+    );
+  }
+  75% {
+    background: linear-gradient(90deg,
+      colors.$gayflag2,
+      colors.$gayflag3,
+      colors.$gayflag4,
+      colors.$gayflag5,
+      colors.$gayflag6,
+      colors.$gayflag7,
+      colors.$gayflag0,
+      colors.$gayflag1,
+    );
+  }
+  87.5% {
+    background: linear-gradient(90deg,
+      colors.$gayflag1,
+      colors.$gayflag2,
+      colors.$gayflag3,
+      colors.$gayflag4,
+      colors.$gayflag5,
+      colors.$gayflag6,
+      colors.$gayflag7,
+      colors.$gayflag0,
+    );
+  }
+  100% {
+    background: linear-gradient(90deg,
+      colors.$gayflag0,
+      colors.$gayflag1,
+      colors.$gayflag2,
+      colors.$gayflag3,
+      colors.$gayflag4,
+      colors.$gayflag5,
+      colors.$gayflag6,
+      colors.$gayflag7,
+    );
+  }
 }
 
 #workspaces button.urgent {
@@ -321,64 +488,16 @@ $radial-pos: ellipse farthest-corner at 12px -24px;
   color: colors.$red;
 }
 
-$glow-amount: 4px;
-
-@keyframes rainbow {
-  0% {
-    color: colors.$red;
-    text-shadow:
-    0 0 $glow-amount colors.$red,
-    0 0 4px colors.$crust,
-    ;
-  }
-  16% {
-    color: colors.$peach;
-    text-shadow:
-    0 0 $glow-amount colors.$peach,
-    0 0 4px colors.$crust,
-    ;
-  }
-  33% {
-    color: colors.$yellow;
-    text-shadow:
-    0 0 $glow-amount colors.$yellow,
-    0 0 4px colors.$crust,
-    ;
-  }
-  50% {
-    color: colors.$green;
-    text-shadow:
-    0 0 $glow-amount colors.$green,
-    0 0 4px colors.$crust,
-    ;
-  }
-  66% {
-    color: colors.$blue;
-    text-shadow:
-    0 0 $glow-amount colors.$blue,
-    0 0 4px colors.$crust,
-    ;
-  }
-  83% {
-    color: colors.$magenta;
-    text-shadow:
-    0 0 $glow-amount colors.$magenta,
-    0 0 4px colors.$crust,
-    ;
-  }
-  100% {
-    color: colors.$red;
-    text-shadow:
-    0 0 $glow-amount colors.$red,
-    0 0 4px colors.$crust,
-    ;
-  }
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.6; }
+  100% { opacity: 1; }
 }
 
 #custom-artix {
   color: colors.$red;
   text-shadow:
-  0 0 $glow-amount colors.$red,
+  0 0 6px colors.$red,
   0 0 4px colors.$crust,
   ;
 
@@ -390,14 +509,65 @@ $glow-amount: 4px;
   margin-top: 0;
   margin-bottom: 0;
   margin-left: 5px;
-  margin-right: 14px;
+  margin-right: 16px;
   padding: 0;
 
-  animation-name: rainbow;
-  animation-duration: 9s;
-  animation-timing-function: ease-in-out;
-  animation-delay: 4s;
-  animation-iteration-count: infinite;
+  @include glow-gradient(rainbow-medium, 12px, (
+    colors.$red,
+    colors.$maroon,
+    colors.$peach,
+    colors.$yellow,
+    colors.$green,
+    colors.$teal,
+    colors.$sky,
+    colors.$sapphire,
+    colors.$blue,
+    colors.$lavender,
+    colors.$mauve,
+    colors.$flamingo,
+    colors.$pink,
+  ));
+
+  animation: rainbow-medium 9s ease-in-out infinite, pulse 5.5s ease-in-out infinite;
+}
+
+#cava {
+  color: colors.$red;
+  text-shadow:
+  0 0 12px colors.$red,
+  0 0 4px colors.$crust,
+  ;
+
+  font-size: 22px;
+
+  padding-left: $module-padding + 9px;
+  padding-right: $module-padding + 9px;
+
+  @include glow-gradient(rainbow-strong, 9px, (
+    colors.$green,
+    colors.$green,
+    colors.$teal,
+    colors.$teal,
+    colors.$sky,
+    colors.$sky,
+    colors.$sapphire,
+    colors.$sapphire,
+    colors.$blue,
+    colors.$blue,
+    colors.$lavender,
+    colors.$lavender,
+    colors.$mauve,
+    colors.$mauve,
+    colors.$flamingo,
+    colors.$pink,
+    colors.$pink,
+    colors.$red,
+    colors.$maroon,
+    colors.$peach,
+    colors.$yellow,
+  ));
+
+  animation: rainbow-strong 24s linear infinite;
 }
 
 @keyframes fadeglow {

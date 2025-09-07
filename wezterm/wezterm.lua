@@ -5,17 +5,17 @@ local act = wezterm.action
 return {
 
 	color_scheme = "Catppuccin Mocha",
-	enable_wayland = false,
-
+	enable_wayland = true,
 	window_background_opacity = 0.8,
+
+   audible_bell = "SystemBeep",
 
 	font = wezterm.font_with_fallback({
 		{ family = "JetBrains Mono", weight = "Regular" },
 		"Twemoji",
 	}),
 
-	-- font_size = 15.5,
-	font_size = 18.0,
+	font_size = 19,
 
 	window_padding = {
 		left = 9,
