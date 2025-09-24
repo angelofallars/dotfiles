@@ -197,7 +197,7 @@ require("catppuccin").setup({
 vim.opt.winblend = 5
 vim.cmd.colorscheme("catppuccin")
 
-vim.opt.cursorline = true
+vim.api.nvim_set_hl(0, "LspInlayHint", { bg = "NONE" })
 
 --- Updates a highlight group while preserving its existing highlight definitions.
 ---

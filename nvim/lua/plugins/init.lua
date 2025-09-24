@@ -10,6 +10,15 @@ require("lazy").setup({
 	},
 
 	{
+		"MysticalDevil/inlay-hints.nvim",
+		event = "LspAttach",
+		dependencies = { "neovim/nvim-lspconfig" },
+		config = function()
+			require("inlay-hints").setup()
+		end,
+	},
+
+	{
 		"L3MON4D3/LuaSnip",
 		-- follow latest release.
 		version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
@@ -48,7 +57,6 @@ require("lazy").setup({
 			"saadparwaiz1/cmp_luasnip",
 			"rafamadriz/friendly-snippets",
 		},
-		lazy = true,
 	},
 
 	{
@@ -62,7 +70,7 @@ require("lazy").setup({
 			require("plugins.config.treesitter")
 		end,
 		build = ":TSUpdate",
-		-- dependencies = { "HiPhish/rainbow-delimiters.nvim" },
+		dependencies = { "HiPhish/rainbow-delimiters.nvim" },
 	},
 
 	{
@@ -255,7 +263,7 @@ require("lazy").setup({
 	},
 
 	{
-		"echasnovski/mini.indentscope",
+		"nvim-mini/mini.indentscope",
 		version = "*",
 		config = function()
 			local symbol = "▏"
@@ -424,7 +432,25 @@ require("lazy").setup({
 	{
 		"pmizio/typescript-tools.nvim",
 		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-		opts = {},
+		config = function()
+			require("typescript-tools").setup({
+				expose_as_code_action = "all",
+				settings = {
+					tsserver_file_preferences = {
+						includeInlayParameterNameHints = "all",
+						includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+						includeInlayFunctionParameterTypeHints = true,
+						includeInlayVariableTypeHints = true,
+						includeInlayVariableTypeHintsWhenTypeMatchesName = false,
+						includeInlayPropertyDeclarationTypeHints = true,
+						includeInlayFunctionLikeReturnTypeHints = true,
+						includeInlayEnumMemberValueHints = true,
+					},
+				},
+				complete_function_calls = false,
+				code_lens = "all",
+			})
+		end,
 	},
 
 	-- {

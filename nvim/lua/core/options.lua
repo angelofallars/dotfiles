@@ -91,6 +91,10 @@ vim.opt.fillchars = vim.opt.fillchars + "verthoriz:▏"
 
 vim.opt.cmdheight = 1
 
+vim.opt.cursorline = true
+vim.opt.cursorlineopt = "number"
+vim.opt.numberwidth = 2
+
 -- vim.opt.list = true
 --
 -- vim.opt.listchars = {

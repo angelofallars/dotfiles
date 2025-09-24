@@ -1,14 +1,14 @@
 local M = {}
 
 local border = {
-	{ " ", "FloatBorder" },
-	{ " ", "FloatBorder" },
-	{ " ", "FloatBorder" },
-	{ " ", "FloatBorder" },
-	{ " ", "FloatBorder" },
-	{ " ", "FloatBorder" },
-	{ " ", "FloatBorder" },
-	{ " ", "FloatBorder" },
+	{ "┏", "FloatBorder" },
+	{ "━", "FloatBorder" },
+	{ "┓", "FloatBorder" },
+	{ "┃", "FloatBorder" },
+	{ "┛", "FloatBorder" },
+	{ "━", "FloatBorder" },
+	{ "┗", "FloatBorder" },
+	{ "┃", "FloatBorder" },
 }
 
 local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
@@ -38,121 +38,109 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.s
 	border = { "┏", "━", "┓", "┃", "┛", "━", "┗", "┃" },
 })
 
-if vim.lsp.inlay_hint then
-	vim.lsp.inlay_hint.enable(vim.lsp.inlay_hint.is_enabled())
-end
+vim.lsp.inlay_hint.enable(vim.lsp.inlay_hint.is_enabled())
 
 vim.diagnostic.config({
 	virtual_text = {
 		prefix = "", -- Could be '●', '▎', 'x'
+		spacing = 0,
 	},
 	severity_sort = true,
-	float = {
-		border = { "┏", "━", "┓", "┃", "┛", "━", "┗", "┃" },
-	},
 })
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
-local on_attach = function(client, bufnr)
-	if client.server_capabilities.documentSymbolProvider then
-		navic.attach(client, bufnr)
-	end
+-- local on_attach = function(client, bufnr)
 
-	-- Enable completion triggered by <c-x><c-o>
-	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+-- Enable completion triggered by <c-x><c-o>
+-- vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
-	local ts_opts = { fname_width = 20, trim_text = true, reuse_win = true }
+local ts_opts = { fname_width = 20, trim_text = true, reuse_win = true }
 
-	-- Mappings.
-	-- See `:help vim.lsp.*` for documentation on any of the below functions
-	vim.keymap.set("n", "gd", function()
-		require("telescope.builtin").lsp_definitions(ts_opts)
-	end, { buffer = bufnr })
+-- Mappings.
+-- See `:help vim.lsp.*` for documentation on any of the below functions
+vim.keymap.set("n", "gd", function()
+	require("telescope.builtin").lsp_definitions(ts_opts)
+end)
 
-	vim.keymap.set("n", "gD", function()
-		require("telescope.builtin").lsp_type_definitions(ts_opts)
-	end, { buffer = bufnr })
+vim.keymap.set("n", "gD", function()
+	require("telescope.builtin").lsp_type_definitions(ts_opts)
+end)
 
-	vim.keymap.set("n", "gr", function()
-		require("telescope.builtin").lsp_references(ts_opts)
-	end, { buffer = bufnr })
+vim.keymap.set("n", "gr", function()
+	require("telescope.builtin").lsp_references(ts_opts)
+end)
 
-	vim.keymap.set("n", "gs", function()
-		require("telescope.builtin").lsp_dynamic_workspace_symbols({
-			fname_width = 15,
-			symbol_width = 20,
-			reuse_win = true,
-		})
-	end, { buffer = bufnr })
-
-	vim.keymap.set("n", "gi", function()
-		require("telescope.builtin").lsp_implementations(ts_opts)
-	end, { buffer = bufnr })
-
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "<space>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "<space>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(
-		bufnr,
-		"n",
-		"<space>wl",
-		"<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>",
-		opts
-	)
-
-	vim.api.nvim_buf_set_keymap(bufnr, "i", "<C-h>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-	vim.keymap.set("i", "<C-h>", function()
-		vim.lsp.buf.signature_help()
-	end, { buffer = bufnr })
-
-	vim.api.nvim_create_autocmd("CursorHold", {
-		buffer = bufnr,
-		callback = function()
-			-- Do not overwrite existing floating diagnostic
-			for _, winid in pairs(vim.api.nvim_tabpage_list_wins(0)) do
-				if vim.api.nvim_win_get_config(winid).zindex then
-					return
-				end
-			end
-
-			local options = {
-				focusable = false,
-				close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-				border = { "┏", "━", "┓", "┃", "┛", "━", "┗", "┃" },
-				source = "always",
-				prefix = " ",
-				scope = "cursor",
-			}
-			vim.diagnostic.open_float(nil, options)
-		end,
+vim.keymap.set("n", "gs", function()
+	require("telescope.builtin").lsp_dynamic_workspace_symbols({
+		fname_width = 15,
+		symbol_width = 20,
+		reuse_win = true,
 	})
+end)
 
-	if client.server_capabilities.documentHighlightProvider then
+vim.keymap.set("n", "gi", function()
+	require("telescope.builtin").lsp_implementations(ts_opts)
+end)
+
+vim.keymap.set("n", "<space>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
+vim.keymap.set("n", "<space>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
+vim.keymap.set("n", "<space>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
+
+vim.keymap.set("i", "<C-k>", function()
+	vim.lsp.buf.signature_help()
+end)
+
+vim.api.nvim_create_autocmd("CursorHold", {
+	callback = function()
+		-- Do not overwrite existing floating diagnostic
+		for _, winid in pairs(vim.api.nvim_tabpage_list_wins(0)) do
+			if vim.api.nvim_win_get_config(winid).zindex then
+				return
+			end
+		end
+
+		local options = {
+			focusable = false,
+			close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+			border = { "┏", "━", "┓", "┃", "┛", "━", "┗", "┃" },
+			source = "always",
+			prefix = " ",
+			scope = "cursor",
+		}
+		vim.diagnostic.open_float(nil, options)
+	end,
+})
+
+vim.api.nvim_create_autocmd("LspAttach", {
+	desc = "Document highlight",
+	callback = function(a)
+		local client = vim.lsp.get_client_by_id(a.data.client_id)
+		if client == nil or not client.server_capabilities["documentHighlightProvider"] then
+			return
+		end
+
 		vim.api.nvim_create_augroup("lsp_document_highlight", {
 			clear = false,
 		})
+
 		vim.api.nvim_clear_autocmds({
-			buffer = bufnr,
 			group = "lsp_document_highlight",
 		})
+
 		vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-			group = "lsp_document_highlight",
-			buffer = bufnr,
 			callback = vim.lsp.buf.document_highlight,
 		})
+
 		vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
-			group = "lsp_document_highlight",
-			buffer = bufnr,
 			callback = vim.lsp.buf.clear_references,
 		})
-	end
-end
+	end,
+})
 
 -- Setup lspconfig.
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
-
-local lspconfig = vim.lsp.config
 
 local servers = {
 	"astro",
@@ -162,16 +150,12 @@ local servers = {
 	"cssls",
 	"dockerls",
 	"gleam",
-	-- "golangci_lint_ls",
-	-- "gopls",
 	"jsonls",
-	-- "rust_analyzer",
 	"templ",
 	"racket_langserver",
 	"rescriptls",
 	"sqlls",
 	"typos_lsp",
-	-- "vale_ls",
 	"vimls",
 	"vuels",
 	"zls",
@@ -200,7 +184,6 @@ vim.lsp.config("omnisharp", {
 	enable_roslyn_analyzers = true,
 	organize_imports_on_format = true,
 	enable_import_completion = true,
-	on_attach = on_attach,
 	capabilities = capabilities,
 })
 
@@ -219,7 +202,6 @@ vim.lsp.config("biome", {
 })
 
 vim.lsp.config("html", {
-	on_attach = on_attach,
 	capabilities = capabilities,
 	filetypes = { "html", "templ" },
 })
@@ -246,7 +228,6 @@ vim.lsp.config("htmx", {
 })
 
 vim.lsp.config("basedpyright", {
-	on_attach = on_attach,
 	capabilities = capabilities,
 	settings = {
 		basedpyright = {
@@ -269,6 +250,39 @@ vim.lsp.config("ruff", {
 			args = {},
 			organizeImports = true,
 			fixAll = true,
+		},
+	},
+})
+
+vim.lsp.config("gopls", {
+	settings = {
+		gopls = {
+			gofumpt = true,
+			codelenses = {
+				gc_details = false,
+				generate = true,
+				regenerate_cgo = true,
+				run_govulncheck = true,
+				test = true,
+				tidy = true,
+				upgrade_dependency = true,
+				vendor = true,
+			},
+			hints = {
+				assignVariableTypes = true,
+				compositeLiteralFields = true,
+				compositeLiteralTypes = true,
+				constantValues = true,
+				functionTypeParameters = true,
+				ignoredError = true,
+				parameterNames = true,
+				rangeVariableTypes = true,
+			},
+			usePlaceholders = true,
+			completeUnimported = true,
+			staticcheck = true,
+			directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
+			semanticTokens = true,
 		},
 	},
 })
@@ -305,13 +319,36 @@ vim.lsp.config("lua_ls", {
 		end
 		return true
 	end,
-	on_attach = on_attach,
 	flags = {
 		-- This will be the default in neovim 0.7+
 		debounce_text_changes = 150,
 	},
 	capabilities = capabilities,
 })
+
+-- Workaround for truncating long TypeScript inlay hints.
+-- TODO: Remove this if https://github.com/neovim/neovim/issues/27240 gets addressed.
+local methods = vim.lsp.protocol.Methods
+local inlay_hint_handler = vim.lsp.handlers[methods.textDocument_inlayHint]
+local ellipsis = " …"
+local max_inlay_length = 30
+vim.lsp.handlers[methods.textDocument_inlayHint] = function(err, result, ctx, config)
+	local client = vim.lsp.get_client_by_id(ctx.client_id)
+	if client and client.name == "typescript-tools" then
+		result = vim.iter(result)
+			:map(function(hint)
+				local label = hint.label ---@type string
+				if label:len() >= max_inlay_length then
+					label = label:sub(1, max_inlay_length - 1) .. ellipsis
+				end
+				hint.label = label
+				return hint
+			end)
+			:totable()
+	end
+
+	inlay_hint_handler(err, result, ctx, config)
+end
 
 local function lspSymbol(name, icon)
 	vim.fn.sign_define("DiagnosticSign" .. name, { text = icon, texthl = "Diagnostic" .. name })
@@ -321,8 +358,5 @@ lspSymbol("Error", "󰅚")
 lspSymbol("Hint", "󰌶")
 lspSymbol("Info", "")
 lspSymbol("Warn", "󰀪")
-lspSymbol("Warn", "󰀪")
-
-M.on_attach = on_attach
 
 return M
