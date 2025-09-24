@@ -24,9 +24,9 @@ local opts = { noremap = true, silent = true }
 vim.api.nvim_set_keymap("n", "<space>e", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
 vim.api.nvim_set_keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
 vim.api.nvim_set_keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
-vim.keymap.set("n", "<space>r", function()
-	require("telescope.builtin").diagnostics()
-end)
+vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Hover Documentation" })
+vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, { desc = "Rename identifier" })
+vim.keymap.set("n", "<space>n", vim.lsp.buf.code_action, { desc = "Rename identifier" })
 
 local navic = require("nvim-navic")
 
@@ -36,6 +36,20 @@ vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
 
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
 	border = { "┏", "━", "┓", "┃", "┛", "━", "┗", "┃" },
+})
+
+if vim.lsp.inlay_hint then
+	vim.lsp.inlay_hint.enable(vim.lsp.inlay_hint.is_enabled())
+end
+
+vim.diagnostic.config({
+	virtual_text = {
+		prefix = "", -- Could be '●', '▎', 'x'
+	},
+	severity_sort = true,
+	float = {
+		border = { "┏", "━", "┓", "┃", "┛", "━", "┗", "┃" },
+	},
 })
 
 -- Use an on_attach function to only map the following keys
@@ -76,7 +90,6 @@ local on_attach = function(client, bufnr)
 		require("telescope.builtin").lsp_implementations(ts_opts)
 	end, { buffer = bufnr })
 
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "<space>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "<space>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
 	vim.api.nvim_buf_set_keymap(
@@ -86,23 +99,11 @@ local on_attach = function(client, bufnr)
 		"<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>",
 		opts
 	)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "<space>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "<space>n", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
 
 	vim.api.nvim_buf_set_keymap(bufnr, "i", "<C-h>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
 	vim.keymap.set("i", "<C-h>", function()
 		vim.lsp.buf.signature_help()
 	end, { buffer = bufnr })
-
-	vim.diagnostic.config({
-		virtual_text = {
-			prefix = "", -- Could be '●', '▎', 'x'
-		},
-		severity_sort = true,
-		float = {
-			border = { "┏", "━", "┓", "┃", "┛", "━", "┗", "┃" },
-		},
-	})
 
 	vim.api.nvim_create_autocmd("CursorHold", {
 		buffer = bufnr,
@@ -125,10 +126,6 @@ local on_attach = function(client, bufnr)
 			vim.diagnostic.open_float(nil, options)
 		end,
 	})
-
-	if vim.lsp.inlay_hint then
-		vim.lsp.inlay_hint.enable(vim.lsp.inlay_hint.is_enabled())
-	end
 
 	if client.server_capabilities.documentHighlightProvider then
 		vim.api.nvim_create_augroup("lsp_document_highlight", {
@@ -155,7 +152,7 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
-local lspconfig = require("lspconfig")
+local lspconfig = vim.lsp.config
 
 local servers = {
 	"astro",
@@ -165,13 +162,11 @@ local servers = {
 	"cssls",
 	"dockerls",
 	"gleam",
-	"htmx",
-	"golangci_lint_ls",
-	"gopls",
+	-- "golangci_lint_ls",
+	-- "gopls",
 	"jsonls",
-	"rust_analyzer",
+	-- "rust_analyzer",
 	"templ",
-	"ts_ls",
 	"racket_langserver",
 	"rescriptls",
 	"sqlls",
@@ -183,40 +178,33 @@ local servers = {
 }
 
 for _, lsp in pairs(servers) do
-	lspconfig[lsp].setup({
-		on_attach = on_attach,
-		flags = {
-			-- This will be the default in neovim 0.7+
-			debounce_text_changes = 150,
-		},
-		capabilities = capabilities,
-	})
+	vim.lsp.enable(lsp)
 end
 
-lspconfig.omnisharp.setup({
-   cmd = { "/usr/bin/OmniSharp" },
-   handlers = {
-      ["textDocument/definition"] = function(...)
-         return require("omnisharp_extended").handler(...)
-      end,
-   },
-   keys = {
-      {
-         "gd",
-         function()
-            require("omnisharp_extended").telescope_lsp_definitions()
-         end,
-         desc = "Goto Definition",
-      },
-   },
-   enable_roslyn_analyzers = true,
-   organize_imports_on_format = true,
-   enable_import_completion = true,
+vim.lsp.config("omnisharp", {
+	cmd = { "/usr/bin/OmniSharp" },
+	handlers = {
+		["textDocument/definition"] = function(...)
+			return require("omnisharp_extended").handler(...)
+		end,
+	},
+	keys = {
+		{
+			"gd",
+			function()
+				require("omnisharp_extended").telescope_lsp_definitions()
+			end,
+			desc = "Goto Definition",
+		},
+	},
+	enable_roslyn_analyzers = true,
+	organize_imports_on_format = true,
+	enable_import_completion = true,
 	on_attach = on_attach,
 	capabilities = capabilities,
 })
 
-lspconfig.biome.setup({
+vim.lsp.config("biome", {
 	filetypes = {
 		"javascript",
 		"javascriptreact",
@@ -230,13 +218,13 @@ lspconfig.biome.setup({
 	},
 })
 
-lspconfig.html.setup({
+vim.lsp.config("html", {
 	on_attach = on_attach,
 	capabilities = capabilities,
 	filetypes = { "html", "templ" },
 })
 
-lspconfig.tailwindcss.setup({
+vim.lsp.config("tailwindcss", {
 	filetypes = {
 		"templ",
 		"astro",
@@ -250,45 +238,14 @@ lspconfig.tailwindcss.setup({
 	},
 })
 
-lspconfig.htmx.setup({
+vim.lsp.config("htmx", {
 	filetypes = {
 		"templ",
 		-- include any other filetypes where you need tailwindcss
 	},
 })
 
-lspconfig.gopls.setup({
-	settings = {
-		gopls = {
-			gofumpt = true,
-			hints = {
-				assignVariableTypes = true,
-				compositeLiteralFields = true,
-				compositeLiteralTypes = false,
-				constantValues = true,
-				functionTypeParameters = true,
-				parameterNames = false,
-				rangeVariableTypes = true,
-			},
-		},
-	},
-})
-
-local lspconfig_util = require("lspconfig").util
-
-local function find_ancestor(fileNames)
-	return function(startpath)
-		return lspconfig_util.search_ancestors(startpath, function(path)
-			for _, fileName in ipairs(fileNames) do
-				if lspconfig_util.path.is_file(lspconfig_util.path.join(path, fileName)) then
-					return path
-				end
-			end
-		end)
-	end
-end
-
-require("lspconfig").basedpyright.setup({
+vim.lsp.config("basedpyright", {
 	on_attach = on_attach,
 	capabilities = capabilities,
 	settings = {
@@ -306,41 +263,17 @@ require("lspconfig").basedpyright.setup({
 	},
 })
 
-
--- ChatGPT gave me this.
--- local util = require("vim.lsp.util")
---
--- local old_apply_workspace_edit = util.apply_workspace_edit
--- util.apply_workspace_edit = function(workspace_edit, offset_encoding)
---   -- only patch if the client is Pyright
---   local active_client = vim.lsp.get_active_clients({ name = "pyright" })[1]
---   if active_client and workspace_edit.documentChanges then
---     for _, change in ipairs(workspace_edit.documentChanges) do
---       if change.edits then
---         for _, edit in ipairs(change.edits) do
---           -- Pyright sometimes sends annotationId without changeAnnotations
---           if edit.annotationId and not workspace_edit.changeAnnotations then
---             edit.annotationId = nil
---           end
---         end
---       end
---     end
---   end
---
---   return old_apply_workspace_edit(workspace_edit, offset_encoding)
--- end
-
-require("lspconfig").ruff.setup({
-   init_options = {
-     settings = {
-       args = {},
-       organizeImports = true,
-       fixAll = true,
-     }
-   }
+vim.lsp.config("ruff", {
+	init_options = {
+		settings = {
+			args = {},
+			organizeImports = true,
+			fixAll = true,
+		},
+	},
 })
 
-lspconfig.lua_ls.setup({
+vim.lsp.config("lua_ls", {
 	on_init = function(client)
 		local path = client.workspace_folders[1].name
 		if not vim.loop.fs_stat(path .. "/.luarc.json") and not vim.loop.fs_stat(path .. "/.luarc.jsonc") then

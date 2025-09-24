@@ -9,24 +9,25 @@ require("lazy").setup({
 		},
 	},
 
-   {
-      "L3MON4D3/LuaSnip",
-      -- follow latest release.
-      version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
-      -- install jsregexp (optional!).
-      build = "make install_jsregexp",
-      config = function()
-         local ls = require("luasnip")
-         local s = ls.snippet
-         local t = ls.text_node
+	{
+		"L3MON4D3/LuaSnip",
+		-- follow latest release.
+		version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+		-- install jsregexp (optional!).
+		build = "make install_jsregexp",
+		config = function()
+			local ls = require("luasnip")
+			local s = ls.snippet
+			local t = ls.text_node
 
-         ls.add_snippets("python",
-           s("bp", {
-             t("breakpoint()"),
-           })
-         )
-      end,
-   },
+			ls.add_snippets(
+				"python",
+				s("bp", {
+					t("breakpoint()"),
+				})
+			)
+		end,
+	},
 
 	{
 		"hrsh7th/nvim-cmp",
@@ -135,12 +136,14 @@ require("lazy").setup({
 		lazy = true,
 	},
 
-	-- {
-	-- 	"andweeb/presence.nvim",
-	-- 	config = function()
-	-- 		require("plugins.config.presence")
-	-- 	end,
-	-- },
+	{
+		"vyfor/cord.nvim",
+		build = ":Cord update",
+		-- opts = {}
+		config = function()
+			require("plugins.config.cord")
+		end,
+	},
 
 	{
 		"nvim-lualine/lualine.nvim",
@@ -168,12 +171,13 @@ require("lazy").setup({
 	},
 
 	{
-		"simrat39/rust-tools.nvim",
+		"mrcjkb/rustaceanvim",
+		version = "^6", -- Recommended
+		lazy = false, -- This plugin is already lazy
 		ft = "rust",
 		config = function()
 			require("plugins.config.rust-tools")
 		end,
-		event = "VeryLazy",
 	},
 
 	{
@@ -351,7 +355,7 @@ require("lazy").setup({
 
 	{
 		"rcarriga/nvim-notify",
-      dependencies = { "catppuccin/nvim" },
+		dependencies = { "catppuccin/nvim" },
 		config = function()
 			require("notify").setup({
 				level = 0,
@@ -360,7 +364,7 @@ require("lazy").setup({
 				fps = 165,
 			})
 
-         vim.cmd([[
+			vim.cmd([[
             highlight link NotifyBackground Normal
             highlight link NotifyERRORBody Normal
             highlight link NotifyWARNBody Normal
@@ -397,70 +401,76 @@ require("lazy").setup({
 
 	{ "rescript-lang/vim-rescript", tag = "v2.1.0" },
 
-   { "projectfluent/fluent.vim" },
+	{ "projectfluent/fluent.vim" },
 
-   { "ccraciun/vim-dreammaker" },
+	{ "ccraciun/vim-dreammaker" },
 
-   { "Hoffs/omnisharp-extended-lsp.nvim", lazy = true },
+	{ "Hoffs/omnisharp-extended-lsp.nvim", lazy = true },
 
-   {
-       "mason-org/mason.nvim",
-       opts = {}
-   },
+	{
+		"mason-org/mason.nvim",
+		opts = {},
+	},
 
-   {
-       "mason-org/mason-lspconfig.nvim",
-       opts = {},
-       dependencies = {
-           { "mason-org/mason.nvim", opts = {} },
-           "neovim/nvim-lspconfig",
-       },
-   }
+	{
+		"mason-org/mason-lspconfig.nvim",
+		opts = {},
+		dependencies = {
+			{ "mason-org/mason.nvim", opts = {} },
+			"neovim/nvim-lspconfig",
+		},
+	},
 
-   -- {
-   --    "iabdelkareem/csharp.nvim",
-   --    dependencies = {
-   --       "williamboman/mason.nvim", -- Required, automatically installs omnisharp
-   --       "mfussenegger/nvim-dap",
-   --       "Tastyep/structlog.nvim", -- Optional, but highly recommended for debugging
-   --    },
-   --    config = function ()
-   --       require("mason").setup() -- Mason setup must run before csharp, only if you want to use omnisharp
-   --       require("csharp").setup(
-   --          {
-   --             lsp = {
-   --                -- Sets if you want to use omnisharp as your LSP
-   --                omnisharp = {
-   --                   -- When set to false, csharp.nvim won't launch omnisharp automatically.
-   --                   enable = true,
-   --                   -- The default timeout when communicating with omnisharp
-   --                   default_timeout = 1000,
-   --                   -- Settings that'll be passed to the omnisharp server
-   --                   enable_editor_config_support = true,
-   --                   organize_imports = true,
-   --                   load_projects_on_demand = false,
-   --                   enable_analyzers_support = true,
-   --                   enable_import_completion = true,
-   --                   include_prerelease_sdks = true,
-   --                   analyze_open_documents_only = false,
-   --                   enable_package_auto_restore = true,
-   --                   -- Launches omnisharp in debug mode
-   --                   debug = false,
-   --                },
-   --                -- Sets if you want to use roslyn as your LSP
-   --                roslyn = {
-   --                   -- When set to true, csharp.nvim will launch roslyn automatically.
-   --                   enable = false,
-   --                   -- Path to the roslyn LSP see 'Roslyn LSP Specific Prerequisites' above.
-   --                   cmd_path = "/usr/bin/omnisharp",
-   --                },
-   --                -- The capabilities to pass to the omnisharp server
-   --                capabilities = nil,
-   --                -- on_attach function that'll be called when the LSP is attached to a buffer
-   --                on_attach = nil
-   --             },
-   --          }
-   --       )
-   --    end
-   -- }
+	{
+		"pmizio/typescript-tools.nvim",
+		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+		opts = {},
+	},
+
+	-- {
+	--    "iabdelkareem/csharp.nvim",
+	--    dependencies = {
+	--       "williamboman/mason.nvim", -- Required, automatically installs omnisharp
+	--       "mfussenegger/nvim-dap",
+	--       "Tastyep/structlog.nvim", -- Optional, but highly recommended for debugging
+	--    },
+	--    config = function ()
+	--       require("mason").setup() -- Mason setup must run before csharp, only if you want to use omnisharp
+	--       require("csharp").setup(
+	--          {
+	--             lsp = {
+	--                -- Sets if you want to use omnisharp as your LSP
+	--                omnisharp = {
+	--                   -- When set to false, csharp.nvim won't launch omnisharp automatically.
+	--                   enable = true,
+	--                   -- The default timeout when communicating with omnisharp
+	--                   default_timeout = 1000,
+	--                   -- Settings that'll be passed to the omnisharp server
+	--                   enable_editor_config_support = true,
+	--                   organize_imports = true,
+	--                   load_projects_on_demand = false,
+	--                   enable_analyzers_support = true,
+	--                   enable_import_completion = true,
+	--                   include_prerelease_sdks = true,
+	--                   analyze_open_documents_only = false,
+	--                   enable_package_auto_restore = true,
+	--                   -- Launches omnisharp in debug mode
+	--                   debug = false,
+	--                },
+	--                -- Sets if you want to use roslyn as your LSP
+	--                roslyn = {
+	--                   -- When set to true, csharp.nvim will launch roslyn automatically.
+	--                   enable = false,
+	--                   -- Path to the roslyn LSP see 'Roslyn LSP Specific Prerequisites' above.
+	--                   cmd_path = "/usr/bin/omnisharp",
+	--                },
+	--                -- The capabilities to pass to the omnisharp server
+	--                capabilities = nil,
+	--                -- on_attach function that'll be called when the LSP is attached to a buffer
+	--                on_attach = nil
+	--             },
+	--          }
+	--       )
+	--    end
+	-- }
 })

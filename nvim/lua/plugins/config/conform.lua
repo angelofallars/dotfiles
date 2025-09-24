@@ -1,3 +1,14 @@
+local function js_formatter(bufnr)
+	local buf_dir = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(bufnr), ":h")
+	local biome_root = vim.fs.root(buf_dir, { "biome.json" })
+
+	if biome_root then
+		return { "biome" }
+	else
+		return { "prettier" }
+	end
+end
+
 require("conform").setup({
 	formatters_by_ft = {
 		lua = { "stylua" },
@@ -20,15 +31,14 @@ require("conform").setup({
 		rust = { "rustfmt" },
 		zig = { "zigfmt" },
 
-		-- Use a sub-list to run only the first available formatter
-		astro = { "prettier" },
-		html = { "biome" },
-		css = { "biome" },
-		scss = { "biome" },
-		-- javascript = { "biome" },
-		typescript = { "biome" },
-		javascriptreact = { "biome" },
-		typescriptreact = { "biome" },
+		astro = js_formatter,
+		html = js_formatter,
+		css = js_formatter,
+		scss = js_formatter,
+		javascript = js_formatter,
+		typescript = js_formatter,
+		javascriptreact = js_formatter,
+		typescriptreact = js_formatter,
 
 		rescript = { "rescript-format" },
 

@@ -8,7 +8,7 @@ return {
 	enable_wayland = true,
 	window_background_opacity = 0.8,
 
-   audible_bell = "SystemBeep",
+	audible_bell = "SystemBeep",
 
 	font = wezterm.font_with_fallback({
 		{ family = "JetBrains Mono", weight = "Regular" },

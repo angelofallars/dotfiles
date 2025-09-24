@@ -18,7 +18,7 @@ fi
 
 # Color stuff
 alias ls='eza -x --icons --git --group-directories-first'
-alias lst='eza -x --icons --git --group-directories-first -T'
+alias lst='eza -x --icons --git --group-directories-first -T --git-ignore'
 alias l='ls'
 alias la='eza -a -x --icons --git --group-directories-first --no-user'
 alias ll='eza -l -x --icons --git --group-directories-first --no-user'
@@ -37,8 +37,6 @@ alias ....="cd ../../../"
 alias .....="cd ../../../../"
 
 # Convenient Git aliases
-alias g="git"
-
 alias gin="git init"
 gincd() {
     git init "$1" && cd "$1"
@@ -115,7 +113,7 @@ alias grssr='git restore --staged "$(git rev-parse --show-toplevel)/"'
 
 alias gd="git diff"
 alias gds="git diff --staged"
-alias gdm="git diff main"
+alias gdm="git diff main || git diff master"
 alias gd1="git diff HEAD~1"
 alias gd2="git diff HEAD~2"
 alias gd3="git diff HEAD~3"
@@ -158,7 +156,9 @@ alias gbr="git branch --remote"
 alias gbd="git branch --delete"
 
 alias gw="git switch"
-alias gwc="git switch -c"
+alias gwm="git switch main || git switch master"
+alias gwn="git switch -c"
+alias gwd="git switch --detach"
 
 alias gc="git checkout"
 alias gcb="git checkout -b"
@@ -373,3 +373,54 @@ export PATH="$PATH:/home/angelo-f/projects/personal/worldbanc/private/bin"
 
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+
+# Usage: grab <username> <branch>
+grab() {
+  if [ $# -ne 1 ] || [[ ! "$1" =~ ^[^:]+:[^:]+$ ]]; then
+    echo "Usage: grab <username>:<branch>"
+    return 1
+  fi
+
+  local user="${1%%:*}"
+  local branch="${1#*:}"
+
+  # Get the repository name from the 'origin' remote
+  local origin_url
+  origin_url=$(git remote get-url origin 2>/dev/null)
+  if [ -z "$origin_url" ]; then
+    echo "Error: Not a git repository or no 'origin' remote."
+    return 1
+  fi
+
+  # Extract the repository name from the SSH URL (assume only SSH is used)
+  # Example: git@github.com:owner/repo.git
+  local repo
+  repo=$(echo "$origin_url" | sed -n 's#git@github\.com:[^/]*/\([^\.]*\)\.git#\1#p')
+  if [ -z "$repo" ]; then
+    echo "Error: Could not parse repository name from origin URL ($origin_url)"
+    return 1
+  fi
+
+  # Add the remote if it doesn't exist, using SSH
+  if ! git remote | grep -q "^$user\$"; then
+    git remote add "$user" "git@github.com:$user/$repo.git"
+  fi
+
+  # Fetch the user's branch
+  git fetch "$user" "$branch"
+
+  # Switch to the remote branch directly (detached HEAD)
+  git switch --detach "$user/$branch"
+}
+
+grabo() {
+    grab "origin:$1"
+}
+
+# pnpm
+export PNPM_HOME="/home/angelo-f/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
