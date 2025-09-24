@@ -1,22 +1,20 @@
-<h1 align=center>⛩️🍙 neovim - artix - hyprland</h1>
+<h1 align=center>⛩️ neovim - catppuccin - hyprland 🍙</h1>
 
-<img width="2560" height="1440" alt="image" src="https://github.com/user-attachments/assets/3d7ac69a-fe91-4cc7-9539-73455ab00ce8" />
-
-My dotfiles on Artix Linux. Pardon for the mess; just copy-paste the snippets you'd like to incorporate into your setup.
+<p align="center">
+<img width="800" alt="My desktop setup using Catppuccin with Waybar on top and a Wezterm terminal on the bottom, running Wezterm." src="https://github.com/user-attachments/assets/ae4d5ade-cf3a-4bf5-b0af-8845c1392c7d" />
+<br>
+My dotfiles on Artix Linux, using the <a href="https://catppuccin.com">Catppuccin Mocha</a> theme.
+</p>
 
 ## 🍵 Desktop
 
 - **DE** - Hyprland
+- **Status bar** - Waybar
+- **Launcher** - Rofi
 
-## 🍣 Setup
+## 🍣 Dev Setup
 
-- **Editor** - Neovim
+- **Editor** - Neovim (btw)
 - **Terminal** - Wezterm
 - **Multiplexer** - tmux
 - **Shell** - Zsh
-
-## [License](./LICENSE)
-
-This dotfiles repository is licensed under WTFPL (*Do What The F#$k You Want To Public License*).
-
-In short, do what the *frick* you want with these. 😎
