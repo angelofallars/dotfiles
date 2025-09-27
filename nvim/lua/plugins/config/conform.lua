@@ -14,7 +14,7 @@ require("conform").setup({
 		lua = { "stylua" },
 
 		-- Conform will run multiple formatters sequentially
-		python = { "ruff_isort", "ruff_format" },
+		-- python = { "ruff_isort", "ruff_format" },
 
 		go = { "gofumpt" },
 

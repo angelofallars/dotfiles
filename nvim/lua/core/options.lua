@@ -3,7 +3,7 @@ autocmd FileType c            setlocal shiftwidth=8 tabstop=8
 autocmd FileType scheme       setlocal shiftwidth=2 tabstop=2
 
 autocmd FileType lua          setlocal shiftwidth=3 tabstop=3
-autocmd FileType go           setlocal shiftwidth=2 tabstop=2 noexpandtab
+autocmd FileType go           setlocal shiftwidth=3 tabstop=3 noexpandtab
 autocmd FileType templ        setlocal shiftwidth=2 tabstop=2 noexpandtab
 autocmd FileType python       setlocal textwidth=80
 

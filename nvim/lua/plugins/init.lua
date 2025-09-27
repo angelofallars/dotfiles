@@ -448,7 +448,7 @@ require("lazy").setup({
 					},
 				},
 				complete_function_calls = false,
-				code_lens = "all",
+				tsserver_max_memory = "16384",
 			})
 		end,
 	},

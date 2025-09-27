@@ -1,8 +1,8 @@
 -- setup with all defaults
 -- each of these are documented in `:help nvim-tree.OPTION_NAME`
 -- nested options are documented by accessing them with `.` (eg: `:help nvim-tree.view.mappings.list`).
-local HEIGHT_RATIO = 0.4 -- You can change this
-local WIDTH_RATIO = 0.20 -- You can change this too
+local HEIGHT_RATIO = 0.3 -- You can change this
+local WIDTH_RATIO = 0.22 -- You can change this too
 
 local function split(inputstr, sep)
 	if sep == nil then
@@ -49,9 +49,9 @@ local function my_on_attach(bufnr)
 
 	-- add your mappings
 	vim.keymap.set("n", "?", api.tree.toggle_help, opts("Help"))
-	vim.keymap.set("n", "i", api.node.open.edit, opts("Open"))
 	vim.keymap.set("n", "n", "j", { buffer = bufnr })
 	vim.keymap.set("n", "e", "k", { buffer = bufnr })
+	vim.keymap.set("n", "i", api.tree.change_root_to_node, opts("CD"))
 	vim.keymap.set("n", "<C-c>", api.tree.close, opts("Close"))
 end
 

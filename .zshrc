@@ -374,7 +374,7 @@ export PATH="$PATH:/home/angelo-f/projects/personal/worldbanc/private/bin"
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
-# Usage: grab <username> <branch>
+# Usage: grab <username>:<branch>
 grab() {
   if [ $# -ne 1 ] || [[ ! "$1" =~ ^[^:]+:[^:]+$ ]]; then
     echo "Usage: grab <username>:<branch>"
