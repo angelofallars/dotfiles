@@ -60,11 +60,11 @@ local ts_opts = { fname_width = 20, trim_text = true, reuse_win = true }
 -- Mappings.
 -- See `:help vim.lsp.*` for documentation on any of the below functions
 vim.keymap.set("n", "gd", function()
-	require("telescope.builtin").lsp_definitions(ts_opts)
+	vim.lsp.buf.definition()
 end)
 
 vim.keymap.set("n", "gD", function()
-	require("telescope.builtin").lsp_type_definitions(ts_opts)
+	vim.lsp.buf.type_definition()
 end)
 
 vim.keymap.set("n", "gr", function()

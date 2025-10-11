@@ -173,6 +173,8 @@ alias grt="git reset"
 alias grts="git reset --soft"
 alias grth="git reset --hard"
 
+alias dr="docker"
+
 alias wcl="wc -l"
 
 alias pm="pacman"
@@ -415,6 +417,26 @@ grab() {
 
 grabo() {
     grab "origin:$1"
+}
+
+touchp() {
+  mkdir -p "$(dirname "$1")" && touch "$1"
+}
+
+compress() {
+  if [[ -z "$1" ]]; then
+    echo "Usage: compress <video-file>"
+    return 1
+  fi
+
+  input="$1"
+  dir="${input:h}"
+  filename="${input:t}"
+  base="${filename%.*}"
+  ext="${filename##*.}"
+  output="${dir}/${base}.compressed.${ext}"
+
+  ffmpeg -i "$input" -vcodec libx264 -crf 40 -vf "crop=trunc(iw/2)*2:trunc(ih/2)*2" "$output"
 }
 
 # pnpm

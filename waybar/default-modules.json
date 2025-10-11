@@ -97,8 +97,7 @@
     "format": "{:%a %b %d    %I:%M %p %Z}",
     "timezones": [
       "Asia/Manila",
-      "America/New_York",
-      "Europe/Sofia"
+      "Australia/Sydney"
     ],
     "tooltip-format": "<tt><small>{calendar}</small></tt>",
     "calendar": {

@@ -19,7 +19,4 @@ require("cord").setup({
 		timeout = 90 * 1000,
 		show_status = false,
 	},
-	advanced = {
-		cursor_update_mode = "on_hold",
-	},
 })
