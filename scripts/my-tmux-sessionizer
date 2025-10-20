@@ -39,7 +39,7 @@ projects=$(\
    # Strip home dir
    sed --regexp-extended "s/^\/home\/[^\/]+\///g" |
 
-   sed --regexp-extended "s/^projects\/work/📋 work/g" |
+   sed --regexp-extended "s/^projects\/work/🍊 work/g" |
    sed --regexp-extended "s/^projects\/axyl/🔷 axyl/g" |
    sed --regexp-extended "s/^projects\/waycrate/🟨 waycrate/g" |
    sed --regexp-extended "s/^projects\/personal\//🟢 /g" |
@@ -125,7 +125,7 @@ selected=$(\
 
 selected_dir="$HOME/${selected}"
 
-echo "$selected_dir" | grep "projects/" 
+echo "$selected_dir" | grep "projects/"
 
 if [[ "$?" -eq 0 ]]; then
     # Strip the "projects" directory name for project repos

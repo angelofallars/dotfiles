@@ -10,7 +10,17 @@ vim.g.mapleader = " "
 -- Search for <files> in the git repository
 nmap("<C-p>", ":lua require'telescope.builtin'.git_files{show_untracked = true}<cr>")
 
-nmap("<C-f>", ":lua require'telescope.builtin'.live_grep()<cr>")
+nmap("<C-f>", function()
+	local git_root = vim.fn.systemlist("git rev-parse --show-toplevel")[1]
+	if vim.v.shell_error ~= 0 then
+		-- fallback: use current dir if not in a git repo
+		git_root = vim.loop.cwd()
+	end
+
+	require("telescope.builtin").live_grep({
+		cwd = git_root,
+	})
+end, { desc = "Live grep from git root" })
 
 vim.api.nvim_create_autocmd("BufRead", {
 	pattern = "*/.config/*",

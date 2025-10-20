@@ -18,6 +18,9 @@ custom_catppuccin.inactive.a.bg = ""
 custom_catppuccin.inactive.b.bg = ""
 custom_catppuccin.inactive.c.bg = ""
 
+vim.g.gitblame_display_virtual_text = 0 -- Disable virtual text
+local git_blame = require("gitblame")
+
 require("lualine").setup({
 	options = {
 		icons_enabled = true,
@@ -39,7 +42,10 @@ require("lualine").setup({
 			"diagnostics",
 			"diff",
 		},
-		lualine_x = { "filetype" },
+		lualine_x = {
+			{ git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available },
+			"filetype",
+		},
 		lualine_y = { "branch", "progress" },
 		lualine_z = {
 			{ "location", separator = { left = "", right = "" } },
